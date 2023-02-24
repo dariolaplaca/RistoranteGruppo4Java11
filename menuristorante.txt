@@ -2,6 +2,16 @@ Group 4 Restaurant Java 11
 
 Meat Based Menu
 
+Starters:
+    - Forever Fried Chicken Calamari 69.69€
+    - Pineapple Duck Carpaccio 3.50€
+    - Typical Vigezzino Ham with Sweet and Sour Skewers 4.00€
+    - Carne Salada with Wheat Flakes and Sour Mushrooms 3.50€
+    - Norwegian Salmon with 5 Cereal Crostini and Flambéed Shrimps with Cognac 8.00€
+    - Breaded and Crispy Lamb Bites 2.50€
+    - Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad 6.00€
+    - Test Antipasto Prova 10€
+
 Second Courses:
     - Rare Florentine Steak 20.00€
     - Wagyu Beef 30.00€
