@@ -12,6 +12,16 @@ Starters:
     - Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad 6.00€
     - Test Antipasto Prova 10€
 
+
+First Courses:
+    - Genovese 8.50€
+    - Carbonara 9.00€
+    - Amatriciana 10.00€
+    - Gricia 10.00€
+    - Orecchiette broccoli and sausage 8.00€
+    - Tagliatelle with white meat sauce 7.00€
+
+
 Second Courses:
     - Rare Florentine Steak 20.00€
     - Wagyu Beef 30.00€
