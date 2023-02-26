@@ -31,6 +31,14 @@ Second Courses:
     - Hamburger 12.00€
 
 
+Desserts:
+    - Apple cake 8.00 €
+    - Tiramisù 12.00 €
+    - Salty chocolate ice cream 150.00 €
+    - Saicher torte 40.00 €
+    - Compose your dessert 20.00€
+
+
 Beverages:
     - Still Water 1l 1€
     - Sparkling Water 1l 1€
