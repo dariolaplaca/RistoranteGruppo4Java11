@@ -1,5 +1,3 @@
-package src.items;
-
 public class Seconds {
     private String name;
     private String description;

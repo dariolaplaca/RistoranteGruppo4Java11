@@ -1,5 +1,3 @@
-package src.items;
-
 public class Desserts {
     // ATTRIBUTES
     private String name;

@@ -1,5 +1,3 @@
-package src.items;
-
 public class Firsts {
 
         // ATTRIBUTES
