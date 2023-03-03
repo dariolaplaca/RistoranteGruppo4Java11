@@ -1,4 +1,4 @@
-public class Beverages {
+public class Beverages{
 
 
     // ATTRIBUTES
@@ -29,4 +29,8 @@ public class Beverages {
     public void setDescription(String description) {this.description = description;}
     public void setMilliliters(double milliliters) {this.milliliters = milliliters;}
     public void setPrice(double price) {this.price = price;}
+
+    public void printInfo(){
+        System.out.println(this.name + " " + this.milliliters + "ml" + " - " + this.price + "€\n" + this.description);
+    }
 }
