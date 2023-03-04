@@ -31,6 +31,6 @@ public class Beverages{
     public void setPrice(double price) {this.price = price;}
 
     public void printInfo(){
-        System.out.println(this.name + " " + this.milliliters + "ml" + " - " + this.price + "€\n" + this.description);
+        System.out.println("\t" + this.name + " " + this.milliliters + "ml" + " - " + this.price + "€\n" + this.description);
     }
 }

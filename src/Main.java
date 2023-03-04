@@ -26,6 +26,21 @@ public class Main {
         Beverages negroni = new Beverages("Negroni", "A complex and bitter cocktail made with gin, vermouth, and Campari. Perfect as an aperitif.", 130, 7);
         Beverages whiteRussian  = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 7);
 
+        //ARRAY LISTS
+
+
+        ArrayList<Beverages> beveragesList = new ArrayList<>(Arrays.asList(
+                stillWater, sparklingWater,
+                cocacola, fanta, sprite,
+                redDraughtBeer, blondeDraughtBeer,
+                redWine, whiteWine,
+                Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
+
+
+        //PRINTING
+
+        printBeverages(beveragesList);
+
         System.out.print("1) ");
         appleCake.printInfo();
 
@@ -47,21 +62,22 @@ public class Main {
         composeYourDessert.printInfo();
         System.out.println();
 
-        //BEVERAGES PRINT
-        ArrayList<Beverages> beveragesList = new ArrayList<>(Arrays.asList(
-                stillWater, sparklingWater,
-                cocacola, fanta, sprite,
-                redDraughtBeer, blondeDraughtBeer,
-                redWine, whiteWine,
-                Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
 
 
+
+
+
+
+
+    }
+
+    //PRINTING FUNCTIONS
+
+    public static void printBeverages(ArrayList<Beverages> beveragesList){
+        System.out.println("\t\t-----------------\n\t\t|\tBEVERAGES\t|\n\t\t-----------------");
         for(Beverages b : beveragesList){
             b.printInfo();
             System.out.println();
         }
-
-
-
     }
 }
