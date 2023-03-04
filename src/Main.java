@@ -3,11 +3,16 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         // - DESSERTS
-        Desserts appleCake = new Desserts("Apple cake  " , "sugar, vanilla, eggs, butter, flour, yeast, milk, apple granny smith" , " American apple pie with", 1.000, 12.0);
-        Desserts tiramisù = new Desserts("Tiramisù  " , "mascarpone cheese, egg yolk, savoiardi biscuits, coffee, cocoa powder"," - Dessert with coffe, biscuits, cocoa", 2.000, 10.0);
-        Desserts saltyChocolate = new Desserts("Salty chocolate ice cream  " , "water, sugar, milk, chocolate fondant, chocolate milk, cocoa"," - Ice-cream with chocolate fondant and milk chocolate", 500, 25.0);
-        Desserts sacherTorte = new Desserts("Sachertorte  " , "chocolate fondant, cream, butter, sugar, eggs, flour "," - Dessert with lemon cream", 1.000, 25.0);
-        Desserts composeYourDessert = new Desserts("Compose your dessert  " ,"available ingredients : Chocolate, pistachio, cream, salty-chocolate ice-cream ",  "depending on the choice it is possible to make a cake, an ice cream or a mini dessert",500, 25.0);
+        Desserts appleCake = new Desserts("Apple cake" , Set.of("sugar", "vanilla","eggs", "butter", "flour", "yeast", "milk", "apple granny smith" ), "American apple pie", 1.000, 12.0);
+        Desserts tiramisu = new Desserts("Tiramisù" , Set.of("mascarpone cheese", "egg yolk", "savoiardi biscuits", "coffee", "cocoa powder"),"Dessert with coffe, biscuits, cocoa", 2.000, 10.0);
+        Desserts saltyChocolate = new Desserts("Salty chocolate ice cream" , Set.of("water", "sugar", "milk", "chocolate fondant", "chocolate milk", "cocoa"),"Ice-cream with chocolate fondant and milk chocolate", 500, 25.0);
+        Desserts sacherTorte = new Desserts("Sachertorte" , Set.of("chocolate fondant", "cream", "butter", "sugar", "eggs", "flour"),"Dessert with lemon cream", 1.000, 25.0);
+        Desserts composeYourDessert = new Desserts("Compose your dessert" , Set.of("Chocolate", "pistachio", "cream", "salty-chocolate ice-cream"),  "Depending on the choice it is possible to make a cake, an ice cream or a mini dessert",500, 25.0);
+
+
+
+
+
 
         //BEVERAGES
 
@@ -27,7 +32,7 @@ public class Main {
         Beverages whiteRussian  = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 7);
 
         //ARRAY LISTS
-
+        ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
         ArrayList<Beverages> beveragesList = new ArrayList<>(Arrays.asList(
                 stillWater, sparklingWater,
@@ -38,40 +43,20 @@ public class Main {
 
 
         //PRINTING
-
+        printDessert(dessertsList);
         printBeverages(beveragesList);
-
-        System.out.print("1) ");
-        appleCake.printInfo();
-
-        System.out.println();
-
-        System.out.print("2)");
-        tiramisù.printInfo();
-        System.out.println();
-
-        System.out.print("3)");
-        saltyChocolate.printInfo();
-        System.out.println();
-
-        System.out.print("4)");
-        sacherTorte.printInfo();
-        System.out.println();
-
-        System.out.print("5)");
-        composeYourDessert.printInfo();
-        System.out.println();
-
-
-
-
-
-
-
-
     }
 
     //PRINTING FUNCTIONS
+
+    public static void printDessert(ArrayList <Desserts> dessertsList){
+        System.out.println("\t\t--------------\n\t\t|\tDESSERTS\t|\n\t\t--------------");
+        for(Desserts dessert : dessertsList){
+            dessert.printInfo();
+            System.out.println();
+        }
+    }
+
 
     public static void printBeverages(ArrayList<Beverages> beveragesList){
         System.out.println("\t\t-----------------\n\t\t|\tBEVERAGES\t|\n\t\t-----------------");
