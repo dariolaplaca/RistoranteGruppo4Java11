@@ -2,6 +2,15 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        //STARTERS
+        Starters ffc = new Starters("Forever Fried Chicken Calamari",Set.of("Chicken","Calamari"),"Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.",500,69.69);
+        Starters pineDuck = new Starters("Pineapple Duck Carpaccio",Set.of("Pineapple","Duck Breast"),"Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze",400,3.50);
+        Starters typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers",Set.of("Vigezzino Ham", "Honey","Soy Sauce"),"Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze",450,4.00);
+        Starters carneSalada = new Starters("Carne Salada with Wheat Flakes and Sour Mushrooms",Set.of("Carne Salada","Wheat Flakes","Mushrooms"),"Tender carne salada, served with crunchy wheat flakes, sour mushrooms and a light tomato sauce",450,3.50);
+        Starters salmon = new Starters("Norwegian Salmon with 5 Cereal Crostini and Flambéed Shrimps with Cognac",Set.of("Norwegian Salmon", "Five Cereal Crostini", "Shrimps", "Cognac"),"Pan-seared Norwegian salmon, served with a medley of five cereal crostini and flambéed shrimps with cognac",550,8.00);
+        Starters lamb = new Starters("Breaded and Crispy Lamb Bites",Set.of("Lamb", "Bread Crumb"),"Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip",500,2.50);
+        Starters hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad",Set.of("Vigezzino Ham", "Porcini Mushroom", "Walnut Salad"),"Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad",400,6.00);
+
         // - DESSERTS
         Desserts appleCake = new Desserts("Apple cake" , Set.of("sugar", "vanilla","eggs", "butter", "flour", "yeast", "milk", "apple granny smith" ), "American apple pie", 1.000, 12.0);
         Desserts tiramisu = new Desserts("Tiramisù" , Set.of("mascarpone cheese", "egg yolk", "savoiardi biscuits", "coffee", "cocoa powder"),"Dessert with coffe, biscuits, cocoa", 2.000, 10.0);
@@ -32,6 +41,8 @@ public class Main {
         Beverages whiteRussian  = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 7);
 
         //ARRAY LISTS
+        ArrayList<Starters> startersList = new ArrayList<Starters>(Arrays.asList(ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini));
+
         ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
         ArrayList<Beverages> beveragesList = new ArrayList<>(Arrays.asList(
@@ -43,11 +54,19 @@ public class Main {
 
 
         //PRINTING
+        printStarters(startersList);
         printDessert(dessertsList);
         printBeverages(beveragesList);
     }
 
     //PRINTING FUNCTIONS
+    public static void printStarters(ArrayList<Starters> startersList) {
+        System.out.println("\t\t-----------------\n\t\t|\tSTARTERS\t|\n\t\t-----------------");
+        for(Starters s : startersList){
+            s.printInfo();
+            System.out.println();
+        }
+    }
 
     public static void printDessert(ArrayList <Desserts> dessertsList){
         System.out.println("\t\t--------------\n\t\t|\tDESSERTS\t|\n\t\t--------------");
