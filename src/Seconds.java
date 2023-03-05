@@ -42,4 +42,7 @@ public class Seconds {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+    public void printInfo(){
+        System.out.println("\t" + this.name + " " + this.weight + "g" + " - " + this.price + "€\n" + this.description);
+    }
 }

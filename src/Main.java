@@ -11,6 +11,14 @@ public class Main {
         Starters lamb = new Starters("Breaded and Crispy Lamb Bites",Set.of("Lamb", "Bread Crumb"),"Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip",500,2.50);
         Starters hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad",Set.of("Vigezzino Ham", "Porcini Mushroom", "Walnut Salad"),"Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad",400,6.00);
 
+        // - SECONDS
+        Seconds florentine = new Seconds("Rare Florentine","Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000);
+        Seconds wagyu = new Seconds("Wagyu","Luxurious premium cut cooked to perfection, served with creamy mashed potatoes and steamed green beans.", 30, 400);
+        Seconds kangarooSausage = new Seconds("Kangaroo Sausage","Unique and flavorful sausage made with lean, tender kangaroo meat, served with sauerkraut and homemade mustard.", 25, 750);
+        Seconds meatRolls = new Seconds("Meat Rolls", "Hearty and delicious appetizer with seasoned ground beef wrapped in crispy pastry, served with tomato dipping sauce.", 15, 300);
+        Seconds beefTartare = new Seconds("Beef Tartare", "Indulgent dish made with fresh high-quality beef, seasoned to perfection and served with toasted bread and mixed greens.", 24, 300);
+        Seconds hamburger = new Seconds("Hamburger", "Classic 100% beef burger with traditional toppings, satisfying and affordable.", 12, 220);
+
         // - DESSERTS
         Desserts appleCake = new Desserts("Apple cake" , Set.of("sugar", "vanilla","eggs", "butter", "flour", "yeast", "milk", "apple granny smith" ), "American apple pie", 1.000, 12.0);
         Desserts tiramisu = new Desserts("Tiramisù" , Set.of("mascarpone cheese", "egg yolk", "savoiardi biscuits", "coffee", "cocoa powder"),"Dessert with coffe, biscuits, cocoa", 2.000, 10.0);
@@ -43,6 +51,8 @@ public class Main {
         //ARRAY LISTS
         ArrayList<Starters> startersList = new ArrayList<Starters>(Arrays.asList(ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini));
 
+        ArrayList<Seconds> secondList = new ArrayList<>(Arrays.asList(florentine,wagyu,kangarooSausage,meatRolls,beefTartare,hamburger));
+
         ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
         ArrayList<Beverages> beveragesList = new ArrayList<>(Arrays.asList(
@@ -55,6 +65,7 @@ public class Main {
 
         //PRINTING
         printStarters(startersList);
+        printSeconds(secondList);
         printDessert(dessertsList);
         printBeverages(beveragesList);
     }
@@ -63,6 +74,13 @@ public class Main {
     public static void printStarters(ArrayList<Starters> startersList) {
         System.out.println("\t\t-----------------\n\t\t|\tSTARTERS\t|\n\t\t-----------------");
         for(Starters s : startersList){
+            s.printInfo();
+            System.out.println();
+        }
+    }
+    public static void printSeconds(ArrayList<Seconds> secondList) {
+        System.out.println("\t\t-------------\n\t\t|\tSECONDS\t|\n\t\t-------------");
+        for(Seconds s : secondList){
             s.printInfo();
             System.out.println();
         }
