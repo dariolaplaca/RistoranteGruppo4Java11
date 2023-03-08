@@ -34,13 +34,7 @@ public class Main {
         Desserts sacherTorte = new Desserts("Sachertorte" , Set.of("chocolate fondant", "cream", "butter", "sugar", "eggs", "flour"),"Dessert with lemon cream", 1.000, 25.0);
         Desserts composeYourDessert = new Desserts("Compose your dessert" , Set.of("Chocolate", "pistachio", "cream", "salty-chocolate ice-cream"),  "Depending on the choice it is possible to make a cake, an ice cream or a mini dessert",500, 25.0);
 
-
-
-
-
-
         //BEVERAGES
-
         Beverages stillWater = new Beverages("Still Water", "Refreshing and hydrating still water in a one-liter bottle.", 1000, 1.00);
         Beverages sparklingWater = new Beverages("Sparkling Water", "Fizzy and invigorating sparkling water in a one-liter bottle.", 1000, 1.00);
         Beverages cocacola = new Beverages("Coca Cola", "Classic and delicious Coca-Cola in a 33cl bottle.", 330, 2.00);
@@ -66,12 +60,12 @@ public class Main {
 
         ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
-        ArrayList<Beverages> beveragesList = new ArrayList<>(Arrays.asList(
+        List<Beverages> beveragesList = Arrays.asList(
                 stillWater, sparklingWater,
                 cocacola, fanta, sprite,
                 redDraughtBeer, blondeDraughtBeer,
                 redWine, whiteWine,
-                Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
+                Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
 
         //PRINTING
@@ -115,7 +109,7 @@ public class Main {
     }
 
 
-    public static void printBeverages(ArrayList<Beverages> beveragesList){
+    public static void printBeverages(List<Beverages> beveragesList){
         System.out.println("\t\t-----------------\n\t\t|\tBEVERAGES\t|\n\t\t-----------------");
         for(Beverages b : beveragesList){
             b.printInfo();
