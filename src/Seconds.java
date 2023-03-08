@@ -3,6 +3,8 @@ public class Seconds {
     private String description;
     private double price;
     private int weight;
+
+    //TODO inserire java doc
     //Constructor
     public Seconds(String name, String description, double price, int weight) {
         this.name = name;

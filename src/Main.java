@@ -57,7 +57,8 @@ public class Main {
         Beverages whiteRussian  = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 7);
 
         //ARRAY LISTS
-        ArrayList<Starters> startersList = new ArrayList<Starters>(Arrays.asList(ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini));
+        // TODO questa è la soluzione no l'arraylist di un arraylist
+        List<Starters> startersList = Arrays.asList(ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini);
 
         ArrayList<Firsts> firstsList = new ArrayList<Firsts>(Arrays.asList(genovese,carbonara,gricia,amatriciana,orecchiette,tagliatelle));
 
@@ -74,6 +75,7 @@ public class Main {
 
 
         //PRINTING
+        //TODO rifattorizzare tutto lasciano list su questi metodi
         printStarters(startersList);
         printFirsts(firstsList);
         printSeconds(secondList);

@@ -19,13 +19,15 @@ public class Beverages{
 
     // GETTERS
     public String getName() {return this.name;}
+
+    public void setName(String name) {this.name = name;}
     public String getDescription() {return this.description;}
     public double getMilliliters() {return this.milliliters;}
     public double getPrice() {return this.price;}
 
 
     // SETTERS
-    public void setName(String name) {this.name = name;}
+    //TODO getter e setter vanno in coppia
     public void setDescription(String description) {this.description = description;}
     public void setMilliliters(double milliliters) {this.milliliters = milliliters;}
     public void setPrice(double price) {this.price = price;}

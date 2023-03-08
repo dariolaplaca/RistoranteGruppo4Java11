@@ -6,7 +6,15 @@ public class Firsts {
         private double price;
         private double weight;
 
-        //CONSTRUCTOR
+
+        //TODO inserire il javadoc https://www.baeldung.com/javadoc
+    /**
+     *
+     * @param name
+     * @param description
+     * @param price
+     * @param weight
+     */
         public Firsts(String name, String description, double price, double weight) {
             this.name = name;
             this.description = description;
@@ -14,7 +22,9 @@ public class Firsts {
             this.weight = weight;
         }
 
-    // METHODS
+    /**
+     * Questo metodo stampa le info di un primo piatto
+     */
     public void printInfo(){
         System.out.println("\t" + this.name + " " + this.weight + "g "  + this.price + "€\n" + this.description);
     }

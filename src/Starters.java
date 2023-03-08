@@ -13,6 +13,7 @@ public class Starters {
     //CONSTRUCTOR
     public Starters(String name, Set<String> ingredients, String description, double calories, double price) {
         this.name = name;
+        //TODO da java 8 non serve più il tipo
         this.ingredients = new HashSet<String>(ingredients);
         this.description = description;
         this.calories = calories;
