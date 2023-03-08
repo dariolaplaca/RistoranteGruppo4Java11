@@ -11,6 +11,14 @@ public class Main {
         Starters lamb = new Starters("Breaded and Crispy Lamb Bites",Set.of("Lamb", "Bread Crumb"),"Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip",500,2.50);
         Starters hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad",Set.of("Vigezzino Ham", "Porcini Mushroom", "Walnut Salad"),"Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad",400,6.00);
 
+        //FIRSTS
+        Firsts genovese = new Firsts("Genovese", "Traditional Ligurian dish made with slow-cooked onions, served with a fragrant basil pesto sauce and freshly grated Parmesan cheese.", 8.50, 160);
+        Firsts carbonara = new Firsts("Carbonara", "A classic Roman pasta dish, featuring spaghetti in a creamy sauce made with eggs, pancetta, and Pecorino Romano cheese.", 9.00, 160);
+        Firsts gricia = new Firsts("Gricia", "A simple but flavorful pasta dish from Rome, featuring bucatini pasta in a sauce made with pork jowl, Pecorino Romano cheese, and black pepper.", 10, 120);
+        Firsts amatriciana = new Firsts("Amatriciana", "Hearty pasta dish from the town of Amatrice, featuring bucatini pasta in a tangy tomato sauce with cured pork cheek and Pecorino Romano cheese.", 10, 130);
+        Firsts orecchiette = new Firsts("Orecchiette broccoli and sausage", "Ear-shaped pasta from Puglia, tossed with tender broccoli florets, savory sausage, garlic, and olive oil.", 8, 120);
+        Firsts tagliatelle = new Firsts("Tagliatelle with white meat sauce","Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", 7, 150);
+
         // - SECONDS
         Seconds florentine = new Seconds("Rare Florentine","Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000);
         Seconds wagyu = new Seconds("Wagyu","Luxurious premium cut cooked to perfection, served with creamy mashed potatoes and steamed green beans.", 30, 400);
@@ -51,6 +59,8 @@ public class Main {
         //ARRAY LISTS
         ArrayList<Starters> startersList = new ArrayList<Starters>(Arrays.asList(ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini));
 
+        ArrayList<Firsts> firstsList = new ArrayList<Firsts>(Arrays.asList(genovese,carbonara,gricia,amatriciana,orecchiette,tagliatelle));
+
         ArrayList<Seconds> secondList = new ArrayList<>(Arrays.asList(florentine,wagyu,kangarooSausage,meatRolls,beefTartare,hamburger));
 
         ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
@@ -65,6 +75,7 @@ public class Main {
 
         //PRINTING
         printStarters(startersList);
+        printFirsts(firstsList);
         printSeconds(secondList);
         printDessert(dessertsList);
         printBeverages(beveragesList);
@@ -75,6 +86,13 @@ public class Main {
         System.out.println("\t\t-----------------\n\t\t|\tSTARTERS\t|\n\t\t-----------------");
         for(Starters s : startersList){
             s.printInfo();
+            System.out.println();
+        }
+    }
+    public static void printFirsts(ArrayList<Firsts> firstsList) {
+        System.out.println("\t\t-------------\n\t\t|\tFIRSTS\t|\n\t\t-------------");
+        for(Firsts f : firstsList){
+            f.printInfo();
             System.out.println();
         }
     }

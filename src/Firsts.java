@@ -2,32 +2,31 @@ public class Firsts {
 
         // ATTRIBUTES
         private String name;
-        private String ingredients;
         private  String description;
-        private double calories;
         private double price;
+        private double weight;
 
         //CONSTRUCTOR
-        public Firsts(String name, String ingredients, String description, double calories, double price) {
+        public Firsts(String name, String description, double price, double weight) {
             this.name = name;
-            this.ingredients = ingredients;
             this.description = description;
-            this.calories = calories;
             this.price = price;
+            this.weight = weight;
         }
+
+    // METHODS
+    public void printInfo(){
+        System.out.println("\t" + this.name + " " + this.weight + "g "  + this.price + "€\n" + this.description);
+    }
 
         // GETTERS
         public String getName() {return this.name;}
-        public String getIngredients() {return this.ingredients;}
         public String getDescription() {return description;}
-        public double getCalories() {return this.calories;}
         public double getPrice() {return this.price;}
 
 
         // SETTERS
         public void setName(String name) {this.name = name;}
-        public void setIngredients(String ingredients) {this.ingredients = ingredients;}
         public void setDescription(String description) {this.description = description;}
-        public void setCalories(double calories) {this.calories = calories;}
         public void setPrice(double price) {this.price = price;}
     }
