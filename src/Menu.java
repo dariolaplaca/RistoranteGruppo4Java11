@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Menu {
 
-
+    private List<Desserts> dessertsList;
     private List<Beverages> beveragesList;
 
     public Menu() {
