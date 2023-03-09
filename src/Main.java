@@ -60,13 +60,14 @@ public class Main {
                 Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
         menu.setStartersList(Arrays.asList(
                 ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini));
+        menu.setSecondsList(Arrays.asList(
+                florentine,wagyu,kangarooSausage,meatRolls,beefTartare,hamburger
+        ));
 
 
         //ARRAY LISTS
         // TODO questa è la soluzione no l'arraylist di un arraylist
         ArrayList<Firsts> firstsList = new ArrayList<Firsts>(Arrays.asList(genovese,carbonara,gricia,amatriciana,orecchiette,tagliatelle));
-
-        ArrayList<Seconds> secondList = new ArrayList<>(Arrays.asList(florentine,wagyu,kangarooSausage,meatRolls,beefTartare,hamburger));
 
         ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
@@ -83,13 +84,7 @@ public class Main {
             System.out.println();
         }
     }
-    public static void printSeconds(ArrayList<Seconds> secondList) {
-        System.out.println("\t\t-------------\n\t\t|\tSECONDS\t|\n\t\t-------------");
-        for(Seconds s : secondList){
-            s.printInfo();
-            System.out.println();
-        }
-    }
+
 
     public static void printDessert(ArrayList <Desserts> dessertsList){
         System.out.println("\t\t--------------\n\t\t|\tDESSERTS\t|\n\t\t--------------");
