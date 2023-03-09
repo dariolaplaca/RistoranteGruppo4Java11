@@ -2,8 +2,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Starters {
-
-    // ATTRIBUTES
     private String name;
     private HashSet<String> ingredients;
     private  String description;
@@ -20,7 +18,6 @@ public class Starters {
      */
     public Starters(String name, Set<String> ingredients, String description, double calories, double price) {
         this.name = name;
-        //TODO da java 8 non serve più il tipo
         this.ingredients = new HashSet<>(ingredients);
         this.description = description;
         this.calories = calories;
