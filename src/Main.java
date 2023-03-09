@@ -50,6 +50,16 @@ public class Main {
         Beverages negroni = new Beverages("Negroni", "A complex and bitter cocktail made with gin, vermouth, and Campari. Perfect as an aperitif.", 130, 7);
         Beverages whiteRussian  = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 7);
 
+        //MENU
+        Menu menu = new Menu();
+        menu.setBeveragesList(Arrays.asList(
+                stillWater, sparklingWater,
+                cocacola, fanta, sprite,
+                redDraughtBeer, blondeDraughtBeer,
+                redWine, whiteWine,
+                Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
+
+
         //ARRAY LISTS
         // TODO questa è la soluzione no l'arraylist di un arraylist
         List<Starters> startersList = Arrays.asList(ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini);
@@ -60,21 +70,9 @@ public class Main {
 
         ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
-        List<Beverages> beveragesList = Arrays.asList(
-                stillWater, sparklingWater,
-                cocacola, fanta, sprite,
-                redDraughtBeer, blondeDraughtBeer,
-                redWine, whiteWine,
-                Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
-
-
         //PRINTING
         //TODO rifattorizzare tutto lasciano list su questi metodi
-        printStarters(startersList);
-        printFirsts(firstsList);
-        printSeconds(secondList);
-        printDessert(dessertsList);
-        printBeverages(beveragesList);
+        menu.printMenu();
     }
 
     //PRINTING FUNCTIONS
@@ -104,15 +102,6 @@ public class Main {
         System.out.println("\t\t--------------\n\t\t|\tDESSERTS\t|\n\t\t--------------");
         for(Desserts dessert : dessertsList){
             dessert.printInfo();
-            System.out.println();
-        }
-    }
-
-
-    public static void printBeverages(List<Beverages> beveragesList){
-        System.out.println("\t\t-----------------\n\t\t|\tBEVERAGES\t|\n\t\t-----------------");
-        for(Beverages b : beveragesList){
-            b.printInfo();
             System.out.println();
         }
     }
