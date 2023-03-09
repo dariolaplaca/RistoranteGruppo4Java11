@@ -58,18 +58,13 @@ public class Main {
                 redDraughtBeer, blondeDraughtBeer,
                 redWine, whiteWine,
                 Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
-        menu.setStartersList(Arrays.asList(
-                ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini));
-        menu.setSecondsList(Arrays.asList(
-                florentine,wagyu,kangarooSausage,meatRolls,beefTartare,hamburger
-        ));
-
+        menu.setStartersList(Arrays.asList(ffc,pineDuck,typicalHam,carneSalada,salmon,lamb,hamPorcini));
+        menu.setSecondsList(Arrays.asList(florentine,wagyu,kangarooSausage,meatRolls,beefTartare,hamburger));
+        menu.setDessertsList(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
         //ARRAY LISTS
         // TODO questa è la soluzione no l'arraylist di un arraylist
         ArrayList<Firsts> firstsList = new ArrayList<Firsts>(Arrays.asList(genovese,carbonara,gricia,amatriciana,orecchiette,tagliatelle));
-
-        ArrayList<Desserts> dessertsList = new ArrayList<Desserts>(Arrays.asList(appleCake,tiramisu,saltyChocolate,sacherTorte,composeYourDessert));
 
         //PRINTING
         //TODO rifattorizzare tutto lasciano list su questi metodi
@@ -81,15 +76,6 @@ public class Main {
         System.out.println("\t\t-------------\n\t\t|\tFIRSTS\t|\n\t\t-------------");
         for(Firsts f : firstsList){
             f.printInfo();
-            System.out.println();
-        }
-    }
-
-
-    public static void printDessert(ArrayList <Desserts> dessertsList){
-        System.out.println("\t\t--------------\n\t\t|\tDESSERTS\t|\n\t\t--------------");
-        for(Desserts dessert : dessertsList){
-            dessert.printInfo();
             System.out.println();
         }
     }
