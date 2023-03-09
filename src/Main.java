@@ -73,7 +73,6 @@ public class Main {
         //PRINTING
         //TODO rifattorizzare tutto lasciano list su questi metodi
         menu.printMenu();
-        menu.printStarterMenu(); //AIUTO
     }
 
     //PRINTING FUNCTIONS

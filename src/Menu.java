@@ -45,7 +45,8 @@ public class Menu {
             System.out.println();
         }
     }
-
-    public void printMenu(){printBeverages();}
-    public void printStarterMenu(){printStarters();} //Ho fatto la stronzata?
+    public void printMenu(){
+        printStarters();
+        printBeverages();
+    }
 }
