@@ -4,12 +4,14 @@ import java.util.List;
 public class Menu {
 
     private List<Starters> startersList;
+    private List<Firsts> firstsList;
     private List<Seconds> secondList;
     private List<Desserts> dessertsList;
     private List<Beverages> beveragesList;
 
     public Menu() {
         startersList = new ArrayList<>();
+        firstsList = new ArrayList<>();
         secondList = new ArrayList<>();
         dessertsList = new ArrayList<>();
         beveragesList = new ArrayList<>();
@@ -23,6 +25,10 @@ public class Menu {
     public void addStarter(Starters s) {startersList.add(s);}
     public void removeStarter(Starters s) {startersList.remove(s);}
 
+    public List<Firsts> getFirstsList() {return firstsList;}
+    public void setFirstsList(List<Firsts> firstsList) {this.firstsList = firstsList;}
+    public void addFirsts(Firsts f) {firstsList.add(f);}
+    public void removeFirsts(Firsts f) {firstsList.remove(f);}
 
     public List<Seconds> getSecondsList() {return secondList;}
     public void setSecondsList(List<Seconds> secondList) {this.secondList = secondList;}
@@ -43,6 +49,14 @@ public class Menu {
         System.out.println("\t\t-----------------\n\t\t|\tSTARTERS\t|\n\t\t-----------------");
         for (Starters s : startersList) {
             s.printInfo();
+            System.out.println();
+        }
+    }
+
+    public void printFirsts() {
+        System.out.println("\t\t-------------\n\t\t|\tFIRSTS\t|\n\t\t-------------");
+        for(Firsts f : firstsList){
+            f.printInfo();
             System.out.println();
         }
     }
@@ -73,6 +87,7 @@ public class Menu {
 
     public void printMenu() {
         printStarters();
+        printFirsts();
         printSeconds();
         printDesserts();
         printBeverages();
