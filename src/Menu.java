@@ -8,6 +8,12 @@ public class Menu {
     private List<Seconds> secondList;
     private List<Desserts> dessertsList;
     private List<Beverages> beveragesList;
+    private final String ANSI_RESET = "\u001B[0m";
+    private final String ANSI_BRIGHT_RED = "\u001B[91m";
+    private static final String ANSI_BOLD = "\u001B[1m";
+    private static final String ANSI_UNDERLINE = "\u001B[4m";
+
+
 
     public Menu() {
         startersList = new ArrayList<>();
@@ -78,7 +84,8 @@ public class Menu {
     }
 
     public void printBeverages() {
-        System.out.println("\t\t-----------------\n\t\t|\tBEVERAGES\t|\n\t\t-----------------");
+        final String EMOJI_WINE = "\uD83C\uDF77";
+        System.out.println("\n\t" + ANSI_BRIGHT_RED + ANSI_BOLD + ANSI_UNDERLINE + "\tBEVERAGES" + ANSI_RESET + EMOJI_WINE + "\n");
         for (Beverages b : beveragesList) {
             b.printInfo();
             System.out.println();
