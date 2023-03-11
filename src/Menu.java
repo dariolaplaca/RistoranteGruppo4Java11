@@ -52,7 +52,8 @@ public class Menu {
     public void removeBeverage(Beverages b) {beveragesList.remove(b);}
 
     public void printStarters() {
-        System.out.println("\t\t-----------------\n\t\t|\tSTARTERS\t|\n\t\t-----------------");
+        final String emoji_sparkles = "\u2728";
+        System.out.println("\n\t" + emoji_sparkles + ANSI_BRIGHT_RED + ANSI_BOLD + ANSI_UNDERLINE + "STARTERS" + ANSI_RESET + emoji_sparkles + "\n");
         for (Starters s : startersList) {
             s.printInfo();
             System.out.println();
