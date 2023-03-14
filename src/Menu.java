@@ -12,6 +12,7 @@ public class Menu {
     private final String ANSI_BRIGHT_RED = "\u001B[91m";
     private static final String ANSI_BOLD = "\u001B[1m";
     private static final String ANSI_UNDERLINE = "\u001B[4m";
+    private static final String ANSI_BRIGHT_YELLOW = "\u001B[93m";
 
 
 
@@ -44,7 +45,9 @@ public class Menu {
     public List<Desserts> getDessertsList() {return dessertsList;}
     public void setDessertsList(List<Desserts> dessertsList) {this.dessertsList = dessertsList;}
     public void addDessert(Desserts s) {dessertsList.add(s);}
+    public void addDessertAll(List<Desserts> s) {dessertsList.addAll(s);}
     public void removeDessert(Desserts s) {dessertsList.remove(s);}
+    public void removeDessertAll(List<Desserts> s) {dessertsList.removeAll(s);}
 
     public List<Beverages> getBeveragesList() {return beveragesList;}
     public void setBeveragesList(List<Beverages> bList) {this.beveragesList = bList;}
@@ -77,7 +80,8 @@ public class Menu {
     }
 
     public void printDesserts() {
-    System.out.println("\t\t--------------\n\t\t|\tDESSERTS\t|\n\t\t--------------");
+        final String EMOJI_ICE_CREAM =  "\uD83C\uDF70";
+    System.out.println("\n\t" + ANSI_BRIGHT_YELLOW + ANSI_BOLD + ANSI_UNDERLINE +"\tDESSERTS" + ANSI_RESET +"\t"+ EMOJI_ICE_CREAM + "\n");
         for (Desserts d : dessertsList) {
             d.printInfo();
             System.out.println();

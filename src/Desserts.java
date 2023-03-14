@@ -2,6 +2,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Desserts {
+    private final String ANSI_RESET = "\u001B[0m";
+    private final String ANSI_DESCRIPTION_COLOR_AND_BACKGROUND = "\033[38;2;248;244;227;48;2;29;10;28m";
+    public static final String ANSI_YELLOW = "\u001B[33m";    private final String ANSI_ITALIC = "\u001B[3m";
+    private final String ANSI_BOLD = "\u001B[1m";
 
     private String name;
     private HashSet<String> ingredients;
@@ -41,6 +45,6 @@ public class Desserts {
     public void setPriceDessert(double price){this.price = price ;}
 
     public void printInfo(){
-        System.out.println("\t" + this.name + " " + this.weight + "g "  + this.price + "€\n" + this.description);
+        System.out.println("\t" + ANSI_BOLD + this.name + ANSI_RESET +" - " + this.weight + "g "  + this.price + "€\n" + ANSI_RESET + "\n" + ANSI_ITALIC + ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + ANSI_YELLOW + this.description + ANSI_RESET);
     }
 }

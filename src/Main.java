@@ -61,7 +61,7 @@ public class Main {
         menu.setStartersList(Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini));
         menu.setFirstsList(Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle));
         menu.setSecondsList(Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger));
-        menu.setDessertsList(Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert));
+        menu.addDessertAll(Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert));
 
         menu.printMenu();
     }
