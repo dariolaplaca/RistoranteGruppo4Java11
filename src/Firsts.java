@@ -1,5 +1,8 @@
 public class Firsts {
 
+
+    //TODO inserire una sopraclasse portata e quindi far estendere tutto,
+    //nome descrizione, prezzo, quello che volete, e i metodi a comune
     private String name;
     private String description;
     private double price;
@@ -44,7 +47,9 @@ public class Firsts {
     }
 
     public void printInfo() {
-        System.out.println("\t" + this.name + " " + this.weight + "g " + this.price + "€\n" + this.description);
+        //TODO da sistemare
+        super.printInfo();
+        System.out.println("\t" + " " + this.weight + "g " + this.price + "€\n" + );
     }
 
 }
