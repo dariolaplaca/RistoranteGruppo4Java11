@@ -52,7 +52,8 @@ public class Main {
 
         //MENU
         Menu menu = new Menu();
-        menu.setBeveragesList(Arrays.asList(
+        //TODO Cambiare tutti i set in addAll
+        menu.addAllBeverage(Arrays.asList(
                 stillWater, sparklingWater,
                 cocacola, fanta, sprite,
                 redDraughtBeer, blondeDraughtBeer,

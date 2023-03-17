@@ -1,3 +1,4 @@
+//TODO Fare estendere course, cambiare gli attributi, il costruttore ed eliminare i getter e setters in eccesso
 public class Firsts {
 
 
@@ -48,8 +49,7 @@ public class Firsts {
 
     public void printInfo() {
         //TODO da sistemare
-        super.printInfo();
-        System.out.println("\t" + " " + this.weight + "g " + this.price + "€\n" + );
+        System.out.println("\t" + " " + this.weight + "g " + this.price + "€\n");
     }
 
 }

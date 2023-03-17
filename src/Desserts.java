@@ -1,10 +1,13 @@
 import java.util.HashSet;
 import java.util.Set;
 
+//TODO Fare estendere course, cambiare gli attributi, il costruttore ed eliminare i getter e setters in eccesso
+//TODO Utilizzare l'enum TextModifier per i modificatori di testo ed eliminare le variabili in eccesso
 public class Desserts {
     private final String ANSI_RESET = "\u001B[0m";
     private final String ANSI_DESCRIPTION_COLOR_AND_BACKGROUND = "\033[38;2;248;244;227;48;2;29;10;28m";
-    public static final String ANSI_YELLOW = "\u001B[33m";    private final String ANSI_ITALIC = "\u001B[3m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    private final String ANSI_ITALIC = "\u001B[3m";
     private final String ANSI_BOLD = "\u001B[1m";
 
     private String name;

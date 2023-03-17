@@ -1,12 +1,14 @@
 import java.util.HashSet;
 import java.util.Set;
-
+//TODO Fare estendere course, cambiare gli attributi, il costruttore ed eliminare i getter e setters in eccesso
 public class Starters {
     private String name;
     private HashSet<String> ingredients;
     private  String description;
     private double calories;
     private double price;
+
+    //TODO Eliminare queste variabili in eccesso e usare quelle dell'ENUM TextModifier
     private final String ANSI_RESET = "\u001B[0m";
     private final String ANSI_DESCRIPTION_COLOR_AND_BACKGROUND = "\033[38;2;248;244;227;48;2;29;10;28m";
     private final String ANSI_YELLOW = "\u001B[33m";

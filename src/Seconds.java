@@ -1,3 +1,4 @@
+//TODO Fare estendere course, cambiare gli attributi, il costruttore ed eliminare i getter e setters in eccesso
 public class Seconds {
     private String name;
     private String description;

@@ -8,13 +8,7 @@ public class Menu {
     private List<Seconds> secondList;
     private List<Desserts> dessertsList;
     private List<Beverages> beveragesList;
-    private final String ANSI_RESET = "\u001B[0m";
-    private final String ANSI_BRIGHT_RED = "\u001B[91m";
-    private static final String ANSI_BOLD = "\u001B[1m";
-    private static final String ANSI_UNDERLINE = "\u001B[4m";
-    private static final String ANSI_BRIGHT_YELLOW = "\u001B[93m";
-
-
+    TypeEnum type = TypeEnum.MEAT_BASED;
 
     public Menu() {
         startersList = new ArrayList<>();
@@ -51,10 +45,13 @@ public class Menu {
     public void setBeveragesList(List<Beverages> bList) {this.beveragesList = bList;}
     public void addBeverage(Beverages b) {beveragesList.add(b);}
     public void removeBeverage(Beverages b) {beveragesList.remove(b);}
+    public void addAllBeverage(List<Beverages> bList){
+        beveragesList.addAll(bList);
+    }
 
     public void printStarters() {
         final String emoji_sparkles = "\u2728";
-        System.out.println("\n\t" + emoji_sparkles + ANSI_BRIGHT_RED + ANSI_BOLD + ANSI_UNDERLINE + "STARTERS" + ANSI_RESET + emoji_sparkles + "\n");
+        System.out.println("\n\t" + emoji_sparkles + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + "STARTERS" + TextModifier.ANSI_RESET + emoji_sparkles + "\n");
         for (Starters s : startersList) {
             s.printInfo();
             System.out.println();
@@ -79,7 +76,7 @@ public class Menu {
 
     public void printDesserts() {
         final String EMOJI_ICE_CREAM =  "\uD83C\uDF70";
-    System.out.println("\n\t" + ANSI_BRIGHT_YELLOW + ANSI_BOLD + ANSI_UNDERLINE +"\tDESSERTS" + ANSI_RESET +"\t"+ EMOJI_ICE_CREAM + "\n");
+    System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_YELLOW + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE +"\tDESSERTS" + TextModifier.ANSI_RESET +"\t"+ EMOJI_ICE_CREAM + "\n");
         for (Desserts d : dessertsList) {
             d.printInfo();
             System.out.println();
@@ -88,7 +85,7 @@ public class Menu {
 
     public void printBeverages() {
         final String EMOJI_WINE = "\uD83C\uDF77";
-        System.out.println("\n\t" + ANSI_BRIGHT_RED + ANSI_BOLD + ANSI_UNDERLINE + "\tBEVERAGES" + ANSI_RESET + EMOJI_WINE + "\n");
+        System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + "\tBEVERAGES" + TextModifier.ANSI_RESET + EMOJI_WINE + "\n");
         for (Beverages b : beveragesList) {
             b.printInfo();
             System.out.println();
