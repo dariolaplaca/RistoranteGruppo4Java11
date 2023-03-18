@@ -9,28 +9,13 @@ public abstract class Course {
         this.price = price;
     }
 
-    public String getName() {
-        return this.name;
-    }
+    public String getName() {return this.name;}
+    public void setName(String name) {this.name = name;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getDescription() {return this.description;}
+    public void setDescription(String description) {this.description = description;}
 
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
+    public double getPrice() {return this.price;}
+    public void setPrice(double price) {this.price = price;}
     public abstract void printInfo();
 }

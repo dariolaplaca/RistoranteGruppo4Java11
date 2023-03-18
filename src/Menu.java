@@ -37,9 +37,9 @@ public class Menu {
     public List<Desserts> getDessertsList() {return dessertsList;}
     public void setDessertsList(List<Desserts> dessertsList) {this.dessertsList = dessertsList;}
     public void addDessert(Desserts s) {dessertsList.add(s);}
-    public void addDessertAll(List<Desserts> s) {dessertsList.addAll(s);}
+    public void addAllDessert(List<Desserts> s) {dessertsList.addAll(s);}
     public void removeDessert(Desserts s) {dessertsList.remove(s);}
-    public void removeDessertAll(List<Desserts> s) {dessertsList.removeAll(s);}
+    public void removeAllDessert(List<Desserts> s) {dessertsList.removeAll(s);}
 
     public List<Beverages> getBeveragesList() {return beveragesList;}
     public void setBeveragesList(List<Beverages> bList) {this.beveragesList = bList;}
