@@ -7,11 +7,11 @@ public class Desserts extends Course{
     private double weight;
 
     /**
-     * @param name
-     * @param ingredients
-     * @param description
-     * @param weight
-     * @param price
+     * @param name, name of the dessert
+     * @param ingredients, ingredient list of each dessert
+     * @param description, description of dessert
+     * @param weight, weight of dessert
+     * @param price, price of dessert
      */
 
     Desserts(String name, Set<String> ingredients, String description, double weight, double price){
@@ -19,8 +19,8 @@ public class Desserts extends Course{
         this.ingredients = new HashSet<>(ingredients);
         this.weight = weight;
     }
-    public HashSet getIngredientsDessert(){return ingredients;}
-    public void setIngredientsDessert(HashSet ingredients){this.ingredients = ingredients;}
+    public HashSet<String> getIngredientsDessert(){return ingredients;}
+    public void setIngredientsDessert(HashSet<String> ingredients){this.ingredients = ingredients;}
 
     public double getWeightDessert(){return weight;}
     public void setWeightDessert(double weight){this.weight = weight;}
