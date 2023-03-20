@@ -12,7 +12,7 @@ public class Starters extends Course {
      * @param price
      */
 
-    public Starters(String name, Set<String> ingredients, String description, double price,  double calories) {
+    public Starters(String name, Set<String> ingredients, String description, double calories, double price) {
         super(name, description, price);
         this.ingredients = new HashSet<>(ingredients);
         this.calories = calories;
