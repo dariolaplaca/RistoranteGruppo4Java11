@@ -59,7 +59,7 @@ public class Main {
                 redDraughtBeer, blondeDraughtBeer,
                 redWine, whiteWine,
                 Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
-        menu.setStartersList(Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini));
+        menu.addAllStarters(Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini));
         menu.setFirstsList(Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle));
         menu.setSecondsList(Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger));
         menu.addAllDessert(Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert));

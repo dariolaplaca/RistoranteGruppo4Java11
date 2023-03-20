@@ -23,6 +23,7 @@ public class Menu {
     public void setStartersList(List<Starters> startersList) {this.startersList = startersList;}
     public void addStarter(Starters s) {startersList.add(s);}
     public void removeStarter(Starters s) {startersList.remove(s);}
+    public void addAllStarters(List<Starters> s) {startersList.addAll(s);}
 
     public List<Firsts> getFirstsList() {return firstsList;}
     public void setFirstsList(List<Firsts> firstsList) {this.firstsList = firstsList;}
