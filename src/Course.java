@@ -1,4 +1,4 @@
-public abstract class Course {
+public abstract class  Course {
     protected String name;
     protected String description;
     protected double price;

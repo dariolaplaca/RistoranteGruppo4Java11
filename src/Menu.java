@@ -34,6 +34,7 @@ public class Menu {
     public void setSecondsList(List<Seconds> secondList) {this.secondList = secondList;}
     public void addSecond(Seconds s) {secondList.add(s);}
     public void removeSecond(Seconds s) {secondList.remove(s);}
+    public void addAllSeconds(List<Seconds> secondList){this.secondList.addAll(secondList);}
 
     public List<Desserts> getDessertsList() {return dessertsList;}
     public void setDessertsList(List<Desserts> dessertsList) {this.dessertsList = dessertsList;}
@@ -68,7 +69,8 @@ public class Menu {
     }
 
     public void printSeconds() {
-        System.out.println("\t\t-------------\n\t\t|\tSECONDS\t|\n\t\t-------------");
+        final String EMOJI_BURGER = "\uD83C\uDF54";
+        System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_PURPLE + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + "\tSECONDS" + TextModifier.ANSI_RESET + EMOJI_BURGER + "\n");
         for (Seconds s : secondList) {
             s.printInfo();
             System.out.println();

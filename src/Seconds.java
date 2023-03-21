@@ -1,46 +1,23 @@
-//TODO Fare estendere course, cambiare gli attributi, il costruttore ed eliminare i getter e setters in eccesso
-public class Seconds {
-    private String name;
-    private String description;
-    private double price;
+import java.util.HashSet;
+import java.util.Set;
+
+
+public class Seconds extends Course {
+    private HashSet<String> ingredients;
+
     private int weight;
     /**
      *
-     * @param name
-     * @param description
-     * @param price
-     * @param weight
+     * @param name, name of the seconds
+     * @param description, description of the seconds
+     * @param price, price of seconds
+     * @param weight, weight of seconds
+     * @param ingredients, ingredient list of seconds
      */
-    public Seconds(String name, String description, double price, int weight) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
+    public Seconds(String name, String description, double price, int weight, Set<String> ingredients) {
+        super(name, description, price);
         this.weight = weight;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+        this.ingredients = new HashSet<>(ingredients);
     }
 
     public int getWeight() {
@@ -52,6 +29,6 @@ public class Seconds {
     }
 
     public void printInfo(){
-        System.out.println("\t" + this.name + " " + this.weight + "g" + " - " + this.price + "€\n" + this.description);
+        System.out.println("\t" + TextModifier.ANSI_BOLD + this.name + TextModifier.ANSI_RESET +" - " + this.weight + "g "  + this.price + "€\n" + TextModifier.ANSI_RESET + "\n" + TextModifier.ANSI_ITALIC + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + TextModifier.ANSI_PURPLE + this.description +TextModifier.ANSI_RESET);
     }
 }
