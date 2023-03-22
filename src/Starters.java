@@ -23,8 +23,8 @@ public class Starters extends Course {
     public double getCalories() {return calories;}
     public void setCalories(double calories) {this.calories = calories;}
 
+    @Override
     public void printInfo(){
-        System.out.println("\t" + TextModifier.ANSI_YELLOW + TextModifier.ANSI_BOLD + this.name + TextModifier.ANSI_RESET + TextModifier.ANSI_YELLOW + " - " +
-                this.calories + "kcal" + " - " + this.price + "€" + TextModifier.ANSI_RESET +"\n" + TextModifier.ANSI_ITALIC + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + this.description + TextModifier.ANSI_RESET);
+        super.printInfo();
     }
 }
