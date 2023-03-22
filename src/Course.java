@@ -1,7 +1,6 @@
 public abstract class  Course {
     protected String name;
     protected String description;
-
     protected double price;
 
     public Course(String name, String description, double price) {

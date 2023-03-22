@@ -67,11 +67,11 @@ public class Main {
 
 
 
-        menu.allAllCourse(startersList);
-        menu.allAllCourse(firstsList);
-        menu.allAllCourse(secondsList);
-        menu.allAllCourse(dessertsList);
-        menu.allAllCourse(beverageList);
+        menu.addAllCourse(startersList);
+        menu.addAllCourse(firstsList);
+        menu.addAllCourse(secondsList);
+        menu.addAllCourse(dessertsList);
+        menu.addAllCourse(beverageList);
 
         menu.printMenu();
     }
