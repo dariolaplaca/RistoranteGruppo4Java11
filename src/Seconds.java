@@ -28,7 +28,11 @@ public class Seconds extends Course {
         this.weight = weight;
     }
 
+    //TODO inserire metodo per stampare gli ingredienti
+    @Override
     public void printInfo(){
-        System.out.println("\t" + TextModifier.ANSI_BOLD + this.name + TextModifier.ANSI_RESET +" - " + this.weight + "g "  + this.price + "€\n" + TextModifier.ANSI_RESET + "\n" + TextModifier.ANSI_ITALIC + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + TextModifier.ANSI_PURPLE + this.description +TextModifier.ANSI_RESET);
+        super.printInfo();
+        // TODO
+        System.out.println(this.weight + "g"+ this.ingredients);
     }
 }

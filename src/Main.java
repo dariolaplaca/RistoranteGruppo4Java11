@@ -3,8 +3,9 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         // - STARTERS
-        Starters ffc = new Starters("Forever Fried Chicken Calamari", Set.of("Chicken", "Calamari"), "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 69.69);
-        Starters pineDuck = new Starters("Pineapple Duck Carpaccio", Set.of("Pineapple", "Duck Breast"), "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 3.50);
+        //TODO la parte destra viene controllata a compile time ma a run time diventa uno starters perchè il figlio ha tutti i metodi del padre
+        Course ffc = new Starters("Forever Fried Chicken Calamari", Set.of("Chicken", "Calamari"), "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 69.69);
+        Course pineDuck = new Starters("Pineapple Duck Carpaccio", Set.of("Pineapple", "Duck Breast"), "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 3.50);
         Starters typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", Set.of("Vigezzino Ham", "Honey", "Soy Sauce"), "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", 450, 4.00);
         Starters carneSalada = new Starters("Carne Salada with Wheat Flakes and Sour Mushrooms", Set.of("Carne Salada", "Wheat Flakes", "Mushrooms"), "Tender carne salada, served with crunchy wheat flakes, sour mushrooms and a light tomato sauce", 450, 3.50);
         Starters salmon = new Starters("Norwegian Salmon with 5 Cereal Crostini and Flambéed Shrimps with Cognac", Set.of("Norwegian Salmon", "Five Cereal Crostini", "Shrimps", "Cognac"), "Pan-seared Norwegian salmon, served with a medley of five cereal crostini and flambéed shrimps with cognac", 550, 8.00);
@@ -59,10 +60,17 @@ public class Main {
                 redDraughtBeer, blondeDraughtBeer,
                 redWine, whiteWine,
                 Mojito, oldFashioned, whiskeySour, negroni, whiteRussian));
-        menu.addAllStarters(Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini));
+        List<Course> courseList1 = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini);
+        menu.addAllStarters(ts);
+
         menu.setFirstsList(Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle));
         menu.addAllSeconds(Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger));
         menu.addAllDessert(Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert));
+
+        for (Course course: courseList1) {
+            menu.addPortata(course);
+        }
+
 
         menu.printMenu();
     }

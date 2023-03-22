@@ -13,7 +13,7 @@ public class Desserts extends Course{
      * @param weight, weight of dessert
      * @param price, price of dessert
      */
-
+    //TODO mettere la visibilità sempre public in questo caso
     Desserts(String name, Set<String> ingredients, String description, double weight, double price){
         super(name, description, price);
         this.ingredients = new HashSet<>(ingredients);
