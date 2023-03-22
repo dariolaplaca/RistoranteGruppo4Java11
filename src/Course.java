@@ -19,8 +19,6 @@ public abstract class  Course {
     public double getPrice() {return this.price;}
     public void setPrice(double price) {this.price = price;}
     public void printInfo(){
-        //TODO mettiamo il caso base
-        //TextModifier.ANSI_BOLD;
-        //TODO stampare i 3 campi
+        System.out.println("\t" + TextModifier.ANSI_BOLD + TextModifier.ANSI_PURPLE + this.name + TextModifier.ANSI_RESET + " - " +this.price + "€\n" + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + this.description + TextModifier.ANSI_RESET);
     };
 }

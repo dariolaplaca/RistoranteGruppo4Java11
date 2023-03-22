@@ -17,7 +17,8 @@ public class Beverages extends Course{
     public double getMilliliters() {return this.milliliters;}
     public void setMilliliters(double milliliters) {this.milliliters = milliliters;}
 
+    @Override
     public void printInfo(){
-        System.out.println("\t" + TextModifier.ANSI_RED + TextModifier.ANSI_BOLD + this.name + TextModifier.ANSI_RESET + TextModifier.ANSI_RED + " - " + this.price + "€" + TextModifier.ANSI_RESET + "\n" + TextModifier.ANSI_ITALIC + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + this.description + TextModifier.ANSI_RESET);
+        super.printInfo();
     }
 }
