@@ -13,8 +13,7 @@ public class Desserts extends Course{
      * @param weight, weight of dessert
      * @param price, price of dessert
      */
-    //TODO mettere la visibilità sempre public in questo caso
-    Desserts(String name, Set<String> ingredients, String description, double weight, double price){
+    public Desserts(String name, Set<String> ingredients, String description, double weight, double price){
         super(name, description, price);
         this.ingredients = new HashSet<>(ingredients);
         this.weight = weight;
@@ -25,7 +24,8 @@ public class Desserts extends Course{
     public double getWeightDessert(){return weight;}
     public void setWeightDessert(double weight){this.weight = weight;}
 
+    @Override
     public void printInfo(){
-        System.out.println("\t" + TextModifier.ANSI_BOLD + this.name + TextModifier.ANSI_RESET +" - " + this.weight + "g "  + this.price + "€\n" + TextModifier.ANSI_RESET + "\n" + TextModifier.ANSI_ITALIC + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + TextModifier.ANSI_YELLOW + this.description +TextModifier.ANSI_RESET);
+        super.printInfo();
     }
 }
