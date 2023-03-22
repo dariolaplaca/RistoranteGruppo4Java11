@@ -18,6 +18,6 @@ public abstract class  Course {
     public double getPrice() {return this.price;}
     public void setPrice(double price) {this.price = price;}
     public void printInfo(){
-        System.out.println("\t" + TextModifier.ANSI_BOLD + TextModifier.ANSI_PURPLE + this.name + TextModifier.ANSI_RESET + " - " +this.price + "€\n" + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + this.description + TextModifier.ANSI_RESET);
+        System.out.println("\t" + TextModifier.ANSI_BOLD + TextModifier.ANSI_RED + this.name + TextModifier.ANSI_RESET + " - " +this.price + "€\n" + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + TextModifier.ANSI_ITALIC + this.description + TextModifier.ANSI_RESET);
     };
 }

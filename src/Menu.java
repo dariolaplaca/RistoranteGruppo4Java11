@@ -18,7 +18,6 @@ public class Menu {
 
 
     public void printMenu() {
-        final String emoji_sparkles = "\u2728";
         System.out.println("\n\t"+ TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + type + TextModifier.ANSI_RESET + "\n");
         for (Course c : courseList) {
             c.printInfo();

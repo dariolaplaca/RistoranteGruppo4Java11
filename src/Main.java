@@ -3,7 +3,6 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         // - STARTERS
-        //TODO la parte destra viene controllata a compile time ma a run time diventa uno starters perchè il figlio ha tutti i metodi del padre
         Course ffc = new Starters("Forever Fried Chicken Calamari", Set.of("Chicken", "Calamari"), "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 69.69);
         Course pineDuck = new Starters("Pineapple Duck Carpaccio", Set.of("Pineapple", "Duck Breast"), "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 3.50);
         Course typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", Set.of("Vigezzino Ham", "Honey", "Soy Sauce"), "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", 450, 4.00);
@@ -21,7 +20,7 @@ public class Main {
         Course tagliatelle = new Firsts("Tagliatelle with white meat sauce", "Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", 7, 150);
 
         // - SECONDS
-        Course florentine = new Seconds("Rare Florentine", "Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000,Set.of("Thick T-bone or porterhouse steak from Chianina breed of cattle", " Salt, Black pepper", " Optional: garlic"));
+        Course florentine = new Seconds("Rare Florentine", "Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000, Set.of("Thick T-bone or porterhouse steak from Chianina breed of cattle", " Salt, Black pepper", " Optional: garlic"));
         Course wagyu = new Seconds("Wagyu", "Luxurious premium cut cooked to perfection, served with creamy mashed potatoes and steamed green beans.", 30, 400, Set.of("Wagyu beef", "Salt", "Pepper", "Butter", "Milk", "Potatoes", "Green beans"));
         Course kangarooSausage = new Seconds("Kangaroo Sausage", "Unique and flavorful sausage made with lean, tender kangaroo meat, served with sauerkraut and homemade mustard.", 25, 750, Set.of("Kangaroo meat", "Salt", "Pepper", "Garlic", "Onion", "Mustard seeds", "Cabbage"));
         Course meatRolls = new Seconds("Meat Rolls", "Hearty and delicious appetizer with seasoned ground beef wrapped in crispy pastry, served with tomato dipping sauce.", 15, 300, Set.of("Ground beef", "Salt", "Pepper", "Onion", "Garlic", "Parsley", "Tomato sauce", "Pastry dough"));
@@ -54,18 +53,11 @@ public class Main {
         //MENU
         Menu menu = new Menu();
 
-        List<Course> beverageList = Arrays.asList(
-                stillWater, sparklingWater,
-                cocacola, fanta, sprite,
-                redDraughtBeer, blondeDraughtBeer,
-                redWine, whiteWine,
-                Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
-        List<Course> startersList= Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini);
-        List<Course> firstsList= Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle);
-        List<Course> secondsList= Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger);
-        List<Course> dessertsList= Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert);
-
-
+        List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
+        List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini);
+        List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle);
+        List<Course> secondsList = Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger);
+        List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert);
 
         menu.addAllCourse(startersList);
         menu.addAllCourse(firstsList);
