@@ -3,13 +3,13 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         // - STARTERS
-        Course ffc = new Starters("Forever Fried Chicken Calamari", Set.of("Chicken", "Calamari"), "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 69.69);
-        Course pineDuck = new Starters("Pineapple Duck Carpaccio", Set.of("Pineapple", "Duck Breast"), "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 3.50);
-        Course typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", Set.of("Vigezzino Ham", "Honey", "Soy Sauce"), "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", 450, 4.00);
-        Course carneSalada = new Starters("Carne Salada with Wheat Flakes and Sour Mushrooms", Set.of("Carne Salada", "Wheat Flakes", "Mushrooms"), "Tender carne salada, served with crunchy wheat flakes, sour mushrooms and a light tomato sauce", 450, 3.50);
-        Course salmon = new Starters("Norwegian Salmon with 5 Cereal Crostini and Flambéed Shrimps with Cognac", Set.of("Norwegian Salmon", "Five Cereal Crostini", "Shrimps", "Cognac"), "Pan-seared Norwegian salmon, served with a medley of five cereal crostini and flambéed shrimps with cognac", 550, 8.00);
-        Course lamb = new Starters("Breaded and Crispy Lamb Bites", Set.of("Lamb", "Bread Crumb"), "Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip", 500, 2.50);
-        Course hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad", Set.of("Vigezzino Ham", "Porcini Mushroom", "Walnut Salad"), "Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad", 400, 6.00);
+        Course ffc = new Starters("Forever Fried Chicken Calamari", Set.of(Allergens.SHELLFISH), "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 69.69);
+        Course pineDuck = new Starters("Pineapple Duck Carpaccio", "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 3.50);
+        Course typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", Set.of(Allergens.SOY), "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", 450, 4.00);
+        Course carneSalada = new Starters("Carne Salada with Wheat Flakes and Sour Mushrooms", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN), "Tender carne salada, served with crunchy wheat flakes, sour mushrooms and a light tomato sauce", 450, 3.50);
+        Course salmon = new Starters("Norwegian Salmon with 5 Cereal Crostini and Flambéed Shrimps with Cognac", Set.of(Allergens.FISH,Allergens.SHELLFISH,Allergens.CEREALS_CONTAINING_GLUTEN), "Pan-seared Norwegian salmon, served with a medley of five cereal crostini and flambéed shrimps with cognac", 550, 8.00);
+        Course lamb = new Starters("Breaded and Crispy Lamb Bites", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN), "Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip", 500, 2.50);
+        Course hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad", Set.of(Allergens.NUTS), "Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad", 400, 6.00);
 
         // - FIRSTS
         Course genovese = new Firsts("Genovese", "Traditional Ligurian dish made with slow-cooked onions, served with a fragrant basil pesto sauce and freshly grated Parmesan cheese.", 8.50, 160);

@@ -1,25 +1,31 @@
 import java.util.HashSet;
 import java.util.Set;
 public class Starters extends Course {
-    private HashSet<String> ingredients;
+    private HashSet<Allergens> allergens;
     private double calories;
 
     /**
      * @param name
-     * @param ingredients
+     * @param allergens
      * @param description
      * @param calories
      * @param price
      */
 
-    public Starters(String name, Set<String> ingredients, String description, double calories, double price) {
+    public Starters(String name, Set<Allergens> allergens, String description, double calories, double price) {
         super(name, description, price);
-        this.ingredients = new HashSet<>(ingredients);
+        this.allergens = new HashSet<>(allergens);
+        this.calories = calories;
+    }
+    public Starters(String name, String description, double calories, double price) {
+        super(name, description, price);
+        this.allergens = null;
         this.calories = calories;
     }
 
-    public HashSet<String> getIngredients() {return ingredients;}
-    public void setIngredients(HashSet<String> ingredients) {this.ingredients = ingredients;}
+    public HashSet<Allergens> getAllergens() {return allergens;}
+    public void setAllergens(HashSet<Allergens> allergens) {this.allergens = allergens;}
+
     public double getCalories() {return calories;}
     public void setCalories(double calories) {this.calories = calories;}
 
