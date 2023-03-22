@@ -1,5 +1,5 @@
 //TODO Fare estendere course, cambiare gli attributi, il costruttore ed eliminare i getter e setters in eccesso
-public class Firsts {
+public class Firsts extends Course {
 
 
     //TODO inserire una sopraclasse portata e quindi far estendere tutto,
@@ -9,16 +9,17 @@ public class Firsts {
     private double price;
     private double weight;
 
+
+
     /**
      * @param name
      * @param description
      * @param price
      * @param weight
      */
+
     public Firsts(String name, String description, double price, double weight) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
+        super(name, description, price);
         this.weight = weight;
     }
 
@@ -49,7 +50,7 @@ public class Firsts {
 
     public void printInfo() {
         //TODO da sistemare
-        System.out.println("\t" + " " + this.weight + "g " + this.price + "€\n");
+        super.printInfo();
     }
 
 }
