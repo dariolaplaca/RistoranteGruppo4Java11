@@ -18,8 +18,13 @@ public class Menu {
 
 
     public void printMenu() {
-        System.out.println("\n\t"+ TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + type + TextModifier.ANSI_RESET + "\n");
+        System.out.println("\n\t"+ TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + type + " MENU" + TextModifier.ANSI_RESET + "\n");
+        Course currentCourse = courseList.get(courseList.size() - 1);
         for (Course c : courseList) {
+            if(currentCourse.getClass() != c.getClass()){
+                System.out.println("\n\t" + TextModifier.ANSI_UNDERLINE + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_RED + "\t" + c.getClass().getCanonicalName() + TextModifier.ANSI_RESET);
+                currentCourse = c;
+            }
             c.printInfo();
             System.out.println();
         }
