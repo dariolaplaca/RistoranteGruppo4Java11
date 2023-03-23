@@ -20,12 +20,12 @@ public class Main {
         Course tagliatelle = new Firsts("Tagliatelle with white meat sauce", "Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", 7, 150);
 
         // - SECONDS
-        Course florentine = new Seconds("Rare Florentine", "Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000, Set.of("Thick T-bone or porterhouse steak from Chianina breed of cattle", " Salt, Black pepper", " Optional: garlic"));
-        Course wagyu = new Seconds("Wagyu", "Luxurious premium cut cooked to perfection, served with creamy mashed potatoes and steamed green beans.", 30, 400, Set.of("Wagyu beef", "Salt", "Pepper", "Butter", "Milk", "Potatoes", "Green beans"));
-        Course kangarooSausage = new Seconds("Kangaroo Sausage", "Unique and flavorful sausage made with lean, tender kangaroo meat, served with sauerkraut and homemade mustard.", 25, 750, Set.of("Kangaroo meat", "Salt", "Pepper", "Garlic", "Onion", "Mustard seeds", "Cabbage"));
-        Course meatRolls = new Seconds("Meat Rolls", "Hearty and delicious appetizer with seasoned ground beef wrapped in crispy pastry, served with tomato dipping sauce.", 15, 300, Set.of("Ground beef", "Salt", "Pepper", "Onion", "Garlic", "Parsley", "Tomato sauce", "Pastry dough"));
-        Course beefTartare = new Seconds("Beef Tartare", "Indulgent dish made with fresh high-quality beef, seasoned to perfection and served with toasted bread and mixed greens.", 24, 300, Set.of("Beef", "Salt", "Pepper", "Onion", "Egg yolk", "Dijon mustard", "Worcestershire sauce", "Bread", "Mixed greens"));
-        Course hamburger = new Seconds("Hamburger", "Classic 100% beef burger with traditional toppings, satisfying and affordable.", 12, 220, Set.of("Ground beef", "Salt", "Pepper", "Burger buns", "Lettuce", "Tomato", "Onion", "Pickles", "Ketchup", "Mustard"));
+        Course florentine = new Seconds("Rare Florentine", "Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000);
+        Course wagyu = new Seconds("Wagyu", "Luxurious premium cut cooked to perfection, served with creamy mashed potatoes and steamed green beans.", 30, 400);
+        Course kangarooSausage = new Seconds("Kangaroo Sausage", "Unique and flavorful sausage made with lean, tender kangaroo meat, served with sauerkraut and homemade mustard.", 25, 750);
+        Course meatRolls = new Seconds("Meat Rolls", "Hearty and delicious appetizer with seasoned ground beef wrapped in crispy pastry, served with tomato dipping sauce.", 15, 300);
+        Course beefTartare = new Seconds("Beef Tartare", "Indulgent dish made with fresh high-quality beef, seasoned to perfection and served with toasted bread and mixed greens.", 24, 300);
+        Course hamburger = new Seconds("Hamburger", "Classic 100% beef burger with traditional toppings, satisfying and affordable.", 12, 220);
 
         // - DESSERTS
         Course appleCake = new Desserts("Apple cake", Set.of("sugar", "vanilla", "eggs", "butter", "flour", "yeast", "milk", "apple granny smith"), "American apple pie", 1.000, 12.0);
