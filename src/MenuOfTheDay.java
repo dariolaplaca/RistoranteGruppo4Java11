@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class Main {
-    public static void main(String[] args) {
-        // - STARTERS
+public class MenuOfTheDay {
+
+    public static void generateMenu() {
         Course ffc = new Starters("Forever Fried Chicken Calamari", Set.of(Allergens.SHELLFISH), "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 69.69);
         Course pineDuck = new Starters("Pineapple Duck Carpaccio", "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 3.50);
         Course typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", Set.of(Allergens.SOY), "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", 450, 4.00);
@@ -50,26 +50,29 @@ public class Main {
         Course negroni = new Beverages("Negroni", "A complex and bitter cocktail made with gin, vermouth, and Campari. Perfect as an aperitif.", 130, 7);
         Course whiteRussian = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 7);
 
-        //MENU
-        Menu menu = new Menu();
-
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini);
         List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle);
         List<Course> secondsList = Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger);
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert);
 
-        menu.addAllCourse(startersList);
-        menu.addAllCourse(firstsList);
-        menu.addAllCourse(secondsList);
-        menu.addAllCourse(dessertsList);
-        menu.addAllCourse(beverageList);
+        Random random = new Random();
 
-        menu.printMenu();
-        MenuOfTheDay.generateMenu();
-        ffc.checkAllergens();
-        salmon.checkAllergens();
-        Mojito.checkAllergens();
-        tiramisu.checkAllergens();
+        Course selectedBeverage = beverageList.get(random.nextInt(beverageList.size()));
+        Course selectedStarter = startersList.get(random.nextInt(startersList.size()));
+        Course selectedFirst = firstsList.get(random.nextInt(firstsList.size()));
+        Course selectedSecond = secondsList.get(random.nextInt(secondsList.size()));
+        Course selectedDessert = dessertsList.get(random.nextInt(dessertsList.size()));
+
+        System.out.println("Selected Dishes:");
+        System.out.println("Appetizer: " + selectedStarter.getName() + ": " + selectedStarter.getPrice());
+        System.out.println("Entree: " + selectedFirst.getName() + ": " + selectedFirst.getPrice());
+        System.out.println("Main course: " + selectedSecond.getName() + ": " + selectedSecond.getPrice());
+        System.out.println("Dessert: " + selectedDessert.getName() + ": " + selectedDessert.getPrice());
+        System.out.println("Beverage: " + selectedBeverage.getName() + ": " + selectedBeverage.getPrice());
+
+        double totalCost = selectedBeverage.getPrice() + selectedStarter.getPrice() + selectedFirst.getPrice() + selectedSecond.getPrice() + selectedDessert.getPrice();
+        System.out.println("Total cost: " + totalCost);
     }
+
 }
