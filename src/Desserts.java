@@ -19,7 +19,7 @@ public class Desserts extends Course{
         this.weight = weight;
         this.allergens = new HashSet<>(allergens);
     }
-    public Set<Allergens> getAllergens() {if (this.allergens == null) {return Collections.emptySet();} return this.allergens;}
+
     public HashSet<String> getIngredientsDessert(){return ingredients;}
     public void setIngredientsDessert(HashSet<String> ingredients){this.ingredients = ingredients;}
 

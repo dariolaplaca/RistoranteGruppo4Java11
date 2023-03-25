@@ -3,7 +3,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Firsts extends Course {
-    private HashSet<Allergens> allergens;
     private double weight;
 
     /**
@@ -17,8 +16,11 @@ public class Firsts extends Course {
         super(name, description, price);
         this.weight = weight;
     }
+    public Firsts(String name, String description, double price, double weight, Set<Allergens> allergens) {
+        super(name, description, price, allergens);
+        this.weight = weight;
+    }
 
-    public Set<Allergens> getAllergens() {if (this.allergens == null) {return Collections.emptySet();} return this.allergens;}
     public double getWeight() {
         return weight;
     }

@@ -14,13 +14,14 @@ public class Seconds extends Course {
      * @param weight, weight of seconds
      */
 
+    public Seconds(String name, String description, double price, int weight, Set<Allergens> allergens) {
+        super(name, description, price, allergens);
+        this.weight = weight;
+    }
     public Seconds(String name, String description, double price, int weight) {
         super(name, description, price);
         this.weight = weight;
-
     }
-
-    public Set<Allergens> getAllergens() {if (this.allergens == null) {return Collections.emptySet();} return this.allergens;}
 
     public int getWeight() {return this.weight;}
 

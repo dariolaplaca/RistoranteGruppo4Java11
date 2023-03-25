@@ -12,8 +12,14 @@ public abstract class  Course {
         this.price = price;
         allergens = new HashSet<>();
     }
+    public Course(String name, String description, double price, Set<Allergens> allergens) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.allergens = new HashSet<>(allergens);
+    }
 
-    public Set<Allergens> getAllergens(){return this.allergens;}
+    public Set<Allergens> getAllergens() {return this.allergens;}
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
 

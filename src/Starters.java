@@ -24,9 +24,6 @@ public class Starters extends Course {
         this.calories = calories;
     }
 
-    public Set<Allergens> getAllergens() {if (this.allergens == null) {return Collections.emptySet();} return this.allergens;}
-    public void setAllergens(HashSet<Allergens> allergens) {this.allergens = allergens;}
-
     public double getCalories() {return calories;}
     public void setCalories(double calories) {this.calories = calories;}
 
