@@ -3,7 +3,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Beverages extends Course{
-    private HashSet<Allergens> allergens;
     private double milliliters;
 
     /**
@@ -19,7 +18,6 @@ public class Beverages extends Course{
         this.milliliters = milliliters;
     }
 
-    public Set<Allergens> getAllergens() {if (this.allergens == null) {return Collections.emptySet();} return this.allergens;}
     public double getMilliliters() {return this.milliliters;}
     public void setMilliliters(double milliliters) {this.milliliters = milliliters;}
 
@@ -28,16 +26,4 @@ public class Beverages extends Course{
         super.printInfo();
     }
 
-    @Override
-    public void checkAllergens() {
-        Set<Allergens> allergens = this.getAllergens();
-        if (allergens.isEmpty()) {
-            System.out.println("This dish is safe to eat.");
-        } else {
-            System.out.print("Warning: This dish contains ");
-            for (Allergens allergen : allergens) {
-                System.out.print(allergen.toString().toLowerCase() + ", ");
-            }
-        } System.out.println();
-    }
 }

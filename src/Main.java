@@ -66,13 +66,12 @@ public class Main {
         menu.addAllCourse(beverageList);
 
         menu.printMenu();
-        MenuOfTheDay.generateMenu();
+
 
         ffc.checkAllergens();
         salmon.checkAllergens();
-        Mojito.checkAllergens();
-        tiramisu.checkAllergens();
 
-        menu.popularCourses();
+
+        menu.menuOfTheDay();
     }
 }

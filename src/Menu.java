@@ -1,15 +1,14 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Menu {
 
     private List<Course> courseList;
+    private List<Course> dailyMenu;
     TypeEnum type = TypeEnum.MEAT_BASED;
 
     public Menu() {
+        dailyMenu = new ArrayList<>();
         courseList = new ArrayList<>();
     }
 
@@ -19,7 +18,6 @@ public class Menu {
     public void addCourse(Course s) {courseList.add(s);}
 
     public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
-
 
     public HashSet<Course> popularCourses() {
         HashSet<Course> finalHashset = new HashSet<>();
@@ -47,5 +45,38 @@ public class Menu {
             c.printInfo();
             System.out.println();
         }
+    }
+    public void menuOfTheDay(){
+        List<Course> shuffledList = courseList;
+        Collections.shuffle(shuffledList);
+        boolean starterFound = false;
+        boolean firstFound = false;
+        boolean secondFound = false;
+        boolean dessertFound = false;
+        boolean beverageFound = false;
+        for (Course c : shuffledList) {
+            if (c.getClass().equals(Starters.class) && !starterFound) {
+                dailyMenu.add(c);
+                starterFound = true;
+            } else if (c.getClass().equals(Firsts.class) && !firstFound) {
+                dailyMenu.add(c);
+                firstFound = true;
+            } else if (c.getClass().equals(Seconds.class) && !secondFound) {
+                dailyMenu.add(c);
+                secondFound = true;
+            } else if (c.getClass().equals(Desserts.class) && !dessertFound) {
+                dailyMenu.add(c);
+                dessertFound = true;
+            } else if (c.getClass().equals(Beverages.class) && !beverageFound) {
+                dailyMenu.add(c);
+                beverageFound = true;
+            }
+        }
+        double totalCost = 0;
+        for (Course c : dailyMenu){
+            c.printInfo();
+            totalCost += c.getPrice();
+        }
+        System.out.println("Total cost: " + totalCost + "\n");
     }
 }

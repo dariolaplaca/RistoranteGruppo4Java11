@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class  Course {
     protected String name;
     protected String description;
     protected double price;
-    protected List<Allergens> allergens = new ArrayList<>();
+    protected HashSet<Allergens> allergens;
 
     public Course(String name, String description, double price) {
         this.name = name;
@@ -14,6 +12,7 @@ public abstract class  Course {
         this.price = price;
     }
 
+    public Set<Allergens> getAllergens() {if (this.allergens == null) {return Collections.emptySet();} return this.allergens;}
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
 
@@ -27,6 +26,15 @@ public abstract class  Course {
         System.out.println("\t" + TextModifier.ANSI_BOLD + TextModifier.ANSI_RED + this.name + TextModifier.ANSI_RESET + " - " +this.price + "€\n" + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + TextModifier.ANSI_ITALIC + this.description + TextModifier.ANSI_RESET);
     };
 
-    //TODO Perché farla astratta se le implementazioni sono identiche e la lista di allergeni è già dentro Course? Implementarla una sola volta qui
-    public abstract void checkAllergens();
+    public void checkAllergens() {
+        Set<Allergens> allergens = this.getAllergens();
+        if (allergens.isEmpty()) {
+            System.out.println(getName() + " is safe to eat.");
+        } else {
+            System.out.print("Warning: " + getName() + " contains ");
+            for (Allergens allergen : allergens) {
+                System.out.print("["+allergen.getName() + "] ");
+            }
+        } System.out.println();
+    }
 }

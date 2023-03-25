@@ -35,16 +35,4 @@ public class Starters extends Course {
         super.printInfo();
     }
 
-    @Override
-    public void checkAllergens() {
-        Set<Allergens> allergens = this.getAllergens();
-        if (allergens.isEmpty()) {
-            System.out.println("This dish is safe to eat.");
-        } else {
-            System.out.print("Warning: This dish contains ");
-            for (Allergens allergen : allergens) {
-                System.out.print(allergen.toString().toLowerCase() + ", ");
-            }
-        } System.out.println();
-    }
 }
