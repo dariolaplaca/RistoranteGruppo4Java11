@@ -67,9 +67,12 @@ public class Main {
 
         menu.printMenu();
         MenuOfTheDay.generateMenu();
+
         ffc.checkAllergens();
         salmon.checkAllergens();
         Mojito.checkAllergens();
         tiramisu.checkAllergens();
+
+        menu.popularCourses();
     }
 }

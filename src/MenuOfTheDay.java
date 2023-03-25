@@ -3,6 +3,7 @@ import java.util.*;
 public class MenuOfTheDay {
 
     public static void generateMenu() {
+        //TODO Utilizzare la classe menu creando una nuova lista di oggetti (List<Course>MenuOfTheDay), popolarla nel main (o nella classe menu tramite courseList) e creare un metodo che la stampi e la ritorni, cancellare questa classe
         Course ffc = new Starters("Forever Fried Chicken Calamari", Set.of(Allergens.SHELLFISH), "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 69.69);
         Course pineDuck = new Starters("Pineapple Duck Carpaccio", "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 3.50);
         Course typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", Set.of(Allergens.SOY), "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", 450, 4.00);

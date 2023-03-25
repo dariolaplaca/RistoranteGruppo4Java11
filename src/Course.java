@@ -26,5 +26,7 @@ public abstract class  Course {
     public void printInfo(){
         System.out.println("\t" + TextModifier.ANSI_BOLD + TextModifier.ANSI_RED + this.name + TextModifier.ANSI_RESET + " - " +this.price + "€\n" + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + TextModifier.ANSI_ITALIC + this.description + TextModifier.ANSI_RESET);
     };
+
+    //TODO Perché farla astratta se le implementazioni sono identiche e la lista di allergeni è già dentro Course? Implementarla una sola volta qui
     public abstract void checkAllergens();
 }
