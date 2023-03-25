@@ -4,14 +4,13 @@ import java.util.Set;
 
 
 public class Seconds extends Course {
-    private HashSet<Allergens> allergens;
     private int weight;
     /**
      *
-     * @param name, name of the seconds
-     * @param description, description of the seconds
-     * @param price, price of seconds
-     * @param weight, weight of seconds
+     * @param name name of the seconds
+     * @param description description of the seconds
+     * @param price price of seconds
+     * @param weight weight of seconds
      */
 
     public Seconds(String name, String description, double price, int weight, Set<Allergens> allergens) {

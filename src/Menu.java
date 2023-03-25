@@ -12,7 +12,6 @@ public class Menu {
         courseList = new ArrayList<>();
     }
 
-
     public List<Course> getCourseList() {return courseList;}
 
     public void addCourse(Course s) {courseList.add(s);}
@@ -46,6 +45,7 @@ public class Menu {
             System.out.println();
         }
     }
+
     public void menuOfTheDay(){
         List<Course> shuffledList = courseList;
         Collections.shuffle(shuffledList);
@@ -77,6 +77,7 @@ public class Menu {
             c.printInfo();
             totalCost += c.getPrice();
         }
-        System.out.println("Total cost: " + totalCost + "\n");
+        totalCost = Math.floor(totalCost/10) * 10;
+        System.out.println("Total cost: " + totalCost + "€\n");
     }
 }

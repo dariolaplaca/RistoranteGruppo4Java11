@@ -36,9 +36,9 @@ public abstract class  Course {
     public void checkAllergens() {
         Set<Allergens> allergens = this.getAllergens();
         if (allergens.isEmpty()) {
-            System.out.println(getName() + " is safe to eat.");
+            System.out.println(TextModifier.ANSI_RED + getName() + TextModifier.ANSI_RESET + " is safe to eat.");
         } else {
-            System.out.print("Warning: " + getName() + " contains ");
+            System.out.print(TextModifier.ANSI_BRIGHT_YELLOW + "Warning: " + TextModifier.ANSI_RESET + TextModifier.ANSI_BRIGHT_RED + getName() + TextModifier.ANSI_RESET + " contains ");
             for (Allergens allergen : allergens) {
                 System.out.print("["+allergen.getName() + "] ");
             }

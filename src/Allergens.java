@@ -17,7 +17,6 @@ public enum Allergens {
 
     String name;
 
-
     Allergens(String name) {
         this.name = name;
     }

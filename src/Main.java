@@ -70,6 +70,7 @@ public class Main {
 
         ffc.checkAllergens();
         salmon.checkAllergens();
+        pineDuck.checkAllergens();
 
 
         menu.menuOfTheDay();

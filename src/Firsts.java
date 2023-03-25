@@ -6,10 +6,10 @@ public class Firsts extends Course {
     private double weight;
 
     /**
-     * @param name
-     * @param description
-     * @param price
-     * @param weight
+     * @param name First's name
+     * @param description First's description
+     * @param price First's price
+     * @param weight First's weight
      */
 
     public Firsts(String name, String description, double price, double weight) {
