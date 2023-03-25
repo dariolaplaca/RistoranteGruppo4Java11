@@ -10,9 +10,10 @@ public abstract class  Course {
         this.name = name;
         this.description = description;
         this.price = price;
+        allergens = new HashSet<>();
     }
 
-    public Set<Allergens> getAllergens() {if (this.allergens == null) {return Collections.emptySet();} return this.allergens;}
+    public Set<Allergens> getAllergens(){return this.allergens;}
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
 

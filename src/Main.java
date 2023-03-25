@@ -28,11 +28,11 @@ public class Main {
         Course hamburger = new Seconds("Hamburger", "Classic 100% beef burger with traditional toppings, satisfying and affordable.", 12, 220);
 
         // - DESSERTS
-        Course appleCake = new Desserts("Apple cake", Set.of("sugar", "vanilla", "eggs", "butter", "flour", "yeast", "milk", "apple granny smith"), "American apple pie", 1.000, 12.0);
-        Course tiramisu = new Desserts("Tiramisù", Set.of("mascarpone cheese", "egg yolk", "savoiardi biscuits", "coffee", "cocoa powder"), "Dessert with coffe, biscuits, cocoa", 2.000, 10.0);
-        Course saltyChocolate = new Desserts("Salty chocolate ice cream", Set.of("water", "sugar", "milk", "chocolate fondant", "chocolate milk", "cocoa"), "Ice-cream with chocolate fondant and milk chocolate", 500, 25.0);
-        Course sacherTorte = new Desserts("Sachertorte", Set.of("chocolate fondant", "cream", "butter", "sugar", "eggs", "flour"), "Dessert with lemon cream", 1.000, 25.0);
-        Course composeYourDessert = new Desserts("Compose your dessert", Set.of("Chocolate", "pistachio", "cream", "salty-chocolate ice-cream"), "Depending on the choice it is possible to make a cake, an ice cream or a mini dessert", 500, 25.0);
+        Course appleCake = new Desserts("Apple cake", Set.of(Allergens.DAIRY, Allergens.CEREALS_CONTAINING_GLUTEN), "American apple pie", 1.000, 12.0);
+        Course tiramisu = new Desserts("Tiramisù", Set.of(Allergens.DAIRY, Allergens.EGG), "Dessert with coffe, biscuits, cocoa", 2.000, 10.0);
+        Course saltyChocolate = new Desserts("Salty chocolate ice cream", Set.of(Allergens.DAIRY), "Ice-cream with chocolate fondant and milk chocolate", 500, 25.0);
+        Course sacherTorte = new Desserts("Sachertorte", Set.of(Allergens.DAIRY,Allergens.EGG,Allergens.CEREALS_CONTAINING_GLUTEN), "Dessert with lemon cream", 1.000, 25.0);
+        Course composeYourDessert = new Desserts("Compose your dessert", Set.of(Allergens.DAIRY), "Depending on the choice it is possible to make a cake, an ice cream or a mini dessert", 500, 25.0);
 
         // - BEVERAGES
         Course stillWater = new Beverages("Still Water", "Refreshing and hydrating still water in a one-liter bottle.", 1000, 1.00);
