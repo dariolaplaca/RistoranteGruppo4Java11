@@ -13,7 +13,13 @@ public enum Allergens {
     MOLLUSCS("Molluscs"),
     FISH("Fish"),
     DAIRY("Dairy"),
-    SULPHITES("Sulphites");
+    SULPHITES("Sulphites"),
+    PUMPKIN("Pumpkin"),
+    POTATOES("Potatoes"),
+    KALE("Kale"),
+    LENTIL("Lentil"),
+    CARROT("Carrot "),
+    SPICED("Spiced");
 
     String name;
 

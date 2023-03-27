@@ -13,8 +13,8 @@ public class Beverages extends Course{
      *
      */
 
-    public Beverages(String name, String description, double milliliters, double price) {
-        super(name, description, price);
+    public Beverages(String name, String description, double milliliters,double calories, double price,MenuType mt) {
+        super(name, description, calories,price,mt);
         this.milliliters = milliliters;
     }
 
@@ -22,8 +22,8 @@ public class Beverages extends Course{
     public void setMilliliters(double milliliters) {this.milliliters = milliliters;}
 
     @Override
-    public void printInfo(){
-        super.printInfo();
-    }
+    public void printInfo(){super.printInfo();}
+    @Override
+    public String printInfoClasse() {return "Beverage:";}
 
 }

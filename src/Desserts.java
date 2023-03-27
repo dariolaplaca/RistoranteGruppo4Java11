@@ -11,21 +11,14 @@ public class Desserts extends Course{
      * @param weight weight of dessert
      * @param price price of dessert
      */
-    public Desserts(String name, String description, double weight, double price){
-        super(name, description, price);
+    public Desserts(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
+        super(name, allergens,description, calories,price,mt);
         this.weight = weight;
     }
-    public Desserts(String name, Set<Allergens> allergens, String description, double weight, double price){
-        super(name, description, price, allergens);
-        this.weight = weight;
-    }
-
     public double getWeightDessert(){return weight;}
-    public void setWeightDessert(double weight){this.weight = weight;}
 
     @Override
-    public void printInfo(){
-        super.printInfo();
-    }
-
+    public void printInfo(){super.printInfo();}
+    @Override
+    public String printInfoClasse() {return "Desserts:";}
 }

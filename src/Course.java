@@ -5,26 +5,34 @@ public abstract class  Course {
     protected String description;
     protected double price;
     protected HashSet<Allergens> allergens;
+    protected MenuType mt ;
+    protected double calories;
 
-    public Course(String name, String description, double price) {
+    public Course(String name, String description,double calories,double price,MenuType mt) {
         this.name = name;
         this.description = description;
+        this.calories = calories;
         this.price = price;
-        allergens = new HashSet<>();
+        this.mt = mt ;
     }
-    public Course(String name, String description, double price, Set<Allergens> allergens) {
+    public Course(String name, Set<Allergens> allergens, String description,double calories,double price,MenuType mt) {
         this.name = name;
         this.description = description;
+        this.calories = calories;
         this.price = price;
         this.allergens = new HashSet<>(allergens);
+        this.mt = mt ;
     }
 
     public Set<Allergens> getAllergens() {return this.allergens;}
     public String getName() {return this.name;}
+    public MenuType getMt() {return mt;}
+
     public void setName(String name) {this.name = name;}
 
     public String getDescription() {return this.description;}
     public void setDescription(String description) {this.description = description;}
+    public double getCalories() {return calories;}
 
     public double getPrice() {return this.price;}
     public void setPrice(double price) {this.price = price;}
@@ -44,4 +52,6 @@ public abstract class  Course {
             }
         } System.out.println();
     }
+
+   public abstract String printInfoClasse();
 }

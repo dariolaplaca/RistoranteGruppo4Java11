@@ -4,7 +4,8 @@ import java.util.Set;
 
 
 public class Seconds extends Course {
-    private int weight;
+    private double weight;
+    private double calories;
     /**
      *
      * @param name name of the seconds
@@ -13,22 +14,20 @@ public class Seconds extends Course {
      * @param weight weight of seconds
      */
 
-    public Seconds(String name, String description, double price, int weight, Set<Allergens> allergens) {
-        super(name, description, price, allergens);
+    public Seconds(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
+        super(name, allergens,description,calories,price,mt);
         this.weight = weight;
     }
-    public Seconds(String name, String description, double price, int weight) {
-        super(name, description, price);
+    public Seconds(String name, String description, double weight,double calories, double price,MenuType mt) {
+        super(name, description,calories, price,mt);
         this.weight = weight;
     }
 
-    public int getWeight() {return this.weight;}
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
+    public double getWeight() {return this.weight;}
 
     @Override
     public void printInfo(){ super.printInfo(); }
+    @Override
+    public String printInfoClasse() {return "Seconds:";}
 
 }
