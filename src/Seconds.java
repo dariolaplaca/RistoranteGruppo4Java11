@@ -17,10 +17,12 @@ public class Seconds extends Course {
     public Seconds(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
         super(name, allergens,description,calories,price,mt);
         this.weight = weight;
+        setCourseType(CourseEnum.SECONDS);
     }
     public Seconds(String name, String description, double weight,double calories, double price,MenuType mt) {
         super(name, description,calories, price,mt);
         this.weight = weight;
+        setCourseType(CourseEnum.SECONDS);
     }
 
     public double getWeight() {return this.weight;}

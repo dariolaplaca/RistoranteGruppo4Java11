@@ -6,6 +6,7 @@ public abstract class  Course {
     protected double price;
     protected HashSet<Allergens> allergens;
     protected MenuType mt ;
+    protected CourseEnum courseType;
     protected double calories;
 
     public Course(String name, String description,double calories,double price,MenuType mt) {
@@ -14,6 +15,7 @@ public abstract class  Course {
         this.calories = calories;
         this.price = price;
         this.mt = mt ;
+
     }
     public Course(String name, Set<Allergens> allergens, String description,double calories,double price,MenuType mt) {
         this.name = name;
@@ -22,6 +24,7 @@ public abstract class  Course {
         this.price = price;
         this.allergens = new HashSet<>(allergens);
         this.mt = mt ;
+        this.courseType = courseType;
     }
 
     public Set<Allergens> getAllergens() {return this.allergens;}
@@ -29,6 +32,14 @@ public abstract class  Course {
     public MenuType getMt() {return mt;}
 
     public void setName(String name) {this.name = name;}
+
+    public void setCourseType(CourseEnum courseType) {
+        this.courseType = courseType;
+    }
+
+    public CourseEnum getCourseType() {
+        return this.courseType;
+    }
 
     public String getDescription() {return this.description;}
     public void setDescription(String description) {this.description = description;}
@@ -54,4 +65,6 @@ public abstract class  Course {
     }
 
    public abstract String printInfoClasse();
+
+
 }

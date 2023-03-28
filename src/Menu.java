@@ -44,39 +44,26 @@ public class Menu {
             System.out.println();
         }
     }
-
-    public void menuOfTheDay(){
+    
+    public void menuOfTheDay() {
+        dailyMenu.clear();
         List<Course> shuffledList = courseList;
         Collections.shuffle(shuffledList);
-        boolean starterFound = false;
-        boolean firstFound = false;
-        boolean secondFound = false;
-        boolean dessertFound = false;
-        boolean beverageFound = false;
+        HashSet<Class<? extends Course>> classSet = new HashSet<>();
         for (Course c : shuffledList) {
-            if (c.getClass().equals(Starters.class) && !starterFound) {
+            Class<? extends Course> courseClass = c.getClass();
+            if (!classSet.contains(courseClass)) {
                 dailyMenu.add(c);
-                starterFound = true;
-            } else if (c.getClass().equals(Firsts.class) && !firstFound) {
-                dailyMenu.add(c);
-                firstFound = true;
-            } else if (c.getClass().equals(Seconds.class) && !secondFound) {
-                dailyMenu.add(c);
-                secondFound = true;
-            } else if (c.getClass().equals(Desserts.class) && !dessertFound) {
-                dailyMenu.add(c);
-                dessertFound = true;
-            } else if (c.getClass().equals(Beverages.class) && !beverageFound) {
-                dailyMenu.add(c);
-                beverageFound = true;
+                classSet.add(courseClass);
             }
         }
         double totalCost = 0;
-        for (Course c : dailyMenu){
+        dailyMenu.sort(Comparator.comparingInt(a -> a.courseType.order));
+        for (Course c : dailyMenu) {
             c.printInfo();
             totalCost += c.getPrice();
         }
-        totalCost = Math.floor(totalCost/10) * 10;
+        totalCost = Math.floor(totalCost / 10) * 10;
         System.out.println("Total cost: " + totalCost + "€\n");
     }
 

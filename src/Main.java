@@ -69,6 +69,7 @@ public class Main {
         menu.addAllCourse(secondsList);
         menu.addAllCourse(dessertsList);
         menu.addAllCourse(beverageList);
+        menu.menuOfTheDay();
 
 //        menu.printMenu();
 //
@@ -79,9 +80,8 @@ public class Main {
 //
 //
 //        menu.menuOfTheDay();
-
         // ! print menu tipo
-        menu.printMenuType(MenuType.MEAT_MENU);
+        //menu.printMenuType(MenuType.MEAT_MENU);
 //        menu.printMenuType(MenuType.FISH_MENU);
 //        menu.printMenuType(MenuType.VEGAN_MENU);
 //        menu.printMenuType(MenuType.FEW_KCAL_MENU);

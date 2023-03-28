@@ -15,10 +15,12 @@ public class Firsts extends Course {
     public Firsts(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
         super(name, allergens,description,calories, price,mt);
         this.weight = weight;
+        setCourseType(CourseEnum.FIRSTS);
     }
     public Firsts(String name, String description, double weight,double calories, double price,MenuType mt) {
         super(name, description,calories,price,mt);
         this.weight = weight;
+        setCourseType(CourseEnum.FIRSTS);
     }
 
     public void setWeight(double weight) {this.weight = weight;}

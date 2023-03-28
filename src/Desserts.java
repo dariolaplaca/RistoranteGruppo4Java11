@@ -14,6 +14,7 @@ public class Desserts extends Course{
     public Desserts(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
         super(name, allergens,description, calories,price,mt);
         this.weight = weight;
+        setCourseType(CourseEnum.DESSERTS);
     }
     public double getWeightDessert(){return weight;}
 

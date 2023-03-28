@@ -16,6 +16,7 @@ public class Beverages extends Course{
     public Beverages(String name, String description, double milliliters,double calories, double price,MenuType mt) {
         super(name, description, calories,price,mt);
         this.milliliters = milliliters;
+        setCourseType(CourseEnum.BEVERAGES);
     }
 
     public double getMilliliters() {return this.milliliters;}

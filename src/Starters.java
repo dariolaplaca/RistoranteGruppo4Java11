@@ -14,10 +14,12 @@ public class Starters extends Course {
     public Starters(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
         super(name, allergens,description,calories, price,mt);
         this.weight = weight;
+        setCourseType(CourseEnum.STARTERS);
     }
     public Starters(String name, String description, double weight,double calories, double price,MenuType mt) {
         super(name, description, calories,price,mt);
         this.weight = weight;
+        setCourseType(CourseEnum.STARTERS);
     }
 
     public double getWeight() {return weight;}
