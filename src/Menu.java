@@ -5,20 +5,15 @@ public class Menu {
 
     private List<Course> courseList;
     private List<Course> dailyMenu;
-    private List<Course> listMenuVegan;
-    private List<Course> listMenuFewKcal;
         MenuType type = MenuType.MENU;
 
     public Menu() {
         dailyMenu = new ArrayList<>();
         courseList = new ArrayList<>();
-        listMenuVegan = new ArrayList<>();
-        listMenuFewKcal = new ArrayList<>();
     }
 
     public List<Course> getCourseList() {return courseList;}
     public List<Course> getDailyMenu() {return dailyMenu;}
-    public List<Course> getListMenuFewKcal() {return listMenuFewKcal;}
 
     public void addCourse(Course s) {courseList.add(s);}
     public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
@@ -37,7 +32,6 @@ public class Menu {
         }
         return finalHashset;
     }
-
     public void printMenu() {
         System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + type + " MENU" + TextModifier.ANSI_RESET + "\n");
         Course currentCourse = courseList.get(courseList.size() - 1);
@@ -88,7 +82,6 @@ public class Menu {
 
     public void printMenuType(MenuType mt){
         boolean applicaScontoMenu ;
-
         switch (mt){
             case MEAT_MENU -> {
                 applicaScontoMenu = false;
@@ -96,29 +89,45 @@ public class Menu {
                 System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
                 meatMenu();
                 if (applicaScontoMenu) {
-                    System.out.println(discountApply(meatMenu(), 20));
+                    discountApply(meatMenu(), 20);
                 }
             }
             case FISH_MENU -> {
-                applicaScontoMenu = false;
+                applicaScontoMenu = true;
                 type = MenuType.FISH_MENU;
                 System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
                 fishMenu();
-                System.out.println(discountApply(fishMenu(), 20));
-
+                if (applicaScontoMenu) {
+                    discountApply(fishMenu(), 20);
+                }
             }
             case VEGAN_MENU -> {
-                applicaScontoMenu = false;
+                applicaScontoMenu = true;
                 type = MenuType.VEGAN_MENU;
                 System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
                 veganMenu();
-                System.out.println(discountApply(veganMenu(), 20));
-
+                discountApply(veganMenu(), 20);
+                if (applicaScontoMenu) {
+                    discountApply(veganMenu(), 20);
+                }
             }
             case FEW_KCAL_MENU -> {
+                applicaScontoMenu = false;
                 type = MenuType.FEW_KCAL_MENU;
                 System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
                 generateMenuFewKcal();
+                if (applicaScontoMenu) {
+                    discountApply(fishMenu(), 20);
+                }
+            }
+            case CHILDREN_MENU -> {
+                applicaScontoMenu = false;
+                type = MenuType.CHILDREN_MENU;
+                System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
+                childrenMenu();
+                if (applicaScontoMenu) {
+                    discountApply(childrenMenu(), 20);
+                }
             }
         }
     }
@@ -134,21 +143,26 @@ public class Menu {
                 c.printInfo();
             }
         });
+        calculatePriceMenu(listMenuMeat);
             return listMenuMeat;
     }
-    public List<Course> fishMenu(){
+
+    public List<Course> fishMenu() {
+        double sum = 0;
         List<Course> listMenuFish = new ArrayList<>();
         courseList.forEach(c -> {
-                if(c.getMt() != MenuType.FISH_MENU){
-                }else{
-                    listMenuFish.add(c);
-                    System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
-                    c.printInfo();
-                }
+                    if (c.getMt() != MenuType.FISH_MENU) {
+                    } else {
+                        listMenuFish.add(c);
+                        System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
+                        c.printInfo();
+                    }
                 }
         );
+        calculatePriceMenu(listMenuFish);
         return listMenuFish;
     }
+
 public List<Course> veganMenu() {
     List<Course> listMenuVegan = new ArrayList<>();
     courseList.forEach(c -> {
@@ -160,7 +174,22 @@ public List<Course> veganMenu() {
                 }
             }
     );
+    calculatePriceMenu(listMenuVegan);
     return listMenuVegan;
+    }
+
+    public List<Course> childrenMenu() {
+        List<Course> listMenuChildren = new ArrayList<>();
+        courseList.forEach(c -> {
+            if (c.getMt() != MenuType.CHILDREN_MENU) {
+            } else {
+                listMenuChildren.add(c);
+                System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
+                c.printInfo();
+            }
+        });
+        calculatePriceMenu(listMenuChildren);
+        return listMenuChildren;
     }
 
     public List<Course> generateMenuFewKcal() {
@@ -200,24 +229,35 @@ public List<Course> veganMenu() {
                 }
             }
         }
-        double sum = 0 ;
+        double sum = 0;
         for (Course c : menuBasseCalorie) {
             System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
             c.printInfo();
             sum += c.getCalories();
         }
-            System.out.println("\nkcal in questo tipo menu: " + TextModifier.ANSI_RED + " " + sum +" kcal" + TextModifier.ANSI_RESET);
+        System.out.println("\nkcal in questo tipo menu: " + TextModifier.ANSI_RED + " " + sum + " kcal" + TextModifier.ANSI_RESET);
+        calculatePriceMenu(menuBasseCalorie);
         return menuBasseCalorie;
     }
-    public double discountApply(List<Course>l,double discount){
-            double sumWithDiscount = 0 ;
-            double sum = 0 ;
-        for (Course c : l ) {
+
+    public void discountApply(List<Course> l, double discount) {
+        double sumWithDiscount = 0;
+        double sum = 0;
+        for (Course c : l) {
             sumWithDiscount += c.getPrice();
-              sum += c.getPrice();
+            sum += c.getPrice();
         }
         System.out.println("\n" + sum + "€" + " senza sconto");
-        return (sumWithDiscount / 100) * (100 - discount);
+        System.out.println((sumWithDiscount / 100) * (100 - discount));
+    }
+
+    public double calculatePriceMenu(List<Course>l){
+        double sum = 0;
+        for (Course list : l) {
+            sum += list.getPrice();
+        }
+        System.out.println("\n\tPrezzo menu: "+sum + "€");
+        return sum;
     }
 }
 
