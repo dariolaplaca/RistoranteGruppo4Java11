@@ -11,6 +11,8 @@ public class Main {
         Course lamb = new Starters("Breaded and Crispy Lamb Bites", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN), "Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip", 500, 440,2.50,MenuType.MENU);
         Course hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad", Set.of(Allergens.NUTS), "Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad", 400,312, 6.00,MenuType.MENU);
         Course vegangStarterCourse = new Starters("kale chips, pumpkin and potatoes", Set.of(Allergens.KALE, Allergens.PUMPKIN,Allergens.POTATOES), "kale chips, pumpkin and potatoes", 120,240,5.0,MenuType.MENU);
+        Course bruschetta = new Starters("Bruschetta with fresh tomatoes and basil", "A toasted bread slice topped with garlic, olive oil, fresh diced tomatoes, and chopped basil", 70,150,5.0,MenuType.CHILDREN_MENU);
+        Course eggplatnParmesan = new Starters("Eggplant Parmesan Bites","A quick and easy appetizer made of fried eggplant cubes topped with tomato sauce and grated Parmesan cheese",100,200,7,MenuType.CHILDREN_MENU);
 
         // - FIRSTS
         Course genovese = new Firsts("Genovese", Set.of(Allergens.DAIRY, Allergens.CEREALS_CONTAINING_GLUTEN),"Traditional Ligurian dish made with slow-cooked onions, served with a fragrant basil pesto sauce and freshly grated Parmesan cheese.", 8.50, 160,12.99 ,MenuType.MENU);
@@ -21,6 +23,8 @@ public class Main {
         Course tagliatelle = new Firsts("Tagliatelle with white meat sauce and frutti di mare", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN, Allergens.DAIRY),"Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", 7, 150, 18.99,MenuType.FISH_MENU);
         Course veganFirstCourse = new Firsts("Lentil ragout", Set.of(Allergens.LENTIL), "Lentil ragout", 400, 200, 15.99,MenuType.VEGAN_MENU);
         Course firtstChildren = new Firsts("Pasta with sauce", "Classic pasta with sauce and basil",500,200,7.99,MenuType.CHILDREN_MENU);
+        Course pennePesto = new Firsts("Penne with Pesto Sauce", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN), "Penne pasta in a creamy pesto sauce made with basil, garlic, pine nuts, and Parmesan cheese.", 120, 200, 9.99,MenuType.CHILDREN_MENU);
+        Course ravioliButterSage = new Firsts("Ravioli with Butter and Sage", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN, Allergens.DAIRY), "Homemade ravioli filled with ricotta cheese and spinach, served with a delicious butter and sage sauce.", 150, 350, 12.99,MenuType.CHILDREN_MENU);
 
         // - SECONDS
         Course florentine = new Seconds("Rare Florentine", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN),"Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000, 17.99,MenuType.MEAT_MENU);
@@ -31,6 +35,7 @@ public class Main {
         Course hamburger = new Seconds("Hamburger",  Set.of(Allergens.CEREALS_CONTAINING_GLUTEN),"Classic 100% beef burger with traditional toppings, satisfying and affordable.", 12, 220,22.00,MenuType.MEAT_MENU);
         Course veganSecondCourse = new Seconds("Spiced Carrot Falafel", Set.of(Allergens.LENTIL), "Spiced Carrot Falafel", 400, 200, 15.99, MenuType.VEGAN_MENU );
         Course cutletPotatoes = new Seconds("chicken cutlet with a portion of fries", "classic fried or baked chicken cutlet with fries",400,700,13.99,MenuType.CHILDREN_MENU);
+        Course fishAndChips = new Seconds("Fish and Chips", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN, Allergens.FISH), "Crispy battered fish served with classic British-style chips.", 250, 550, 13.99,MenuType.CHILDREN_MENU);
         // - DESSERTS
         Course appleCake = new Desserts("Apple cake", Set.of(Allergens.DAIRY, Allergens.CEREALS_CONTAINING_GLUTEN), "American apple pie", 1.000, 220,12.99,MenuType.FISH_MENU);
         Course tiramisu = new Desserts("Tiramisù", Set.of(Allergens.DAIRY, Allergens.EGG), "Dessert with coffe, biscuits, cocoa", 1.000, 200,10.99,MenuType.CHILDREN_MENU);
@@ -38,13 +43,14 @@ public class Main {
         Course sacherTorte = new Desserts("Sachertorte", Set.of(Allergens.DAIRY,Allergens.EGG,Allergens.CEREALS_CONTAINING_GLUTEN), "Dessert with lemon cream", 700, 250,9.99,MenuType.MEAT_MENU);
         Course composeYourDessert = new Desserts("Compose your dessert", Set.of(Allergens.CARROT, Allergens.SPICED), "Spiced Carrot Falafel", 400, 650, 19.99,MenuType.MENU);
         Course tiramisuVegano = new Desserts("Tiramisù", Set.of(Allergens.DAIRY), "Dessert vegan, with coffe, biscuits, cocoa", 1.000, 200,15.99,MenuType.VEGAN_MENU);
+        Course chocolateBrownie = new Desserts("Chocolate Brownie with Ice Cream", Set.of(Allergens.CEREALS_CONTAINING_GLUTEN, Allergens.DAIRY), "Rich and chocolatey brownie served warm with a scoop of vanilla ice cream.", 150, 400, 6.99,MenuType.CHILDREN_MENU);
 
         // - BEVERAGES
         Course stillWater = new Beverages("Still Water", "Refreshing and hydrating still water in a one-liter bottle.", 1000,250, 1.00,MenuType.MENU);
         Course sparklingWater = new Beverages("Sparkling Water", "Fizzy and invigorating sparkling water in a one-liter bottle.", 1000, 250,1.00,MenuType.MENU);
         Course cocacola = new Beverages("Coca Cola", "Classic and delicious Coca-Cola in a 33cl bottle.", 330, 250,2.00,MenuType.CHILDREN_MENU);
-        Course fanta = new Beverages("Fanta", "Fruity and refreshing Fanta in a 33cl bottle.", 330,250, 2.00,MenuType.MENU);
-        Course sprite = new Beverages("Sprite", "Lemon-lime flavored and thirst-quenching Sprite in a 33cl bottle.", 330,250, 2.00,MenuType.MENU);
+        Course fanta = new Beverages("Fanta", "Fruity and refreshing Fanta in a 33cl bottle.", 330,250, 2.00,MenuType.CHILDREN_MENU);
+        Course sprite = new Beverages("Sprite", "Lemon-lime flavored and thirst-quenching Sprite in a 33cl bottle.", 330,250, 2.00,MenuType.CHILDREN_MENU);
         Course redDraughtBeer = new Beverages("Red Draught Beer", "Rich and flavorful red draught beer served in a 0.4-liter glass.", 400,250, 4,MenuType.MENU);
         Course blondeDraughtBeer = new Beverages("Blonde Draught Beer", "Crisp and refreshing blonde draught beer served in a 0.4-liter glass.", 400, 250,3.5,MenuType.MENU);
         Course redWine = new Beverages("Red Wine", "Smooth and full-bodied red wine served in a 50ml glass.", 50,250, 5,MenuType.MENU);
@@ -59,32 +65,17 @@ public class Main {
         Menu menu = new Menu();
 
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
-        List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini,vegangStarterCourse);
-        List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle,veganFirstCourse,firtstChildren);
-        List<Course> secondsList = Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger,veganSecondCourse,cutletPotatoes);
-        List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert,tiramisuVegano);
+        List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini,vegangStarterCourse,bruschetta,eggplatnParmesan);
+        List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle,veganFirstCourse,firtstChildren,pennePesto,ravioliButterSage);
+        List<Course> secondsList = Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger,veganSecondCourse,cutletPotatoes,fishAndChips);
+        List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert,tiramisuVegano,chocolateBrownie);
 
         menu.addAllCourse(startersList);
         menu.addAllCourse(firstsList);
         menu.addAllCourse(secondsList);
         menu.addAllCourse(dessertsList);
         menu.addAllCourse(beverageList);
-        menu.menuOfTheDay();
+        menu.getChildrenMenu();
 
-//        menu.printMenu();
-//
-//
-//        ffc.checkAllergens();
-//        salmon.checkAllergens();
-//        pineDuck.checkAllergens();
-//
-//
-//        menu.menuOfTheDay();
-        // ! print menu tipo
-        //menu.printMenuType(MenuType.MEAT_MENU);
-//        menu.printMenuType(MenuType.FISH_MENU);
-//        menu.printMenuType(MenuType.VEGAN_MENU);
-//        menu.printMenuType(MenuType.FEW_KCAL_MENU);
-//        menu.printMenuType(MenuType.CHILDREN_MENU);
     }
 }

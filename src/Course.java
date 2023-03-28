@@ -24,7 +24,6 @@ public abstract class  Course {
         this.price = price;
         this.allergens = new HashSet<>(allergens);
         this.mt = mt ;
-        this.courseType = courseType;
     }
 
     public Set<Allergens> getAllergens() {return this.allergens;}
@@ -65,6 +64,4 @@ public abstract class  Course {
     }
 
    public abstract String printInfoClasse();
-
-
 }

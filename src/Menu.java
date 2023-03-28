@@ -5,11 +5,13 @@ public class Menu {
 
     private List<Course> courseList;
     private List<Course> dailyMenu;
-        MenuType type = MenuType.MENU;
+    private List<Course> childrenMenu;
+    MenuType type = MenuType.MENU;
 
     public Menu() {
         dailyMenu = new ArrayList<>();
         courseList = new ArrayList<>();
+        childrenMenu = new ArrayList<>();
     }
 
     public List<Course> getCourseList() {return courseList;}
@@ -20,10 +22,10 @@ public class Menu {
 
     public HashSet<Course> popularCourses() {
         HashSet<Course> finalHashset = new HashSet<>();
-        List<Course>shuffledCourseList = courseList.stream().filter(c -> c.getClass() != Beverages.class).collect(Collectors.toList());
+        List<Course> shuffledCourseList = courseList.stream().filter(c -> c.getClass() != Beverages.class).collect(Collectors.toList());
         Collections.shuffle(shuffledCourseList);
         for (Course c : shuffledCourseList) {
-            if(finalHashset.size() > 2){
+            if (finalHashset.size() > 2) {
                 break;
             } else {
                 finalHashset.add(c);
@@ -32,6 +34,7 @@ public class Menu {
         }
         return finalHashset;
     }
+
     public void printMenu() {
         System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + type + " MENU" + TextModifier.ANSI_RESET + "\n");
         Course currentCourse = courseList.get(courseList.size() - 1);
@@ -44,7 +47,7 @@ public class Menu {
             System.out.println();
         }
     }
-    
+
     public void menuOfTheDay() {
         dailyMenu.clear();
         List<Course> shuffledList = courseList;
@@ -67,9 +70,9 @@ public class Menu {
         System.out.println("Total cost: " + totalCost + "€\n");
     }
 
-    public void printMenuType(MenuType mt){
-        boolean applicaScontoMenu ;
-        switch (mt){
+    public void printMenuType(MenuType mt) {
+        boolean applicaScontoMenu;
+        switch (mt) {
             case MEAT_MENU -> {
                 applicaScontoMenu = false;
                 type = MenuType.MEAT_MENU;
@@ -111,27 +114,27 @@ public class Menu {
                 applicaScontoMenu = false;
                 type = MenuType.CHILDREN_MENU;
                 System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
-                childrenMenu();
+                getChildrenMenu();
                 if (applicaScontoMenu) {
-                    discountApply(childrenMenu(), 20);
+                    discountApply(getChildrenMenu(), 20);
                 }
             }
         }
     }
 
-    public List<Course> meatMenu(){
+    public List<Course> meatMenu() {
         List<Course> listMenuMeat = new ArrayList<>();
         courseList.forEach(c -> {
-            if(c.getMt() != MenuType.MEAT_MENU){
+            if (c.getMt() != MenuType.MEAT_MENU) {
 
-            }else{
+            } else {
                 listMenuMeat.add(c);
                 System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
                 c.printInfo();
             }
         });
         calculatePriceMenu(listMenuMeat);
-            return listMenuMeat;
+        return listMenuMeat;
     }
 
     public List<Course> fishMenu() {
@@ -150,33 +153,45 @@ public class Menu {
         return listMenuFish;
     }
 
-public List<Course> veganMenu() {
-    List<Course> listMenuVegan = new ArrayList<>();
-    courseList.forEach(c -> {
-                if(c.getMt() != MenuType.VEGAN_MENU){
-                }else{
-                    listMenuVegan.add(c);
-                    System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
-                    c.printInfo();
+    public List<Course> veganMenu() {
+        List<Course> listMenuVegan = new ArrayList<>();
+        courseList.forEach(c -> {
+                    if (c.getMt() != MenuType.VEGAN_MENU) {
+                    } else {
+                        listMenuVegan.add(c);
+                        System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
+                        c.printInfo();
+                    }
                 }
-            }
-    );
-    calculatePriceMenu(listMenuVegan);
-    return listMenuVegan;
+        );
+        calculatePriceMenu(listMenuVegan);
+        return listMenuVegan;
     }
 
-    public List<Course> childrenMenu() {
-        List<Course> listMenuChildren = new ArrayList<>();
-        courseList.forEach(c -> {
-            if (c.getMt() != MenuType.CHILDREN_MENU) {
-            } else {
-                listMenuChildren.add(c);
-                System.out.println(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
-                c.printInfo();
+    public List<Course> getChildrenMenu() {
+        List<Course> shuffledList = new ArrayList<>();
+        shuffledList.addAll( courseList.stream().filter(c -> c.getMt() == MenuType.CHILDREN_MENU)
+                .toList());
+        Collections.shuffle(shuffledList);
+        HashSet<Class<? extends Course>> classSet = new HashSet<>();
+        for (Course c : shuffledList) {
+            Class<? extends Course> courseClass = c.getClass();
+            if (!classSet.contains(courseClass)) {
+                childrenMenu.add(c);
+                classSet.add(courseClass);
             }
-        });
-        calculatePriceMenu(listMenuChildren);
-        return listMenuChildren;
+        }
+        double totalCost = 0;
+        childrenMenu.sort(Comparator.comparingInt(a -> a.courseType.order));
+        for (Course c : childrenMenu) {
+            c.printInfo();
+            totalCost += c.getPrice();
+        }
+        totalCost = Math.floor(totalCost / 10) * 10;
+        System.out.println("Total cost: " + totalCost + "€\n");
+
+        return childrenMenu;
+
     }
 
     public List<Course> generateMenuFewKcal() {

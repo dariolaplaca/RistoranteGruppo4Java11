@@ -25,6 +25,7 @@ public class Seconds extends Course {
         setCourseType(CourseEnum.SECONDS);
     }
 
+
     public double getWeight() {return this.weight;}
 
     @Override
