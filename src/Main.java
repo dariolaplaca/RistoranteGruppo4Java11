@@ -76,6 +76,5 @@ public class Main {
         menu.addAllCourse(dessertsList);
         menu.addAllCourse(beverageList);
         menu.getChildrenMenu();
-
     }
 }
