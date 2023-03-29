@@ -1,10 +1,9 @@
 public enum MenuType {
-    FISH_MENU("fish"),
+    FISH_MENU("Fish"),
     MENU("Menu"),
-    VEGETARIAN("vegetarian"),
-    MEAT_MENU("meat"),
-    VEGAN_MENU("vegan"),
-    CHILDREN_MENU("children"),
+    MEAT_MENU("Meat"),
+    VEGAN_MENU("Vegan"),
+    CHILDREN_MENU("Children"),
     VEGETARIAN_MENU("vegetarian"),
     FEW_KCAL_MENU("kcal");
     String menu;

@@ -62,19 +62,34 @@ public class Main {
         Course whiteRussian = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 250,7,MenuType.MENU);
 
         //MENU
-        Menu menu = new Menu();
+        Menu fullMenu = new Menu("Menu", MenuType.MENU);
+        Menu childrenMenu = new Menu("Children's Menu", MenuType.CHILDREN_MENU);
+        Menu veganMenu = new Menu("Vegan Menu", MenuType.VEGAN_MENU);
+        Menu fishMenu = new Menu("Fish Menu", MenuType.FISH_MENU);
+        Menu fewKCalMenu = new Menu("Few KCal Menu", MenuType.FEW_KCAL_MENU);
 
-        List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
+
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini,vegangStarterCourse,bruschetta,eggplatnParmesan);
         List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle,veganFirstCourse,firtstChildren,pennePesto,ravioliButterSage);
         List<Course> secondsList = Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger,veganSecondCourse,cutletPotatoes,fishAndChips);
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert,tiramisuVegano,chocolateBrownie);
+        List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
-        menu.addAllCourse(startersList);
-        menu.addAllCourse(firstsList);
-        menu.addAllCourse(secondsList);
-        menu.addAllCourse(dessertsList);
-        menu.addAllCourse(beverageList);
-        menu.getChildrenMenu();
+        fullMenu.addAllCourse(startersList);
+        fullMenu.addAllCourse(firstsList);
+        fullMenu.addAllCourse(secondsList);
+        fullMenu.addAllCourse(dessertsList);
+        fullMenu.addAllCourse(beverageList);
+
+        childrenMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.CHILDREN_MENU).toList());
+        veganMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.VEGAN_MENU || c.getMenuType() == MenuType.VEGETARIAN_MENU).toList());
+        fishMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.FISH_MENU).toList());
+        fewKCalMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getCalories() < 500).toList());
+
+        //GENERATE DAILY MENU
+        fullMenu.generateMenu();
+
+        //GENERATE A FEW KCAL MENU
+        fewKCalMenu.generateMenu();
     }
 }

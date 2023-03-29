@@ -5,19 +5,19 @@ public abstract class Course {
     protected String description;
     protected double price;
     protected HashSet<AllergensEnum> allergens;
-    protected MenuType mt;
+    protected MenuType menuType;
     protected CourseEnum courseType;
     protected double calories;
 
     //TODO cancelliamo questo e se non abbiamo allergenici passiamo un valore
 
-    public Course(String name, Set<AllergensEnum> allergens, String description, double calories, double price, MenuType mt) {
+    public Course(String name, Set<AllergensEnum> allergens, String description, double calories, double price, MenuType menuType) {
         this.name = name;
         this.description = description;
         this.calories = calories;
         this.price = price;
         this.allergens = new HashSet<>(allergens);
-        this.mt = mt;
+        this.menuType = menuType;
     }
 
     public Set<AllergensEnum> getAllergens() {
@@ -28,8 +28,8 @@ public abstract class Course {
         return this.name;
     }
 
-    public MenuType getMt() {
-        return mt;
+    public MenuType getMenuType() {
+        return menuType;
     }
 
     public void setName(String name) {
