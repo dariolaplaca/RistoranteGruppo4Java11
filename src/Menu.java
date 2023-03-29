@@ -14,7 +14,10 @@ public class Menu {
         currentMenu = new ArrayList<>();
     }
 
-    public List<Course> getCourseList() {return courseList;}
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
     }
@@ -22,6 +25,7 @@ public class Menu {
     public String getName() {
         return this.name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -29,6 +33,7 @@ public class Menu {
     public MenuType getMenuType() {
         return this.menuType;
     }
+
     public void setMenuType(MenuType menuType) {
         this.menuType = menuType;
     }
@@ -36,16 +41,23 @@ public class Menu {
     public List<Course> getCurrentMenu() {
         return this.currentMenu;
     }
+
     public void setCurrentMenu(List<Course> currentMenu) {
         this.currentMenu = currentMenu;
     }
 
-    public void addCourse(Course s) {courseList.add(s);}
-    public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
+    public void addCourse(Course s) {
+        courseList.add(s);
+    }
+
+    public void addAllCourse(List<Course> courseList) {
+        this.courseList.addAll(courseList);
+    }
 
 
     /**
      * Prints a menu
+     *
      * @param myMenu menu to print
      */
 
@@ -69,10 +81,10 @@ public class Menu {
         addOneDifferentCourseOfEachType();
         currentMenu.sort(Comparator.comparingInt(a -> a.courseType.order));
         double totalCost = calculatePriceMenu();
-        System.out.println("\n\tMenu Price: "+ totalCost + "€");
-        if(menuType == MenuType.FEW_KCAL_MENU){
+        System.out.println("\n\tMenu Price: " + totalCost + "€");
+        if (menuType == MenuType.FEW_KCAL_MENU) {
             double calories = 0;
-            for(Course c : currentMenu){
+            for (Course c : currentMenu) {
                 calories += c.getCalories();
             }
             System.out.println("\n\tTotal Kcal: " + calories);
@@ -82,7 +94,7 @@ public class Menu {
     /**
      * Adds a course of each type to the current menu
      */
-    private void addOneDifferentCourseOfEachType(){
+    private void addOneDifferentCourseOfEachType() {
         currentMenu.clear();
         List<Course> shuffledList = courseList;
         Collections.shuffle(shuffledList);
@@ -98,9 +110,10 @@ public class Menu {
 
     /**
      * Calculates the total price of the current menu
+     *
      * @return total price in a double variable
      */
-    public double calculatePriceMenu(){
+    public double calculatePriceMenu() {
         double totalCost = 0;
         for (Course course : currentMenu) {
             totalCost += course.getPrice();

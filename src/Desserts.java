@@ -9,8 +9,8 @@ public class Desserts extends Course{
      * @param weight weight of dessert
      * @param price price of dessert
      */
-    public Desserts(String name, Set<AllergensEnum> allergens, String description, double weight, double calories, double price, MenuType mt) {
-        super(name, allergens,description, calories,price,mt);
+    public Desserts(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
+        super(name, description, calories, price, mt, allergens);
         this.weight = weight;
         this.courseType = CourseEnum.DESSERTS;
     }

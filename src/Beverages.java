@@ -13,8 +13,8 @@ public class Beverages extends Course{
      *
      */
     //TODO Dario dai una sistemata
-    public Beverages(String name, String description, double milliliters,double calories, double price,MenuType mt) {
-        super(name, description, calories,price,mt);
+    public Beverages(String name, String description, double milliliters,double calories, double price,MenuType mt, Set<AllergensEnum> allergens) {
+        super(name, description, calories,price, mt, allergens);
         this.milliliters = milliliters;
         setCourseType(CourseEnum.BEVERAGES);
     }

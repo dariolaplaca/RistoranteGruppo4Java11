@@ -21,6 +21,7 @@ public enum AllergensEnum {
     KALE("Kale"),
     LENTIL("Lentil"),
     CARROT("Carrot "),
+    NONE("None"),
     SPICED("Spiced");
 
     private final String name;
@@ -29,5 +30,7 @@ public enum AllergensEnum {
         this.name = name;
     }
 
-    public String getName() {return name;}
+    public String getName() {
+        return name;
+    }
 }

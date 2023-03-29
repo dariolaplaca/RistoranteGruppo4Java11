@@ -1,29 +1,37 @@
 import java.util.Set;
+
 public class Starters extends Course {
-    private double weight ;
+    private double weight;
+
     /**
-     * @param name Starter's name
-     * @param allergens Set of allergens
+     * @param name        Starter's name
+     * @param allergens   Set of allergens
      * @param description Starter's description
-     * @param calories calories of the Starter
-     * @param price price of the Starter
+     * @param calories    calories of the Starter
+     * @param price       price of the Starter
      */
 
-    public Starters(String name, Set<AllergensEnum> allergens, String description, double weight, double calories, double price, MenuType mt) {
-        super(name, allergens,description,calories, price,mt);
-        this.weight = weight;
-        setCourseType(CourseEnum.STARTERS);
-    }
-    public Starters(String name, String description, double weight,double calories, double price,MenuType mt) {
-        super(name, description, calories,price,mt);
+    public Starters(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
+        super(name, description, calories, price, mt, allergens);
         this.weight = weight;
         setCourseType(CourseEnum.STARTERS);
     }
 
-    public double getWeight() {return weight;}
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     @Override
-    public void printInfo(){super.printInfo();}
+    public void printInfo() {
+        super.printInfo();
+    }
+
     @Override
-    public String printInfoClasse() {return "Starters";}
+    public String printInfoClasse() {
+        return "Starters";
+    }
 }

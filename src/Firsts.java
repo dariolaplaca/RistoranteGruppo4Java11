@@ -4,29 +4,30 @@ public class Firsts extends Course {
     private double weight;
 
     /**
-     * @param name First's name
+     * @param name        First's name
      * @param description First's description
-     * @param price First's price
-     * @param weight First's weight
+     * @param price       First's price
+     * @param weight      First's weight
      */
 
-    public Firsts(String name, Set<AllergensEnum> allergens, String description, double weight, double calories, double price, MenuType mt) {
-        super(name, allergens,description,calories, price,mt);
-        this.weight = weight;
-        setCourseType(CourseEnum.FIRSTS);
-    }
-    public Firsts(String name, String description, double weight,double calories, double price,MenuType mt) {
-        super(name, description,calories,price,mt);
+    public Firsts(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
+        super(name, description, calories, price, mt, allergens);
         this.weight = weight;
         setCourseType(CourseEnum.FIRSTS);
     }
 
-    public void setWeight(double weight) {this.weight = weight;}
-
-@Override
-    public void printInfo() {super.printInfo();}
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     @Override
-    public String printInfoClasse() {return "Firsts:";}
+    public void printInfo() {
+        super.printInfo();
+    }
+
+    @Override
+    public String printInfoClasse() {
+        return "Firsts:";
+    }
 
 }

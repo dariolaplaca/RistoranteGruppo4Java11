@@ -11,13 +11,13 @@ public abstract class Course {
 
     //TODO cancelliamo questo e se non abbiamo allergenici passiamo un valore
 
-    public Course(String name, Set<AllergensEnum> allergens, String description, double calories, double price, MenuType menuType) {
+    public Course(String name, String description, double calories, double price, MenuType menuType, Set<AllergensEnum> allergens) {
         this.name = name;
         this.description = description;
         this.calories = calories;
         this.price = price;
-        this.allergens = new HashSet<>(allergens);
         this.menuType = menuType;
+        //this.allergens = new HashSet<>(allergens);
     }
 
     public Set<AllergensEnum> getAllergens() {
