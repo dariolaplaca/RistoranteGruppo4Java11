@@ -5,6 +5,7 @@ public enum CourseEnum {
     DESSERTS("Dessert", 60),
     BEVERAGES("Beverage", 80);
 
+    //TODO i modificatoriiii di accesso e i getter per favore
     String name;
     int order;
 

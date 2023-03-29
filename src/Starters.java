@@ -1,5 +1,3 @@
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 public class Starters extends Course {
     private double weight ;
@@ -11,7 +9,7 @@ public class Starters extends Course {
      * @param price price of the Starter
      */
 
-    public Starters(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
+    public Starters(String name, Set<AllergensEnum> allergens, String description, double weight, double calories, double price, MenuType mt) {
         super(name, allergens,description,calories, price,mt);
         this.weight = weight;
         setCourseType(CourseEnum.STARTERS);

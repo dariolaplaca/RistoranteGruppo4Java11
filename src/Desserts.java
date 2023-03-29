@@ -1,5 +1,3 @@
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 public class Desserts extends Course{
@@ -11,11 +9,12 @@ public class Desserts extends Course{
      * @param weight weight of dessert
      * @param price price of dessert
      */
-    public Desserts(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
+    public Desserts(String name, Set<AllergensEnum> allergens, String description, double weight, double calories, double price, MenuType mt) {
         super(name, allergens,description, calories,price,mt);
         this.weight = weight;
-        setCourseType(CourseEnum.DESSERTS);
+        this.courseType = CourseEnum.DESSERTS;
     }
+    //TODO setter
     public double getWeightDessert(){return weight;}
 
     @Override

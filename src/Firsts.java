@@ -1,5 +1,3 @@
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 public class Firsts extends Course {
@@ -12,7 +10,7 @@ public class Firsts extends Course {
      * @param weight First's weight
      */
 
-    public Firsts(String name, Set<Allergens> allergens, String description, double weight,double calories, double price,MenuType mt) {
+    public Firsts(String name, Set<AllergensEnum> allergens, String description, double weight, double calories, double price, MenuType mt) {
         super(name, allergens,description,calories, price,mt);
         this.weight = weight;
         setCourseType(CourseEnum.FIRSTS);

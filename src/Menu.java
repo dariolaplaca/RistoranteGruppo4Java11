@@ -6,9 +6,13 @@ public class Menu {
     private List<Course> courseList;
     private List<Course> dailyMenu;
     private List<Course> childrenMenu;
-    MenuType type = MenuType.MENU;
 
-    public Menu() {
+    //TODO modificatori di accesso
+    MenuType menuType = MenuType.MENU;
+
+    //TODO inseriamo il nome e lasciamo una sola lista
+    public Menu(MenuType menuType) {
+        this.menuType = menuType;
         dailyMenu = new ArrayList<>();
         courseList = new ArrayList<>();
         childrenMenu = new ArrayList<>();
@@ -23,20 +27,17 @@ public class Menu {
     public HashSet<Course> popularCourses() {
         HashSet<Course> finalHashset = new HashSet<>();
         List<Course> shuffledCourseList = courseList.stream().filter(c -> c.getClass() != Beverages.class).collect(Collectors.toList());
-        Collections.shuffle(shuffledCourseList);
-        for (Course c : shuffledCourseList) {
-            if (finalHashset.size() > 2) {
-                break;
-            } else {
-                finalHashset.add(c);
-                c.printInfo();
-            }
+        Random rand = new Random();
+        for (int i = 0; i <= 2  ; i++) {
+            Course randomElement = shuffledCourseList.get(rand.nextInt(shuffledCourseList.size()));
+            finalHashset.add(randomElement);
         }
         return finalHashset;
     }
 
+    //TODO braviiiiii
     public void printMenu() {
-        System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + type + " MENU" + TextModifier.ANSI_RESET + "\n");
+        System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + menuType + " MENU" + TextModifier.ANSI_RESET + "\n");
         Course currentCourse = courseList.get(courseList.size() - 1);
         for (Course c : courseList) {
             if (currentCourse.getClass() != c.getClass()) {
@@ -48,6 +49,7 @@ public class Menu {
         }
     }
 
+    //TODO
     public void menuOfTheDay() {
         dailyMenu.clear();
         List<Course> shuffledList = courseList;
@@ -73,28 +75,28 @@ public class Menu {
     public void printMenuType(MenuType mt) {
         switch (mt) {
             case MEAT_MENU -> {
-                type = MenuType.MEAT_MENU;
-                System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
+                menuType = MenuType.MEAT_MENU;
+                System.out.println(TextModifier.ANSI_RED + " " + menuType + TextModifier.ANSI_RESET);
                 meatMenu(20);
             }
             case FISH_MENU -> {
-                type = MenuType.FISH_MENU;
-                System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
+                menuType = MenuType.FISH_MENU;
+                System.out.println(TextModifier.ANSI_RED + " " + menuType + TextModifier.ANSI_RESET);
                 fishMenu(20);
             }
             case VEGAN_MENU -> {
-                type = MenuType.VEGAN_MENU;
-                System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
+                menuType = MenuType.VEGAN_MENU;
+                System.out.println(TextModifier.ANSI_RED + " " + menuType + TextModifier.ANSI_RESET);
                 veganMenu(20);
             }
             case FEW_KCAL_MENU -> {
-                type = MenuType.FEW_KCAL_MENU;
-                System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
+                menuType = MenuType.FEW_KCAL_MENU;
+                System.out.println(TextModifier.ANSI_RED + " " + menuType + TextModifier.ANSI_RESET);
                 generateMenuFewKcal(20);
             }
             case CHILDREN_MENU -> {
-                type = MenuType.CHILDREN_MENU;
-                System.out.println(TextModifier.ANSI_RED + " " + type + TextModifier.ANSI_RESET);
+                menuType = MenuType.CHILDREN_MENU;
+                System.out.println(TextModifier.ANSI_RED + " " + menuType + TextModifier.ANSI_RESET);
                 getChildrenMenu();
             }
         }
@@ -106,8 +108,9 @@ public class Menu {
         List<Course> newList = new ArrayList<>();
         newList.addAll(courseList.stream().filter(c -> c.getMt() == MenuType.FISH_MENU).toList());
         newList.forEach(c -> listMeatMenu.add(c));
+        //TODO sistemare metodo che dice in che classe siamo
         listMeatMenu.forEach(c -> {
-            System.out.print(TextModifier.ANSI_YELLOW + c.printInfoClasse() + TextModifier.ANSI_RESET);
+            System.out.print(TextModifier.ANSI_YELLOW + c.getClass().getName() + TextModifier.ANSI_RESET);
             c.printInfo();
         });
         double sumPrice = (calculatePriceMenu(listMeatMenu) / 100) * (100 - sc);

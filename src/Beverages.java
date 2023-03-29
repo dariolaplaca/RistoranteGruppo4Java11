@@ -12,7 +12,7 @@ public class Beverages extends Course{
      * @param price price of each Beverage
      *
      */
-
+    //TODO Dario dai una sistemata
     public Beverages(String name, String description, double milliliters,double calories, double price,MenuType mt) {
         super(name, description, calories,price,mt);
         this.milliliters = milliliters;
@@ -24,6 +24,8 @@ public class Beverages extends Course{
 
     @Override
     public void printInfo(){super.printInfo();}
+
+    //TODO
     @Override
     public String printInfoClasse() {return "Beverage:";}
 
