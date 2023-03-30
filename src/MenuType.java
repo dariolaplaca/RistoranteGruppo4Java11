@@ -1,15 +1,16 @@
 public enum MenuType {
     FISH_MENU("Fish"),
-    MENU("Menu"),
+    MENU("Whole Menu"),
     MEAT_MENU("Meat"),
     VEGAN_MENU("Vegan"),
     CHILDREN_MENU("Children"),
-    VEGETARIAN_MENU("vegetarian"),
-    FEW_KCAL_MENU("kcal");
-    String menu;
+    VEGETARIAN_MENU("Vegetarian"),
+    FEW_KCAL_MENU("Low KCal");
+
+    private final String name;
 
     MenuType(String menu){
-        this.menu = menu ;
+        this.name = menu ;
     }
-    public String getStringMenu() {return menu;}
+    public String getName() {return name;}
 }

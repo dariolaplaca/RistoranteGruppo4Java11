@@ -24,10 +24,4 @@ public class Firsts extends Course {
     public void printInfo() {
         super.printInfo();
     }
-
-    @Override
-    public String printInfoClasse() {
-        return "Firsts:";
-    }
-
 }

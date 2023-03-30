@@ -90,7 +90,4 @@ public abstract class Course {
         }
         System.out.println();
     }
-
-    //TODO va tolto
-    public abstract String printInfoClasse();
 }

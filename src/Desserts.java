@@ -19,6 +19,4 @@ public class Desserts extends Course{
 
     @Override
     public void printInfo(){super.printInfo();}
-    @Override
-    public String printInfoClasse() {return "Desserts:";}
 }

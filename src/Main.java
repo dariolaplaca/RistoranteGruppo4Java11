@@ -88,6 +88,7 @@ public class Main {
 
         //GENERATE DAILY MENU
         fullMenu.generateMenu();
+        fullMenu.printMenu();
 
         //GENERATE A FEW KCAL MENU
         fewKCalMenu.generateMenu();

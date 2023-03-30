@@ -56,15 +56,14 @@ public class Menu {
 
 
     /**
-     * Prints a menu
+     * Prints all the courses of the menu
      *
-     * @param myMenu menu to print
      */
 
-    public void printMenu(List<Course> myMenu) {
-        System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + menuType + " MENU" + TextModifier.ANSI_RESET + "\n");
-        Course currentCourse = myMenu.get(myMenu.size() - 1);
-        for (Course c : myMenu) {
+    public void printMenu() {
+        System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + menuType.getName() + " MENU" + TextModifier.ANSI_RESET + "\n");
+        Course currentCourse = courseList.get(courseList.size() - 1);
+        for (Course c : courseList) {
             if (currentCourse.getClass() != c.getClass()) {
                 System.out.println("\n\t" + TextModifier.ANSI_UNDERLINE + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_RED + "\t" + c.getClass().getName() + TextModifier.ANSI_RESET);
                 currentCourse = c;
@@ -78,16 +77,21 @@ public class Menu {
      * Generate a Menu that contains a course of each type
      */
     public void generateMenu() {
+        System.out.println("" + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_YELLOW + TextModifier.ANSI_UNDERLINE + menuType.getName() + " Menu" + TextModifier.ANSI_RESET);
         addOneDifferentCourseOfEachType();
-        currentMenu.sort(Comparator.comparingInt(a -> a.courseType.order));
+        currentMenu.sort(Comparator.comparingInt(a -> a.courseType.getOrder()));
         double totalCost = calculatePriceMenu();
-        System.out.println("\n\tMenu Price: " + totalCost + "€");
+        for(Course c : currentMenu){
+            c.printInfo();
+            System.out.println();
+        }
+        System.out.println(TextModifier.ANSI_YELLOW + "\n\tMenu Price: " + totalCost + "€" + TextModifier.ANSI_RESET);
         if (menuType == MenuType.FEW_KCAL_MENU) {
             double calories = 0;
             for (Course c : currentMenu) {
                 calories += c.getCalories();
             }
-            System.out.println("\n\tTotal Kcal: " + calories);
+            System.out.println(TextModifier.ANSI_GREEN + "\n\tTotal Kcal: " + calories + TextModifier.ANSI_RESET);
         }
     }
 
@@ -96,7 +100,7 @@ public class Menu {
      */
     private void addOneDifferentCourseOfEachType() {
         currentMenu.clear();
-        List<Course> shuffledList = courseList;
+        List<Course> shuffledList = new ArrayList<>(courseList);
         Collections.shuffle(shuffledList);
         HashSet<Class<? extends Course>> classSet = new HashSet<>();
         for (Course c : shuffledList) {

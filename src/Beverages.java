@@ -24,9 +24,4 @@ public class Beverages extends Course{
 
     @Override
     public void printInfo(){super.printInfo();}
-
-    //TODO
-    @Override
-    public String printInfoClasse() {return "Beverage:";}
-
 }
