@@ -12,16 +12,12 @@ public class Beverages extends Course{
      * @param price price of each Beverage
      *
      */
-    //TODO Dario dai una sistemata
     public Beverages(String name, String description, double milliliters,double calories, double price,MenuType mt, Set<AllergensEnum> allergens) {
         super(name, description, calories,price, mt, allergens);
         this.milliliters = milliliters;
-        setCourseType(CourseEnum.BEVERAGES);
+        this.courseType = CourseEnum.BEVERAGES;
     }
 
     public double getMilliliters() {return this.milliliters;}
     public void setMilliliters(double milliliters) {this.milliliters = milliliters;}
-
-    @Override
-    public void printInfo(){super.printInfo();}
 }

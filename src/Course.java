@@ -20,8 +20,10 @@ public abstract class Course {
         //this.allergens = new HashSet<>(allergens);
     }
 
-    public Set<AllergensEnum> getAllergens() {
-        return this.allergens;
+
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -32,8 +34,8 @@ public abstract class Course {
         return menuType;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Set<AllergensEnum> getAllergens() {
+        return this.allergens;
     }
 
     public void setCourseType(CourseEnum courseType) {

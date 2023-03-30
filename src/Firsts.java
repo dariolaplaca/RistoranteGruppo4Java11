@@ -13,15 +13,10 @@ public class Firsts extends Course {
     public Firsts(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.weight = weight;
-        setCourseType(CourseEnum.FIRSTS);
+        this.courseType = CourseEnum.FIRSTS;
     }
 
     public void setWeight(double weight) {
         this.weight = weight;
-    }
-
-    @Override
-    public void printInfo() {
-        super.printInfo();
     }
 }

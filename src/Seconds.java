@@ -15,22 +15,12 @@ public class Seconds extends Course {
     public Seconds(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.weight = weight;
-        setCourseType(CourseEnum.SECONDS);
+        this.courseType = CourseEnum.SECONDS;
     }
 
 
     public double getWeight() {
         return this.weight;
-    }
-
-    @Override
-    public void printInfo() {
-        super.printInfo();
-    }
-
-    @Override
-    public String printInfoClasse() {
-        return "Seconds:";
     }
 
 }

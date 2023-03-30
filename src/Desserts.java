@@ -16,7 +16,4 @@ public class Desserts extends Course{
     }
     //TODO setter
     public double getWeightDessert(){return weight;}
-
-    @Override
-    public void printInfo(){super.printInfo();}
 }

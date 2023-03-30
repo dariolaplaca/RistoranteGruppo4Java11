@@ -14,7 +14,7 @@ public class Starters extends Course {
     public Starters(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.weight = weight;
-        setCourseType(CourseEnum.STARTERS);
+        this.courseType = CourseEnum.STARTERS;
     }
 
     public double getWeight() {
@@ -23,15 +23,5 @@ public class Starters extends Course {
 
     public void setWeight(double weight) {
         this.weight = weight;
-    }
-
-    @Override
-    public void printInfo() {
-        super.printInfo();
-    }
-
-    @Override
-    public String printInfoClasse() {
-        return "Starters";
     }
 }
