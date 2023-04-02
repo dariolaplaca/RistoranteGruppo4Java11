@@ -1,7 +1,5 @@
 //TODO va chiamato con enum
 public enum AllergensEnum {
-
-
     CEREALS_CONTAINING_GLUTEN("Gluten"),
     EGG("Egg"),
     SHELLFISH("Shellfish"),
@@ -21,16 +19,11 @@ public enum AllergensEnum {
     KALE("Kale"),
     LENTIL("Lentil"),
     CARROT("Carrot "),
-    NONE("None"),
+    NONE("Allergens not present"),
     SPICED("Spiced");
-
     private final String name;
 
-    AllergensEnum(String name) {
-        this.name = name;
-    }
+    AllergensEnum(String name) {this.name = name;}
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 }

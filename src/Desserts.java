@@ -2,7 +2,6 @@ import java.util.Set;
 
 public class Desserts extends Course{
     private double weight;
-
     /**
      * @param name name of the dessert
      * @param description description of dessert
@@ -14,6 +13,6 @@ public class Desserts extends Course{
         this.weight = weight;
         this.courseType = CourseEnum.DESSERTS;
     }
-    //TODO setter
     public double getWeightDessert(){return weight;}
+    public void setWeight(double weight) {this.weight = weight;}
 }

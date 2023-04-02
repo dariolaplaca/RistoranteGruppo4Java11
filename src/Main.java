@@ -66,7 +66,11 @@ public class Main {
         Menu childrenMenu = new Menu("Children's Menu", MenuType.CHILDREN_MENU);
         Menu veganMenu = new Menu("Vegan Menu", MenuType.VEGAN_MENU);
         Menu fishMenu = new Menu("Fish Menu", MenuType.FISH_MENU);
-        Menu fewKCalMenu = new Menu("Few KCal Menu", MenuType.FEW_KCAL_MENU);
+        Menu fewKcalMenu = new Menu("Few KCal Menu", MenuType.FEW_KCAL_MENU);
+        Menu meatMenu = new Menu("Meat menu" , MenuType.MEAT_MENU);
+
+        // Ristorante
+        Restaurant ilSolito = new Restaurant("il Solito");
 
 
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini, vegangStarterCourse, bruschetta, eggplatnParmesan);
@@ -81,16 +85,29 @@ public class Main {
         fullMenu.addAllCourse(dessertsList);
         fullMenu.addAllCourse(beverageList);
 
+        meatMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.MEAT_MENU).toList());
         childrenMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.CHILDREN_MENU).toList());
         veganMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.VEGAN_MENU || c.getMenuType() == MenuType.VEGETARIAN_MENU).toList());
         fishMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.FISH_MENU).toList());
-        fewKCalMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getCalories() < 500).toList());
+        fewKcalMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getCalories() < 500).toList());
 
-        //GENERATE DAILY MENU
-        fullMenu.generateMenu();
-        fullMenu.printMenu();
+// GENERATE DAILY MENU:
+    // fullMenu.generateMenu();
 
-        //GENERATE A FEW KCAL MENU
-        fewKCalMenu.generateMenu();
+
+// GENERATE A FEW KCAL MENU:
+    // meatMenu.generateMenu();
+
+
+// RESTAURANT:
+     ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
+     ilSolito.menus();
+     ilSolito.chooseOneMenu(meatMenu, fishMenu, veganMenu, fewKcalMenu);
+     // IF YOU WANT APPLY A DISCOUNT OR NO
+     meatMenu.calculateAndApplyDiscount();
+
+// CHECK ALLERGENS
+    // meatMenu.checkAllergens();
+
     }
 }

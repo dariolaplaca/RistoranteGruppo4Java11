@@ -3,7 +3,6 @@ import java.util.Set;
 
 public class Seconds extends Course {
     private double weight;
-    private double calories;
 
     /**
      * @param name        name of the seconds
@@ -19,8 +18,6 @@ public class Seconds extends Course {
     }
 
 
-    public double getWeight() {
-        return this.weight;
-    }
-
+    public double getWeight() {return this.weight;}
+    public void setWeight(double weight) {this.weight = weight;}
 }

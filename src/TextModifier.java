@@ -15,12 +15,8 @@ public enum TextModifier {
 
     private final String string;
 
-    TextModifier(String string){
-        this.string = string;
-    }
+    TextModifier(String string){this.string = string;}
 
     @Override
-    public String toString() {
-        return string;
-    }
+    public String toString() {return string;}
 }

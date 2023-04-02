@@ -4,12 +4,11 @@ public abstract class Course {
     protected String name;
     protected String description;
     protected double price;
-    protected HashSet<AllergensEnum> allergens;
+    protected Set<AllergensEnum> allergens;
     protected MenuType menuType;
     protected CourseEnum courseType;
     protected double calories;
 
-    //TODO cancelliamo questo e se non abbiamo allergenici passiamo un valore
 
     public Course(String name, String description, double calories, double price, MenuType menuType, Set<AllergensEnum> allergens) {
         this.name = name;
@@ -17,54 +16,28 @@ public abstract class Course {
         this.calories = calories;
         this.price = price;
         this.menuType = menuType;
-        //this.allergens = new HashSet<>(allergens);
+        this.allergens = new HashSet<>(allergens);
     }
+    public void setName(String name) {this.name = name;}
+    public String getName() {return this.name;}
 
+    public MenuType getMenuType() {return menuType;}
+    public void setMenuType(MenuType menuType) {this.menuType = menuType;}
 
+    public Set<AllergensEnum> getAllergens() {return allergens;}
+    public void setAllergens(HashSet<AllergensEnum> allergens) {this.allergens = allergens;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setCourseType(CourseEnum courseType) {this.courseType = courseType;}
+    public CourseEnum getCourseType() {return this.courseType;}
 
-    public String getName() {
-        return this.name;
-    }
+    public String getDescription() {return this.description;}
+    public void setDescription(String description) {this.description = description;}
 
-    public MenuType getMenuType() {
-        return menuType;
-    }
+    public double getCalories() {return calories;}
+    public void setCalories(double calories) {this.calories = calories;}
 
-    public Set<AllergensEnum> getAllergens() {
-        return this.allergens;
-    }
-
-    public void setCourseType(CourseEnum courseType) {
-        this.courseType = courseType;
-    }
-
-    public CourseEnum getCourseType() {
-        return this.courseType;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getCalories() {
-        return calories;
-    }
-
-    public double getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
+    public double getPrice() {return this.price;}
+    public void setPrice(double price) {this.price = price;}
 
     public void printInfo() {
         System.out.println("\t" +
@@ -76,20 +49,19 @@ public abstract class Course {
                 this.description + TextModifier.ANSI_RESET);
     }
 
-    ;
+//    public void checkAllergens() {
+//        Set<AllergensEnum> allergens = this.getAllergens();
+//        if (allergens.isEmpty()) {
+//            System.out.println(TextModifier.ANSI_RED + getName() + TextModifier.ANSI_RESET + " is safe to eat.");
+//        } else {
+//            System.out.print(TextModifier.ANSI_BRIGHT_YELLOW + "Warning: " + TextModifier.ANSI_RESET +
+//                    TextModifier.ANSI_BRIGHT_RED + getName() +
+//                    TextModifier.ANSI_RESET + " contains ");
+//            for (AllergensEnum allergen : allergens) {
+//                System.out.print("[" + allergen.getName() + "] ");
+//            }
+//        }
+//        System.out.println();
+//    }
 
-    public void checkAllergens() {
-        Set<AllergensEnum> allergens = this.getAllergens();
-        if (allergens.isEmpty()) {
-            System.out.println(TextModifier.ANSI_RED + getName() + TextModifier.ANSI_RESET + " is safe to eat.");
-        } else {
-            System.out.print(TextModifier.ANSI_BRIGHT_YELLOW + "Warning: " + TextModifier.ANSI_RESET +
-                    TextModifier.ANSI_BRIGHT_RED + getName() +
-                    TextModifier.ANSI_RESET + " contains ");
-            for (AllergensEnum allergen : allergens) {
-                System.out.print("[" + allergen.getName() + "] ");
-            }
-        }
-        System.out.println();
-    }
 }
