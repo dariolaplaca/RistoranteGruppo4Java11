@@ -51,15 +51,15 @@ public class Main {
         Course cocacola = new Beverages("Coca Cola", "Classic and delicious Coca-Cola in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
         Course fanta = new Beverages("Fanta", "Fruity and refreshing Fanta in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
         Course sprite = new Beverages("Sprite", "Lemon-lime flavored and thirst-quenching Sprite in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
-        Course redDraughtBeer = new Beverages("Red Draught Beer", "Rich and flavorful red draught beer served in a 0.4-liter glass.", 400, 250, 4, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course blondeDraughtBeer = new Beverages("Blonde Draught Beer", "Crisp and refreshing blonde draught beer served in a 0.4-liter glass.", 400, 250, 3.5, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course redWine = new Beverages("Red Wine", "Smooth and full-bodied red wine served in a 50ml glass.", 50, 250, 5, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course whiteWine = new Beverages("White Wine", "Light and refreshing white wine served in a 50ml glass.", 50, 250, 5, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course Mojito = new Beverages("Mojito", "A classic cocktail made with rum, sugar, lime juice, soda water, and mint leaves. Refreshing and perfect for warm weather.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course oldFashioned = new Beverages("Old Fashioned", "A sophisticated cocktail made with whiskey, sugar, bitters, and water or soda. Perfect as an after-dinner drink.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course whiskeySour = new Beverages("Whiskey Sour", "A tangy and refreshing cocktail made with whiskey, lemon juice, and sugar. Great for any occasion.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course negroni = new Beverages("Negroni", "A complex and bitter cocktail made with gin, vermouth, and Campari. Perfect as an aperitif.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course whiteRussian = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE));
+        Course redDraughtBeer = new Beverages("Red Draught Beer", "Rich and flavorful red draught beer served in a 0.4-liter glass.", 400, 250, 4, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN), true);
+        Course blondeDraughtBeer = new Beverages("Blonde Draught Beer", "Crisp and refreshing blonde draught beer served in a 0.4-liter glass.", 400, 250, 3.5, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN), true);
+        Course redWine = new Beverages("Red Wine", "Smooth and full-bodied red wine served in a 50ml glass.", 50, 250, 5, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
+        Course whiteWine = new Beverages("White Wine", "Light and refreshing white wine served in a 50ml glass.", 50, 250, 5, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
+        Course Mojito = new Beverages("Mojito", "A classic cocktail made with rum, sugar, lime juice, soda water, and mint leaves. Refreshing and perfect for warm weather.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
+        Course oldFashioned = new Beverages("Old Fashioned", "A sophisticated cocktail made with whiskey, sugar, bitters, and water or soda. Perfect as an after-dinner drink.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
+        Course whiskeySour = new Beverages("Whiskey Sour", "A tangy and refreshing cocktail made with whiskey, lemon juice, and sugar. Great for any occasion.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
+        Course negroni = new Beverages("Negroni", "A complex and bitter cocktail made with gin, vermouth, and Campari. Perfect as an aperitif.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
+        Course whiteRussian = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
 
         //MENU
         Menu fullMenu = new Menu("Menu", MenuType.MENU);

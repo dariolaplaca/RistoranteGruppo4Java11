@@ -7,6 +7,11 @@ public class Restaurant {
     private String name;
     private List<Menu>menu;
 
+    /***
+     * This is the constructor for the Restaurant class
+     * @param name Restaurant name
+     */
+
     public Restaurant(String name){
         this.name = name;
         this.menu = new ArrayList<>();
@@ -29,13 +34,12 @@ public class Restaurant {
         menu.forEach(m -> System.out.println("\t"+m.getName()));
     }
 
-    /**
-     *
-     * @param meatMenu
-     * @param fishMenu
-     * @param veganMenu
-     * @param fewKcalMenu
-     * method that print a type of menu
+    /***
+     * method that print a type of menu with a user input
+     * @param meatMenu    It prints the meat menu
+     * @param fishMenu    It prints the fish menu
+     * @param veganMenu   It prints the vegan menu
+     * @param fewKcalMenu It prints the few kcal menu
      */
     public void chooseOneMenu(Menu meatMenu, Menu fishMenu, Menu veganMenu, Menu fewKcalMenu) {
         System.out.println("\n\tChoose your menu, please insert the exact name of menu");
