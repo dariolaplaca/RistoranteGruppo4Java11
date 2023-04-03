@@ -13,6 +13,6 @@ public class Desserts extends Course{
         this.weight = weight;
         this.courseType = CourseEnum.DESSERTS;
     }
-    public double getWeightDessert(){return weight;}
+    public double getWeight(){return weight;}
     public void setWeight(double weight) {this.weight = weight;}
 }

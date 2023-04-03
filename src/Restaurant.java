@@ -14,10 +14,10 @@ public class Restaurant {
     // GETTER & SETTER
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
-
+    public List<Menu> getMenu() {return menu;}
+    public void setMenu(List<Menu> menu) {this.menu = menu;}
     public List<Menu> getMeatMenu() {return menu;}
     public void setMeatMenu(List<Menu> meatMenu) {this.menu = meatMenu;}
-
     public void addMenu(Menu mt ){ menu.add(mt);}
     public void addAllMenu(List<Menu> mt){ menu.addAll(mt);}
 
