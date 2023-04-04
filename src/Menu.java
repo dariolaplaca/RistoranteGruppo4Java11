@@ -65,9 +65,11 @@ public class Menu {
             c.printInfo();
             System.out.println();
         }
+        double price = calculatePriceMenu();
+        System.out.println("Total price: " + price);
         if (menuType == MenuType.FEW_KCAL_MENU) {
             double sumKcalMenu = calculateKcalMenu();
-            calculateAndApplyDiscount();
+            //calculateAndApplyDiscount();
             System.out.println(TextModifier.ANSI_GREEN + "\n\tTotal Kcal: " + sumKcalMenu + TextModifier.ANSI_RESET);
         }
     }
@@ -107,27 +109,6 @@ public class Menu {
     }
 
     /**
-     * @return the price menu, or price menu discounted
-     */
-    public void calculateAndApplyDiscount() {
-        Scanner insertNumberForDiscount = new Scanner(System.in);
-        Scanner ifDiscountString = new Scanner(System.in);
-        double priceMenu = 0;
-        System.out.println(TextModifier.ANSI_BOLD + "Do you want to discount the current menu...???" + TextModifier.ANSI_RESET);
-        String yesOrNo = ifDiscountString.nextLine();
-        for (Course c : currentMenu) {
-            priceMenu += c.getPrice();
-        }
-        if (yesOrNo.strip().equals("yes")) {
-            System.out.println(TextModifier.ANSI_BRIGHT_PURPLE + " \n\tPrice menu: " + Math.floor(priceMenu) + "€" + TextModifier.ANSI_RESET);
-            System.out.println(TextModifier.ANSI_YELLOW + " \n\tPlease insert a discount..." + TextModifier.ANSI_RESET);
-            double sc = insertNumberForDiscount.nextInt();
-            System.out.println("\n\tPrice menu discounted:" + TextModifier.ANSI_GREEN + " " + Math.floor((priceMenu / 100) * (100 - sc)) + "€" + TextModifier.ANSI_RESET);
-        } else if (yesOrNo.equals("no")) {
-            System.out.println("\n\tPrezzo menu: " + TextModifier.ANSI_RED + " " + Math.floor(priceMenu) + "€" + TextModifier.ANSI_RESET);
-        }
-    }
-    /**
      * @return an HashSet of 3 randoms courses that are not Beverages
      */
     public HashSet<Course> popularCourses() {
@@ -163,4 +144,28 @@ public class Menu {
         }
         return Math.floor(sumCourseKcal);
     }
+
+    /**
+     * @return the price menu, or price menu discounted
+     */
+        /*
+    public void calculateAndApplyDiscount() {
+        Scanner insertNumberForDiscount = new Scanner(System.in);
+        Scanner ifDiscountString = new Scanner(System.in);
+        double priceMenu = 0;
+        System.out.println(TextModifier.ANSI_BOLD + "Do you want to discount the current menu...???" + TextModifier.ANSI_RESET);
+        String yesOrNo = ifDiscountString.nextLine();
+        for (Course c : currentMenu) {
+            priceMenu += c.getPrice();
+        }
+        if (yesOrNo.strip().equals("yes")) {
+            System.out.println(TextModifier.ANSI_BRIGHT_PURPLE + " \n\tPrice menu: " + Math.floor(priceMenu) + "€" + TextModifier.ANSI_RESET);
+            System.out.println(TextModifier.ANSI_YELLOW + " \n\tPlease insert a discount..." + TextModifier.ANSI_RESET);
+            double sc = insertNumberForDiscount.nextInt();
+            System.out.println("\n\tPrice menu discounted:" + TextModifier.ANSI_GREEN + " " + Math.floor((priceMenu / 100) * (100 - sc)) + "€" + TextModifier.ANSI_RESET);
+        } else if (yesOrNo.equals("no")) {
+            System.out.println("\n\tPrezzo menu: " + TextModifier.ANSI_RED + " " + Math.floor(priceMenu) + "€" + TextModifier.ANSI_RESET);
+        }
+    }
+    */
 }

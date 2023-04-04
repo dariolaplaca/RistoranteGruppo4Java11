@@ -39,18 +39,18 @@ public class Main {
         // - DESSERTS
         Course appleCake = new Desserts("Apple cake", "American apple pie", 1.000, 220, 12.99, MenuType.FISH_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course tiramisu = new Desserts("Tiramisù", "Dessert with coffe, biscuits, cocoa", 1.000, 200, 10.99, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG));
-        Course saltyChocolate = new Desserts("Salty chocolate ice cream", "Ice-cream with chocolate fondant and milk chocolate", 500, 250, 8.99, MenuType.VEGETARIAN_MENU, Set.of(AllergensEnum.DAIRY));
+        Course saltyChocolate = new Desserts("Salty chocolate ice cream", "Ice-cream with chocolate fondant and milk chocolate", 500, 250, 8.99, MenuType.VEGAN_MENU, Set.of(AllergensEnum.DAIRY));
         Course sacherTorte = new Desserts("Sachertorte", "Dessert with lemon cream", 700, 250, 9.99, MenuType.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course composeYourDessert = new Desserts("Compose your dessert", "Spiced Carrot Falafel", 400, 650, 19.99, MenuType.MENU, Set.of(AllergensEnum.CARROT, AllergensEnum.SPICED));
         Course tiramisuVegano = new Desserts("Vegan Tiramisù", "Dessert vegan, with coffe, biscuits, cocoa", 1.000, 200, 15.99, MenuType.VEGAN_MENU, Set.of(AllergensEnum.DAIRY));
         Course chocolateBrownie = new Desserts("Chocolate Brownie with Ice Cream", "Rich and chocolatey brownie served warm with a scoop of vanilla ice cream.", 150, 400, 6.99, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
 
         // - BEVERAGES
-        Course stillWater = new Beverages("Still Water", "Refreshing and hydrating still water in a one-liter bottle.", 1000, 250, 1.00, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course sparklingWater = new Beverages("Sparkling Water", "Fizzy and invigorating sparkling water in a one-liter bottle.", 1000, 250, 1.00, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course cocacola = new Beverages("Coca Cola", "Classic and delicious Coca-Cola in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
-        Course fanta = new Beverages("Fanta", "Fruity and refreshing Fanta in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
-        Course sprite = new Beverages("Sprite", "Lemon-lime flavored and thirst-quenching Sprite in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
+        Course stillWater = new Beverages("Still Water", "Refreshing and hydrating still water in a one-liter bottle.", 1000, 250, 1.00, MenuType.MENU, Set.of(AllergensEnum.NONE), false);
+        Course sparklingWater = new Beverages("Sparkling Water", "Fizzy and invigorating sparkling water in a one-liter bottle.", 1000, 250, 1.00, MenuType.MENU, Set.of(AllergensEnum.NONE), false);
+        Course cocacola = new Beverages("Coca Cola", "Classic and delicious Coca-Cola in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE), false);
+        Course fanta = new Beverages("Fanta", "Fruity and refreshing Fanta in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE), false);
+        Course sprite = new Beverages("Sprite", "Lemon-lime flavored and thirst-quenching Sprite in a 33cl bottle.", 330, 250, 2.00, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.NONE), false);
         Course redDraughtBeer = new Beverages("Red Draught Beer", "Rich and flavorful red draught beer served in a 0.4-liter glass.", 400, 250, 4, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN), true);
         Course blondeDraughtBeer = new Beverages("Blonde Draught Beer", "Crisp and refreshing blonde draught beer served in a 0.4-liter glass.", 400, 250, 3.5, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN), true);
         Course redWine = new Beverages("Red Wine", "Smooth and full-bodied red wine served in a 50ml glass.", 50, 250, 5, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
@@ -67,11 +67,10 @@ public class Main {
         Menu veganMenu = new Menu("Vegan Menu", MenuType.VEGAN_MENU);
         Menu fishMenu = new Menu("Fish Menu", MenuType.FISH_MENU);
         Menu fewKcalMenu = new Menu("Few KCal Menu", MenuType.FEW_KCAL_MENU);
-        Menu meatMenu = new Menu("Meat menu" , MenuType.MEAT_MENU);
+        Menu meatMenu = new Menu("Meat Menu" , MenuType.MEAT_MENU);
 
         // Ristorante
         Restaurant ilSolito = new Restaurant("il Solito");
-
 
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini, vegangStarterCourse, bruschetta, eggplatnParmesan);
         List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle, veganFirstCourse, firtstChildren, pennePesto, ravioliButterSage);
@@ -85,29 +84,17 @@ public class Main {
         fullMenu.addAllCourse(dessertsList);
         fullMenu.addAllCourse(beverageList);
 
-        meatMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.MEAT_MENU).toList());
-        childrenMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.CHILDREN_MENU).toList());
-        veganMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.VEGAN_MENU || c.getMenuType() == MenuType.VEGETARIAN_MENU).toList());
-        fishMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.FISH_MENU).toList());
+        meatMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.MEAT_MENU || c.getClass() == Beverages.class).toList());
+        childrenMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.CHILDREN_MENU || c.getClass() == Beverages.class).toList());
+        veganMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.VEGAN_MENU || c.getClass() == Beverages.class ).toList());
+        fishMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.FISH_MENU || c.getClass() == Beverages.class).toList());
         fewKcalMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getCalories() < 500).toList());
 
-// GENERATE DAILY MENU:
-    // fullMenu.generateMenu();
+        ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
+        ilSolito.printAllMenus();
+        ilSolito.chooseOneMenu("Meat Menu").checkAllergens();
 
 
-// GENERATE A FEW KCAL MENU:
-    // meatMenu.generateMenu();
-
-
-// RESTAURANT:
-     ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
-     ilSolito.menus();
-     ilSolito.chooseOneMenu(meatMenu, fishMenu, veganMenu, fewKcalMenu);
-     // IF YOU WANT APPLY A DISCOUNT OR NO
-     meatMenu.calculateAndApplyDiscount();
-
-// CHECK ALLERGENS
-    // meatMenu.checkAllergens();
 
     }
 }

@@ -2,6 +2,7 @@ import java.util.Set;
 
 public class Starters extends Course {
 
+    private double weight;
     /***
      * This is the constructor for the Starters class
      * @param name        Starter's name
@@ -13,8 +14,9 @@ public class Starters extends Course {
      * @param allergens   Starter's allergens
      */
 
-    public Starters(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
-        super(name, description, weight, calories, price, mt, allergens);
+    public Starters(String name, String description, double weight, double calories, double price,MenuType mt, Set<AllergensEnum> allergens) {
+        super(name, description, calories, price, mt, allergens);
+        this.weight = weight;
         this.courseType = CourseEnum.STARTERS;
     }
 

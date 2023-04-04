@@ -3,24 +3,11 @@ import java.util.*;
 public abstract class Course {
     protected String name;
     protected String description;
-    protected double weight;
     protected double price;
-    //protected HotOrColdEnum hoc;
     protected Set<AllergensEnum> allergens;
     protected MenuType menuType;
     protected CourseEnum courseType;
     protected double calories;
-
-
-    public Course(String name, String description, double weight, double calories, double price, MenuType menuType/*,HotOrColdEnum hoc*/, Set<AllergensEnum> allergens) {
-        this.name = name;
-        this.description = description;
-        this.weight = weight;
-        this.calories = calories;
-        this.price = price;
-        this.menuType = menuType;
-        this.allergens = new HashSet<>(allergens);
-    }
 
     public Course(String name, String description, double calories, double price, MenuType menuType, Set<AllergensEnum> allergens) {
         this.name = name;
@@ -58,27 +45,12 @@ public abstract class Course {
                 TextModifier.ANSI_RESET + " - " + this.price + "€\n" +
                 TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
                 TextModifier.ANSI_ITALIC +
-                this.description + TextModifier.ANSI_RESET);
+                getDescription() + TextModifier.ANSI_RESET);
     }
-
-//    public void checkAllergens() {
-//        Set<AllergensEnum> allergens = this.getAllergens();
-//        if (allergens.isEmpty()) {
-//            System.out.println(TextModifier.ANSI_RED + getName() + TextModifier.ANSI_RESET + " is safe to eat.");
-//        } else {
-//            System.out.print(TextModifier.ANSI_BRIGHT_YELLOW + "Warning: " + TextModifier.ANSI_RESET +
-//                    TextModifier.ANSI_BRIGHT_RED + getName() +
-//                    TextModifier.ANSI_RESET + " contains ");
-//            for (AllergensEnum allergen : allergens) {
-//                System.out.print("[" + allergen.getName() + "] ");
-//            }
-//        }
-//        System.out.println();
-//    }
 
     public void checkAllergens() {
         Set<AllergensEnum> allergens = this.getAllergens();
-        if (allergens.isEmpty()) {
+        if (allergens.contains(AllergensEnum.NONE)) {
             System.out.println(TextModifier.ANSI_RED + getName() + TextModifier.ANSI_RESET + " is safe to eat.");
         } else {
             System.out.print(TextModifier.ANSI_BRIGHT_YELLOW + "Warning: " + TextModifier.ANSI_RESET +

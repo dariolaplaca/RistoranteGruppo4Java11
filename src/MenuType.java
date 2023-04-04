@@ -4,7 +4,6 @@ public enum MenuType {
     MEAT_MENU("Meat"),
     VEGAN_MENU("Vegan"),
     CHILDREN_MENU("Children"),
-    VEGETARIAN_MENU("Vegetarian"),
     FEW_KCAL_MENU("Low KCal");
 
     private final String name;

@@ -2,6 +2,7 @@ import java.util.Set;
 
 public class Seconds extends Course {
 
+    private double weight;
     /***
      * This is the constructor for the Seconds class
      * @param name        Second's name
@@ -14,11 +15,12 @@ public class Seconds extends Course {
      */
 
     public Seconds(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
-        super(name, description, weight, calories, price, mt, allergens);
+        super(name, description, calories, price, mt, allergens);
+        this.weight = weight;
         this.courseType = CourseEnum.SECONDS;
     }
 
     public double getWeight() {return this.weight;}
-
     public void setWeight(double weight) {this.weight = weight;}
+
 }
