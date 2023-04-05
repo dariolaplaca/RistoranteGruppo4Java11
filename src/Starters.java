@@ -2,6 +2,7 @@ import java.util.Set;
 
 public class Starters extends Course {
 
+    //TODO se sono gourmet
     private double weight;
     /***
      * This is the constructor for the Starters class

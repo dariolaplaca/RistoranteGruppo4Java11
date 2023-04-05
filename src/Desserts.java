@@ -1,6 +1,11 @@
 import java.util.Set;
 
+
+
+
 public class Desserts extends Course{
+
+    //TODO se devo stampare le info dei figli come faccio, quindi super.print() e poi la stampa degli altri figli
     private double weight;
     /**
      * @param name name of the dessert

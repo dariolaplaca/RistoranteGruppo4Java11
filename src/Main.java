@@ -62,15 +62,18 @@ public class Main {
         Course whiteRussian = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
 
         //MENU
+        //TODO possiamo usare una classe di appoggio che sarà vetrinadeimenuristorante
         Menu fullMenu = new Menu("Menu", MenuType.MENU);
         Menu childrenMenu = new Menu("Children's Menu", MenuType.CHILDREN_MENU);
         Menu veganMenu = new Menu("Vegan Menu", MenuType.VEGAN_MENU);
         Menu fishMenu = new Menu("Fish Menu", MenuType.FISH_MENU);
         Menu fewKcalMenu = new Menu("Few KCal Menu", MenuType.FEW_KCAL_MENU);
-        Menu meatMenu = new Menu("Meat Menu" , MenuType.MEAT_MENU);
+        Menu meatMenu = new Menu("Meat Menu", MenuType.MEAT_MENU);
 
         // Ristorante
         Restaurant ilSolito = new Restaurant("il Solito");
+
+
 
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini, vegangStarterCourse, bruschetta, eggplatnParmesan);
         List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle, veganFirstCourse, firtstChildren, pennePesto, ravioliButterSage);
@@ -84,16 +87,20 @@ public class Main {
         fullMenu.addAllCourse(dessertsList);
         fullMenu.addAllCourse(beverageList);
 
-        meatMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.MEAT_MENU || c.getClass() == Beverages.class).toList());
-        childrenMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.CHILDREN_MENU || c.getClass() == Beverages.class).toList());
-        veganMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.VEGAN_MENU || c.getClass() == Beverages.class ).toList());
-        fishMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getMenuType() == MenuType.FISH_MENU || c.getClass() == Beverages.class).toList());
-        fewKcalMenu.addAllCourse(fullMenu.getCourseList().stream().filter(c -> c.getCalories() < 500).toList());
+        meatMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
+                c -> c.getMenuType() == MenuType.MEAT_MENU || c.getClass() == Beverages.class).toList());
+        childrenMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
+                c -> c.getMenuType() == MenuType.CHILDREN_MENU || c.getClass() == Beverages.class).toList());
+        veganMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
+                c -> c.getMenuType() == MenuType.VEGAN_MENU || c.getClass() == Beverages.class).toList());
+        fishMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
+                c -> c.getMenuType() == MenuType.FISH_MENU || c.getClass() == Beverages.class).toList());
+        fewKcalMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
+                c -> c.getCalories() < 500).toList());
 
         ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
         ilSolito.printAllMenus();
         ilSolito.chooseOneMenu("Meat Menu").checkAllergens();
-
 
 
     }

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Restaurant {
 
+    //TODO info ristorante e sicuramente il tipo
+
     private String name;
     private List<Menu> menus;
 

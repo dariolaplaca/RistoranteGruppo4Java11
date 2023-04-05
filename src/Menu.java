@@ -1,12 +1,9 @@
-import org.w3c.dom.Text;
-
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Menu {
 
     private List<Course> courseList;
-    private List<Course> currentMenu;
+    private List<Course> menuOfDay;
     private MenuType menuType;
     private String name;
 
@@ -19,7 +16,7 @@ public class Menu {
         this.menuType = menuType;
         this.name = name;
         this.courseList = new ArrayList<>();
-        this.currentMenu = new ArrayList<>();
+        this.menuOfDay = new ArrayList<>();
     }
 
     public List<Course> getCourseList() {return courseList;}
@@ -31,8 +28,8 @@ public class Menu {
     public MenuType getMenuType() {return this.menuType;}
     public void setMenuType(MenuType menuType) {this.menuType = menuType;}
 
-    public List<Course> getCurrentMenu() {return this.currentMenu;}
-    public void setCurrentMenu(List<Course> currentMenu) {this.currentMenu = currentMenu;}
+    public List<Course> getMenuOfDay() {return this.menuOfDay;}
+    public void setMenuOfDay(List<Course> menuOfDay) {this.menuOfDay = menuOfDay;}
 
     public void addCourse(Course s) {courseList.add(s);}
     public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
@@ -59,8 +56,8 @@ public class Menu {
     public void generateMenu() {
         System.out.println("" + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_YELLOW + TextModifier.ANSI_UNDERLINE + menuType.getName() + " Menu" + TextModifier.ANSI_RESET);
         addOneDifferentCourseOfEachType();
-        currentMenu.sort(Comparator.comparingInt(a -> a.courseType.getOrder()));
-        for (Course c : currentMenu) {
+        menuOfDay.sort(Comparator.comparingInt(a -> a.courseType.getOrder()));
+        for (Course c : menuOfDay) {
             System.out.print(TextModifier.ANSI_GREEN + c.getClass().getName() + ": " + TextModifier.ANSI_RESET);
             c.printInfo();
             System.out.println();
@@ -85,7 +82,7 @@ public class Menu {
         for (Course c : shuffledList) {
             Class<? extends Course> courseClass = c.getClass();
             if (!classSet.contains(courseClass)) {
-                currentMenu.add(c);
+                menuOfDay.add(c);
                 classSet.add(courseClass);
             }
         }
@@ -96,7 +93,7 @@ public class Menu {
      */
     public void checkAllergens() {
         HashSet<AllergensEnum> newHash = new HashSet<>();
-        for (Course c : currentMenu) {
+        for (Course c : menuOfDay) {
             if (c.getAllergens().equals(AllergensEnum.NONE)) {
                 System.out.println(TextModifier.ANSI_GREEN + "Allergens not present" + AllergensEnum.NONE.getName() + TextModifier.ANSI_RESET);
             } else {
@@ -127,7 +124,7 @@ public class Menu {
      */
     public double calculatePriceMenu() {
         double totalCost = 0;
-        for (Course course : currentMenu) {
+        for (Course course : menuOfDay) {
             totalCost += course.getPrice();
         }
         totalCost = Math.floor(totalCost / 10) * 10;
@@ -139,7 +136,7 @@ public class Menu {
      */
     public double calculateKcalMenu(){
         double sumCourseKcal = 0 ;
-        for (Course c : currentMenu){
+        for (Course c : menuOfDay){
             sumCourseKcal += c.getCalories();
         }
         return Math.floor(sumCourseKcal);
