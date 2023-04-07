@@ -71,9 +71,8 @@ public class Main {
         Menu meatMenu = new Menu("Meat Menu", MenuType.MEAT_MENU);
 
         // Ristorante
-        Restaurant ilSolito = new Restaurant("il Solito");
-
-
+        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano");
+        ilSolito.printInfo();
 
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini, vegangStarterCourse, bruschetta, eggplatnParmesan);
         List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle, veganFirstCourse, firtstChildren, pennePesto, ravioliButterSage);
@@ -99,7 +98,6 @@ public class Main {
                 c -> c.getCalories() < 500).toList());
 
         ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
-        ilSolito.printAllMenus();
         ilSolito.chooseOneMenu("Meat Menu").checkAllergens();
 
 

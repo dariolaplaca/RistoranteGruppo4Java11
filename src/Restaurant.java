@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Restaurant {
 
-    //TODO info ristorante e sicuramente il tipo
-
     private String name;
+    private String address;
+    private String type;
     private List<Menu> menus;
 
     /***
@@ -14,8 +13,10 @@ public class Restaurant {
      * @param name Restaurant name
      */
 
-    public Restaurant(String name){
+    public Restaurant(String name, String address, String type){
         this.name = name;
+        this.address = address;
+        this.type = type;
         this.menus = new ArrayList<>();
     }
     // GETTER & SETTER
@@ -23,6 +24,19 @@ public class Restaurant {
     public void setName(String name) {this.name = name;}
     public List<Menu> getMenu() {return menus;}
     public void setMenu(List<Menu> menu) {this.menus = menu;}
+    public String getAddress() {
+        return this.address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getType() {
+        return this.type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public void addMenu(Menu mt ){ menus.add(mt);}
     public void addAllMenu(List<Menu> mt){ menus.addAll(mt);}
 
@@ -35,7 +49,7 @@ public class Restaurant {
     }
 
     /***
-     * method that print a type of menu with a user input
+     * method that generate a type of menu
      * @param menuName name of the menu to return
      */
     public Menu chooseOneMenu(String menuName) {
@@ -46,5 +60,10 @@ public class Restaurant {
             }
         }
         return null;
+    }
+
+    public void printInfo(){
+        System.out.println("\t" + TextModifier.ANSI_ITALIC + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_RED + this.name + TextModifier.ANSI_RESET +
+                "\n" + this.type + "\n" + this.address);
     }
 }
