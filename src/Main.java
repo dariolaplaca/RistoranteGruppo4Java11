@@ -3,16 +3,16 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         // - STARTERS
-        Course ffc = new Starters("Forever Fried Chicken Calamari", "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", 500, 400, 69.69, MenuType.FISH_MENU, Set.of(AllergensEnum.SHELLFISH));
-        Course pineDuck = new Starters("Pineapple Duck Carpaccio", "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", 400, 200, 3.50, MenuType.MENU, Set.of(AllergensEnum.NONE));
-        Course typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", 450, 800, 4.00, MenuType.MENU, Set.of(AllergensEnum.SOY));
-        Course carneSalada = new Starters("Carne Salada with Wheat Flakes and Sour Mushrooms", "Tender carne salada, served with crunchy wheat flakes, sour mushrooms and a light tomato sauce", 450, 120, 3.50, MenuType.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course salmon = new Starters("Norwegian Salmon with 5 Cereal Crostini and Flambéed Shrimps with Cognac", "Pan-seared Norwegian salmon, served with a medley of five cereal crostini and flambéed shrimps with cognac", 550, 200, 8.00, MenuType.FISH_MENU, Set.of(AllergensEnum.FISH, AllergensEnum.SHELLFISH, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course lamb = new Starters("Breaded and Crispy Lamb Bites", "Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip", 500, 440, 2.50, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad", "Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad", 400, 312, 6.00, MenuType.MENU, Set.of(AllergensEnum.NUTS));
-        Course vegangStarterCourse = new Starters("kale chips, pumpkin and potatoes", "kale chips, pumpkin and potatoes", 120, 240, 5.0, MenuType.MENU, Set.of(AllergensEnum.KALE, AllergensEnum.PUMPKIN, AllergensEnum.POTATOES));
-        Course bruschetta = new Starters("Bruschetta with fresh tomatoes and basil", "Toasted bread slice topped with garlic, olive oil, fresh diced tomatoes, and chopped basil", 70, 150, 5.0, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course eggplatnParmesan = new Starters("Eggplant Parmesan Bites", "A quick and easy appetizer made of fried eggplant cubes topped with tomato sauce and grated Parmesan cheese", 100, 200, 7, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.DAIRY));
+        Course ffc = new Starters("Forever Fried Chicken Calamari", "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", false, 400, 69.69, MenuType.FISH_MENU, Set.of(AllergensEnum.SHELLFISH));
+        Course pineDuck = new Starters("Pineapple Duck Carpaccio", "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", true, 200, 3.50, MenuType.MENU, Set.of(AllergensEnum.NONE));
+        Course typicalHam = new Starters("Typical Vigezzino Ham with Sweet and Sour Skewers", "Marinated Vigezzino ham skewers, grilled to perfection and served with a sweet and sour glaze", false, 800, 4.00, MenuType.MENU, Set.of(AllergensEnum.SOY));
+        Course carneSalada = new Starters("Carne Salada with Wheat Flakes and Sour Mushrooms", "Tender carne salada, served with crunchy wheat flakes, sour mushrooms and a light tomato sauce", false, 120, 3.50, MenuType.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course salmon = new Starters("Norwegian Salmon with 5 Cereal Crostini and Flambéed Shrimps with Cognac", "Pan-seared Norwegian salmon, served with a medley of five cereal crostini and flambéed shrimps with cognac", true, 200, 8.00, MenuType.FISH_MENU, Set.of(AllergensEnum.FISH, AllergensEnum.SHELLFISH, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course lamb = new Starters("Breaded and Crispy Lamb Bites", "Bite-sized pieces of tender lamb, breaded and fried to a golden crisp. Served with a tangy garlic mayo dip", false, 440, 2.50, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course hamPorcini = new Starters("Typical Vigezzino Ham with Porcini Mushrooms and Walnut Salad", "Thinly sliced Vigezzino ham, served with a robust porcini mushroom and walnut salad", false, 312, 6.00, MenuType.MENU, Set.of(AllergensEnum.NUTS));
+        Course vegangStarterCourse = new Starters("kale chips, pumpkin and potatoes", "kale chips, pumpkin and potatoes", false, 240, 5.0, MenuType.MENU, Set.of(AllergensEnum.KALE, AllergensEnum.PUMPKIN, AllergensEnum.POTATOES));
+        Course bruschetta = new Starters("Bruschetta with fresh tomatoes and basil", "Toasted bread slice topped with garlic, olive oil, fresh diced tomatoes, and chopped basil", false, 150, 5.0, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course eggplatnParmesan = new Starters("Eggplant Parmesan Bites", "A quick and easy appetizer made of fried eggplant cubes topped with tomato sauce and grated Parmesan cheese", false, 200, 7, MenuType.CHILDREN_MENU, Set.of(AllergensEnum.DAIRY));
 
         // - FIRSTS
         Course genovese = new Firsts("Genovese", "Traditional Ligurian dish made with slow-cooked onions, served with a fragrant basil pesto sauce and freshly grated Parmesan cheese.", 8.50, 160, 12.99, MenuType.MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
@@ -99,7 +99,6 @@ public class Main {
 
         ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
         ilSolito.chooseOneMenu("Meat Menu").checkAllergens();
-
 
     }
 }
