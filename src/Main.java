@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Main {
@@ -17,7 +18,7 @@ public class Main {
         // - FIRSTS
         Course genovese = new Firsts("Genovese", "Traditional Ligurian dish made with slow-cooked onions, served with a fragrant basil pesto sauce and freshly grated Parmesan cheese.", 8.50, 160, 12.99, MenuType.MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course carbonara = new Firsts("Carbonara", "A classic Roman pasta dish, featuring spaghetti in a creamy sauce made with eggs, pancetta, and Pecorino Romano cheese.", 9.00, 160, 12.99, MenuType.MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course gricia = new Firsts("Gricia", "A simple but flavorful pasta dish from Rome, featuring bucatini pasta in a sauce made with pork jowl, Pecorino Romano cheese, and black pepper.", 10, 120, 14.99, MenuType.MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course gricia = new Firsts("Gricia", "A simple but flavorful pasta dish from Rome, ``featuring bucatini pasta in a sauce made with pork jowl, Pecorino Romano cheese, and black pepper.", 10, 120, 14.99, MenuType.MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course amatriciana = new Firsts("Amatriciana", "Hearty pasta dish from the town of Amatrice, featuring bucatini pasta in a tangy tomato sauce with cured pork cheek and Pecorino Romano cheese.", 10, 130, 10.99, MenuType.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course orecchiette = new Firsts("Orecchiette broccoli and sausage", "Ear-shaped pasta from Puglia, tossed with tender broccoli florets, savory sausage, garlic, and olive oil.", 8, 120, 7.99, MenuType.MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course tagliatelle = new Firsts("Tagliatelle with white meat sauce and frutti di mare", "Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", 7, 150, 18.99, MenuType.FISH_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
@@ -99,6 +100,7 @@ public class Main {
 
         ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
         ilSolito.chooseOneMenu("Meat Menu").checkAllergens();
+
 
     }
 }

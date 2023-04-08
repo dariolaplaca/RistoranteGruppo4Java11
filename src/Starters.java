@@ -28,4 +28,25 @@ public class Starters extends Course {
     public void setGourmet(boolean gourmet) {
         isGourmet = gourmet;
     }
+
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        if (isGourmet == true){
+            System.out.println("\t" +
+                    TextModifier.ANSI_BOLD +
+                    TextModifier.ANSI_RED  +
+                    TextModifier.ANSI_RESET +
+                    TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
+                    TextModifier.ANSI_ITALIC +  "Is gourmet!" + TextModifier.ANSI_RESET);
+        }else {
+            System.out.println("\t" +
+                    TextModifier.ANSI_BOLD +
+                    TextModifier.ANSI_RED  +
+                    TextModifier.ANSI_RESET +
+                    TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
+                    TextModifier.ANSI_ITALIC +  "Is not gourmet!" + TextModifier.ANSI_RESET);
+        }
+
+    }
 }
