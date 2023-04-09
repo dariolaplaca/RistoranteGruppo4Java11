@@ -1,6 +1,6 @@
 public enum MenuType {
     FISH_MENU("Fish"),
-    MENU("Whole Menu"),
+    MENU("Whole"),
     MEAT_MENU("Meat"),
     VEGAN_MENU("Vegan"),
     CHILDREN_MENU("Children"),

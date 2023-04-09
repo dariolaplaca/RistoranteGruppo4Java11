@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public class Beverages extends Course{
+public class Beverages extends Course {
     private double milliliters;
     private boolean isAlcoholic;
 
@@ -15,7 +15,7 @@ public class Beverages extends Course{
      * @param allergens   Beverage's allergens
      */
 
-    public Beverages(String name, String description, double milliliters,double calories, double price,MenuType mt, Set<AllergensEnum> allergens, boolean alcohol) {
+    public Beverages(String name, String description, double milliliters, double calories, double price, MenuType mt, Set<AllergensEnum> allergens, boolean alcohol) {
         super(name, description, calories, price, mt, allergens);
         this.description = description;
         this.milliliters = milliliters;

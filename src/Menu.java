@@ -56,7 +56,7 @@ public class Menu {
     public void generateMenu() {
         System.out.println("" + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_YELLOW + TextModifier.ANSI_UNDERLINE + menuType.getName() + " Menu" + TextModifier.ANSI_RESET);
         addOneDifferentCourseOfEachType();
-        menuOfDay.sort(Comparator.comparingInt(a -> a.courseType.getOrder()));
+        menuOfDay.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
         for (Course c : menuOfDay) {
             System.out.print(TextModifier.ANSI_GREEN + c.getClass().getName() + ": " + TextModifier.ANSI_RESET);
             c.printInfo();
