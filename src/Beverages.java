@@ -1,5 +1,9 @@
 import java.util.Set;
 
+/**
+ * Beverages class is an extension of Course that implements drinks
+ */
+
 public class Beverages extends Course {
     private double milliliters;
     private boolean isAlcoholic;
@@ -35,12 +39,11 @@ public class Beverages extends Course {
         isAlcoholic = alcoholic;
     }
 
-    @Override
-    public String getDescription(){
+    public void printInfo(){
+        super.printInfo();
+        System.out.println(TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + String.valueOf(this.milliliters) + "ml" + TextModifier.ANSI_RESET);
         if(isAlcoholic){
-            return description + TextModifier.ANSI_RESET + "\n" + TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "Warning this beverage is alcoholic, you must show your ID" + TextModifier.ANSI_RESET;
-        } else{
-            return description;
+            System.out.println(TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "Warning this beverage is alcoholic, you must show your ID" + TextModifier.ANSI_RESET);
         }
     }
 }
