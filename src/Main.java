@@ -127,10 +127,6 @@ public class Main {
         ilSolito.freeTable(table1);
 
 
-        menuController.printAllCourses();
-
-//        ilSolito.printInfo();
-//        ilSolito.printAllMenus();
-//        ilSolito.chooseOneMenu("meat menu");
+        ilSolito.chooseOneMenu("meat menu").calculateAndApplyDiscount(20);
     }
 }

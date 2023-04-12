@@ -11,7 +11,7 @@ import java.util.*;
 public class Menu {
 
     private List<Course> courseList;
-    private List<Course> menuOfDay;
+    private List<Course> currentMenu;
     private MenuType menuType;
     private String name;
 
@@ -24,12 +24,10 @@ public class Menu {
         this.menuType = menuType;
         this.name = name;
         this.courseList = new ArrayList<>();
-        this.menuOfDay = new ArrayList<>();
+        this.currentMenu = new ArrayList<>();
     }
 
     public List<Course> getCourseList() {return courseList;}
-
-
 
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
@@ -37,8 +35,7 @@ public class Menu {
     public MenuType getMenuType() {return this.menuType;}
     public void setMenuType(MenuType menuType) {this.menuType = menuType;}
 
-    public List<Course> getMenuOfDay() {return this.menuOfDay;}
-    public void setMenuOfDay(List<Course> menuOfDay) {this.menuOfDay = menuOfDay;}
+    public List<Course> getCurrentMenu() {return this.currentMenu;}
 
     public void addCourse(Course s) {courseList.add(s);}
     public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
@@ -58,15 +55,14 @@ public class Menu {
             System.out.println();
         }
     }
-
     /**
      * Generate a menu.Menu that contains a course of each type
      */
     public void generateMenu() {
         System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " menu.Menu" + TextModifierEnum.ANSI_RESET);
         addOneDifferentCourseOfEachType();
-        menuOfDay.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
-        for (Course c : menuOfDay) {
+        currentMenu.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
+        for (Course c : currentMenu) {
             System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getName() + ": " + TextModifierEnum.ANSI_RESET);
             c.printInfo();
             System.out.println();
@@ -79,7 +75,6 @@ public class Menu {
             System.out.println(TextModifierEnum.ANSI_GREEN + "\n\tTotal Kcal: " + sumKcalMenu + TextModifierEnum.ANSI_RESET);
         }
     }
-
     /**
      * Adds a course of each type to the current menu
      */
@@ -91,18 +86,17 @@ public class Menu {
         for (Course c : shuffledList) {
             Class<? extends Course> courseClass = c.getClass();
             if (!classSet.contains(courseClass)) {
-                menuOfDay.add(c);
+                currentMenu.add(c);
                 classSet.add(courseClass);
             }
         }
     }
-
     /**
      * @check if menu contains allergens
      */
     public void checkAllergens() {
         HashSet<AllergensEnum> newHash = new HashSet<>();
-        for (Course c : menuOfDay) {
+        for (Course c : currentMenu) {
             if (c.getAllergens().equals(AllergensEnum.NONE)) {
                 System.out.println(TextModifierEnum.ANSI_GREEN + "Allergens not present" + AllergensEnum.NONE.getName() + TextModifierEnum.ANSI_RESET);
             } else {
@@ -113,7 +107,6 @@ public class Menu {
         newHash.forEach(a -> System.out.print(TextModifierEnum.ANSI_YELLOW + a.getName() + ", " + TextModifierEnum.ANSI_RESET));
         System.out.print(TextModifierEnum.ANSI_RED + " ]" + TextModifierEnum.ANSI_RESET);
     }
-
     /**
      * @return an HashSet of 3 randoms courses that are not course.Beverages
      */
@@ -133,7 +126,7 @@ public class Menu {
      */
     public double calculatePriceMenu() {
         double totalCost = 0;
-        for (Course course : menuOfDay) {
+        for (Course course : currentMenu) {
             totalCost += course.getPrice();
         }
         totalCost = Math.floor(totalCost / 10) * 10;
@@ -145,34 +138,20 @@ public class Menu {
      */
     public double calculateKcalMenu(){
         double sumCourseKcal = 0 ;
-        for (Course c : menuOfDay){
+        for (Course c : currentMenu){
             sumCourseKcal += c.getCalories();
         }
         return Math.floor(sumCourseKcal);
     }
-
-
     /**
      * @return the price menu, or price menu discounted
      */
-        /*
-    public void calculateAndApplyDiscount() {
-        Scanner insertNumberForDiscount = new Scanner(System.in);
-        Scanner ifDiscountString = new Scanner(System.in);
+    public void calculateAndApplyDiscount(double discount) {
         double priceMenu = 0;
-        System.out.println(enumRestaurant.TextModifier.ANSI_BOLD + "Do you want to discount the current menu...???" + enumRestaurant.TextModifier.ANSI_RESET);
-        String yesOrNo = ifDiscountString.nextLine();
-        for (course.Course c : currentMenu) {
+        for (Course c : currentMenu) {
             priceMenu += c.getPrice();
         }
-        if (yesOrNo.strip().equals("yes")) {
-            System.out.println(enumRestaurant.TextModifier.ANSI_BRIGHT_PURPLE + " \n\tPrice menu: " + Math.floor(priceMenu) + "€" + enumRestaurant.TextModifier.ANSI_RESET);
-            System.out.println(enumRestaurant.TextModifier.ANSI_YELLOW + " \n\tPlease insert a discount..." + enumRestaurant.TextModifier.ANSI_RESET);
-            double sc = insertNumberForDiscount.nextInt();
-            System.out.println("\n\tPrice menu discounted:" + enumRestaurant.TextModifier.ANSI_GREEN + " " + Math.floor((priceMenu / 100) * (100 - sc)) + "€" + enumRestaurant.TextModifier.ANSI_RESET);
-        } else if (yesOrNo.equals("no")) {
-            System.out.println("\n\tPrezzo menu: " + enumRestaurant.TextModifier.ANSI_RED + " " + Math.floor(priceMenu) + "€" + enumRestaurant.TextModifier.ANSI_RESET);
-        }
+        System.out.println("\n\tPrice menu discounted:" + TextModifierEnum.ANSI_GREEN + " " +
+                Math.floor((priceMenu / 100) * (100 - discount)) + "€" + TextModifierEnum.ANSI_RESET);
     }
-    */
 }
