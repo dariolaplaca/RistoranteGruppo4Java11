@@ -3,7 +3,9 @@ import enumRestaurant.AllergensEnum;
 import enumRestaurant.MenuType;
 import menu.Menu;
 import menu.MenuController;
+import restaurant.Customer;
 import restaurant.Restaurant;
+import restaurant.Table;
 
 import java.util.*;
 
@@ -97,6 +99,29 @@ public class Main {
         fishMenu.addAllCourse(menuController.generateFishMenu());
         childrenMenu.addAllCourse(menuController.generateChildrenMenu());
         veganMenu.addAllCourse(menuController.generateVeganMenu());
+
+        Table table1 = new Table(2);
+        Table table2 = new Table(4);
+        Table table3 = new Table(6);
+        Table table4 = new Table(8);
+
+        ilSolito.addTable(table1);
+        ilSolito.addTable(table2);
+        ilSolito.addTable(table3);
+        ilSolito.addTable(table4);
+
+        ilSolito.printTablesInfo();
+
+        Customer dario = new Customer("Dario", MenuType.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
+        Customer cris = new Customer("Cris", MenuType.VEGAN_MENU, "criswow@gmail.com", "Abcde123");
+
+        ilSolito.bookATable(table2, dario, 3);
+        ilSolito.bookATable(table2, cris, 5);
+        ilSolito.bookATable(table3, cris, 5);
+
+        ilSolito.printOccupiedTables();
+
+        ilSolito.freeTable(table1);
 
         meatMenu.generateMenu();
 //        ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));

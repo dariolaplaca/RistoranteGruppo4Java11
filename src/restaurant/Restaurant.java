@@ -1,9 +1,11 @@
 package restaurant;
 
+import enumRestaurant.TableStateEnum;
 import enumRestaurant.TextModifier;
 import menu.Menu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Restaurant {
@@ -12,6 +14,7 @@ public class Restaurant {
     private String address;
     private String type;
     private List<Menu> menus;
+    private HashMap<Table, TableStateEnum> tables;
 
     /***
      * This is the constructor for the restaurant.Restaurant class
@@ -23,6 +26,7 @@ public class Restaurant {
         this.address = address;
         this.type = type;
         this.menus = new ArrayList<>();
+        tables = new HashMap<>();
     }
     // GETTER & SETTER
     public String getName() {return name;}
@@ -40,6 +44,14 @@ public class Restaurant {
     }
     public void setType(String type) {
         this.type = type;
+    }
+
+    public HashMap<Table, TableStateEnum> getTables() {
+        return this.tables;
+    }
+
+    public void setTables(HashMap<Table, TableStateEnum> tables) {
+        this.tables = tables;
     }
 
     public void addMenu(Menu mt ){ menus.add(mt);}
@@ -65,6 +77,51 @@ public class Restaurant {
             }
         }
         return null;
+    }
+
+    public void addTable(Table table){
+        tables.put(table, TableStateEnum.AVAILABLE);
+    }
+
+    public void bookATable(Table table, Customer customer, int numberOfPeople){
+        if(table.getNumberOfSeats() < numberOfPeople){
+            System.out.println("The table n° " + table.getId() + " is not suited for the group");
+        } else {
+            table.bookTable(customer);
+            tables.put(table, TableStateEnum.OCCUPIED);
+        }
+    }
+
+    public void freeTable(Table table){
+        table.freeTable();
+        tables.put(table, TableStateEnum.AVAILABLE);
+    }
+
+    public void printTablesInfo(){
+        for(Table table : tables.keySet()){
+            table.printInfo();
+            System.out.println(tables.get(table) + "\n");
+        }
+    }
+
+    public void printAvailableTables(){
+        System.out.println("\nAVAILABLE TABLES:\n");
+        for(Table table : tables.keySet()){
+            if(tables.get(table) == TableStateEnum.AVAILABLE){
+                table.printInfo();
+                System.out.println();
+            }
+        }
+    }
+
+    public void printOccupiedTables(){
+        System.out.println("\nOCCUPIED TABLES:\n");
+        for(Table table : tables.keySet()){
+            if(tables.get(table) == TableStateEnum.OCCUPIED){
+                table.printInfo();
+                System.out.println();
+            }
+        }
     }
 
     public void printInfo(){

@@ -50,7 +50,7 @@ public class Menu {
         Course currentCourse = courseList.get(courseList.size() - 1);
         for (Course c : courseList) {
             if (currentCourse.getClass() != c.getClass()) {
-                System.out.println("\n\t" + TextModifier.ANSI_UNDERLINE + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_RED + "\t" + c.getClass().getName() + TextModifier.ANSI_RESET);
+                System.out.println("\n\t" + TextModifier.ANSI_UNDERLINE + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_RED + "\t" + c.getClass().getSimpleName() + TextModifier.ANSI_RESET);
                 currentCourse = c;
             }
             c.printInfo();
@@ -66,7 +66,7 @@ public class Menu {
         addOneDifferentCourseOfEachType();
         menuOfDay.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
         for (Course c : menuOfDay) {
-            System.out.print(TextModifier.ANSI_GREEN + c.getClass().getName() + ": " + TextModifier.ANSI_RESET);
+            System.out.print(TextModifier.ANSI_GREEN + c.getClass().getSimpleName() + ": " + TextModifier.ANSI_RESET);
             c.printInfo();
             System.out.println();
         }

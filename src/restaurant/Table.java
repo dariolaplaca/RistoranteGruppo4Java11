@@ -6,17 +6,16 @@ import restaurant.Customer;
 public class Table {
     private static int idCounter = 0;
     private int id;
+
     private Customer customer;
     private MenuType menuType;
     private int numberOfSeats;
-    private boolean isVip;
 
-    public Table(MenuType menuType, int numberOfSeats, boolean isVip) {
+    public Table(int numberOfSeats) {
         this.id = ++idCounter;
-        this.menuType = menuType;
         this.numberOfSeats = numberOfSeats;
-        this.isVip = isVip;
         this.customer = null;
+        this.menuType = null;
     }
 
     public int getId() {
@@ -43,14 +42,6 @@ public class Table {
         this.numberOfSeats = numberOfSeats;
     }
 
-    public boolean isVip() {
-        return this.isVip;
-    }
-
-    public void setVip(boolean vip) {
-        isVip = vip;
-    }
-
     public Customer getCustomer() {
         return this.customer;
     }
@@ -70,6 +61,11 @@ public class Table {
     }
 
     public void printInfo(){
-        System.out.println("restaurant.Table n° " + this.id + "\n" + "Booked for: " + this.customer.getName() + "\nNumber of seats: " + this.numberOfSeats);
+        if(this.customer == null){
+            System.out.println("Table n° " + this.id + "\n" + "Booked for: Nobody\nNumber of seats: " + this.numberOfSeats);
+        } else {
+            System.out.println("Table n° " + this.id + "\n" + "Booked for: " + this.customer.getName() + "\nNumber of seats: " + this.numberOfSeats);
+        }
+
     }
 }

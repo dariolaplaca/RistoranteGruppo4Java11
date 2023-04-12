@@ -9,7 +9,6 @@ public class Customer {
     private MenuType menuType;
     private String mail;
     private String password;
-    private boolean isVip;
 
     public Customer(String name, MenuType menuType, String mail, String password) {
         this.id = ++idCounter;
@@ -59,15 +58,7 @@ public class Customer {
         this.password = password;
     }
 
-    public boolean isVip() {
-        return this.isVip;
-    }
-
-    public void setVip(boolean vip) {
-        isVip = vip;
-    }
-
     public void printInfo(){
-        System.out.println(this.name + " " + this.menuType + " menu\n" + this.mail + "\nIs VIP: " + this.isVip);
+        System.out.println(this.name + " " + this.menuType + " menu\n" + this.mail);
     }
 }
