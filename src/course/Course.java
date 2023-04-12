@@ -1,9 +1,9 @@
 package course;
 
-import enumRestaurant.AllergensEnum;
-import enumRestaurant.CourseEnum;
-import enumRestaurant.MenuType;
-import enumRestaurant.TextModifierEnum;
+import enumProject.AllergensEnum;
+import enumProject.CourseEnum;
+import enumProject.MenuTypeEnum;
+import enumProject.TextModifierEnum;
 
 import java.util.*;
 
@@ -12,23 +12,23 @@ public abstract class Course {
     protected String description;
     protected double price;
     protected Set<AllergensEnum> allergens;
-    protected MenuType menuType;
+    protected MenuTypeEnum menuTypeEnum;
     protected CourseEnum courseType;
     protected double calories;
 
-    public Course(String name, String description, double calories, double price, MenuType menuType, Set<AllergensEnum> allergens) {
+    public Course(String name, String description, double calories, double price, MenuTypeEnum menuTypeEnum, Set<AllergensEnum> allergens) {
         this.name = name;
         this.description = description;
         this.calories = calories;
         this.price = price;
-        this.menuType = menuType;
+        this.menuTypeEnum = menuTypeEnum;
         this.allergens = new HashSet<>(allergens);
     }
     public void setName(String name) {this.name = name;}
     public String getName() {return this.name;}
 
-    public MenuType getMenuType() {return menuType;}
-    public void setMenuType(MenuType menuType) {this.menuType = menuType;}
+    public MenuTypeEnum getMenuType() {return menuTypeEnum;}
+    public void setMenuType(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
 
     public Set<AllergensEnum> getAllergens() {return allergens;}
     public void setAllergens(HashSet<AllergensEnum> allergens) {this.allergens = allergens;}

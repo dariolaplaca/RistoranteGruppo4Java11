@@ -2,26 +2,28 @@ package menu;
 
 import course.Beverages;
 import course.Course;
-import enumRestaurant.AllergensEnum;
-import enumRestaurant.MenuType;
-import enumRestaurant.TextModifierEnum;
+import enumProject.AllergensEnum;
+import enumProject.MenuTypeEnum;
+import enumProject.TextModifierEnum;
 
 import java.util.*;
-
+/**
+*
+ */
 public class Menu {
 
     private List<Course> courseList;
     private List<Course> currentMenu;
-    private MenuType menuType;
+    private MenuTypeEnum menuTypeEnum;
     private String name;
 
     /**
      * This is the constructor for the menu.Menu class
      * @param name     menu.Menu name
-     * @param menuType menu.Menu type
+     * @param menuTypeEnum menu.Menu type
      */
-    public Menu(String name, MenuType menuType) {
-        this.menuType = menuType;
+    public Menu(String name, MenuTypeEnum menuTypeEnum) {
+        this.menuTypeEnum = menuTypeEnum;
         this.name = name;
         this.courseList = new ArrayList<>();
         this.currentMenu = new ArrayList<>();
@@ -32,8 +34,8 @@ public class Menu {
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
 
-    public MenuType getMenuType() {return this.menuType;}
-    public void setMenuType(MenuType menuType) {this.menuType = menuType;}
+    public MenuTypeEnum getMenuType() {return this.menuTypeEnum;}
+    public void setMenuType(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
 
     public List<Course> getCurrentMenu() {return this.currentMenu;}
 
@@ -44,7 +46,7 @@ public class Menu {
      * Prints all the courses of the menu
      */
     public void printMenu() {
-        System.out.println("\n\t" + TextModifierEnum.ANSI_BRIGHT_RED + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " MENU" + TextModifierEnum.ANSI_RESET + "\n");
+        System.out.println("\n\t" + TextModifierEnum.ANSI_BRIGHT_RED + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_UNDERLINE + menuTypeEnum.getName() + " MENU" + TextModifierEnum.ANSI_RESET + "\n");
         Course currentCourse = courseList.get(courseList.size() - 1);
         for (Course c : courseList) {
             if (currentCourse.getClass() != c.getClass()) {
@@ -59,7 +61,7 @@ public class Menu {
      * Generate a menu.Menu that contains a course of each type
      */
     public void generateMenu() {
-        System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " menu.Menu" + TextModifierEnum.ANSI_RESET);
+        System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuTypeEnum.getName() + " menu.Menu" + TextModifierEnum.ANSI_RESET);
         addOneDifferentCourseOfEachType();
         currentMenu.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
         for (Course c : currentMenu) {
@@ -69,7 +71,7 @@ public class Menu {
         }
         double price = calculatePriceMenu();
         System.out.println("Total price: " + price);
-        if (menuType == MenuType.FEW_KCAL_MENU) {
+        if (menuTypeEnum == MenuTypeEnum.FEW_KCAL_MENU) {
             double sumKcalMenu = calculateKcalMenu();
             //calculateAndApplyDiscount();
             System.out.println(TextModifierEnum.ANSI_GREEN + "\n\tTotal Kcal: " + sumKcalMenu + TextModifierEnum.ANSI_RESET);

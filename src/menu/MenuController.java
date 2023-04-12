@@ -2,12 +2,14 @@ package menu;
 
 import course.Beverages;
 import course.Course;
-import enumRestaurant.MenuType;
-import enumRestaurant.TextModifierEnum;
+import enumProject.MenuTypeEnum;
+import enumProject.TextModifierEnum;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *
+ */
 public class MenuController {
     private List<Course> fullMenu;
 
@@ -37,28 +39,28 @@ public class MenuController {
 
     public List<Course> generateMeatMenu() {
         List<Course> meatMenu = new ArrayList<>();
-        meatMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuType.MEAT_MENU)).toList());
+        meatMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuTypeEnum.MEAT_MENU)).toList());
         addAllDrink(meatMenu);
         return meatMenu;
     }
 
     public List<Course> generateFishMenu() {
         List<Course> fishMenu = new ArrayList<>();
-        fishMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuType.CHILDREN_MENU)).toList());
+        fishMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuTypeEnum.CHILDREN_MENU)).toList());
         addAllDrink(fishMenu);
         return fishMenu;
     }
 
     public List<Course> generateChildrenMenu() {
         List<Course> childrenMenu = new ArrayList<>();
-        childrenMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuType.CHILDREN_MENU)).toList());
+        childrenMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuTypeEnum.CHILDREN_MENU)).toList());
         addAllDrink(childrenMenu);
         return childrenMenu;
     }
 
     public List<Course> generateVeganMenu() {
         List<Course> veganMenu = new ArrayList<>();
-        veganMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuType.VEGAN_MENU)).toList());
+        veganMenu.addAll(fullMenu.stream().filter(c -> c.getMenuType().equals(MenuTypeEnum.VEGAN_MENU)).toList());
         addAllDrink(veganMenu);
         return veganMenu;
     }

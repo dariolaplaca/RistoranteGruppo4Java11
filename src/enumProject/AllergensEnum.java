@@ -1,5 +1,8 @@
-package enumRestaurant;
+package enumProject;
 
+/**
+ * that enum contains the allergens defined by the European community
+ */
 public enum AllergensEnum {
     CEREALS_CONTAINING_GLUTEN("Gluten"),
     EGG("Egg"),

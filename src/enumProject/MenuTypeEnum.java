@@ -1,6 +1,6 @@
-package enumRestaurant;
+package enumProject;
 
-public enum MenuType {
+public enum MenuTypeEnum {
 
     //TODO rivedere
     FISH_MENU("Fish"),
@@ -12,7 +12,7 @@ public enum MenuType {
 
     public String name;
 
-    MenuType(String menu){
+    MenuTypeEnum(String menu){
         this.name = menu ;
     }
     public String getName() {return name;}

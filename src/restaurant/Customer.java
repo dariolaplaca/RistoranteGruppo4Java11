@@ -1,64 +1,41 @@
 package restaurant;
 
-import enumRestaurant.MenuType;
-
+import enumProject.MenuTypeEnum;
+/**
+ *
+ */
 public class Customer {
     private static int idCounter = 0;
     private int id;
     private String name;
-    private MenuType menuType;
+    private MenuTypeEnum menuTypeEnum;
     private String mail;
     private String password;
 
-    public Customer(String name, MenuType menuType, String mail, String password) {
+    public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
         this.id = ++idCounter;
         this.name = name;
-        this.menuType = menuType;
+        this.menuTypeEnum = menuTypeEnum;
         this.mail = mail;
         this.password = password;
     }
+// GETTER & SETTER
+    public int getId() {return this.id;}
+    public void setId(int id) {this.id = id;}
 
-    public int getId() {
-        return this.id;
-    }
+    public String getName() {return this.name;}
+    public void setName(String name) {this.name = name;}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public MenuTypeEnum getMenuType() {return this.menuTypeEnum;}
+    public void setMenuType(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
 
-    public String getName() {
-        return this.name;
-    }
+    public String getMail() {return this.mail;}
+    public void setMail(String mail) {this.mail = mail;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public MenuType getMenuType() {
-        return this.menuType;
-    }
-
-    public void setMenuType(MenuType menuType) {
-        this.menuType = menuType;
-    }
-
-    public String getMail() {
-        return this.mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void printInfo(){
-        System.out.println(this.name + " " + this.menuType + " menu\n" + this.mail);
-    }
+    public String getPassword() {return this.password;}
+    public void setPassword(String password) {this.password = password;}
+    /**
+     * that method print the info of customer
+     */
+    public void printInfo(){System.out.println(this.name + " " + this.menuTypeEnum + " menu\n" + this.mail);}
 }

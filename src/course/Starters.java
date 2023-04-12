@@ -1,12 +1,14 @@
 package course;
 
-import enumRestaurant.AllergensEnum;
-import enumRestaurant.CourseEnum;
-import enumRestaurant.MenuType;
-import enumRestaurant.TextModifierEnum;
+import enumProject.AllergensEnum;
+import enumProject.CourseEnum;
+import enumProject.MenuTypeEnum;
+import enumProject.TextModifierEnum;
 
 import java.util.Set;
-
+/**
+ *
+ */
 public class Starters extends Course {
 
     private boolean isGourmet;
@@ -22,7 +24,7 @@ public class Starters extends Course {
      * @param allergens   Starter's allergens
      */
 
-    public Starters(String name, String description, boolean isGourmet, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
+    public Starters(String name, String description, boolean isGourmet, double calories, double price, MenuTypeEnum mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.isGourmet = isGourmet;
         this.courseType = CourseEnum.STARTERS;

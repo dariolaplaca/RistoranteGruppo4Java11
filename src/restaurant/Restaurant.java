@@ -1,16 +1,16 @@
 package restaurant;
 
-import enumRestaurant.TableStateEnum;
-import enumRestaurant.TextModifierEnum;
+import enumProject.TableStateEnum;
+import enumProject.TextModifierEnum;
 import menu.Menu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+/**
+ *
+ */
 public class Restaurant {
-
-
 
     private String name;
     private String address;
@@ -19,12 +19,10 @@ public class Restaurant {
 
     //TODO la mappa deve prendere tavolo e cliente, tablestateenum va dentro tavolo
     private HashMap<Table, TableStateEnum> tables;
-
-    /***
+    /**
      * This is the constructor for the restaurant.Restaurant class
      * @param name restaurant.Restaurant name
      */
-
     public Restaurant(String name, String address, String type){
         this.name = name;
         this.address = address;
@@ -32,40 +30,31 @@ public class Restaurant {
         this.menus = new ArrayList<>();
         tables = new HashMap<>();
     }
-    // GETTER & SETTER
+// GETTER & SETTER
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
+
     public List<Menu> getMenu() {return menus;}
     public void setMenu(List<Menu> menu) {this.menus = menu;}
-    public String getAddress() {
-        return this.address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getType() {
-        return this.type;
-    }
-    public void setType(String type) {
-        this.type = type;
-    }
 
-    public HashMap<Table, TableStateEnum> getTables() {
-        return this.tables;
-    }
+    public String getAddress() {return this.address;}
+    public void setAddress(String address) {this.address = address;}
 
-    public void setTables(HashMap<Table, TableStateEnum> tables) {
-        this.tables = tables;
-    }
+    public String getType() {return this.type;}
+    public void setType(String type) {this.type = type;}
 
+    public HashMap<Table, TableStateEnum> getTables() {return this.tables;}
+    public void setTables(HashMap<Table, TableStateEnum> tables) {this.tables = tables;}
+
+// METHODS
     public void addMenu(Menu mt ){ menus.add(mt);}
     public void addAllMenu(List<Menu> mt){ menus.addAll(mt);}
-
     /**
-     * that method print info restaurant
+     * that method print info of restaurant
      */
-    public void printInfo(){
-        System.out.println("\t" + TextModifierEnum.ANSI_ITALIC + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_RED + this.name + TextModifierEnum.ANSI_RESET +
+    public void printInfo() {
+        System.out.println("\t" + TextModifierEnum.ANSI_ITALIC + TextModifierEnum.ANSI_BOLD +
+                TextModifierEnum.ANSI_BRIGHT_RED + this.name + TextModifierEnum.ANSI_RESET +
                 "\n" + this.type + "\n" + this.address);
     }
     /**
@@ -88,11 +77,19 @@ public class Restaurant {
         }
         return null;
     }
-
+    /**
+     *
+     * @param table
+     */
     public void addTable(Table table){
         tables.put(table, TableStateEnum.AVAILABLE);
     }
-
+    /**
+     *
+     * @param table
+     * @param customer
+     * @param numberOfPeople
+     */
     public void bookATable(Table table, Customer customer, int numberOfPeople){
         if(table.getNumberOfSeats() < numberOfPeople){
             System.out.println("The table n° " + table.getId() + " is not suited for the group");
@@ -102,18 +99,26 @@ public class Restaurant {
         }
     }
 
+    /**
+     *
+     * @param table
+     */
     public void freeTable(Table table){
         table.freeTable();
         tables.put(table, TableStateEnum.AVAILABLE);
     }
-
+    /**
+     *
+     */
     public void printTablesInfo(){
         for(Table table : tables.keySet()){
             table.printInfo();
             System.out.println(tables.get(table) + "\n");
         }
     }
-
+    /**
+     *
+     */
     public void printAvailableTables(){
         System.out.println("\nAVAILABLE TABLES:\n");
         for(Table table : tables.keySet()){
@@ -123,7 +128,9 @@ public class Restaurant {
             }
         }
     }
-
+    /**
+     *
+     */
     public void printOccupiedTables(){
         System.out.println("\nOCCUPIED TABLES:\n");
         for(Table table : tables.keySet()){

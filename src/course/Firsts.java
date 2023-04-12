@@ -1,11 +1,13 @@
 package course;
 
-import enumRestaurant.AllergensEnum;
-import enumRestaurant.CourseEnum;
-import enumRestaurant.MenuType;
+import enumProject.AllergensEnum;
+import enumProject.CourseEnum;
+import enumProject.MenuTypeEnum;
 
 import java.util.Set;
-
+/**
+ *
+ */
 public class Firsts extends Course {
 
     private double weight;
@@ -20,7 +22,7 @@ public class Firsts extends Course {
      * @param allergens   First's allergens
      */
 
-    public Firsts(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
+    public Firsts(String name, String description, double weight, double calories, double price, MenuTypeEnum mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.weight = weight;
         this.courseType = CourseEnum.FIRSTS;

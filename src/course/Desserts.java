@@ -1,9 +1,9 @@
 package course;
 
-import enumRestaurant.AllergensEnum;
-import enumRestaurant.CourseEnum;
-import enumRestaurant.MenuType;
-import enumRestaurant.TextModifierEnum;
+import enumProject.AllergensEnum;
+import enumProject.CourseEnum;
+import enumProject.MenuTypeEnum;
+import enumProject.TextModifierEnum;
 
 import java.util.Set;
 /**
@@ -17,7 +17,7 @@ public class Desserts extends Course{
      * @param weight weight of dessert
      * @param price price of dessert
      */
-    public Desserts(String name, String description, double weight, double calories, double price, MenuType mt, Set<AllergensEnum> allergens) {
+    public Desserts(String name, String description, double weight, double calories, double price, MenuTypeEnum mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.weight = weight;
         this.courseType = CourseEnum.DESSERTS;

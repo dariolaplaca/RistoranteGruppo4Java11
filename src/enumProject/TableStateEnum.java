@@ -1,4 +1,4 @@
-package enumRestaurant;
+package enumProject;
 
 public enum TableStateEnum {
     AVAILABLE,
