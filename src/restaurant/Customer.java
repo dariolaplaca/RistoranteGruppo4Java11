@@ -1,3 +1,7 @@
+package restaurant;
+
+import enumRestaurant.MenuType;
+
 public class Customer {
     private static int idCounter = 0;
     private int id;

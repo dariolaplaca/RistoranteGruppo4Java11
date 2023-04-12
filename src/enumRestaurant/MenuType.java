@@ -1,3 +1,5 @@
+package enumRestaurant;
+
 public enum MenuType {
     FISH_MENU("Fish"),
     MENU("Whole"),
@@ -6,7 +8,7 @@ public enum MenuType {
     CHILDREN_MENU("Children"),
     FEW_KCAL_MENU("Low KCal");
 
-    private final String name;
+    public String name;
 
     MenuType(String menu){
         this.name = menu ;

@@ -1,4 +1,5 @@
-//TODO va chiamato con enum
+package enumRestaurant;
+
 public enum AllergensEnum {
     CEREALS_CONTAINING_GLUTEN("Gluten"),
     EGG("Egg"),
@@ -21,7 +22,7 @@ public enum AllergensEnum {
     CARROT("Carrot "),
     NONE("Allergens not present"),
     SPICED("Spiced");
-    private final String name;
+    public String name;
 
     AllergensEnum(String name) {this.name = name;}
 

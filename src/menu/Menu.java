@@ -1,3 +1,11 @@
+package menu;
+
+import course.Beverages;
+import course.Course;
+import enumRestaurant.AllergensEnum;
+import enumRestaurant.MenuType;
+import enumRestaurant.TextModifier;
+
 import java.util.*;
 
 public class Menu {
@@ -7,10 +15,10 @@ public class Menu {
     private MenuType menuType;
     private String name;
 
-    /***
-     * This is the constructor for the Menu class
-     * @param name     Menu name
-     * @param menuType Menu type
+    /**
+     * This is the constructor for the menu.Menu class
+     * @param name     menu.Menu name
+     * @param menuType menu.Menu type
      */
     public Menu(String name, MenuType menuType) {
         this.menuType = menuType;
@@ -51,10 +59,10 @@ public class Menu {
     }
 
     /**
-     * Generate a Menu that contains a course of each type
+     * Generate a menu.Menu that contains a course of each type
      */
     public void generateMenu() {
-        System.out.println("" + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_YELLOW + TextModifier.ANSI_UNDERLINE + menuType.getName() + " Menu" + TextModifier.ANSI_RESET);
+        System.out.println("" + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_YELLOW + TextModifier.ANSI_UNDERLINE + menuType.getName() + " menu.Menu" + TextModifier.ANSI_RESET);
         addOneDifferentCourseOfEachType();
         menuOfDay.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
         for (Course c : menuOfDay) {
@@ -106,7 +114,7 @@ public class Menu {
     }
 
     /**
-     * @return an HashSet of 3 randoms courses that are not Beverages
+     * @return an HashSet of 3 randoms courses that are not course.Beverages
      */
     public HashSet<Course> popularCourses() {
         HashSet<Course> finalHashset = new HashSet<>();
@@ -150,18 +158,18 @@ public class Menu {
         Scanner insertNumberForDiscount = new Scanner(System.in);
         Scanner ifDiscountString = new Scanner(System.in);
         double priceMenu = 0;
-        System.out.println(TextModifier.ANSI_BOLD + "Do you want to discount the current menu...???" + TextModifier.ANSI_RESET);
+        System.out.println(enumRestaurant.TextModifier.ANSI_BOLD + "Do you want to discount the current menu...???" + enumRestaurant.TextModifier.ANSI_RESET);
         String yesOrNo = ifDiscountString.nextLine();
-        for (Course c : currentMenu) {
+        for (course.Course c : currentMenu) {
             priceMenu += c.getPrice();
         }
         if (yesOrNo.strip().equals("yes")) {
-            System.out.println(TextModifier.ANSI_BRIGHT_PURPLE + " \n\tPrice menu: " + Math.floor(priceMenu) + "€" + TextModifier.ANSI_RESET);
-            System.out.println(TextModifier.ANSI_YELLOW + " \n\tPlease insert a discount..." + TextModifier.ANSI_RESET);
+            System.out.println(enumRestaurant.TextModifier.ANSI_BRIGHT_PURPLE + " \n\tPrice menu: " + Math.floor(priceMenu) + "€" + enumRestaurant.TextModifier.ANSI_RESET);
+            System.out.println(enumRestaurant.TextModifier.ANSI_YELLOW + " \n\tPlease insert a discount..." + enumRestaurant.TextModifier.ANSI_RESET);
             double sc = insertNumberForDiscount.nextInt();
-            System.out.println("\n\tPrice menu discounted:" + TextModifier.ANSI_GREEN + " " + Math.floor((priceMenu / 100) * (100 - sc)) + "€" + TextModifier.ANSI_RESET);
+            System.out.println("\n\tPrice menu discounted:" + enumRestaurant.TextModifier.ANSI_GREEN + " " + Math.floor((priceMenu / 100) * (100 - sc)) + "€" + enumRestaurant.TextModifier.ANSI_RESET);
         } else if (yesOrNo.equals("no")) {
-            System.out.println("\n\tPrezzo menu: " + TextModifier.ANSI_RED + " " + Math.floor(priceMenu) + "€" + TextModifier.ANSI_RESET);
+            System.out.println("\n\tPrezzo menu: " + enumRestaurant.TextModifier.ANSI_RED + " " + Math.floor(priceMenu) + "€" + enumRestaurant.TextModifier.ANSI_RESET);
         }
     }
     */

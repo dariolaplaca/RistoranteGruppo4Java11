@@ -1,3 +1,8 @@
+package restaurant;
+
+import enumRestaurant.TextModifier;
+import menu.Menu;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +14,8 @@ public class Restaurant {
     private List<Menu> menus;
 
     /***
-     * This is the constructor for the Restaurant class
-     * @param name Restaurant name
+     * This is the constructor for the restaurant.Restaurant class
+     * @param name restaurant.Restaurant name
      */
 
     public Restaurant(String name, String address, String type){
@@ -44,11 +49,11 @@ public class Restaurant {
      * print restaurant menus
      */
     public void printAllMenus() {
-        System.out.println("\n\tMenu " + this.name + ":\n");
+        System.out.println("\n\tmenu.Menu " + this.name + ":\n");
         menus.forEach(m -> System.out.println("\t"+m.getName()));
     }
 
-    /***
+    /**
      * method that generate a type of menu
      * @param menuName name of the menu to return
      */

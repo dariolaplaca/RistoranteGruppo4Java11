@@ -1,3 +1,10 @@
+package course;
+
+import enumRestaurant.AllergensEnum;
+import enumRestaurant.CourseEnum;
+import enumRestaurant.MenuType;
+import enumRestaurant.TextModifier;
+
 import java.util.Set;
 
 public class Starters extends Course {
@@ -5,7 +12,7 @@ public class Starters extends Course {
     private boolean isGourmet;
 
     /***
-     * This is the constructor for the Starters class
+     * This is the constructor for the course.Starters class
      * @param name        Starter's name
      * @param description Starter's description
      * @param isGourmet   Starter's gourmet status

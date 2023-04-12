@@ -1,3 +1,8 @@
+package restaurant;
+
+import enumRestaurant.MenuType;
+import restaurant.Customer;
+
 public class Table {
     private static int idCounter = 0;
     private int id;
@@ -65,6 +70,6 @@ public class Table {
     }
 
     public void printInfo(){
-        System.out.println("Table n° " + this.id + "\n" + "Booked for: " + this.customer.getName() + "\nNumber of seats: " + this.numberOfSeats);
+        System.out.println("restaurant.Table n° " + this.id + "\n" + "Booked for: " + this.customer.getName() + "\nNumber of seats: " + this.numberOfSeats);
     }
 }

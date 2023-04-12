@@ -1,8 +1,8 @@
-Group 4 Restaurant Java 11
+Group 4 restaurant.Restaurant Java 11
 
-Meat Based Menu
+Meat Based menu.Menu
 
-Starters:
+course.Starters:
     - Forever Fried Chicken Calamari 69.69€
     - Pineapple Duck Carpaccio 3.50€
     - Typical Vigezzino Ham with Sweet and Sour Skewers 4.00€
@@ -31,7 +31,7 @@ Second Courses:
     - Hamburger 12.00€
 
 
-Desserts:
+course.Desserts:
     - Apple cake 8.00 €
     - Tiramisù 12.00 €
     - Salty chocolate ice cream 150.00 €
@@ -39,7 +39,7 @@ Desserts:
     - Compose your dessert 20.00€
 
 
-Beverages:
+course.Beverages:
     - Still Water 1l 1€
     - Sparkling Water 1l 1€
     - Coca-Cola 33cl 2€

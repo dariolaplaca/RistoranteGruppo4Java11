@@ -1,3 +1,5 @@
+package enumRestaurant;
+
 public enum TextModifier {
     ANSI_RESET("\u001B[0m"),
     ANSI_DESCRIPTION_COLOR_AND_BACKGROUND("\033[38;2;248;244;227;48;2;29;10;28m"),
@@ -11,9 +13,7 @@ public enum TextModifier {
     ANSI_UNDERLINE("\u001B[4m"),
     ANSI_GREEN("\u001B[32m"),
     ANSI_BOLD("\u001B[1m");
-
-
-    private final String string;
+    public String string;
 
     TextModifier(String string){this.string = string;}
 

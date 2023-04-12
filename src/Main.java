@@ -1,3 +1,10 @@
+import course.*;
+import enumRestaurant.AllergensEnum;
+import enumRestaurant.MenuType;
+import menu.Menu;
+import menu.MenuController;
+import restaurant.Restaurant;
+
 import java.util.*;
 
 public class Main {
@@ -61,14 +68,14 @@ public class Main {
         Course negroni = new Beverages("Negroni", "A complex and bitter cocktail made with gin, vermouth, and Campari. Perfect as an aperitif.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
         Course whiteRussian = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
 
+        MenuController menuController = new MenuController();
+
         //MENU
-        //TODO possiamo usare una classe di appoggio che sarà vetrinadeimenuristorante
-        Menu fullMenu = new Menu("Menu", MenuType.MENU);
-        Menu childrenMenu = new Menu("Children's Menu", MenuType.CHILDREN_MENU);
-        Menu veganMenu = new Menu("Vegan Menu", MenuType.VEGAN_MENU);
-        Menu fishMenu = new Menu("Fish Menu", MenuType.FISH_MENU);
-        Menu fewKcalMenu = new Menu("Few KCal Menu", MenuType.FEW_KCAL_MENU);
-        Menu meatMenu = new Menu("Meat Menu", MenuType.MEAT_MENU);
+        Menu meatMenu = new Menu("Meat menu", MenuType.MEAT_MENU);
+        Menu fishMenu = new Menu("Fish menu", MenuType.FISH_MENU);
+        Menu childrenMenu = new Menu("Children menu", MenuType.CHILDREN_MENU);
+        Menu veganMenu = new Menu("Vegan menu", MenuType.VEGAN_MENU);
+
 
         // Ristorante
         Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano");
@@ -80,26 +87,19 @@ public class Main {
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert, tiramisuVegano, chocolateBrownie);
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
-        fullMenu.addAllCourse(startersList);
-        fullMenu.addAllCourse(firstsList);
-        fullMenu.addAllCourse(secondsList);
-        fullMenu.addAllCourse(dessertsList);
-        fullMenu.addAllCourse(beverageList);
+        menuController.addAllCourse(startersList);
+        menuController.addAllCourse(firstsList);
+        menuController.addAllCourse(secondsList);
+        menuController.addAllCourse(dessertsList);
+        menuController.addAllCourse(beverageList);
 
-        meatMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
-                c -> c.getMenuType() == MenuType.MEAT_MENU || c.getClass() == Beverages.class).toList());
-        childrenMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
-                c -> c.getMenuType() == MenuType.CHILDREN_MENU || c.getClass() == Beverages.class).toList());
-        veganMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
-                c -> c.getMenuType() == MenuType.VEGAN_MENU || c.getClass() == Beverages.class).toList());
-        fishMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
-                c -> c.getMenuType() == MenuType.FISH_MENU || c.getClass() == Beverages.class).toList());
-        fewKcalMenu.addAllCourse(fullMenu.getCourseList().stream().filter(
-                c -> c.getCalories() < 500).toList());
+        meatMenu.addAllCourse(menuController.generateMeatMenu());
+        fishMenu.addAllCourse(menuController.generateFishMenu());
+        childrenMenu.addAllCourse(menuController.generateChildrenMenu());
+        veganMenu.addAllCourse(menuController.generateVeganMenu());
 
-        ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
-        ilSolito.chooseOneMenu("Meat Menu").checkAllergens();
-
-
+        meatMenu.generateMenu();
+//        ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
+//        ilSolito.chooseOneMenu("Meat menu.Menu").checkAllergens();
     }
 }

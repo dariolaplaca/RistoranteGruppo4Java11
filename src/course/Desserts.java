@@ -1,11 +1,14 @@
+package course;
+
+import enumRestaurant.AllergensEnum;
+import enumRestaurant.CourseEnum;
+import enumRestaurant.MenuType;
+
 import java.util.Set;
-
-
-
-
+/**
+ * course.Desserts class is an extension of course.Course that adding desserts to menu
+ */
 public class Desserts extends Course{
-
-    //TODO se devo stampare le info dei figli come faccio, quindi super.print() e poi la stampa degli altri figli
     private double weight;
     /**
      * @param name name of the dessert
@@ -20,4 +23,6 @@ public class Desserts extends Course{
     }
     public double getWeight(){return weight;}
     public void setWeight(double weight) {this.weight = weight;}
+    @Override
+    public void printInfo(){super.printInfo();}
 }

@@ -1,10 +1,16 @@
+package course;
+
+import enumRestaurant.AllergensEnum;
+import enumRestaurant.CourseEnum;
+import enumRestaurant.MenuType;
+
 import java.util.Set;
 
 public class Firsts extends Course {
 
     private double weight;
     /***
-     * This is the constructor for the Firsts class
+     * This is the constructor for the course.Firsts class
      * @param name        First's name
      * @param description First's description
      * @param weight      First's weight

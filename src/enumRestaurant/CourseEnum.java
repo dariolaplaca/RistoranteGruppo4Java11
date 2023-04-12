@@ -1,3 +1,5 @@
+package enumRestaurant;
+
 public enum CourseEnum {
     STARTERS("Starter", 0),
     FIRSTS("First", 20),
@@ -5,8 +7,8 @@ public enum CourseEnum {
     DESSERTS("Dessert", 60),
     BEVERAGES("Beverage", 80);
 
-    protected final String name;
-    protected final int order;
+    public String name;
+    public int order;
 
     CourseEnum(String name, int order){
         this.name = name;

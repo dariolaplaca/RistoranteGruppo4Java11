@@ -1,7 +1,14 @@
+package course;
+
+import enumRestaurant.AllergensEnum;
+import enumRestaurant.CourseEnum;
+import enumRestaurant.MenuType;
+import enumRestaurant.TextModifier;
+
 import java.util.Set;
 
 /**
- * Beverages class is an extension of Course that implements drinks
+ * course.Beverages class is an extension of course.Course that implements drinks
  */
 
 public class Beverages extends Course {
@@ -9,7 +16,7 @@ public class Beverages extends Course {
     private boolean isAlcoholic;
 
     /***
-     * This is the constructor for the Beverages class
+     * This is the constructor for the course.Beverages class
      * @param name        Beverage's name
      * @param description Beverage's description
      * @param milliliters Beverage's milliliters

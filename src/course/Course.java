@@ -1,3 +1,10 @@
+package course;
+
+import enumRestaurant.AllergensEnum;
+import enumRestaurant.CourseEnum;
+import enumRestaurant.MenuType;
+import enumRestaurant.TextModifier;
+
 import java.util.*;
 
 public abstract class Course {
