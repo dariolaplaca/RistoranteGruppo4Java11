@@ -28,7 +28,8 @@ public class Menu {
     }
 
     public List<Course> getCourseList() {return courseList;}
-    public void setCourseList(List<Course> courseList) {this.courseList = courseList;}
+
+
 
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
@@ -149,6 +150,7 @@ public class Menu {
         }
         return Math.floor(sumCourseKcal);
     }
+
 
     /**
      * @return the price menu, or price menu discounted

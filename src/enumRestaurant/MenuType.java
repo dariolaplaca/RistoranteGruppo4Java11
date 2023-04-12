@@ -1,6 +1,8 @@
 package enumRestaurant;
 
 public enum MenuType {
+
+    //TODO rivedere
     FISH_MENU("Fish"),
     MENU("Whole"),
     MEAT_MENU("Meat"),

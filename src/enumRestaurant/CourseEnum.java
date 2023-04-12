@@ -1,6 +1,8 @@
 package enumRestaurant;
 
 public enum CourseEnum {
+
+    //TODO difficile da mantenere, mettiamo un id tanto poi ci servirà per il db
     STARTERS("Starter", 0),
     FIRSTS("First", 20),
     SECONDS("Second", 40),

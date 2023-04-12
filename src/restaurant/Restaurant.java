@@ -10,10 +10,14 @@ import java.util.List;
 
 public class Restaurant {
 
+
+
     private String name;
     private String address;
     private String type;
     private List<Menu> menus;
+
+    //TODO la mappa deve prendere tavolo e cliente, tablestateenum va dentro tavolo
     private HashMap<Table, TableStateEnum> tables;
 
     /***
