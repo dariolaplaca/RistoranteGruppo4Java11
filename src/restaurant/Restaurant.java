@@ -1,7 +1,7 @@
 package restaurant;
 
 import enumRestaurant.TableStateEnum;
-import enumRestaurant.TextModifier;
+import enumRestaurant.TextModifierEnum;
 import menu.Menu;
 
 import java.util.ArrayList;
@@ -58,20 +58,26 @@ public class Restaurant {
     public void addAllMenu(List<Menu> mt){ menus.addAll(mt);}
 
     /**
+     * that method print info restaurant
+     */
+    public void printInfo(){
+        System.out.println("\t" + TextModifierEnum.ANSI_ITALIC + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_RED + this.name + TextModifierEnum.ANSI_RESET +
+                "\n" + this.type + "\n" + this.address);
+    }
+    /**
      * print restaurant menus
      */
     public void printAllMenus() {
         System.out.println("\n\tmenu.Menu " + this.name + ":\n");
         menus.forEach(m -> System.out.println("\t"+m.getName()));
     }
-
     /**
      * method that generate a type of menu
      * @param menuName name of the menu to return
      */
     public Menu chooseOneMenu(String menuName) {
         for(Menu menu : menus){
-            if(menu.getName().equals(menuName)){
+            if(menu.getName().toLowerCase().equals(menuName.toLowerCase())){
                menu.generateMenu();
                return menu;
             }
@@ -122,10 +128,5 @@ public class Restaurant {
                 System.out.println();
             }
         }
-    }
-
-    public void printInfo(){
-        System.out.println("\t" + TextModifier.ANSI_ITALIC + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_RED + this.name + TextModifier.ANSI_RESET +
-                "\n" + this.type + "\n" + this.address);
     }
 }

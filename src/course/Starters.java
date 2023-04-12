@@ -3,7 +3,7 @@ package course;
 import enumRestaurant.AllergensEnum;
 import enumRestaurant.CourseEnum;
 import enumRestaurant.MenuType;
-import enumRestaurant.TextModifier;
+import enumRestaurant.TextModifierEnum;
 
 import java.util.Set;
 
@@ -41,18 +41,18 @@ public class Starters extends Course {
         super.printInfo();
         if (isGourmet == true){
             System.out.println("\t" +
-                    TextModifier.ANSI_BOLD +
-                    TextModifier.ANSI_RED  +
-                    TextModifier.ANSI_RESET +
-                    TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
-                    TextModifier.ANSI_ITALIC +  "Is gourmet!" + TextModifier.ANSI_RESET);
+                    TextModifierEnum.ANSI_BOLD +
+                    TextModifierEnum.ANSI_RED  +
+                    TextModifierEnum.ANSI_RESET +
+                    TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
+                    TextModifierEnum.ANSI_ITALIC +  "Is gourmet!" + TextModifierEnum.ANSI_RESET);
         }else {
             System.out.println("\t" +
-                    TextModifier.ANSI_BOLD +
-                    TextModifier.ANSI_RED  +
-                    TextModifier.ANSI_RESET +
-                    TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
-                    TextModifier.ANSI_ITALIC +  "Is not gourmet!" + TextModifier.ANSI_RESET);
+                    TextModifierEnum.ANSI_BOLD +
+                    TextModifierEnum.ANSI_RED  +
+                    TextModifierEnum.ANSI_RESET +
+                    TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
+                    TextModifierEnum.ANSI_ITALIC +  "Is not gourmet!" + TextModifierEnum.ANSI_RESET);
         }
 
     }

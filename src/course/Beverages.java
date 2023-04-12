@@ -3,7 +3,7 @@ package course;
 import enumRestaurant.AllergensEnum;
 import enumRestaurant.CourseEnum;
 import enumRestaurant.MenuType;
-import enumRestaurant.TextModifier;
+import enumRestaurant.TextModifierEnum;
 
 import java.util.Set;
 
@@ -48,9 +48,9 @@ public class Beverages extends Course {
 
     public void printInfo(){
         super.printInfo();
-        System.out.println(TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + String.valueOf(this.milliliters) + "ml" + TextModifier.ANSI_RESET);
+        System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + String.valueOf(this.milliliters) + "ml" + TextModifierEnum.ANSI_RESET);
         if(isAlcoholic){
-            System.out.println(TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "Warning this beverage is alcoholic, you must show your ID" + TextModifier.ANSI_RESET);
+            System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "Warning this beverage is alcoholic, you must show your ID" + TextModifierEnum.ANSI_RESET);
         }
     }
 }

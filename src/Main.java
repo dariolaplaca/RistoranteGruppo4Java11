@@ -70,35 +70,38 @@ public class Main {
         Course negroni = new Beverages("Negroni", "A complex and bitter cocktail made with gin, vermouth, and Campari. Perfect as an aperitif.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
         Course whiteRussian = new Beverages("White Russian ", "A rich and creamy cocktail made with vodka, coffee liqueur, and cream. Perfect as a dessert drink.", 130, 250, 7, MenuType.MENU, Set.of(AllergensEnum.NONE), true);
 
-        MenuController menuController = new MenuController();
-
-        //MENU
-        Menu meatMenu = new Menu("Meat menu", MenuType.MEAT_MENU);
-        Menu fishMenu = new Menu("Fish menu", MenuType.FISH_MENU);
-        Menu childrenMenu = new Menu("Children menu", MenuType.CHILDREN_MENU);
-        Menu veganMenu = new Menu("Vegan menu", MenuType.VEGAN_MENU);
-
-
-        // Ristorante
-        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano");
-        ilSolito.printInfo();
-
+        // LIST COURSE
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini, vegangStarterCourse, bruschetta, eggplatnParmesan);
         List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle, veganFirstCourse, firtstChildren, pennePesto, ravioliButterSage);
         List<Course> secondsList = Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger, veganSecondCourse, cutletPotatoes, fishAndChips);
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert, tiramisuVegano, chocolateBrownie);
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
+        // MENU
+        Menu meatMenu = new Menu("Meat menu", MenuType.MEAT_MENU);
+        Menu fishMenu = new Menu("Fish menu", MenuType.FISH_MENU);
+        Menu childrenMenu = new Menu("Children menu", MenuType.CHILDREN_MENU);
+        Menu veganMenu = new Menu("Vegan menu", MenuType.VEGAN_MENU);
+        Menu fewKcalMenu = new Menu("Few kcal menu", MenuType.FEW_KCAL_MENU);
+
+        // MENU CONTROLLER
+        MenuController menuController = new MenuController();
         menuController.addAllCourse(startersList);
         menuController.addAllCourse(firstsList);
         menuController.addAllCourse(secondsList);
         menuController.addAllCourse(dessertsList);
         menuController.addAllCourse(beverageList);
 
+        // ADD LISTS OF A MENU TYPE
         meatMenu.addAllCourse(menuController.generateMeatMenu());
         fishMenu.addAllCourse(menuController.generateFishMenu());
         childrenMenu.addAllCourse(menuController.generateChildrenMenu());
         veganMenu.addAllCourse(menuController.generateVeganMenu());
+        fewKcalMenu.addAllCourse(menuController.generateFewKcalMenu());
+
+        // RISTORANTE
+        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano");
+        ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
 
         Table table1 = new Table(2);
         Table table2 = new Table(4);
@@ -123,8 +126,11 @@ public class Main {
 
         ilSolito.freeTable(table1);
 
-        meatMenu.generateMenu();
-//        ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
-//        ilSolito.chooseOneMenu("Meat menu.Menu").checkAllergens();
+
+        menuController.printAllCourses();
+
+//        ilSolito.printInfo();
+//        ilSolito.printAllMenus();
+//        ilSolito.chooseOneMenu("meat menu");
     }
 }

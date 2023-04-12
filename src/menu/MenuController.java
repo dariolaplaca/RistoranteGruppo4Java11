@@ -3,6 +3,7 @@ package menu;
 import course.Beverages;
 import course.Course;
 import enumRestaurant.MenuType;
+import enumRestaurant.TextModifierEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,21 @@ public class MenuController {
     public void setFullMenu(List<Course> fullMenu) {this.fullMenu = fullMenu;}
 
     public void addAllCourse(List<Course> c){fullMenu.addAll(c);}
+
+    /**
+     * that method print all course in to menu
+     */
+    public void printAllCourses(){
+            Course currentCourseClass = fullMenu.get(fullMenu.size()-1);
+        for (Course course : fullMenu){
+            if(currentCourseClass.getClass() != course.getClass()){
+                System.out.println("\n\t" + TextModifierEnum.ANSI_UNDERLINE + TextModifierEnum.ANSI_BOLD +
+                        TextModifierEnum.ANSI_BRIGHT_RED + "\t" + course.getClass().getSimpleName() + TextModifierEnum.ANSI_RESET);
+                currentCourseClass = course;
+            }
+                course.printInfo();
+        }
+    }
 
     public List<Course> generateMeatMenu() {
         List<Course> meatMenu = new ArrayList<>();
@@ -60,5 +76,4 @@ public class MenuController {
             }
         }
     }
-
 }

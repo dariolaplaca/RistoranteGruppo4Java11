@@ -4,7 +4,7 @@ import course.Beverages;
 import course.Course;
 import enumRestaurant.AllergensEnum;
 import enumRestaurant.MenuType;
-import enumRestaurant.TextModifier;
+import enumRestaurant.TextModifierEnum;
 
 import java.util.*;
 
@@ -46,11 +46,11 @@ public class Menu {
      * Prints all the courses of the menu
      */
     public void printMenu() {
-        System.out.println("\n\t" + TextModifier.ANSI_BRIGHT_RED + TextModifier.ANSI_BOLD + TextModifier.ANSI_UNDERLINE + menuType.getName() + " MENU" + TextModifier.ANSI_RESET + "\n");
+        System.out.println("\n\t" + TextModifierEnum.ANSI_BRIGHT_RED + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " MENU" + TextModifierEnum.ANSI_RESET + "\n");
         Course currentCourse = courseList.get(courseList.size() - 1);
         for (Course c : courseList) {
             if (currentCourse.getClass() != c.getClass()) {
-                System.out.println("\n\t" + TextModifier.ANSI_UNDERLINE + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_RED + "\t" + c.getClass().getSimpleName() + TextModifier.ANSI_RESET);
+                System.out.println("\n\t" + TextModifierEnum.ANSI_UNDERLINE + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_RED + "\t" + c.getClass().getName() + TextModifierEnum.ANSI_RESET);
                 currentCourse = c;
             }
             c.printInfo();
@@ -62,11 +62,11 @@ public class Menu {
      * Generate a menu.Menu that contains a course of each type
      */
     public void generateMenu() {
-        System.out.println("" + TextModifier.ANSI_BOLD + TextModifier.ANSI_BRIGHT_YELLOW + TextModifier.ANSI_UNDERLINE + menuType.getName() + " menu.Menu" + TextModifier.ANSI_RESET);
+        System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " menu.Menu" + TextModifierEnum.ANSI_RESET);
         addOneDifferentCourseOfEachType();
         menuOfDay.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
         for (Course c : menuOfDay) {
-            System.out.print(TextModifier.ANSI_GREEN + c.getClass().getSimpleName() + ": " + TextModifier.ANSI_RESET);
+            System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getName() + ": " + TextModifierEnum.ANSI_RESET);
             c.printInfo();
             System.out.println();
         }
@@ -75,7 +75,7 @@ public class Menu {
         if (menuType == MenuType.FEW_KCAL_MENU) {
             double sumKcalMenu = calculateKcalMenu();
             //calculateAndApplyDiscount();
-            System.out.println(TextModifier.ANSI_GREEN + "\n\tTotal Kcal: " + sumKcalMenu + TextModifier.ANSI_RESET);
+            System.out.println(TextModifierEnum.ANSI_GREEN + "\n\tTotal Kcal: " + sumKcalMenu + TextModifierEnum.ANSI_RESET);
         }
     }
 
@@ -103,14 +103,14 @@ public class Menu {
         HashSet<AllergensEnum> newHash = new HashSet<>();
         for (Course c : menuOfDay) {
             if (c.getAllergens().equals(AllergensEnum.NONE)) {
-                System.out.println(TextModifier.ANSI_GREEN + "Allergens not present" + AllergensEnum.NONE.getName() + TextModifier.ANSI_RESET);
+                System.out.println(TextModifierEnum.ANSI_GREEN + "Allergens not present" + AllergensEnum.NONE.getName() + TextModifierEnum.ANSI_RESET);
             } else {
                 c.getAllergens().forEach(a -> newHash.add(a));
             }
         }
-        System.out.print(TextModifier.ANSI_RED + "Attention please, allergens present: [ " + TextModifier.ANSI_RESET);
-        newHash.forEach(a -> System.out.print(TextModifier.ANSI_YELLOW + a.getName() + ", " + TextModifier.ANSI_RESET));
-        System.out.print(TextModifier.ANSI_RED + " ]" + TextModifier.ANSI_RESET);
+        System.out.print(TextModifierEnum.ANSI_RED + "Attention please, allergens present: [ " + TextModifierEnum.ANSI_RESET);
+        newHash.forEach(a -> System.out.print(TextModifierEnum.ANSI_YELLOW + a.getName() + ", " + TextModifierEnum.ANSI_RESET));
+        System.out.print(TextModifierEnum.ANSI_RED + " ]" + TextModifierEnum.ANSI_RESET);
     }
 
     /**

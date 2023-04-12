@@ -3,7 +3,7 @@ package course;
 import enumRestaurant.AllergensEnum;
 import enumRestaurant.CourseEnum;
 import enumRestaurant.MenuType;
-import enumRestaurant.TextModifier;
+import enumRestaurant.TextModifierEnum;
 
 import java.util.*;
 
@@ -47,22 +47,22 @@ public abstract class Course {
 
     public void printInfo() {
         System.out.println("\t" +
-                TextModifier.ANSI_BOLD +
-                TextModifier.ANSI_RED + this.name +
-                TextModifier.ANSI_RESET + " - " + this.price + "€\n" +
-                TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
-                TextModifier.ANSI_ITALIC +
-                getDescription() + TextModifier.ANSI_RESET);
+                TextModifierEnum.ANSI_BOLD +
+                TextModifierEnum.ANSI_RED + this.name +
+                TextModifierEnum.ANSI_RESET + " - " + this.price + "€\n" +
+                TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
+                TextModifierEnum.ANSI_ITALIC +
+                getDescription() + TextModifierEnum.ANSI_RESET);
     }
 
     public void checkAllergens() {
         Set<AllergensEnum> allergens = this.getAllergens();
         if (allergens.contains(AllergensEnum.NONE)) {
-            System.out.println(TextModifier.ANSI_RED + getName() + TextModifier.ANSI_RESET + " is safe to eat.");
+            System.out.println(TextModifierEnum.ANSI_RED + getName() + TextModifierEnum.ANSI_RESET + " is safe to eat.");
         } else {
-            System.out.print(TextModifier.ANSI_BRIGHT_YELLOW + "Warning: " + TextModifier.ANSI_RESET +
-                    TextModifier.ANSI_BRIGHT_RED + getName() +
-                    TextModifier.ANSI_RESET + " contains ");
+            System.out.print(TextModifierEnum.ANSI_BRIGHT_YELLOW + "Warning: " + TextModifierEnum.ANSI_RESET +
+                    TextModifierEnum.ANSI_BRIGHT_RED + getName() +
+                    TextModifierEnum.ANSI_RESET + " contains ");
             for (AllergensEnum allergen : allergens) {
                 System.out.print("[" + allergen.getName() + "] ");
             }

@@ -1,6 +1,6 @@
 package enumRestaurant;
 
-public enum TextModifier {
+public enum TextModifierEnum {
     ANSI_RESET("\u001B[0m"),
     ANSI_DESCRIPTION_COLOR_AND_BACKGROUND("\033[38;2;248;244;227;48;2;29;10;28m"),
     ANSI_RED("\u001B[31m"),
@@ -15,7 +15,7 @@ public enum TextModifier {
     ANSI_BOLD("\u001B[1m");
     public String string;
 
-    TextModifier(String string){this.string = string;}
+    TextModifierEnum(String string){this.string = string;}
 
     @Override
     public String toString() {return string;}

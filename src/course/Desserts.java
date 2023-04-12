@@ -3,7 +3,7 @@ package course;
 import enumRestaurant.AllergensEnum;
 import enumRestaurant.CourseEnum;
 import enumRestaurant.MenuType;
-import enumRestaurant.TextModifier;
+import enumRestaurant.TextModifierEnum;
 
 import java.util.Set;
 /**
@@ -27,6 +27,6 @@ public class Desserts extends Course{
     @Override
     public void printInfo(){
         super.printInfo();
-        System.out.println(TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + " " +weight + "g" + TextModifier.ANSI_RESET);
+        System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + " " +weight + "g" + TextModifierEnum.ANSI_RESET);
     }
 }
