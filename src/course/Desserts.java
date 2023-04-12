@@ -3,6 +3,7 @@ package course;
 import enumRestaurant.AllergensEnum;
 import enumRestaurant.CourseEnum;
 import enumRestaurant.MenuType;
+import enumRestaurant.TextModifier;
 
 import java.util.Set;
 /**
@@ -24,5 +25,8 @@ public class Desserts extends Course{
     public double getWeight(){return weight;}
     public void setWeight(double weight) {this.weight = weight;}
     @Override
-    public void printInfo(){super.printInfo();}
+    public void printInfo(){
+        super.printInfo();
+        System.out.println(TextModifier.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + " " +weight + "g" + TextModifier.ANSI_RESET);
+    }
 }
