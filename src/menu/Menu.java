@@ -50,7 +50,7 @@ public class Menu {
         Course currentCourse = courseList.get(courseList.size() - 1);
         for (Course c : courseList) {
             if (currentCourse.getClass() != c.getClass()) {
-                System.out.println("\n\t" + TextModifierEnum.ANSI_UNDERLINE + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_RED + "\t" + c.getClass().getName() + TextModifierEnum.ANSI_RESET);
+                System.out.println("\n\t" + TextModifierEnum.ANSI_UNDERLINE + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_RED + "\t" + c.getClass().getSimpleName() + TextModifierEnum.ANSI_RESET);
                 currentCourse = c;
             }
             c.printInfo();
@@ -61,11 +61,11 @@ public class Menu {
      * Generate a menu.Menu that contains a course of each type
      */
     public void generateMenu() {
-        System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuTypeEnum.getName() + " menu.Menu" + TextModifierEnum.ANSI_RESET);
+        System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuTypeEnum.getName() + " MENU" + TextModifierEnum.ANSI_RESET);
         addOneDifferentCourseOfEachType();
         currentMenu.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
         for (Course c : currentMenu) {
-            System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getName() + ": " + TextModifierEnum.ANSI_RESET);
+            System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getSimpleName() + ": " + TextModifierEnum.ANSI_RESET);
             c.printInfo();
             System.out.println();
         }
