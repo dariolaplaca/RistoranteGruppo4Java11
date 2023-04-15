@@ -1,6 +1,7 @@
 package restaurant;
 
 import enumProject.MenuTypeEnum;
+//TODO AGGIUNGERE JAVADOC PER LA CLASSE
 /**
  *
  */
@@ -11,6 +12,8 @@ public class Customer {
     private MenuTypeEnum menuTypeEnum;
     private String mail;
     private String password;
+    //TODO aggiungere una List<Course> aggiungere un metodo addCourse per aggiungere le portate scelte dal cliente
+    //TODO double bill
 
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
         this.id = ++idCounter;
@@ -34,6 +37,9 @@ public class Customer {
 
     public String getPassword() {return this.password;}
     public void setPassword(String password) {this.password = password;}
+
+    //TODO aggiungere una funzione che calcola il conto e ritorna un double del conto da pagare
+
     /**
      * that method print the info of customer
      */

@@ -13,6 +13,7 @@ import java.util.*;
 public class Menu {
 
     private List<Course> courseList;
+    //TODO cambiare currentMenu in menuOfTheDay
     private List<Course> currentMenu;
     private MenuTypeEnum menuTypeEnum;
     private String name;
@@ -60,6 +61,7 @@ public class Menu {
     /**
      * Generate a menu.Menu that contains a course of each type
      */
+    //TODO da cambiare in generateMenuOfTheDay(MenuTypeEnum menuType)
     public void generateMenu() {
         System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuTypeEnum.getName() + " MENU" + TextModifierEnum.ANSI_RESET);
         addOneDifferentCourseOfEachType();

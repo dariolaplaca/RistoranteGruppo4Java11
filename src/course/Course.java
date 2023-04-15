@@ -15,6 +15,7 @@ public abstract class Course {
     protected MenuTypeEnum menuTypeEnum;
     protected CourseEnum courseType;
     protected double calories;
+    //TODO Aggiungere un id auto-incrementale
 
     public Course(String name, String description, double calories, double price, MenuTypeEnum menuTypeEnum, Set<AllergensEnum> allergens) {
         this.name = name;

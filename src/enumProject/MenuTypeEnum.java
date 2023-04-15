@@ -2,7 +2,7 @@ package enumProject;
 
 public enum MenuTypeEnum {
 
-    //TODO rivedere
+    //TODO rivedere lasciamo solo FISH_MENU, MEAT_MENU, VEGAN_MENU, CHILDREN_MENU, BEVERAGE_MENU
     FISH_MENU("Fish"),
     MENU("Whole"),
     MEAT_MENU("Meat"),

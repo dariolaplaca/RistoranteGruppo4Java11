@@ -11,6 +11,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        //TODO Rimuovere tutti i menuType che non siano FISH,VEGAN, MEAT, CHILDREN e sostituirli con uno di questi
         // - STARTERS
         Course ffc = new Starters("Forever Fried Chicken Calamari", "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", false, 400, 69.69, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.SHELLFISH));
         Course pineDuck = new Starters("Pineapple Duck Carpaccio", "Thinly sliced duck carpaccio served on a bed of fresh pineapple, drizzled with a sweet and tangy balsamic glaze", true, 200, 3.50, MenuTypeEnum.MENU, Set.of(AllergensEnum.NONE));
@@ -84,6 +86,7 @@ public class Main {
         Menu veganMenu = new Menu("Vegan menu", MenuTypeEnum.VEGAN_MENU);
         Menu fewKcalMenu = new Menu("Few kcal menu", MenuTypeEnum.FEW_KCAL_MENU);
 
+        //TODO Rimuovere menuController aggiungere tutte le portate a Restaurant
         // MENU CONTROLLER
         MenuController menuController = new MenuController();
         menuController.addAllCourse(startersList);

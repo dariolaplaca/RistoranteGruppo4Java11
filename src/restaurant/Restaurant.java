@@ -17,6 +17,8 @@ public class Restaurant {
     private String name;
     private String address;
     private String type;
+    //TODO aggiungere un double cashRegister da impostare a 0 nel costruttore
+    //TODO cambiare la lista in un singolo menu
     private List<Menu> menus;
     private HashMap<Table, Customer> tables;
 
@@ -99,6 +101,8 @@ public class Restaurant {
      *
      * @param menuName name of the menu to return
      */
+
+    //TODO ritorniamo una List<Course> come parametro passiamo un menuType e aggiungiamo alla lista tutte le portate di quel tipo menu prima di ritornarla la stampiamo
     public Menu chooseOneMenu(String menuName) {
         for (Menu menu : menus) {
             if (menu.getName().toLowerCase().equals(menuName.toLowerCase())) {
@@ -108,6 +112,8 @@ public class Restaurant {
         }
         return null;
     }
+
+    //TODO passato una course come parametro la aggiunge alla lista di course del cliente solo se la course è uguale al menuType del cliente
 
     /**
      * @param table
@@ -134,6 +140,7 @@ public class Restaurant {
      * @param table
      */
     public void freeTable(Table table) {
+        //TODO prendere il cliente dalla mappa e stampiamo il conto totale e lo aggiungiamo al cashRegister
         table.freeTable();
         tables.put(table, null);
     }

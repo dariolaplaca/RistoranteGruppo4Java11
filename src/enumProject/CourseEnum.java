@@ -9,6 +9,7 @@ public enum CourseEnum {
     DESSERTS("Dessert", 60),
     BEVERAGES("Beverage", 80);
 
+    //TODO CAMBIARE ORDER IN ID E DARGLI VALORE DA 0 A 4
     public String name;
     public int order;
 
@@ -17,5 +18,6 @@ public enum CourseEnum {
         this.order = order;
     }
     public String getName() {return this.name;}
+    //return this.id
     public int getOrder() {return this.order;}
 }
