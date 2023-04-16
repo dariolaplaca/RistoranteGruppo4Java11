@@ -13,21 +13,17 @@ import java.util.*;
 public class Menu {
 
     private List<Course> courseList;
-    //TODO cambiare currentMenu in menuOfTheDay
-    private List<Course> currentMenu;
-    private MenuTypeEnum menuTypeEnum;
+    private List<Course> menuOfTheDay;
     private String name;
 
     /**
-     * This is the constructor for the menu.Menu class
-     * @param name     menu.Menu name
-     * @param menuTypeEnum menu.Menu type
+     * This is the constructor for the Menu class
+     * @param name Menu name
      */
-    public Menu(String name, MenuTypeEnum menuTypeEnum) {
-        this.menuTypeEnum = menuTypeEnum;
+    public Menu(String name) {
         this.name = name;
         this.courseList = new ArrayList<>();
-        this.currentMenu = new ArrayList<>();
+        this.menuOfTheDay = new ArrayList<>();
     }
 
     public List<Course> getCourseList() {return courseList;}
@@ -35,10 +31,7 @@ public class Menu {
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
 
-    public MenuTypeEnum getMenuType() {return this.menuTypeEnum;}
-    public void setMenuType(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
-
-    public List<Course> getCurrentMenu() {return this.currentMenu;}
+    public List<Course> getMenuOfTheDay() {return this.menuOfTheDay;}
 
     public void addCourse(Course s) {courseList.add(s);}
     public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
@@ -47,7 +40,7 @@ public class Menu {
      * Prints all the courses of the menu
      */
     public void printMenu() {
-        System.out.println("\n\t" + TextModifierEnum.ANSI_BRIGHT_RED + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_UNDERLINE + menuTypeEnum.getName() + " MENU" + TextModifierEnum.ANSI_RESET + "\n");
+        System.out.println("\n\t" + TextModifierEnum.ANSI_BRIGHT_RED + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_UNDERLINE + this.name + "'s menu" + TextModifierEnum.ANSI_RESET + "\n");
         Course currentCourse = courseList.get(courseList.size() - 1);
         for (Course c : courseList) {
             if (currentCourse.getClass() != c.getClass()) {
@@ -59,21 +52,21 @@ public class Menu {
         }
     }
     /**
-     * Generate a menu.Menu that contains a course of each type
+     * Generate a menu of the day. Menu contains a course of each type all
      */
-    //TODO da cambiare in generateMenuOfTheDay(MenuTypeEnum menuType)
-    public void generateMenu() {
-        System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuTypeEnum.getName() + " MENU" + TextModifierEnum.ANSI_RESET);
-        addOneDifferentCourseOfEachType();
-        currentMenu.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
-        for (Course c : currentMenu) {
+
+    public void generateMenuOfTheDay(MenuTypeEnum menuType) {
+        System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " MENU" + TextModifierEnum.ANSI_RESET);
+        addOneDifferentCourseOfEachType(menuType);
+        menuOfTheDay.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
+        for (Course c : menuOfTheDay) {
             System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getSimpleName() + ": " + TextModifierEnum.ANSI_RESET);
             c.printInfo();
             System.out.println();
         }
         double price = calculatePriceMenu();
         System.out.println("Total price: " + price);
-        if (menuTypeEnum == MenuTypeEnum.FEW_KCAL_MENU) {
+        if (menuType == MenuTypeEnum.FEW_KCAL_MENU) {
             double sumKcalMenu = calculateKcalMenu();
             //calculateAndApplyDiscount();
             System.out.println(TextModifierEnum.ANSI_GREEN + "\n\tTotal Kcal: " + sumKcalMenu + TextModifierEnum.ANSI_RESET);
@@ -82,15 +75,15 @@ public class Menu {
     /**
      * Adds a course of each type to the current menu
      */
-    private void addOneDifferentCourseOfEachType() {
+    private void addOneDifferentCourseOfEachType(MenuTypeEnum menuType) {
 //        currentMenu.clear();
         List<Course> shuffledList = new ArrayList<>(courseList);
         Collections.shuffle(shuffledList);
         HashSet<Class<? extends Course>> classSet = new HashSet<>();
         for (Course c : shuffledList) {
             Class<? extends Course> courseClass = c.getClass();
-            if (!classSet.contains(courseClass)) {
-                currentMenu.add(c);
+            if (!classSet.contains(courseClass) && (c.getMenuType().equals(menuType) || c.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU))) {
+                menuOfTheDay.add(c);
                 classSet.add(courseClass);
             }
         }
@@ -100,7 +93,7 @@ public class Menu {
      */
     public void checkAllergens() {
         HashSet<AllergensEnum> newHash = new HashSet<>();
-        for (Course c : currentMenu) {
+        for (Course c : menuOfTheDay) {
             if (c.getAllergens().equals(AllergensEnum.NONE)) {
                 System.out.println(TextModifierEnum.ANSI_GREEN + "Allergens not present" + AllergensEnum.NONE.getName() + TextModifierEnum.ANSI_RESET);
             } else {
@@ -125,24 +118,24 @@ public class Menu {
         return finalHashset;
     }
     /**
-     * Calculates the total price of the current menu
+     * Calculates the total price of the menu of the day
      * @return total price in a double variable
      */
     public double calculatePriceMenu() {
         double totalCost = 0;
-        for (Course course : currentMenu) {
+        for (Course course : menuOfTheDay) {
             totalCost += course.getPrice();
         }
         totalCost = Math.floor(totalCost / 10) * 10;
         return totalCost;
     }
     /**
-     * Calculates the total kcal of the current menu
+     * Calculates the total kcal of the menu of the day
      * @return sum of kcal in the menu  in a double variable
      */
     public double calculateKcalMenu(){
         double sumCourseKcal = 0 ;
-        for (Course c : currentMenu){
+        for (Course c : menuOfTheDay){
             sumCourseKcal += c.getCalories();
         }
         return Math.floor(sumCourseKcal);
@@ -152,7 +145,7 @@ public class Menu {
      */
     public void calculateAndApplyDiscount(double discount) {
         double priceMenu = 0;
-        for (Course c : currentMenu) {
+        for (Course c : menuOfTheDay) {
             priceMenu += c.getPrice();
         }
         System.out.println("\n\tPrice menu discounted:" + TextModifierEnum.ANSI_GREEN + " " +

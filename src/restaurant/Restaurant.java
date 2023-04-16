@@ -1,10 +1,13 @@
 package restaurant;
 
+import course.Course;
+import enumProject.MenuTypeEnum;
 import enumProject.TableStateEnum;
 import enumProject.TextModifierEnum;
 import menu.Menu;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,8 +21,7 @@ public class Restaurant {
     private String address;
     private String type;
     //TODO aggiungere un double cashRegister da impostare a 0 nel costruttore
-    //TODO cambiare la lista in un singolo menu
-    private List<Menu> menus;
+    private Menu menu;
     private HashMap<Table, Customer> tables;
 
     /**
@@ -29,7 +31,7 @@ public class Restaurant {
         this.name = name;
         this.address = address;
         this.type = type;
-        this.menus = new ArrayList<>();
+        this.menu = new Menu("Menu");
         tables = new HashMap<>();
     }
 
@@ -42,12 +44,8 @@ public class Restaurant {
         this.name = name;
     }
 
-    public List<Menu> getMenu() {
-        return menus;
-    }
-
-    public void setMenu(List<Menu> menu) {
-        this.menus = menu;
+    public Menu getMenu() {
+        return menu;
     }
 
     public String getAddress() {
@@ -71,12 +69,12 @@ public class Restaurant {
     }
 
     // METHODS
-    public void addMenu(Menu mt) {
-        menus.add(mt);
+    public void addCourseToMenu(Course course) {
+        menu.addCourse(course);
     }
 
-    public void addAllMenu(List<Menu> mt) {
-        menus.addAll(mt);
+    public void addAllCourseToMenu(List<Course> courses) {
+        menu.addAllCourse(courses);
     }
 
     /**
@@ -89,64 +87,84 @@ public class Restaurant {
     }
 
     /**
-     * print restaurant menus
-     */
-    public void printAllMenus() {
-        System.out.println("\n\tmenu.Menu " + this.name + ":\n");
-        menus.forEach(m -> System.out.println("\t" + m.getName()));
-    }
-
-    /**
      * method that generate a type of menu
      *
-     * @param menuName name of the menu to return
+     * @param menuType type of the menu to return
      */
 
-    //TODO ritorniamo una List<Course> come parametro passiamo un menuType e aggiungiamo alla lista tutte le portate di quel tipo menu prima di ritornarla la stampiamo
-    public Menu chooseOneMenu(String menuName) {
-        for (Menu menu : menus) {
-            if (menu.getName().toLowerCase().equals(menuName.toLowerCase())) {
-                menu.generateMenu();
-                return menu;
+    public List<Course> chooseOneMenu(MenuTypeEnum menuType) {
+        List<Course> listToReturn = new ArrayList<>();
+        for (Course course : menu.getCourseList()){
+            if(course.getMenuType().equals(menuType) || course.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU)){
+                listToReturn.add(course);
             }
         }
-        return null;
+        listToReturn.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
+        for (Course c : listToReturn) {
+            System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getSimpleName() + ": " + TextModifierEnum.ANSI_RESET);
+            c.printInfo();
+            System.out.println();
+        }
+        return listToReturn;
     }
 
-    //TODO passato una course come parametro la aggiunge alla lista di course del cliente solo se la course è uguale al menuType del cliente
+    /**
+     * Adds a course to the order of the customer
+     * only if the customer sit in the table, and it's a course of the menu type he chose
+     * @param course course to add
+     * @param customer customer that ordered the course
+     */
+    public void addCourseToCustomer(Course course, Customer customer){
+        if(tables.containsValue(customer) && course.getMenuType() == customer.getMenuType()){
+            customer.addOrderedCourse(course);
+        } else {
+            System.out.println("Can't add course to the customer");
+        }
+    }
 
     /**
-     * @param table
+     * Adds a table to the table map of the Restaurant
+     * @param table table to add
      */
     public void addTable(Table table) {
         tables.put(table, null);
     }
 
     /**
-     * @param table
-     * @param customer
-     * @param numberOfPeople
+     * This method books an available table for a customer
+     * @param table Table the customer wants to book
+     * @param customer Customer that wants to book the table
+     * @param numberOfPeople number of people in the group of the customer
      */
     public void bookATable(Table table, Customer customer, int numberOfPeople) {
-        if (table.getNumberOfSeats() < numberOfPeople) {
-            System.out.println("The table n° " + table.getId() + " is not suited for the group");
+        if(table.getTableState() == TableStateEnum.AVAILABLE){
+            if (table.getNumberOfSeats() < numberOfPeople) {
+                System.out.println("The table n° " + table.getId() + " is not suited for the group");
+            } else {
+                table.bookTable(customer);
+                tables.put(table, customer);
+            }
         } else {
-            table.bookTable(customer);
-            tables.put(table, customer);
+            System.out.println("This table is already booked!");
         }
     }
 
     /**
+     * Free a booked table
      * @param table
      */
     public void freeTable(Table table) {
-        //TODO prendere il cliente dalla mappa e stampiamo il conto totale e lo aggiungiamo al cashRegister
-        table.freeTable();
-        tables.put(table, null);
+        if(table.getTableState() == TableStateEnum.OCCUPIED){
+            //TODO prendere il cliente dalla mappa e stampiamo il conto totale e lo aggiungiamo al cashRegister
+            table.freeTable();
+            tables.put(table, null);
+        } else {
+            System.out.println("This table is already free");
+        }
     }
 
     /**
-     *
+     *  Prints the info's of all the tables
      */
     public void printTablesInfo() {
         for (Table table : tables.keySet()) {
@@ -156,7 +174,7 @@ public class Restaurant {
     }
 
     /**
-     *
+     * Prints the list of all the available tables
      */
     public void printAvailableTables() {
         System.out.println("\nAVAILABLE TABLES:\n");
@@ -169,7 +187,7 @@ public class Restaurant {
     }
 
     /**
-     *
+     * Prints the list of all the occupied tables
      */
     public void printOccupiedTables() {
         System.out.println("\nOCCUPIED TABLES:\n");

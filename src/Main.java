@@ -1,8 +1,6 @@
 import course.*;
 import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
-import menu.Menu;
-import menu.MenuController;
 import restaurant.Customer;
 import restaurant.Restaurant;
 import restaurant.Table;
@@ -79,32 +77,14 @@ public class Main {
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert, tiramisuVegano, chocolateBrownie);
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
-        // MENU
-        Menu meatMenu = new Menu("Meat menu", MenuTypeEnum.MEAT_MENU);
-        Menu fishMenu = new Menu("Fish menu", MenuTypeEnum.FISH_MENU);
-        Menu childrenMenu = new Menu("Children menu", MenuTypeEnum.CHILDREN_MENU);
-        Menu veganMenu = new Menu("Vegan menu", MenuTypeEnum.VEGAN_MENU);
-        Menu fewKcalMenu = new Menu("Few kcal menu", MenuTypeEnum.FEW_KCAL_MENU);
-
-        //TODO Rimuovere menuController aggiungere tutte le portate a Restaurant
-        // MENU CONTROLLER
-        MenuController menuController = new MenuController();
-        menuController.addAllCourse(startersList);
-        menuController.addAllCourse(firstsList);
-        menuController.addAllCourse(secondsList);
-        menuController.addAllCourse(dessertsList);
-        menuController.addAllCourse(beverageList);
-
-        // ADD LISTS OF A MENU TYPE
-        meatMenu.addAllCourse(menuController.generateMeatMenu());
-        fishMenu.addAllCourse(menuController.generateFishMenu());
-        childrenMenu.addAllCourse(menuController.generateChildrenMenu());
-        veganMenu.addAllCourse(menuController.generateVeganMenu());
-        fewKcalMenu.addAllCourse(menuController.generateFewKcalMenu());
 
         // RISTORANTE
         Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano");
-        ilSolito.addAllMenu(Arrays.asList(meatMenu, fishMenu, veganMenu, childrenMenu, fewKcalMenu));
+        ilSolito.addAllCourseToMenu(startersList);
+        ilSolito.addAllCourseToMenu(firstsList);
+        ilSolito.addAllCourseToMenu(secondsList);
+        ilSolito.addAllCourseToMenu(dessertsList);
+        ilSolito.addAllCourseToMenu(beverageList);
 
         Table table1 = new Table(2);
         Table table2 = new Table(4);
@@ -116,8 +96,6 @@ public class Main {
         ilSolito.addTable(table3);
         ilSolito.addTable(table4);
 
-        ilSolito.printTablesInfo();
-
         Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
         Customer cris = new Customer("Cris", MenuTypeEnum.VEGAN_MENU, "criswow@gmail.com", "Abcde123");
 
@@ -126,12 +104,10 @@ public class Main {
         ilSolito.bookATable(table3, cris, 5);
 
         ilSolito.printOccupiedTables();
-
-        ilSolito.freeTable(table1);
-
-        ilSolito.printAvailableTables();
+        ilSolito.freeTable(table2);
 
 
-        ilSolito.chooseOneMenu("meat menu").calculateAndApplyDiscount(20);
+
+        ilSolito.chooseOneMenu(MenuTypeEnum.CHILDREN_MENU);
     }
 }

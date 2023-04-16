@@ -1,6 +1,10 @@
 package restaurant;
 
+import course.Course;
 import enumProject.MenuTypeEnum;
+
+import java.util.ArrayList;
+import java.util.List;
 //TODO AGGIUNGERE JAVADOC PER LA CLASSE
 /**
  *
@@ -12,6 +16,7 @@ public class Customer {
     private MenuTypeEnum menuTypeEnum;
     private String mail;
     private String password;
+    List<Course> orderedCourses;
     //TODO aggiungere una List<Course> aggiungere un metodo addCourse per aggiungere le portate scelte dal cliente
     //TODO double bill
 
@@ -21,6 +26,7 @@ public class Customer {
         this.menuTypeEnum = menuTypeEnum;
         this.mail = mail;
         this.password = password;
+        orderedCourses = new ArrayList<>();
     }
 // GETTER & SETTER
     public int getId() {return this.id;}
@@ -38,6 +44,17 @@ public class Customer {
     public String getPassword() {return this.password;}
     public void setPassword(String password) {this.password = password;}
 
+    public List<Course> getOrderedCourses(){
+        return this.orderedCourses;
+    }
+
+    /**
+     * Adds a course to the ordered course of a customer
+     * @param c is the course to add
+     */
+    public void addOrderedCourse(Course c){
+        orderedCourses.add(c);
+    }
     //TODO aggiungere una funzione che calcola il conto e ritorna un double del conto da pagare
 
     /**
