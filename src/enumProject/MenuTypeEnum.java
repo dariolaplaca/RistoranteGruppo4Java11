@@ -3,6 +3,7 @@ package enumProject;
 public enum MenuTypeEnum {
     FISH_MENU("Fish"),
     MEAT_MENU("Meat"),
+    MENU("Whole"),
     VEGAN_MENU("Vegan"),
     CHILDREN_MENU("Children"),
     BEVERAGE_MENU("Beverages");
