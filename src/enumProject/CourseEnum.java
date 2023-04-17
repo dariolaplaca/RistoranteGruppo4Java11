@@ -2,22 +2,23 @@ package enumProject;
 
 public enum CourseEnum {
 
-    //TODO difficile da mantenere, mettiamo un id tanto poi ci servirà per il db
     STARTERS("Starter", 0),
-    FIRSTS("First", 20),
-    SECONDS("Second", 40),
-    DESSERTS("Dessert", 60),
-    BEVERAGES("Beverage", 80);
+    FIRSTS("First", 1),
+    SECONDS("Second", 2),
+    DESSERTS("Dessert", 3),
+    BEVERAGES("Beverage", 4);
 
-    //TODO CAMBIARE ORDER IN ID E DARGLI VALORE DA 0 A 4
     public String name;
-    public int order;
+    public int id;
 
-    CourseEnum(String name, int order){
+    CourseEnum(String name, int id){
         this.name = name;
-        this.order = order;
+        if (id < 0 || id > 4) {
+            throw new IllegalArgumentException("ID can only be between 0 to 4.");
+        }
+        this.id = id;
     }
     public String getName() {return this.name;}
     //return this.id
-    public int getOrder() {return this.order;}
+    public int getOrder() {return this.id;}
 }

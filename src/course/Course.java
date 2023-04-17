@@ -15,7 +15,8 @@ public abstract class Course {
     protected MenuTypeEnum menuTypeEnum;
     protected CourseEnum courseType;
     protected double calories;
-    //TODO Aggiungere un id auto-incrementale
+    protected int id;
+    protected int idCounter = 0;
 
     public Course(String name, String description, double calories, double price, MenuTypeEnum menuTypeEnum, Set<AllergensEnum> allergens) {
         this.name = name;
@@ -24,7 +25,9 @@ public abstract class Course {
         this.price = price;
         this.menuTypeEnum = menuTypeEnum;
         this.allergens = new HashSet<>(allergens);
+        this.id = idCounter++; //non lo vogliamo nei parametri giusto?
     }
+    public int getId() {return id;} //just a getter because we don't want to change the id manually
     public void setName(String name) {this.name = name;}
     public String getName() {return this.name;}
 
