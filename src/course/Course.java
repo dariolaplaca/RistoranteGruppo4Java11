@@ -16,7 +16,7 @@ public abstract class Course {
     protected CourseEnum courseType;
     protected double calories;
     protected int id;
-    protected int idCounter = 0;
+    protected static int idCounter = 0;
 
     public Course(String name, String description, double calories, double price, MenuTypeEnum menuTypeEnum, Set<AllergensEnum> allergens) {
         this.name = name;
