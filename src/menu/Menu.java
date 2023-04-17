@@ -51,10 +51,10 @@ public class Menu {
             System.out.println();
         }
     }
+
     /**
      * Generate a menu of the day. Menu contains a course of each type all
      */
-
     public void generateMenuOfTheDay(MenuTypeEnum menuType) {
         System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " MENU" + TextModifierEnum.ANSI_RESET);
         addOneDifferentCourseOfEachType(menuType);
@@ -66,12 +66,8 @@ public class Menu {
         }
         double price = calculatePriceMenu();
         System.out.println("Total price: " + price);
-        if (menuType == MenuTypeEnum.FEW_KCAL_MENU) {
-            double sumKcalMenu = calculateKcalMenu();
-            //calculateAndApplyDiscount();
-            System.out.println(TextModifierEnum.ANSI_GREEN + "\n\tTotal Kcal: " + sumKcalMenu + TextModifierEnum.ANSI_RESET);
-        }
     }
+
     /**
      * Adds a course of each type to the current menu
      */
@@ -88,6 +84,7 @@ public class Menu {
             }
         }
     }
+
     /**
      * @check if menu contains allergens
      */

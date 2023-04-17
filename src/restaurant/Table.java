@@ -2,6 +2,8 @@ package restaurant;
 
 import enumProject.MenuTypeEnum;
 import enumProject.TableStateEnum;
+import enumProject.TextModifierEnum;
+
 /**
  *
  */
@@ -62,10 +64,9 @@ public class Table {
      */
     public void printInfo(){
         if(this.customer == null){
-            System.out.println("Table n° " + this.id + "\n" + "Booked for: Empty\nNumber of seats: " + this.numberOfSeats);
+            System.out.println(TextModifierEnum.ANSI_GREEN + "Table n° " + this.id + "\n" + "Table state: Empty\nNumber of seats: " + this.numberOfSeats + TextModifierEnum.ANSI_RESET);
         } else {
-            System.out.println("Table n° " + this.id + "\n" + "Booked for: " + this.customer.getName() + "\nNumber of seats: " + this.numberOfSeats);
+            System.out.println(TextModifierEnum.ANSI_RED + "Table n° " + this.id + "\n" + "Table state: " + tableState + "\nNumber of seats: " + this.numberOfSeats + TextModifierEnum.ANSI_RESET);
         }
-
     }
 }

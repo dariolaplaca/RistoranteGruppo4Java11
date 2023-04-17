@@ -89,24 +89,20 @@ public class Main {
         Table table2 = new Table(4);
         Table table3 = new Table(6);
         Table table4 = new Table(8);
+        Table table5 = new Table(8);
 
         ilSolito.addTable(table1);
         ilSolito.addTable(table2);
         ilSolito.addTable(table3);
         ilSolito.addTable(table4);
+        ilSolito.addTable(table5);
 
         Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
         Customer cris = new Customer("Cris", MenuTypeEnum.VEGAN_MENU, "criswow@gmail.com", "Abcde123");
 
-        ilSolito.bookATable(table2, dario, 3);
-        ilSolito.bookATable(table2, cris, 5);
-        ilSolito.bookATable(table3, cris, 5);
-
-        ilSolito.printOccupiedTables();
-        ilSolito.freeTable(table2);
-
-
-
-        ilSolito.chooseOneMenu(MenuTypeEnum.CHILDREN_MENU);
+      ilSolito.bookATable(table2,dario,2);
+      ilSolito.bookATable(table2,dario,2);
+      ilSolito.printAvailableTables();
+      ilSolito.printOccupiedTables();
     }
 }
