@@ -109,7 +109,8 @@ public class Main {
         ilSolito.addCourseToCustomer(amatriciana,dario);
         ilSolito.addCourseToCustomer(sacherTorte,dario);
         ilSolito.addCourseToCustomer(stillWater,dario);
-        ilSolito.freeTable(table2, 0);
+        ilSolito.freeTable(table2, 20);
+        System.out.println(ilSolito.getCashRegister());
         ilSolito.printAvailableTables();
     }
 }

@@ -191,6 +191,9 @@ public class Restaurant {
         double billToPay = customer.calculateBill(coursesCustomer, discount);
         cashRegister += billToPay;
         System.out.println("Bill table n°" + customer.getId() + " = " + billToPay + "€");
+        if(discount > 0){
+            System.out.println("Applied discount " + discount + "%");
+        }
     }
     /**
      * Prints the list of all the available tables
