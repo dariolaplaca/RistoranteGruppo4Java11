@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 //TODO AGGIUNGERE JAVADOC PER LA CLASSE
 /**
- *
+ * Customer class is the class that represents a customer of the restaurant.
  */
 public class Customer {
     private static int idCounter = 0;

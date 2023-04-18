@@ -1,7 +1,6 @@
 package restaurant;
 
 import course.Course;
-import enumProject.BeverageTypeEnum;
 import enumProject.MenuTypeEnum;
 import enumProject.TableStateEnum;
 import enumProject.TextModifierEnum;
@@ -20,8 +19,7 @@ public class Restaurant {
     private String type;
     private Menu menu;
     private HashMap<Table, Customer> tables;
-    //TODO aggiungere un double cashRegister da impostare a 0 nel costruttore
-//    private Double cashRegister;
+    private double cashRegister;
     /**
      * This is the constructor for the Restaurant class
      */
@@ -31,7 +29,7 @@ public class Restaurant {
         this.type = type;
         this.menu = new Menu("Menu");
         this.tables = new HashMap<>();
-//        this.cashRegister = 0.0;
+        this.cashRegister = 0.0;
     }
 
     // GETTER & SETTER
@@ -45,8 +43,8 @@ public class Restaurant {
     public HashMap<Table, Customer> getTables() {return this.tables;}
     public void setMenu(Menu menu) {this.menu = menu;}
     public void setTables(HashMap<Table, Customer> tables) {this.tables = tables;}
-//    public Double getCashRegister() {return cashRegister;}
-//    public void setCashRegister(Double cashRegister) {this.cashRegister = cashRegister;}
+    public double getCashRegister() {return cashRegister;}
+    public void setCashRegister(double cashRegister) {this.cashRegister = cashRegister;}
 
     // METHODS
     public void addCourseToMenu(Course course) {menu.addCourse(course);}
@@ -67,11 +65,11 @@ public class Restaurant {
     public List<Course> chooseCourseMenuType(MenuTypeEnum menuType) {
         List<Course> listToReturn = new ArrayList<>();
         for (Course course : menu.getCourseList()) {
-            if (course.getMenuType().equals(menuType) || course.getMenuType().equals(MenuTypeEnum.MENU)) {
+            if (course.getMenuType().equals(menuType) || course.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU)) {
                 listToReturn.add(course);
             }
         }
-        listToReturn.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
+        listToReturn.sort(Comparator.comparingInt(a -> a.getCourseType().getId()));
         listToReturn.forEach(c -> {
             System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getSimpleName() + ": " + TextModifierEnum.ANSI_RESET);
             c.printInfo();
@@ -81,27 +79,10 @@ public class Restaurant {
     }
 
     /**
-     * that method can print of menu with only one course
+     * that method can print of menu with only one course of each type
      */
     public List<Course> generateAMenuType(MenuTypeEnum menuTypeEnum) {
-        List<Course> listCourse = new ArrayList<>();
-        HashSet setClass = new HashSet();
-        for (Course course : menu.getCourseList()) {
-            Class<? extends Course> currentClass = course.getClass();
-            if (course.getMenuType().equals(menuTypeEnum) || course.getMenuType().equals(MenuTypeEnum.MENU)) {
-                if (!setClass.contains(currentClass)) {
-                    listCourse.add(course);
-                    setClass.add(currentClass);
-                }
-            }
-        }
-        listCourse.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
-        listCourse.forEach(c -> {
-            System.out.println(TextModifierEnum.ANSI_GREEN + c.getClass().getSimpleName() + TextModifierEnum.ANSI_RESET);
-            c.printInfo();
-            System.out.println();
-        });
-        return listCourse;
+        return menu.generateMenuOfTheDay(menuTypeEnum);
     }
 
     /**
@@ -112,7 +93,7 @@ public class Restaurant {
         if (tables.containsValue(customer) && (course.getMenuType() == customer.getMenuType() || course.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU))) {
             customer.addOrderedCourse(course);
             for (Table tab : tables.keySet()){
-            tables.put(tab,customer);
+                tables.put(tab,customer);
             }
         } else {
             System.out.println("Can't add course to the customer");
@@ -190,24 +171,26 @@ public class Restaurant {
     /**
      * Free a booked table
      */
-    public void freeTable(Table table) {
+    public void freeTable(Table table, double discount) {
         boolean applyDiscount = true;
         if (table.getTableState().equals(TableStateEnum.OCCUPIED)) {
-            for (Map.Entry<Table, Customer> entry : tables.entrySet()) {
-                List<Course> coursesCustomer = entry.getValue().getOrderedCourses();
-                if(applyDiscount){
-                    System.out.println("Bill table n°" + entry.getKey().getId() + " = " + entry.getValue().calculateBill(coursesCustomer,20) + "€");
-                break;
-                }else{
-                System.out.println("Bill table n°" + entry.getKey().getId() + " = " + entry.getValue().calculateBill(coursesCustomer) + "€");
-                break;
-                }
-            }
+            Customer customer = tables.get(table);
+            tableCheck(customer, discount);
             table.freeTable();
             tables.put(table, null);
-        } else {
-
         }
+    }
+
+    /**
+     * Pays the check for the passed customer
+     * @param customer customer that pays the bill
+     * @param discount discount to apply
+     */
+    public void tableCheck(Customer customer, double discount){
+        List<Course> coursesCustomer = customer.getOrderedCourses();
+        double billToPay = customer.calculateBill(coursesCustomer, discount);
+        cashRegister += billToPay;
+        System.out.println("Bill table n°" + customer.getId() + " = " + billToPay + "€");
     }
     /**
      * Prints the list of all the available tables

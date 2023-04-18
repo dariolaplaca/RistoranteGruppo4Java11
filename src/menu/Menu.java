@@ -55,10 +55,10 @@ public class Menu {
     /**
      * Generate a menu of the day. Menu contains a course of each type all
      */
-    public void generateMenuOfTheDay(MenuTypeEnum menuType) {
+    public List<Course> generateMenuOfTheDay(MenuTypeEnum menuType) {
         System.out.println("" + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_YELLOW + TextModifierEnum.ANSI_UNDERLINE + menuType.getName() + " MENU" + TextModifierEnum.ANSI_RESET);
         addOneDifferentCourseOfEachType(menuType);
-        menuOfTheDay.sort(Comparator.comparingInt(a -> a.getCourseType().getOrder()));
+        menuOfTheDay.sort(Comparator.comparingInt(a -> a.getCourseType().getId()));
         for (Course c : menuOfTheDay) {
             System.out.print(TextModifierEnum.ANSI_GREEN + c.getClass().getSimpleName() + ": " + TextModifierEnum.ANSI_RESET);
             c.printInfo();
@@ -66,6 +66,7 @@ public class Menu {
         }
         double price = calculatePriceMenu();
         System.out.println("Total price: " + price);
+        return menuOfTheDay;
     }
 
     /**

@@ -25,9 +25,9 @@ public abstract class Course {
         this.price = price;
         this.menuTypeEnum = menuTypeEnum;
         this.allergens = new HashSet<>(allergens);
-        this.id = idCounter++; //non lo vogliamo nei parametri giusto?
+        this.id = ++idCounter;
     }
-    public int getId() {return id;} //just a getter because we don't want to change the id manually
+    public int getId() {return id;}
     public void setName(String name) {this.name = name;}
     public String getName() {return this.name;}
 
