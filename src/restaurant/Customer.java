@@ -2,6 +2,7 @@ package restaurant;
 
 import course.Course;
 import enumProject.MenuTypeEnum;
+import enumProject.TextModifierEnum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +21,7 @@ public class Customer {
     List<Course> orderedCourses;
     //TODO aggiungere una List<Course> aggiungere un metodo addCourse per aggiungere le portate scelte dal cliente
     //TODO double bill
+    private double billToPay;
 
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
         this.id = ++idCounter;
@@ -28,6 +30,7 @@ public class Customer {
         this.mail = mail;
         this.password = password;
         orderedCourses = new ArrayList<>();
+        this.billToPay = 0 ;
     }
 // GETTER & SETTER
     public int getId() {return this.id;}
@@ -54,12 +57,23 @@ public class Customer {
     public void addOrderedCourse(Course c){orderedCourses.add(c);}
     public void addAllOrderedCourse(List<Course> c){orderedCourses.addAll(c);}
 
-public double calculateBill() {
-    double billToPay = 0;
+public double calculateBill(List<Course>orderedCourses) {
     for (Course course : orderedCourses) {
         billToPay += course.getPrice();
     }
     return Math.floor(billToPay);
+}
+
+    /**
+     * That method apply a discount
+     * @param discount
+     * @return
+     */
+    public double calculateBill(List<Course>orderedCourses, double discount) {
+    for (Course course : orderedCourses) {
+        billToPay += course.getPrice();
+    }
+    return Math.floor((billToPay / 100) * (100 - discount))  ;
 }
     /**
      * that method print the info of customer
