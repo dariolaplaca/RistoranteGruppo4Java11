@@ -45,9 +45,7 @@ public class Customer {
     public String getPassword() {return this.password;}
     public void setPassword(String password) {this.password = password;}
 
-    public List<Course> getOrderedCourses(){
-        return this.orderedCourses;
-    }
+    public List<Course> getOrderedCourses(){return this.orderedCourses;}
 
     /**
      * Adds a course to the ordered course of a customer
@@ -56,13 +54,13 @@ public class Customer {
     public void addOrderedCourse(Course c){orderedCourses.add(c);}
     public void addAllOrderedCourse(List<Course> c){orderedCourses.addAll(c);}
 
-    public List<Course> listOfPreferCourse(Course starters,Course firsts, Course second,Course dessert, Course beverage){
-        List<Course> favoriteCourseList = new ArrayList<>();
-        favoriteCourseList.addAll(Arrays.asList(starters,firsts,second,dessert,beverage));
-        return favoriteCourseList;
+public double calculateBill() {
+    double billToPay = 0;
+    for (Course course : orderedCourses) {
+        billToPay += course.getPrice();
     }
-    //TODO aggiungere una funzione che calcola il conto e ritorna un double del conto da pagare
-
+    return Math.floor(billToPay);
+}
     /**
      * that method print the info of customer
      */

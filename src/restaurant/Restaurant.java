@@ -21,7 +21,7 @@ public class Restaurant {
     private Menu menu;
     private HashMap<Table, Customer> tables;
     //TODO aggiungere un double cashRegister da impostare a 0 nel costruttore
-    private List<Double> cashRegister;
+    private Double cashRegister;
     /**
      * This is the constructor for the Restaurant class
      */
@@ -31,7 +31,7 @@ public class Restaurant {
         this.type = type;
         this.menu = new Menu("Menu");
         this.tables = new HashMap<>();
-        this.cashRegister = new ArrayList<>();
+        this.cashRegister = 0.0;
     }
 
     // GETTER & SETTER
@@ -43,6 +43,10 @@ public class Restaurant {
     public String getType() {return this.type;}
     public void setType(String type) {this.type = type;}
     public HashMap<Table, Customer> getTables() {return this.tables;}
+    public void setMenu(Menu menu) {this.menu = menu;}
+    public void setTables(HashMap<Table, Customer> tables) {this.tables = tables;}
+    public Double getCashRegister() {return cashRegister;}
+    public void setCashRegister(Double cashRegister) {this.cashRegister = cashRegister;}
 
     // METHODS
     public void addCourseToMenu(Course course) {menu.addCourse(course);}
@@ -107,6 +111,9 @@ public class Restaurant {
     public void addCourseToCustomer(Course course, Customer customer) {
         if (tables.containsValue(customer) && course.getMenuType() == customer.getMenuType()) {
             customer.addOrderedCourse(course);
+            for (Table tab : tables.keySet()){
+            tables.put(tab,customer);
+            }
         } else {
             System.out.println("Can't add course to the customer");
         }
@@ -183,17 +190,20 @@ public class Restaurant {
     /**
      * Free a booked table
      */
-    public void freeTable(Table table) {
-        if (table.getTableState() == TableStateEnum.OCCUPIED) {
-            //TODO prendere il cliente dalla mappa e stampiamo il conto totale e lo aggiungiamo al cashRegister
-            // da rivedere ancora non completo
-            for (Map.Entry<Table,Customer> customerEntry : tables.entrySet()){
-                System.out.println(customerEntry.getValue().getOrderedCourses());
+    public void freeTable(Table table){
+        List<Course>listEntry = new ArrayList<>();
+        if (table.getTableState().equals(TableStateEnum.OCCUPIED)) {
+            for (Map.Entry<Table, Customer> entry : tables.entrySet()) {
+                listEntry = entry.getValue().getOrderedCourses();
+            }
+            for (Course course : listEntry) {
+                cashRegister += course.getPrice();
             }
             table.freeTable();
             tables.put(table, null);
-        } else {
-            System.out.println("This table is already free");
+            System.out.println( "Conto tavolo n°"+table.getId()  + "  : " + cashRegister + "€");
+        }else{
+
         }
     }
 
@@ -210,6 +220,10 @@ public class Restaurant {
         }
         return tableList;
     }
+
+    /**
+     * Print all table available
+     */
     public void printAvailableTables() {
         List<Table> tableList = new ArrayList<>();
         System.out.println("\nAVAILABLE TABLES:\n");

@@ -101,8 +101,15 @@ public class Main {
         Customer cris = new Customer("Cris", MenuTypeEnum.VEGAN_MENU, "criswow@gmail.com", "Abcde123");
 
       ilSolito.bookATable(table2,dario,2);
-      ilSolito.bookATable(table2,dario,2);
-      ilSolito.printAvailableTables();
-      ilSolito.printOccupiedTables();
+//      ilSolito.bookATable(table2,dario,2);
+//      ilSolito.printAvailableTables();
+//      ilSolito.printOccupiedTables();
+//        ilSolito.chooseCourseMenuType(MenuTypeEnum.MEAT_MENU);
+        ilSolito.addCourseToCustomer(florentine,dario);
+        ilSolito.addCourseToCustomer(amatriciana,dario);
+        ilSolito.addCourseToCustomer(sacherTorte,dario);
+        ilSolito.addCourseToCustomer(stillWater,dario);
+       ilSolito.freeTable(table2);
+       ilSolito.printAvailableTables();
     }
 }
