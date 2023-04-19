@@ -6,7 +6,7 @@ import enumProject.MenuTypeEnum;
 
 import java.util.Set;
 /**
- *
+ * course.Seconds class is an extension of course.Course that adding seconds to menu
  */
 public class Seconds extends Course {
 

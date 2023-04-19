@@ -1,5 +1,8 @@
 package enumProject;
 
+/**
+ * that enum class is used to define the course type
+ */
 public enum CourseEnum {
 
     STARTERS("Starter", 0),
@@ -12,6 +15,11 @@ public enum CourseEnum {
     public final int id;
     public final int NUMBER_OF_COURSES_TYPE = 4;
 
+    /***
+     * This is the constructor for the course type enum class
+     * @param name  The course type
+     * @param id    The course type identifier
+     */
 
     CourseEnum(String name, int id){
         this.name = name;

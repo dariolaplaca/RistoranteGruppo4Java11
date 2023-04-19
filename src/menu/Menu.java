@@ -8,7 +8,7 @@ import enumProject.TextModifierEnum;
 
 import java.util.*;
 /**
-*
+*   Class that represents the menu
  */
 public class Menu {
 

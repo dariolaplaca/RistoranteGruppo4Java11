@@ -7,7 +7,7 @@ import enumProject.TextModifierEnum;
 
 import java.util.Set;
 /**
- *
+ * course.Starters class is an extension of course.Course that adding starters to menu
  */
 public class Starters extends Course {
 
@@ -41,7 +41,7 @@ public class Starters extends Course {
     @Override
     public void printInfo() {
         super.printInfo();
-        if (isGourmet == true){
+        if (isGourmet){
             System.out.println("\t" +
                     TextModifierEnum.ANSI_BOLD +
                     TextModifierEnum.ANSI_RED  +

@@ -149,7 +149,6 @@ public class Restaurant {
                     System.out.println(TextModifierEnum.ANSI_GREEN + "You can book this table:" + TextModifierEnum.ANSI_RESET);
                     t.printInfo();
                 }
-                // TODO implementare un feedBack che nessun'tavolo disponibile al momento
             }
         }
     }

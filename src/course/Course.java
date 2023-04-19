@@ -7,6 +7,10 @@ import enumProject.TextModifierEnum;
 
 import java.util.*;
 
+/**
+ * Superclass of each course type
+ */
+
 public abstract class Course {
     protected String name;
     protected String description;
@@ -18,6 +22,15 @@ public abstract class Course {
     protected int id;
     protected static int idCounter = 0;
 
+    /***
+     * This is the constructor for the course class
+     * @param name          Course name
+     * @param description   Course description
+     * @param calories      Course calories
+     * @param price         Course price
+     * @param menuTypeEnum  Course menu type
+     * @param allergens     Course allergens
+     */
     public Course(String name, String description, double calories, double price, MenuTypeEnum menuTypeEnum, Set<AllergensEnum> allergens) {
         this.name = name;
         this.description = description;
@@ -58,7 +71,6 @@ public abstract class Course {
                 TextModifierEnum.ANSI_ITALIC +
                 getDescription() + TextModifierEnum.ANSI_RESET);
     }
-
     public void checkAllergens() {
         Set<AllergensEnum> allergens = this.getAllergens();
         if (allergens.contains(AllergensEnum.NONE)) {

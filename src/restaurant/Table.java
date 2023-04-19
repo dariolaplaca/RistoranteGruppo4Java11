@@ -5,7 +5,7 @@ import enumProject.TableStateEnum;
 import enumProject.TextModifierEnum;
 
 /**
- *
+ * Table class represents the tables in the restaurant
  */
 public class Table {
 
@@ -16,6 +16,10 @@ public class Table {
     private int numberOfSeats;
     private TableStateEnum tableState;
 
+    /***
+     * This is the constructor for the Table class
+     * @param numberOfSeats The number of seats of the table
+     */
     public Table(int numberOfSeats) {
         this.id = ++idCounter;
         this.numberOfSeats = numberOfSeats;
@@ -43,8 +47,9 @@ public class Table {
         this.tableState = tableState;
     }
 
-    /**
-     *
+    /***
+     * This bookTable method allows the customer to book a table
+     * @param customer  The customer that book the table
      */
     public void bookTable(Customer customer){
         setCustomer(customer);
@@ -52,7 +57,7 @@ public class Table {
         setMenuType(customer.getMenuType());
     }
     /**
-     *
+     * This freeTable method set null the customer and the menu and brings back the table available
      */
     public void freeTable(){
         setCustomer(null);
@@ -60,7 +65,7 @@ public class Table {
         setTableState(TableStateEnum.AVAILABLE);
     }
     /**
-     *
+     * This is the printInfo method for the table that prints the number, state and number of seats of the table
      */
     public void printInfo(){
         if(this.customer == null){

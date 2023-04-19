@@ -19,6 +19,11 @@ public enum TextModifierEnum {
     public final String string;
     public final String description;
 
+    /***
+     * This is the constructor for the text modifier enum class
+     * @param description   Descrition of what the enum does
+     * @param string        String with an ANSI code that effectively change the text
+     */
     TextModifierEnum(String description,String string){this.description = description; this.string = string;}
 
     @Override

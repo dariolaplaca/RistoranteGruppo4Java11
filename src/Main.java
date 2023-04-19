@@ -23,16 +23,17 @@ public class Main {
         Course eggplatnParmesan = new Starters("Eggplant Parmesan Bites", "A quick and easy appetizer made of fried eggplant cubes topped with tomato sauce and grated Parmesan cheese", false, 200, 7, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.DAIRY));
 
         // - FIRSTS
-        Course genovese = new Firsts("Genovese", "Traditional Ligurian dish made with slow-cooked onions, served with a fragrant basil pesto sauce and freshly grated Parmesan cheese.", 8.50, 160, 12.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course carbonara = new Firsts("Carbonara", "A classic Roman pasta dish, featuring spaghetti in a creamy sauce made with eggs, pancetta, and Pecorino Romano cheese.", 9.00, 160, 12.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course gricia = new Firsts("Gricia", "A simple but flavorful pasta dish from Rome, ``featuring bucatini pasta in a sauce made with pork jowl, Pecorino Romano cheese, and black pepper.", 10, 120, 14.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course amatriciana = new Firsts("Amatriciana", "Hearty pasta dish from the town of Amatrice, featuring bucatini pasta in a tangy tomato sauce with cured pork cheek and Pecorino Romano cheese.", 10, 130, 10.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course orecchiette = new Firsts("Orecchiette broccoli and sausage", "Ear-shaped pasta from Puglia, tossed with tender broccoli florets, savory sausage, garlic, and olive oil.", 8, 120, 7.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course tagliatelle = new Firsts("Tagliatelle with white meat sauce and frutti di mare", "Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", 7, 150, 18.99, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
-        Course veganFirstCourse = new Firsts("Lentil ragout", "Lentil ragout", 400, 200, 15.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.LENTIL));
-        Course firtstChildren = new Firsts("Pasta with sauce", "Classic pasta with sauce and basil", 500, 200, 7.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course pennePesto = new Firsts("Penne with Pesto Sauce", "Penne pasta in a creamy pesto sauce made with basil, garlic, pine nuts, and Parmesan cheese.", 120, 200, 9.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course ravioliButterSage = new Firsts("Ravioli with Butter and Sage", "Homemade ravioli filled with ricotta cheese and spinach, served with a delicious butter and sage sauce.", 150, 350, 12.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
+        Course genovese = new Firsts("Genovese", "Traditional Ligurian dish made with slow-cooked onions, served with a fragrant basil pesto sauce and freshly grated Parmesan cheese.", false, 8.50, 160, 12.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course carbonara = new Firsts("Carbonara", "A classic Roman pasta dish, featuring spaghetti in a creamy sauce made with eggs, pancetta, and Pecorino Romano cheese.", false, 9.00, 160, 12.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course gricia = new Firsts("Gricia", "A simple but flavorful pasta dish from Rome, ``featuring bucatini pasta in a sauce made with pork jowl, Pecorino Romano cheese, and black pepper.", false, 10, 120, 14.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course amatriciana = new Firsts("Amatriciana", "Hearty pasta dish from the town of Amatrice, featuring bucatini pasta in a tangy tomato sauce with cured pork cheek and Pecorino Romano cheese.", false, 10, 130, 10.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course orecchiette = new Firsts("Orecchiette broccoli and sausage", "Ear-shaped pasta from Puglia, tossed with tender broccoli florets, savory sausage, garlic, and olive oil.", false, 8, 120, 7.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course tagliatelle = new Firsts("Tagliatelle with white meat sauce and frutti di mare", "Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", false, 7, 150, 18.99, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
+        Course coldMediterraneanPastaSalad = new Firsts("Cold mediterranean pasta salad","A simple but fresh mediterranean pasta salad made with butterflies pasta type, cooked tuna, black olives, cherry tomatoes, basil and a very juicy neapolitan buffalo mozzarella",true,100,250,7,MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.FISH, AllergensEnum.DAIRY));
+        Course veganFirstCourse = new Firsts("Lentil ragout", "Lentil ragout", false, 400, 200, 15.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.LENTIL));
+        Course firtstChildren = new Firsts("Pasta with sauce", "Classic pasta with sauce and basil", false, 500, 200, 7.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course pennePesto = new Firsts("Penne with Pesto Sauce", "Penne pasta in a creamy pesto sauce made with basil, garlic, pine nuts, and Parmesan cheese.", false, 120, 200, 9.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course ravioliButterSage = new Firsts("Ravioli with Butter and Sage", "Homemade ravioli filled with ricotta cheese and spinach, served with a delicious butter and sage sauce.", false, 150, 350, 12.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
 
         // - SECONDS
         Course florentine = new Seconds("Rare Florentine", "Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", 20, 1000, 17.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
@@ -47,7 +48,7 @@ public class Main {
         // - DESSERTS
         Course appleCake = new Desserts("Apple cake", "American apple pie", 1.000, 220, 12.99, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course tiramisu = new Desserts("Tiramisù", "Dessert with coffe, biscuits, cocoa", 1.000, 200, 10.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG));
-        Course saltyChocolate = new Desserts("Salty chocolate ice cream", "Ice-cream with chocolate fondant and milk chocolate", 500, 250, 8.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.DAIRY));
+        Course saltyChocolate = new Desserts("Salty chocolate ice cream", "Ice-cream with  false,chocolate fondant and milk chocolate", 500, 250, 8.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.DAIRY));
         Course sacherTorte = new Desserts("Sachertorte", "Dessert with lemon cream", 700, 250, 9.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course composeYourDessert = new Desserts("Compose your dessert", "Spiced Carrot Falafel", 400, 650, 19.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.CARROT, AllergensEnum.SPICED));
         Course tiramisuVegano = new Desserts("Vegan Tiramisù", "Dessert vegan, with coffe, biscuits, cocoa", 1.000, 200, 15.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.DAIRY));
@@ -71,7 +72,7 @@ public class Main {
 
         // LIST COURSE
         List<Course> startersList = Arrays.asList(ffc, pineDuck, typicalHam, carneSalada, salmon, lamb, hamPorcini, vegangStarterCourse, bruschetta, eggplatnParmesan);
-        List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle, veganFirstCourse, firtstChildren, pennePesto, ravioliButterSage);
+        List<Course> firstsList = Arrays.asList(genovese, carbonara, gricia, amatriciana, orecchiette, tagliatelle, coldMediterraneanPastaSalad, veganFirstCourse, firtstChildren, pennePesto, ravioliButterSage);
         List<Course> secondsList = Arrays.asList(florentine, wagyu, kangarooSausage, meatRolls, beefTartare, hamburger, veganSecondCourse, cutletPotatoes, fishAndChips);
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert, tiramisuVegano, chocolateBrownie);
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);

@@ -7,7 +7,6 @@ import enumProject.TextModifierEnum;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-//TODO AGGIUNGERE JAVADOC PER LA CLASSE
 /**
  * Customer class is the class that represents a customer of the restaurant.
  */
@@ -19,8 +18,6 @@ public class Customer {
     private String mail;
     private String password;
     List<Course> orderedCourses;
-    //TODO aggiungere una List<Course> aggiungere un metodo addCourse per aggiungere le portate scelte dal cliente
-    //TODO double bill
     private double billToPay;
 
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
