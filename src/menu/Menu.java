@@ -36,19 +36,27 @@ public class Menu {
     public void addCourse(Course s) {courseList.add(s);}
     public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
 
-    //TODO PERD DARIO aggiungere una documentazione più dettagliata
     /**
      * Prints all the courses of the menu
+     * To make a separator that writes the class name we get the last course's class as the current class to make sure it will differ from the first iterated course's class
+     * then we check if the current course's class differs from the iterated course class,
+     * if it differs we print the class name of the iterated course and set the current course as the iterated course
+     * so everytime we found a course with a different class we firstly print it's class name and then all the courses of that class
      */
     public void printMenu() {
-        System.out.println("\n\t" + TextModifierEnum.ANSI_BRIGHT_RED + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_UNDERLINE + this.name + "'s menu" + TextModifierEnum.ANSI_RESET + "\n");
-        Course currentCourse = courseList.get(courseList.size() - 1);
-        for (Course c : courseList) {
-            if (currentCourse.getClass() != c.getClass()) {
-                System.out.println("\n\t" + TextModifierEnum.ANSI_UNDERLINE + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_RED + "\t" + c.getClass().getSimpleName() + TextModifierEnum.ANSI_RESET);
-                currentCourse = c;
+        System.out.println("\n\t" + TextModifierEnum.ANSI_BRIGHT_RED + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_UNDERLINE + this.name + TextModifierEnum.ANSI_RESET + "\n");
+        //retrieve the last course's class from the course list
+        courseList.sort(Comparator.comparingInt(a -> a.getCourseType().getId()));
+        Class<? extends Course> currentClass = courseList.get(courseList.size() - 1).getClass();
+        for (Course course : courseList) {
+            //If the iterated course class differs from the current class prints the type of class name of the iterated course
+            if (currentClass != course.getClass()) {
+                System.out.println("\n\t" + TextModifierEnum.ANSI_UNDERLINE + TextModifierEnum.ANSI_BOLD + TextModifierEnum.ANSI_BRIGHT_RED + "\t" + course.getClass().getSimpleName() + TextModifierEnum.ANSI_RESET);
+                //Set the current course class as the iterated course class
+                currentClass = course.getClass();
             }
-            c.printInfo();
+            //Prints the course info
+            course.printInfo();
             System.out.println();
         }
     }

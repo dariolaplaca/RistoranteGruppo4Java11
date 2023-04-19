@@ -57,9 +57,9 @@ public class Main {
         // - BEVERAGES
         Course stillWater = new Beverages("Still Water", "Refreshing and hydrating still water in a one-liter bottle.", 1000, 250, 1.00, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.NONE), false);
         Course sparklingWater = new Beverages("Sparkling Water", "Fizzy and invigorating sparkling water in a one-liter bottle.", 1000, 250, 1.00, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.NONE), false);
-        Course cocacola = new Beverages("Coca Cola", "Classic and delicious Coca-Cola in a 33cl bottle.", 330, 250, 2.00, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.NONE), false);
-        Course fanta = new Beverages("Fanta", "Fruity and refreshing Fanta in a 33cl bottle.", 330, 250, 2.00, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.NONE), false);
-        Course sprite = new Beverages("Sprite", "Lemon-lime flavored and thirst-quenching Sprite in a 33cl bottle.", 330, 250, 2.00, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.NONE), false);
+        Course cocacola = new Beverages("Coca Cola", "Classic and delicious Coca-Cola in a 33cl bottle.", 330, 250, 2.00, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.NONE), false);
+        Course fanta = new Beverages("Fanta", "Fruity and refreshing Fanta in a 33cl bottle.", 330, 250, 2.00, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.NONE), false);
+        Course sprite = new Beverages("Sprite", "Lemon-lime flavored and thirst-quenching Sprite in a 33cl bottle.", 330, 250, 2.00, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.NONE), false);
         Course redDraughtBeer = new Beverages("Red Draught Beer", "Rich and flavorful red draught beer served in a 0.4-liter glass.", 400, 250, 4, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN), true);
         Course blondeDraughtBeer = new Beverages("Blonde Draught Beer", "Crisp and refreshing blonde draught beer served in a 0.4-liter glass.", 400, 250, 3.5, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN), true);
         Course redWine = new Beverages("Red Wine", "Smooth and full-bodied red wine served in a 50ml glass.", 50, 250, 5, MenuTypeEnum.BEVERAGE_MENU, Set.of(AllergensEnum.NONE), true);
@@ -113,5 +113,6 @@ public class Main {
         ilSolito.freeTable(table2, 20);
         System.out.println(ilSolito.getCashRegister());
         ilSolito.printAvailableTables();
+        ilSolito.getMenu().printMenu();
     }
 }
