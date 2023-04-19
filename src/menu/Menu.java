@@ -36,6 +36,7 @@ public class Menu {
     public void addCourse(Course s) {courseList.add(s);}
     public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
 
+    //TODO PERD DARIO aggiungere una documentazione più dettagliata
     /**
      * Prints all the courses of the menu
      */

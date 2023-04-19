@@ -11,6 +11,7 @@ public class Table {
 
     private static int idCounter = 0;
     private int id;
+    //TODO Rimuovere Customer e MenuType in tutto table
     private Customer customer;
     private MenuTypeEnum menuTypeEnum;
     private int numberOfSeats;

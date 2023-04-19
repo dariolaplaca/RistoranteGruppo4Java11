@@ -92,9 +92,6 @@ public class Restaurant {
     public void addCourseToCustomer(Course course, Customer customer) {
         if (tables.containsValue(customer) && (course.getMenuType() == customer.getMenuType() || course.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU))) {
             customer.addOrderedCourse(course);
-            for (Table tab : tables.keySet()){
-                tables.put(tab,customer);
-            }
         } else {
             System.out.println("Can't add course to the customer");
         }
@@ -107,21 +104,7 @@ public class Restaurant {
         tables.put(table, null);
     }
 
-    /**
-     * Remove table
-     */
-    public void removeTable(Table table) {
-        boolean removeTable = false;
-        for (Table t : tables.keySet()) {
-            if (table.equals(t)) {
-                tables.remove(table);
-                removeTable = true;
-            }
-        }
-        if (!removeTable) {
-            System.out.println(TextModifierEnum.ANSI_RED + "table not found");
-        }
-    }
+    //TODO Aggiungere removeTable(Table table) che rimuove il tavolo dalla mappa tables
 
     /**
      * This method books an available table for a customer
@@ -131,47 +114,25 @@ public class Restaurant {
      * @param numberOfPeople number of people in the group of the customer
      */
     public void bookATable(Table table, Customer customer, int numberOfPeople) {
-        List<Table> tableListAvailable = listOfAvailableTables();
-        if (table.getTableState() == TableStateEnum.AVAILABLE) {
+        if(table.getTableState() == TableStateEnum.AVAILABLE){
             if (table.getNumberOfSeats() < numberOfPeople) {
                 System.out.println("The table n° " + table.getId() + " is not suited for the group");
-                generateTable(numberOfPeople, tableListAvailable);
             } else {
                 table.bookTable(customer);
                 tables.put(table, customer);
                 System.out.println(TextModifierEnum.ANSI_GREEN + "You have booked with success"+ TextModifierEnum.ANSI_RESET);
             }
         } else {
-            System.out.println("\n" + TextModifierEnum.ANSI_RED + "This table is already book!" + TextModifierEnum.ANSI_RESET + " Table number: " + table.getId());
-            for (Table t : tableListAvailable) {
-                int numberDiPostiInPiu = t.getNumberOfSeats() - numberOfPeople;
-                if (numberDiPostiInPiu == 0 || (numberDiPostiInPiu>= 0 && numberDiPostiInPiu <= 2)) {
-                    System.out.println(TextModifierEnum.ANSI_GREEN + "You can book this table:" + TextModifierEnum.ANSI_RESET);
-                    t.printInfo();
-                }
-            }
-        }
-    }
-    /**
-     * That method print the table having available seats
-     * @param numberOfPeople
-     * @param tableList
-     */
-    private void generateTable(int numberOfPeople, List<Table> tableList) {
-        for (Table t : tableList) {
-            int numberDiPostiInPiu = t.getNumberOfSeats() - numberOfPeople;
-            if (numberDiPostiInPiu == 0 || (numberDiPostiInPiu>= 0 && numberDiPostiInPiu <= 2)) {
-                t.printInfo();
-                System.out.println();
-            }
+            System.out.println("This table is already booked!");
         }
     }
 
+
+    //TODO NON DOBBIAMO USARE NULL
     /**
      * Free a booked table
      */
     public void freeTable(Table table, double discount) {
-        boolean applyDiscount = true;
         if (table.getTableState().equals(TableStateEnum.OCCUPIED)) {
             Customer customer = tables.get(table);
             tableCheck(customer, discount);
@@ -194,29 +155,14 @@ public class Restaurant {
             System.out.println("Applied discount " + discount + "%");
         }
     }
-    /**
-     * Prints the list of all the available tables
-     */
-    public List<Table> listOfAvailableTables() {
-        List<Table> tableList = new ArrayList<>();
-//        System.out.println("\nAVAILABLE TABLES:\n");
-        for (Table table : tables.keySet()) {
-            if (table.getTableState() == TableStateEnum.AVAILABLE) {
-                tableList.add(table);
-            }
-        }
-        return tableList;
-    }
 
     /**
      * Print all table available
      */
     public void printAvailableTables() {
-        List<Table> tableList = new ArrayList<>();
         System.out.println("\nAVAILABLE TABLES:\n");
         for (Table table : tables.keySet()) {
             if (table.getTableState() == TableStateEnum.AVAILABLE) {
-                tableList.add(table);
                 table.printInfo();
                 System.out.println();
             }
