@@ -39,7 +39,7 @@ public class Seconds extends Course {
     public boolean isHighProtein() {return this.highProtein;}
     public void setHighProtein(boolean highProtein) {this.highProtein = highProtein;}
     public boolean isContour() {return this.contour;}
-    public void setContour(boolean contourn){this.contour = contourn;}
+    public void setContour(boolean contour){this.contour = contour;}
     public double getWeight() {return this.weight;}
     public void setWeight(double weight) {this.weight = weight;}
 
