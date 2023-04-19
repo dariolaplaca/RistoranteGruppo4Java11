@@ -50,7 +50,7 @@ public class Main {
         Course tiramisu = new Desserts("Tiramisù", "Dessert with coffe, biscuits, cocoa", 1.000, 200, 10.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG));
         Course saltyChocolate = new Desserts("Salty chocolate ice cream", "Ice-cream with  false,chocolate fondant and milk chocolate", 500, 250, 8.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.DAIRY));
         Course sacherTorte = new Desserts("Sachertorte", "Dessert with lemon cream", 700, 250, 9.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.EGG, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
-        Course composeYourDessert = new Desserts("Compose your dessert", "Spiced Carrot Falafel", 400, 650, 19.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.CARROT, AllergensEnum.SPICED));
+        Course composeYourDessert = new Desserts("Compose your dessert", "Choose your ingredients", 400, 650, 19.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.CARROT, AllergensEnum.SPICED));
         Course tiramisuVegano = new Desserts("Vegan Tiramisù", "Dessert vegan, with coffe, biscuits, cocoa", 1.000, 200, 15.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.DAIRY));
         Course chocolateBrownie = new Desserts("Chocolate Brownie with Ice Cream", "Rich and chocolatey brownie served warm with a scoop of vanilla ice cream.", 150, 400, 6.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
 

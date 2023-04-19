@@ -104,8 +104,22 @@ public class Restaurant {
         tables.put(table, null);
     }
 
-    //TODO Aggiungere removeTable(Table table) che rimuove il tavolo dalla mappa tables
-
+    /**
+     * Remove a table
+     * @param table
+     */
+    public void removeTable(Table table) {
+        boolean removeTable = false;
+        for (Table t : tables.keySet()) {
+            if (table.equals(t)) {
+                tables.remove(table);
+                removeTable = true;
+            }
+        }
+        if (!removeTable) {
+            System.out.println(TextModifierEnum.ANSI_RED + "table not found");
+        }
+    }
     /**
      * This method books an available table for a customer
      * takes an input method that returns the list of all available tables
@@ -126,7 +140,6 @@ public class Restaurant {
             System.out.println("This table is already booked!");
         }
     }
-
 
     //TODO NON DOBBIAMO USARE NULL
     /**
