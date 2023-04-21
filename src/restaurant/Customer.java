@@ -17,8 +17,7 @@ public class Customer {
     private MenuTypeEnum menuTypeEnum;
     private String mail;
     private String password;
-    //TODO Aggiungere modificatore di accessibilità
-    List<Course> orderedCourses;
+    private List<Course> orderedCourses;
     private double billToPay;
 
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
