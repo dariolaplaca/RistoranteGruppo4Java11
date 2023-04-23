@@ -72,6 +72,10 @@ public double calculateBill(List<Course>orderedCourses) {
     }
     return Math.floor((billToPay / 100) * (100 - discount))  ;
 }
+
+public Customer emptyCustomer() {
+        return new Customer("", MenuTypeEnum.EMPTY_MENU, "", "");
+}
     /**
      * that method print the info of customer
      */

@@ -8,7 +8,8 @@ public enum MenuTypeEnum {
     MEAT_MENU("Meat"),
     VEGAN_MENU("Vegan"),
     CHILDREN_MENU("Children"),
-    BEVERAGE_MENU("Beverages");
+    BEVERAGE_MENU("Beverages"),
+    EMPTY_MENU("");
 
     public final String name;
 

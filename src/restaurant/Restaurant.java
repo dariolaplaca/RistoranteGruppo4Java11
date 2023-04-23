@@ -17,9 +17,12 @@ public class Restaurant {
     private String name;
     private String address;
     private String type;
+    private Customer customer;
+    private MenuTypeEnum menuTypeEnum;
     private Menu menu;
     private HashMap<Table, Customer> tables;
     private double cashRegister;
+
     /**
      * This is the constructor for the Restaurant class
      */
@@ -34,21 +37,46 @@ public class Restaurant {
 
     // GETTER & SETTER
     public String getName() {return name;}
+
     public void setName(String name) {this.name = name;}
+
     public Menu getMenu() {return menu;}
+
     public String getAddress() {return this.address;}
+
     public void setAddress(String address) {this.address = address;}
+
     public String getType() {return this.type;}
+
     public void setType(String type) {this.type = type;}
-    public HashMap<Table, Customer> getTables() {return this.tables;}
+
+    public Map<Table, Customer> getTables() {return this.tables;}
+
     public void setMenu(Menu menu) {this.menu = menu;}
+
     public void setTables(HashMap<Table, Customer> tables) {this.tables = tables;}
+
     public double getCashRegister() {return cashRegister;}
+
     public void setCashRegister(double cashRegister) {this.cashRegister = cashRegister;}
 
+    public Customer getCustomer() {return customer;}
+
+    public void setCustomer(Customer customer) {this.customer = customer;}
+
+    public MenuTypeEnum getMenuTypeEnum() {return menuTypeEnum;}
+
+    public void setMenuTypeEnum(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
+
     // METHODS
-    public void addCourseToMenu(Course course) {menu.addCourse(course);}
-    public void addAllCourseToMenu(List<Course> courses) {menu.addAllCourse(courses);}
+    public void addCourseToMenu(Course course) {
+        menu.addCourse(course);
+    }
+
+    public void addAllCourseToMenu(List<Course> courses) {
+        menu.addAllCourse(courses);
+    }
+
     /**
      * that method print info of restaurant
      */
@@ -101,11 +129,12 @@ public class Restaurant {
      * Adds a table to the table map of the Restaurant
      */
     public void addTable(Table table) {
-        tables.put(table, null);
+        tables.put(table, customer.emptyCustomer());
     }
 
     /**
      * Remove a table
+     *
      * @param table
      */
     public void removeTable(Table table) {
@@ -120,28 +149,31 @@ public class Restaurant {
             System.out.println(TextModifierEnum.ANSI_RED + "table not found");
         }
     }
+
     /**
      * This method books an available table for a customer
      * takes an input method that returns the list of all available tables
+     *
      * @param table          Table the customer wants to book
      * @param customer       Customer that wants to book the table
      * @param numberOfPeople number of people in the group of the customer
      */
     public void bookATable(Table table, Customer customer, int numberOfPeople) {
-        if(table.getTableState() == TableStateEnum.AVAILABLE){
+        if (table.getTableState() == TableStateEnum.AVAILABLE) {
             if (table.getNumberOfSeats() < numberOfPeople) {
                 System.out.println("The table n° " + table.getId() + " is not suited for the group");
             } else {
-                table.bookTable(customer);
+                setCustomer(customer);
+                table.setTableState(TableStateEnum.OCCUPIED);
+                setMenuTypeEnum(customer.getMenuType());
                 tables.put(table, customer);
-                System.out.println(TextModifierEnum.ANSI_GREEN + "You have booked with success"+ TextModifierEnum.ANSI_RESET);
+                System.out.println(TextModifierEnum.ANSI_GREEN + "You have booked with success" + TextModifierEnum.ANSI_RESET);
             }
         } else {
             System.out.println("This table is already booked!");
         }
     }
 
-    //TODO NON DOBBIAMO USARE NULL
     /**
      * Free a booked table
      */
@@ -149,22 +181,23 @@ public class Restaurant {
         if (table.getTableState().equals(TableStateEnum.OCCUPIED)) {
             Customer customer = tables.get(table);
             tableCheck(customer, discount);
-            table.freeTable();
-            tables.put(table, null);
+            setCustomer(customer.emptyCustomer());
+            setMenuTypeEnum(MenuTypeEnum.EMPTY_MENU);
+            table.setTableState(TableStateEnum.AVAILABLE);
+            tables.put(table, customer.emptyCustomer());
         }
     }
 
     /**
-     * Pays the check for the passed customer
-     * @param customer customer that pays the bill
-     * @param discount discount to apply
-     */
-    public void tableCheck(Customer customer, double discount){
+     * Pays the check for the passed customer                                                                                                                                                                                                                             \
+     *
+     * @param customer customer that pays the bill*/
+    public void tableCheck(Customer customer, double discount) {
         List<Course> coursesCustomer = customer.getOrderedCourses();
         double billToPay = customer.calculateBill(coursesCustomer, discount);
         cashRegister += billToPay;
         System.out.println("Bill table n°" + customer.getId() + " = " + billToPay + "€");
-        if(discount > 0){
+        if (discount > 0) {
             System.out.println("Applied discount " + discount + "%");
         }
     }
