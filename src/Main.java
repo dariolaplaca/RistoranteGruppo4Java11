@@ -99,7 +99,7 @@ public class Main {
         ilSolito.addTable(table5);
 
         Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
-        Customer cris = new Customer("Cris", MenuTypeEnum.VEGAN_MENU, "criswow@gmail.com", "Abcde123");
+        Customer cris = new Customer("Cris", MenuTypeEnum.FISH_MENU, "criswow@gmail.com", "Abcde123");
 
       ilSolito.bookATable(table2,dario,2);
 //      ilSolito.bookATable(table2,dario,2);

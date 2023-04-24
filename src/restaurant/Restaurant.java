@@ -37,45 +37,33 @@ public class Restaurant {
 
     // GETTER & SETTER
     public String getName() {return name;}
-
     public void setName(String name) {this.name = name;}
 
     public Menu getMenu() {return menu;}
-
     public String getAddress() {return this.address;}
 
     public void setAddress(String address) {this.address = address;}
-
     public String getType() {return this.type;}
 
     public void setType(String type) {this.type = type;}
-
     public Map<Table, Customer> getTables() {return this.tables;}
 
     public void setMenu(Menu menu) {this.menu = menu;}
-
     public void setTables(HashMap<Table, Customer> tables) {this.tables = tables;}
 
     public double getCashRegister() {return cashRegister;}
-
     public void setCashRegister(double cashRegister) {this.cashRegister = cashRegister;}
 
     public Customer getCustomer() {return customer;}
-
     public void setCustomer(Customer customer) {this.customer = customer;}
 
     public MenuTypeEnum getMenuTypeEnum() {return menuTypeEnum;}
-
     public void setMenuTypeEnum(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
 
     // METHODS
-    public void addCourseToMenu(Course course) {
-        menu.addCourse(course);
-    }
 
-    public void addAllCourseToMenu(List<Course> courses) {
-        menu.addAllCourse(courses);
-    }
+    public void addCourseToMenu(Course course) {menu.addCourse(course);}
+    public void addAllCourseToMenu(List<Course> courses) {menu.addAllCourse(courses);}
 
     /**
      * that method print info of restaurant
@@ -232,9 +220,13 @@ public class Restaurant {
      * Prints the info's of all the tables
      */
     public void printTablesInfo() {
-        for (Table table : tables.keySet()) {
-            table.printInfo();
-            System.out.println();
+        for (Map.Entry<Table, Customer> table : tables.entrySet()) {
+            if (table.getKey().getTableState().equals(TableStateEnum.OCCUPIED)) {
+                System.out.println(table.getValue().getName() + " " + table.getValue().getOrderedCourses());
+            } else {
+                table.getKey().printInfo();
+                System.out.println();
+            }
         }
     }
 }
