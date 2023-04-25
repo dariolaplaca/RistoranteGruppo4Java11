@@ -2,11 +2,10 @@ package restaurant;
 
 import course.Course;
 import enumProject.MenuTypeEnum;
-import enumProject.TextModifierEnum;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 /**
  * Customer class is the class that represents a customer of the restaurant.
  */
@@ -27,57 +26,105 @@ public class Customer {
         this.mail = mail;
         this.password = password;
         orderedCourses = new ArrayList<>();
-        this.billToPay = 0 ;
+        this.billToPay = 0;
     }
-// GETTER & SETTER
-    public int getId() {return this.id;}
-    public void setId(int id) {this.id = id;}
 
-    public String getName() {return this.name;}
-    public void setName(String name) {this.name = name;}
+    // GETTER & SETTER
+    public int getId() {
+        return this.id;
+    }
 
-    public MenuTypeEnum getMenuType() {return this.menuTypeEnum;}
-    public void setMenuType(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getMail() {return this.mail;}
-    public void setMail(String mail) {this.mail = mail;}
+    public String getName() {
+        return this.name;
+    }
 
-    public String getPassword() {return this.password;}
-    public void setPassword(String password) {this.password = password;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public List<Course> getOrderedCourses(){return this.orderedCourses;}
+    public MenuTypeEnum getMenuType() {
+        return this.menuTypeEnum;
+    }
+
+    public void setMenuType(MenuTypeEnum menuTypeEnum) {
+        this.menuTypeEnum = menuTypeEnum;
+    }
+
+    public String getMail() {
+        return this.mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Course> getOrderedCourses() {
+        return this.orderedCourses;
+    }
 
     /**
      * Adds a course to the ordered course of a customer
+     *
      * @param c is the course to add
      */
-    public void addOrderedCourse(Course c){orderedCourses.add(c);}
-    public void addAllOrderedCourse(List<Course> c){orderedCourses.addAll(c);}
-
-public double calculateBill(List<Course>orderedCourses) {
-    for (Course course : orderedCourses) {
-        billToPay += course.getPrice();
+    public void addOrderedCourse(Course c) {
+        orderedCourses.add(c);
     }
-    return Math.floor(billToPay);
-}
+
+    public void addAllOrderedCourse(List<Course> c) {
+        orderedCourses.addAll(c);
+    }
+
+    public double calculateBill(List<Course> orderedCourses) {
+        for (Course course : orderedCourses) {
+            billToPay += course.getPrice();
+        }
+        return Math.floor(billToPay);
+    }
 
     /**
      * That method apply a discount
+     *
      * @param discount
      * @return
      */
-    public double calculateBill(List<Course>orderedCourses, double discount) {
-    for (Course course : orderedCourses) {
-        billToPay += course.getPrice();
+    public double calculateBill(List<Course> orderedCourses, double discount) {
+        for (Course course : orderedCourses) {
+            billToPay += course.getPrice();
+        }
+        return Math.floor((billToPay / 100) * (100 - discount));
     }
-    return Math.floor((billToPay / 100) * (100 - discount))  ;
-}
 
-public Customer emptyCustomer() {
-        return new Customer("", MenuTypeEnum.EMPTY_MENU, "", "");
-}
+    /**
+     * It's a method to retrieve all the ordered courses names
+     *
+     * @return all the names of the ordered courses as a String
+     */
+
+    public String OrderedCourseToString() {
+        StringBuilder sb = new StringBuilder();
+        for (Course c : orderedCourses) {
+            sb.append(c.getName()).append(" - ");
+        }
+        return sb.substring(0, sb.toString().length() - 3);
+    }
+
     /**
      * that method print the info of customer
      */
-    public void printInfo(){System.out.println(this.name + " " + this.menuTypeEnum + " menu\n" + this.mail);}
+    public void printInfo() {
+        System.out.println(this.name + " " + this.menuTypeEnum + " menu\n" + this.mail);
+    }
 }

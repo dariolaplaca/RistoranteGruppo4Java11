@@ -12,6 +12,9 @@ public enum TableStateEnum {
     TableStateEnum(String state) {
         this.state = state;
     }
-    public String getState() {return state;}
+
+    public String getState() {
+        return state;
+    }
 
 }

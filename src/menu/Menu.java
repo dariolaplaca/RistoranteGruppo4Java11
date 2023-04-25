@@ -7,8 +7,9 @@ import enumProject.MenuTypeEnum;
 import enumProject.TextModifierEnum;
 
 import java.util.*;
+
 /**
-*   Class that represents the menu
+ * Class that represents the menu
  */
 public class Menu {
 
@@ -18,6 +19,7 @@ public class Menu {
 
     /**
      * This is the constructor for the Menu class
+     *
      * @param name Menu name
      */
     public Menu(String name) {
@@ -26,15 +28,29 @@ public class Menu {
         this.menuOfTheDay = new ArrayList<>();
     }
 
-    public List<Course> getCourseList() {return courseList;}
+    public List<Course> getCourseList() {
+        return courseList;
+    }
 
-    public String getName() {return this.name;}
-    public void setName(String name) {this.name = name;}
+    public String getName() {
+        return this.name;
+    }
 
-    public List<Course> getMenuOfTheDay() {return this.menuOfTheDay;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void addCourse(Course s) {courseList.add(s);}
-    public void addAllCourse(List<Course> courseList) {this.courseList.addAll(courseList);}
+    public List<Course> getMenuOfTheDay() {
+        return this.menuOfTheDay;
+    }
+
+    public void addCourse(Course s) {
+        courseList.add(s);
+    }
+
+    public void addAllCourse(List<Course> courseList) {
+        this.courseList.addAll(courseList);
+    }
 
     /**
      * Prints all the courses of the menu
@@ -111,6 +127,7 @@ public class Menu {
         newHash.forEach(a -> System.out.print(TextModifierEnum.ANSI_YELLOW + a.getName() + ", " + TextModifierEnum.ANSI_RESET));
         System.out.print(TextModifierEnum.ANSI_RED + " ]" + TextModifierEnum.ANSI_RESET);
     }
+
     /**
      * @return an HashSet of 3 randoms courses that are not course.Beverages
      */
@@ -124,8 +141,10 @@ public class Menu {
         }
         return finalHashset;
     }
+
     /**
      * Calculates the total price of the menu of the day
+     *
      * @return total price in a double variable
      */
     public double calculatePriceMenu() {
@@ -136,17 +155,20 @@ public class Menu {
         totalCost = Math.floor(totalCost / 10) * 10;
         return totalCost;
     }
+
     /**
      * Calculates the total kcal of the menu of the day
+     *
      * @return sum of kcal in the menu  in a double variable
      */
-    public double calculateKcalMenu(){
-        double sumCourseKcal = 0 ;
-        for (Course c : menuOfTheDay){
+    public double calculateKcalMenu() {
+        double sumCourseKcal = 0;
+        for (Course c : menuOfTheDay) {
             sumCourseKcal += c.getCalories();
         }
         return Math.floor(sumCourseKcal);
     }
+
     /**
      * @return the price menu, or price menu discounted
      */

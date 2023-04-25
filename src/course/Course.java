@@ -5,7 +5,8 @@ import enumProject.CourseEnum;
 import enumProject.MenuTypeEnum;
 import enumProject.TextModifierEnum;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Superclass of each course type
@@ -40,27 +41,66 @@ public abstract class Course {
         this.allergens = new HashSet<>(allergens);
         this.id = ++idCounter;
     }
-    public int getId() {return id;}
-    public void setName(String name) {this.name = name;}
-    public String getName() {return this.name;}
 
-    public MenuTypeEnum getMenuType() {return menuTypeEnum;}
-    public void setMenuType(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
+    public int getId() {
+        return id;
+    }
 
-    public Set<AllergensEnum> getAllergens() {return allergens;}
-    public void setAllergens(HashSet<AllergensEnum> allergens) {this.allergens = allergens;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setCourseType(CourseEnum courseType) {this.courseType = courseType;}
-    public CourseEnum getCourseType() {return this.courseType;}
+    public String getName() {
+        return this.name;
+    }
 
-    public String getDescription() {return this.description;}
-    public void setDescription(String description) {this.description = description;}
+    public MenuTypeEnum getMenuType() {
+        return menuTypeEnum;
+    }
 
-    public double getCalories() {return calories;}
-    public void setCalories(double calories) {this.calories = calories;}
+    public void setMenuType(MenuTypeEnum menuTypeEnum) {
+        this.menuTypeEnum = menuTypeEnum;
+    }
 
-    public double getPrice() {return this.price;}
-    public void setPrice(double price) {this.price = price;}
+    public Set<AllergensEnum> getAllergens() {
+        return allergens;
+    }
+
+    public void setAllergens(HashSet<AllergensEnum> allergens) {
+        this.allergens = allergens;
+    }
+
+    public void setCourseType(CourseEnum courseType) {
+        this.courseType = courseType;
+    }
+
+    public CourseEnum getCourseType() {
+        return this.courseType;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getCalories() {
+        return calories;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public void printInfo() {
         System.out.println("\t" +
@@ -71,6 +111,7 @@ public abstract class Course {
                 TextModifierEnum.ANSI_ITALIC +
                 getDescription() + TextModifierEnum.ANSI_RESET);
     }
+
     public void checkAllergens() {
         Set<AllergensEnum> allergens = this.getAllergens();
         if (allergens.contains(AllergensEnum.NONE)) {

@@ -21,14 +21,17 @@ public enum CourseEnum {
      * @param id    The course type identifier
      */
 
-    CourseEnum(String name, int id){
+    CourseEnum(String name, int id) {
         this.name = name;
         if (id < 0 || id > NUMBER_OF_COURSES_TYPE) {
             throw new IllegalArgumentException("ID can only be between 0 to 4.");
         }
         this.id = id;
     }
-    public String getName() {return this.name;}
+
+    public String getName() {
+        return this.name;
+    }
 
     public int getId() {
         return this.id;

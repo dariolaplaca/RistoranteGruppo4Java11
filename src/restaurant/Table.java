@@ -1,4 +1,5 @@
 package restaurant;
+
 import enumProject.TableStateEnum;
 import enumProject.TextModifierEnum;
 
@@ -21,23 +22,36 @@ public class Table {
         this.numberOfSeats = numberOfSeats;
         this.tableState = TableStateEnum.AVAILABLE;
     }
-// GETTER & SETTER
-    public int getId() {return this.id;}
-    public void setId(int id) {this.id = id;}
 
-    public int getNumberOfSeats() {return this.numberOfSeats;}
-    public void setNumberOfSeats(int numberOfSeats) {this.numberOfSeats = numberOfSeats;}
+    // GETTER & SETTER
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNumberOfSeats() {
+        return this.numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
 
     public TableStateEnum getTableState() {
         return this.tableState;
     }
+
     public void setTableState(TableStateEnum tableState) {
         this.tableState = tableState;
     }
+
     /**
      * This is the printInfo method for the table that prints the number, state and number of seats of the table
      */
-    public void printInfo(){
-            System.out.println(TextModifierEnum.ANSI_RED + "Table n° " + this.id + "\n" + "Table state: " + tableState + "\nNumber of seats: " + this.numberOfSeats + TextModifierEnum.ANSI_RESET);
+    public void printInfo() {
+        System.out.println(TextModifierEnum.ANSI_RED + "Table n° " + this.id + "\n" + "Table state: " + tableState.getState() + "\nNumber of seats: " + this.numberOfSeats + TextModifierEnum.ANSI_RESET);
     }
 }

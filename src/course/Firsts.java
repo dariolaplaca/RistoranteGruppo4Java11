@@ -6,6 +6,7 @@ import enumProject.MenuTypeEnum;
 import enumProject.TextModifierEnum;
 
 import java.util.Set;
+
 /**
  * course.Firsts class is an extension of course.Course that adding firsts to menu
  */
@@ -14,6 +15,7 @@ public class Firsts extends Course {
 
     private double weight;
     private boolean isAColdCourse;
+
     /***
      * This is the constructor for the course.Firsts class
      * @param name        First's name
@@ -33,13 +35,22 @@ public class Firsts extends Course {
         this.courseType = CourseEnum.FIRSTS;
     }
 
-    public boolean isAColdCourse() {return this.isAColdCourse;}
-    public double getWeight() {return weight;}
-    public void setWeight(double weight) {this.weight = weight;}
+    public boolean isAColdCourse() {
+        return this.isAColdCourse;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     @Override
-    public void printInfo(){
+    public void printInfo() {
         super.printInfo();
-        System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + " " +weight + "g" + TextModifierEnum.ANSI_RESET);
+        System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + " " + weight + "g" + TextModifierEnum.ANSI_RESET);
         if (isAColdCourse) {
             System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "This dish is a cold course" + TextModifierEnum.ANSI_RESET);
         }

@@ -5,7 +5,9 @@ import restaurant.Customer;
 import restaurant.Restaurant;
 import restaurant.Table;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,21 +31,21 @@ public class Main {
         Course amatriciana = new Firsts("Amatriciana", "Hearty pasta dish from the town of Amatrice, featuring bucatini pasta in a tangy tomato sauce with cured pork cheek and Pecorino Romano cheese.", false, 10, 130, 10.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course orecchiette = new Firsts("Orecchiette broccoli and sausage", "Ear-shaped pasta from Puglia, tossed with tender broccoli florets, savory sausage, garlic, and olive oil.", false, 8, 120, 7.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course tagliatelle = new Firsts("Tagliatelle with white meat sauce and frutti di mare", "Ribbon-shaped pasta in a rich and creamy sauce made with tender white meat, Parmesan cheese, and a hint of nutmeg.", false, 7, 150, 18.99, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
-        Course coldMediterraneanPastaSalad = new Firsts("Cold mediterranean pasta salad","A simple but fresh mediterranean pasta salad made with butterflies pasta type, cooked tuna, black olives, cherry tomatoes, basil and a very juicy neapolitan buffalo mozzarella",true,100,250,7,MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.FISH, AllergensEnum.DAIRY));
+        Course coldMediterraneanPastaSalad = new Firsts("Cold mediterranean pasta salad", "A simple but fresh mediterranean pasta salad made with butterflies pasta type, cooked tuna, black olives, cherry tomatoes, basil and a very juicy neapolitan buffalo mozzarella", true, 100, 250, 7, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.FISH, AllergensEnum.DAIRY));
         Course veganFirstCourse = new Firsts("Lentil ragout", "Lentil ragout", false, 400, 200, 15.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.LENTIL));
         Course firtstChildren = new Firsts("Pasta with sauce", "Classic pasta with sauce and basil", false, 500, 200, 7.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course pennePesto = new Firsts("Penne with Pesto Sauce", "Penne pasta in a creamy pesto sauce made with basil, garlic, pine nuts, and Parmesan cheese.", false, 120, 200, 9.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course ravioliButterSage = new Firsts("Ravioli with Butter and Sage", "Homemade ravioli filled with ricotta cheese and spinach, served with a delicious butter and sage sauce.", false, 150, 350, 12.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.DAIRY));
 
         // - SECONDS
-        Course florentine = new Seconds("Rare Florentine", "Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.",true, true, 20, 1000, 17.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
+        Course florentine = new Seconds("Rare Florentine", "Tender and juicy classic steak with a delicious char on the outside, served with roasted vegetables and crispy potatoes.", true, true, 20, 1000, 17.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course wagyu = new Seconds("Wagyu", "Luxurious premium cut cooked to perfection, served with creamy mashed potatoes and steamed green beans.", true, true, 30, 400, 18.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.DAIRY));
         Course kangarooSausage = new Seconds("Kangaroo Sausage", "Unique and flavorful sausage made with lean, tender kangaroo meat, served with sauerkraut and homemade mustard.", true, true, 25, 750, 20.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.MUSTARD));
         Course meatRolls = new Seconds("Meat Rolls", "Hearty and delicious appetizer with seasoned ground beef wrapped in crispy pastry, served with tomato dipping sauce.", true, false, 15, 300, 12.59, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course beefTartare = new Seconds("Beef Tartare", "Indulgent dish made with fresh high-quality beef, seasoned to perfection and served with toasted bread and mixed greens.", true, true, 24, 300, 21.99, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course hamburger = new Seconds("Hamburger", "Classic 100% beef burger with traditional toppings, satisfying and affordable.", true, false, 12, 220, 22.00, MenuTypeEnum.MEAT_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN));
         Course veganSecondCourse = new Seconds("Spiced Carrot Falafel", "Soft carrot balls flavored with curry, ginger and chilli and browned in the oven served with mixed vegetables", false, true, 400, 200, 15.99, MenuTypeEnum.VEGAN_MENU, Set.of(AllergensEnum.LENTIL));
-        Course cutletPotatoes = new Seconds("chicken cutlet with a portion of fries", "classic fried or baked chicken cutlet with fries", true, true,400, 700, 13.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
+        Course cutletPotatoes = new Seconds("chicken cutlet with a portion of fries", "classic fried or baked chicken cutlet with fries", true, true, 400, 700, 13.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.NONE));
         Course fishAndChips = new Seconds("Fish and Chips", "Crispy battered fish served with classic British-style chips.", false, true, 250, 550, 13.99, MenuTypeEnum.CHILDREN_MENU, Set.of(AllergensEnum.CEREALS_CONTAINING_GLUTEN, AllergensEnum.FISH));
         // - DESSERTS
         Course appleCake = new Desserts("Apple cake", "American apple pie", 1.000, 220, 12.99, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.DAIRY, AllergensEnum.CEREALS_CONTAINING_GLUTEN));
@@ -101,18 +103,17 @@ public class Main {
         Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
         Customer cris = new Customer("Cris", MenuTypeEnum.FISH_MENU, "criswow@gmail.com", "Abcde123");
 
-      ilSolito.bookATable(table2,dario,2);
+        ilSolito.bookATable(table2, dario, 2);
 //      ilSolito.bookATable(table2,dario,2);
 //      ilSolito.printAvailableTables();
 //      ilSolito.printOccupiedTables();
-//        ilSolito.chooseCourseMenuType(MenuTypeEnum.MEAT_MENU);
-        ilSolito.addCourseToCustomer(florentine,dario);
-        ilSolito.addCourseToCustomer(amatriciana,dario);
-        ilSolito.addCourseToCustomer(sacherTorte,dario);
-        ilSolito.addCourseToCustomer(stillWater,dario);
-        ilSolito.freeTable(table2, 20);
+//      ilSolito.chooseCourseMenuType(MenuTypeEnum.MEAT_MENU);
+        ilSolito.addCourseToCustomer(florentine, dario);
+        ilSolito.addCourseToCustomer(amatriciana, dario);
+        ilSolito.addCourseToCustomer(sacherTorte, dario);
+        ilSolito.addCourseToCustomer(stillWater, dario);
         System.out.println(ilSolito.getCashRegister());
-        ilSolito.printAvailableTables();
-        ilSolito.getMenu().printMenu();
+        ilSolito.printTablesInfo();
+        ilSolito.freeTable(table2, 20);
     }
 }

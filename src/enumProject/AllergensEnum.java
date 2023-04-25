@@ -27,7 +27,11 @@ public enum AllergensEnum {
     SPICED("Spiced");
     public String name;
 
-    AllergensEnum(String name) {this.name = name;}
+    AllergensEnum(String name) {
+        this.name = name;
+    }
 
-    public String getName() {return name;}
+    public String getName() {
+        return name;
+    }
 }

@@ -6,6 +6,7 @@ import enumProject.MenuTypeEnum;
 import enumProject.TextModifierEnum;
 
 import java.util.Set;
+
 /**
  * course.Starters class is an extension of course.Course that adding starters to menu
  */
@@ -41,20 +42,20 @@ public class Starters extends Course {
     @Override
     public void printInfo() {
         super.printInfo();
-        if (isGourmet){
+        if (isGourmet) {
             System.out.println("\t" +
                     TextModifierEnum.ANSI_BOLD +
-                    TextModifierEnum.ANSI_RED  +
+                    TextModifierEnum.ANSI_RED +
                     TextModifierEnum.ANSI_RESET +
                     TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
-                    TextModifierEnum.ANSI_ITALIC +  "Is gourmet!" + TextModifierEnum.ANSI_RESET);
-        }else {
+                    TextModifierEnum.ANSI_ITALIC + "Is gourmet!" + TextModifierEnum.ANSI_RESET);
+        } else {
             System.out.println("\t" +
                     TextModifierEnum.ANSI_BOLD +
-                    TextModifierEnum.ANSI_RED  +
+                    TextModifierEnum.ANSI_RED +
                     TextModifierEnum.ANSI_RESET +
                     TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND +
-                    TextModifierEnum.ANSI_ITALIC +  "Is not gourmet!" + TextModifierEnum.ANSI_RESET);
+                    TextModifierEnum.ANSI_ITALIC + "Is not gourmet!" + TextModifierEnum.ANSI_RESET);
         }
 
     }

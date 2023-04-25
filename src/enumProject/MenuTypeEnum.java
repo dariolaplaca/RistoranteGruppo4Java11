@@ -18,8 +18,11 @@ public enum MenuTypeEnum {
      * @param name Menu type name
      */
 
-    MenuTypeEnum(String name){
-        this.name = name ;
+    MenuTypeEnum(String name) {
+        this.name = name;
     }
-    public String getName() {return name;}
+
+    public String getName() {
+        return name;
+    }
 }

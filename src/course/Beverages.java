@@ -6,6 +6,7 @@ import enumProject.MenuTypeEnum;
 import enumProject.TextModifierEnum;
 
 import java.util.Set;
+
 /**
  * course.Beverages class is an extension of course.Course that implements drinks
  */
@@ -15,6 +16,7 @@ public class Beverages extends Course {
 
     /**
      * This is the constructor for the course.Beverages class
+     *
      * @param name        Beverage's name
      * @param description Beverage's description
      * @param milliliters Beverage's milliliters
@@ -32,16 +34,26 @@ public class Beverages extends Course {
         this.courseType = CourseEnum.BEVERAGES;
     }
 
-    public double getMilliliters() {return this.milliliters;}
-    public void setMilliliters(double milliliters) {this.milliliters = milliliters;}
+    public double getMilliliters() {
+        return this.milliliters;
+    }
 
-    public boolean isAlcoholic() {return this.isAlcoholic;}
-    public void setAlcoholic(boolean alcoholic) {isAlcoholic = alcoholic;}
+    public void setMilliliters(double milliliters) {
+        this.milliliters = milliliters;
+    }
 
-    public void printInfo(){
+    public boolean isAlcoholic() {
+        return this.isAlcoholic;
+    }
+
+    public void setAlcoholic(boolean alcoholic) {
+        isAlcoholic = alcoholic;
+    }
+
+    public void printInfo() {
         super.printInfo();
         System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + String.valueOf(this.milliliters) + "ml" + TextModifierEnum.ANSI_RESET);
-        if(isAlcoholic){
+        if (isAlcoholic) {
             System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "Warning this beverage is alcoholic, you must show your ID" + TextModifierEnum.ANSI_RESET);
         }
     }

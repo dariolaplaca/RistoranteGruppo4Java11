@@ -17,8 +17,6 @@ public class Restaurant {
     private String name;
     private String address;
     private String type;
-    private Customer customer;
-    private MenuTypeEnum menuTypeEnum;
     private Menu menu;
     private HashMap<Table, Customer> tables;
     private double cashRegister;
@@ -36,34 +34,62 @@ public class Restaurant {
     }
 
     // GETTER & SETTER
-    public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
+    public String getName() {
+        return name;
+    }
 
-    public Menu getMenu() {return menu;}
-    public String getAddress() {return this.address;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setAddress(String address) {this.address = address;}
-    public String getType() {return this.type;}
+    public Menu getMenu() {
+        return menu;
+    }
 
-    public void setType(String type) {this.type = type;}
-    public Map<Table, Customer> getTables() {return this.tables;}
+    public String getAddress() {
+        return this.address;
+    }
 
-    public void setMenu(Menu menu) {this.menu = menu;}
-    public void setTables(HashMap<Table, Customer> tables) {this.tables = tables;}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public double getCashRegister() {return cashRegister;}
-    public void setCashRegister(double cashRegister) {this.cashRegister = cashRegister;}
+    public String getType() {
+        return this.type;
+    }
 
-    public Customer getCustomer() {return customer;}
-    public void setCustomer(Customer customer) {this.customer = customer;}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-    public MenuTypeEnum getMenuTypeEnum() {return menuTypeEnum;}
-    public void setMenuTypeEnum(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
+    public Map<Table, Customer> getTables() {
+        return this.tables;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public void setTables(HashMap<Table, Customer> tables) {
+        this.tables = tables;
+    }
+
+    public double getCashRegister() {
+        return cashRegister;
+    }
+
+    public void setCashRegister(double cashRegister) {
+        this.cashRegister = cashRegister;
+    }
 
     // METHODS
+    public void addCourseToMenu(Course course) {
+        menu.addCourse(course);
+    }
 
-    public void addCourseToMenu(Course course) {menu.addCourse(course);}
-    public void addAllCourseToMenu(List<Course> courses) {menu.addAllCourse(courses);}
+    public void addAllCourseToMenu(List<Course> courses) {
+        menu.addAllCourse(courses);
+    }
 
     /**
      * that method print info of restaurant
@@ -117,7 +143,7 @@ public class Restaurant {
      * Adds a table to the table map of the Restaurant
      */
     public void addTable(Table table) {
-        tables.put(table, customer.emptyCustomer());
+        tables.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
     }
 
     /**
@@ -127,13 +153,9 @@ public class Restaurant {
      */
     public void removeTable(Table table) {
         boolean removeTable = false;
-        for (Table t : tables.keySet()) {
-            if (table.equals(t)) {
-                tables.remove(table);
-                removeTable = true;
-            }
-        }
-        if (!removeTable) {
+        if (tables.containsKey(table)) {
+            tables.remove(table);
+        } else {
             System.out.println(TextModifierEnum.ANSI_RED + "table not found");
         }
     }
@@ -151,9 +173,7 @@ public class Restaurant {
             if (table.getNumberOfSeats() < numberOfPeople) {
                 System.out.println("The table n° " + table.getId() + " is not suited for the group");
             } else {
-                setCustomer(customer);
                 table.setTableState(TableStateEnum.OCCUPIED);
-                setMenuTypeEnum(customer.getMenuType());
                 tables.put(table, customer);
                 System.out.println(TextModifierEnum.ANSI_GREEN + "You have booked with success" + TextModifierEnum.ANSI_RESET);
             }
@@ -169,17 +189,16 @@ public class Restaurant {
         if (table.getTableState().equals(TableStateEnum.OCCUPIED)) {
             Customer customer = tables.get(table);
             tableCheck(customer, discount);
-            setCustomer(customer.emptyCustomer());
-            setMenuTypeEnum(MenuTypeEnum.EMPTY_MENU);
             table.setTableState(TableStateEnum.AVAILABLE);
-            tables.put(table, customer.emptyCustomer());
+            tables.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
         }
     }
 
     /**
      * Pays the check for the passed customer                                                                                                                                                                                                                             \
      *
-     * @param customer customer that pays the bill*/
+     * @param customer customer that pays the bill
+     */
     public void tableCheck(Customer customer, double discount) {
         List<Course> coursesCustomer = customer.getOrderedCourses();
         double billToPay = customer.calculateBill(coursesCustomer, discount);
@@ -222,7 +241,9 @@ public class Restaurant {
     public void printTablesInfo() {
         for (Map.Entry<Table, Customer> table : tables.entrySet()) {
             if (table.getKey().getTableState().equals(TableStateEnum.OCCUPIED)) {
-                System.out.println(table.getValue().getName() + " " + table.getValue().getOrderedCourses());
+                String orderedCourses = table.getValue().OrderedCourseToString();
+                System.out.println(table.getValue().getName() + "\n" + orderedCourses);
+                ;
             } else {
                 table.getKey().printInfo();
                 System.out.println();

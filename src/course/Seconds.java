@@ -6,6 +6,7 @@ import enumProject.MenuTypeEnum;
 import enumProject.TextModifierEnum;
 
 import java.util.Set;
+
 /**
  * course.Seconds class is an extension of course.Course that adding seconds to menu
  */
@@ -14,6 +15,7 @@ public class Seconds extends Course {
     private double weight;
     private boolean highProtein;
     private boolean contour;
+
     /***
      * This is the constructor for the course.Seconds class
      * @param name        Second's name
@@ -36,12 +38,29 @@ public class Seconds extends Course {
 
     }
 
-    public boolean isHighProtein() {return this.highProtein;}
-    public void setHighProtein(boolean highProtein) {this.highProtein = highProtein;}
-    public boolean isContour() {return this.contour;}
-    public void setContour(boolean contour){this.contour = contour;}
-    public double getWeight() {return this.weight;}
-    public void setWeight(double weight) {this.weight = weight;}
+    public boolean isHighProtein() {
+        return this.highProtein;
+    }
+
+    public void setHighProtein(boolean highProtein) {
+        this.highProtein = highProtein;
+    }
+
+    public boolean isContour() {
+        return this.contour;
+    }
+
+    public void setContour(boolean contour) {
+        this.contour = contour;
+    }
+
+    public double getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     @Override
     public void printInfo() {
@@ -49,7 +68,8 @@ public class Seconds extends Course {
         System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + " " + weight + "g" + TextModifierEnum.ANSI_RESET);
         if (!highProtein) {
             System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "Low protein dish" + TextModifierEnum.ANSI_RESET);
-        } if (!contour){
+        }
+        if (!contour) {
             System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + "Dish without accompanying side" + TextModifierEnum.ANSI_RESET);
         }
     }
