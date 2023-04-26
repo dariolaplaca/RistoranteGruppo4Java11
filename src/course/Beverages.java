@@ -28,6 +28,7 @@ public class Beverages extends Course {
 
     public Beverages(String name, String description, double milliliters, double calories, double price, MenuTypeEnum mt, Set<AllergensEnum> allergens, boolean alcohol) {
         super(name, description, calories, price, mt, allergens);
+        //TODO guarda se metterli private e capire un attimo il perchè
         this.description = description;
         this.milliliters = milliliters;
         this.isAlcoholic = alcohol;
@@ -50,6 +51,7 @@ public class Beverages extends Course {
         isAlcoholic = alcoholic;
     }
 
+    @Override
     public void printInfo() {
         super.printInfo();
         System.out.println(TextModifierEnum.ANSI_DESCRIPTION_COLOR_AND_BACKGROUND + String.valueOf(this.milliliters) + "ml" + TextModifierEnum.ANSI_RESET);

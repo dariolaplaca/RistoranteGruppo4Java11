@@ -18,7 +18,7 @@ public class Restaurant {
     private String address;
     private String type;
     private Menu menu;
-    private HashMap<Table, Customer> tables;
+    private HashMap<Table, Customer> tablesRestaurant;
     private double cashRegister;
 
     /**
@@ -29,7 +29,7 @@ public class Restaurant {
         this.address = address;
         this.type = type;
         this.menu = new Menu("Menu");
-        this.tables = new HashMap<>();
+        this.tablesRestaurant = new HashMap<>();
         this.cashRegister = 0.0;
     }
 
@@ -62,16 +62,16 @@ public class Restaurant {
         this.type = type;
     }
 
-    public Map<Table, Customer> getTables() {
-        return this.tables;
+    public Map<Table, Customer> getTablesRestaurant() {
+        return this.tablesRestaurant;
     }
 
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
 
-    public void setTables(HashMap<Table, Customer> tables) {
-        this.tables = tables;
+    public void setTablesRestaurant(HashMap<Table, Customer> tablesRestaurant) {
+        this.tablesRestaurant = tablesRestaurant;
     }
 
     public double getCashRegister() {
@@ -132,7 +132,7 @@ public class Restaurant {
      * only if the customer sit in the table, and it's a course of the menu type he chose
      */
     public void addCourseToCustomer(Course course, Customer customer) {
-        if (tables.containsValue(customer) && (course.getMenuType() == customer.getMenuType() || course.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU))) {
+        if (tablesRestaurant.containsValue(customer) && (course.getMenuType() == customer.getMenuType() || course.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU))) {
             customer.addOrderedCourse(course);
         } else {
             System.out.println("Can't add course to the customer");
@@ -143,7 +143,7 @@ public class Restaurant {
      * Adds a table to the table map of the Restaurant
      */
     public void addTable(Table table) {
-        tables.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
+        tablesRestaurant.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
     }
 
     /**
@@ -153,8 +153,8 @@ public class Restaurant {
      */
     public void removeTable(Table table) {
         boolean removeTable = false;
-        if (tables.containsKey(table)) {
-            tables.remove(table);
+        if (tablesRestaurant.containsKey(table)) {
+            tablesRestaurant.remove(table);
         } else {
             System.out.println(TextModifierEnum.ANSI_RED + "table not found");
         }
@@ -174,7 +174,7 @@ public class Restaurant {
                 System.out.println("The table n° " + table.getId() + " is not suited for the group");
             } else {
                 table.setTableState(TableStateEnum.OCCUPIED);
-                tables.put(table, customer);
+                tablesRestaurant.put(table, customer);
                 System.out.println(TextModifierEnum.ANSI_GREEN + "You have booked with success" + TextModifierEnum.ANSI_RESET);
             }
         } else {
@@ -187,10 +187,11 @@ public class Restaurant {
      */
     public void freeTable(Table table, double discount) {
         if (table.getTableState().equals(TableStateEnum.OCCUPIED)) {
-            Customer customer = tables.get(table);
+            Customer customer = tablesRestaurant.get(table);
             tableCheck(customer, discount);
             table.setTableState(TableStateEnum.AVAILABLE);
-            tables.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
+            //TODO va fatto il costruttore di default Customer
+            tablesRestaurant.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
         }
     }
 
@@ -214,7 +215,7 @@ public class Restaurant {
      */
     public void printAvailableTables() {
         System.out.println("\nAVAILABLE TABLES:\n");
-        for (Table table : tables.keySet()) {
+        for (Table table : tablesRestaurant.keySet()) {
             if (table.getTableState() == TableStateEnum.AVAILABLE) {
                 table.printInfo();
                 System.out.println();
@@ -227,7 +228,7 @@ public class Restaurant {
      */
     public void printOccupiedTables() {
         System.out.println("\nOCCUPIED TABLES:\n");
-        for (Table table : tables.keySet()) {
+        for (Table table : tablesRestaurant.keySet()) {
             if (table.getTableState() == TableStateEnum.OCCUPIED) {
                 table.printInfo();
                 System.out.println();
@@ -239,11 +240,10 @@ public class Restaurant {
      * Prints the info's of all the tables
      */
     public void printTablesInfo() {
-        for (Map.Entry<Table, Customer> table : tables.entrySet()) {
+        for (Map.Entry<Table, Customer> table : tablesRestaurant.entrySet()) {
             if (table.getKey().getTableState().equals(TableStateEnum.OCCUPIED)) {
                 String orderedCourses = table.getValue().OrderedCourseToString();
                 System.out.println(table.getValue().getName() + "\n" + orderedCourses);
-                ;
             } else {
                 table.getKey().printInfo();
                 System.out.println();

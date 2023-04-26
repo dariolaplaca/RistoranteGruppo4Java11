@@ -19,13 +19,15 @@ public class Customer {
     private List<Course> orderedCourses;
     private double billToPay;
 
+    //TODO va fatto il costruttore di default
+
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
         this.id = ++idCounter;
         this.name = name;
         this.menuTypeEnum = menuTypeEnum;
         this.mail = mail;
         this.password = password;
-        orderedCourses = new ArrayList<>();
+        this.orderedCourses = new ArrayList<>();
         this.billToPay = 0;
     }
 

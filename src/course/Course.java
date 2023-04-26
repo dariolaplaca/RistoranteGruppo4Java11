@@ -14,7 +14,7 @@ import java.util.Set;
 
 public abstract class Course {
     protected String name;
-    protected String description;
+    private String description;
     protected double price;
     protected Set<AllergensEnum> allergens;
     protected MenuTypeEnum menuTypeEnum;
