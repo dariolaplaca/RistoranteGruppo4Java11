@@ -32,7 +32,7 @@ public class Firsts extends Course {
         super(name, description, calories, price, mt, allergens);
         this.isAColdCourse = isCold;
         this.weight = weight;
-        this.courseType = CourseEnum.FIRSTS;
+        this.setCourseType(CourseEnum.FIRSTS);
     }
 
     public boolean isAColdCourse() {

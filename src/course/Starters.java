@@ -28,7 +28,7 @@ public class Starters extends Course {
     public Starters(String name, String description, boolean isGourmet, double calories, double price, MenuTypeEnum mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.isGourmet = isGourmet;
-        this.courseType = CourseEnum.STARTERS;
+        this.setCourseType(CourseEnum.STARTERS);
     }
 
     public boolean isGourmet() {

@@ -143,7 +143,7 @@ public class Restaurant {
      * Adds a table to the table map of the Restaurant
      */
     public void addTable(Table table) {
-        tablesRestaurant.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
+        tablesRestaurant.put(table, new Customer());
     }
 
     /**
@@ -152,7 +152,6 @@ public class Restaurant {
      * @param table
      */
     public void removeTable(Table table) {
-        boolean removeTable = false;
         if (tablesRestaurant.containsKey(table)) {
             tablesRestaurant.remove(table);
         } else {
@@ -190,8 +189,7 @@ public class Restaurant {
             Customer customer = tablesRestaurant.get(table);
             tableCheck(customer, discount);
             table.setTableState(TableStateEnum.AVAILABLE);
-            //TODO va fatto il costruttore di default Customer
-            tablesRestaurant.put(table, new Customer("", MenuTypeEnum.EMPTY_MENU, "", ""));
+            tablesRestaurant.put(table, new Customer());
         }
     }
 

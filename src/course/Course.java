@@ -13,15 +13,15 @@ import java.util.Set;
  */
 
 public abstract class Course {
-    protected String name;
+    private String name;
     private String description;
-    protected double price;
-    protected Set<AllergensEnum> allergens;
-    protected MenuTypeEnum menuTypeEnum;
-    protected CourseEnum courseType;
-    protected double calories;
-    protected int id;
-    protected static int idCounter = 0;
+    private double price;
+    private Set<AllergensEnum> allergens;
+    private MenuTypeEnum menuTypeEnum;
+    private CourseEnum courseType;
+    private double calories;
+    private int id;
+    private static int idCounter = 0;
 
     /***
      * This is the constructor for the course class

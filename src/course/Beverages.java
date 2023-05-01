@@ -29,10 +29,9 @@ public class Beverages extends Course {
     public Beverages(String name, String description, double milliliters, double calories, double price, MenuTypeEnum mt, Set<AllergensEnum> allergens, boolean alcohol) {
         super(name, description, calories, price, mt, allergens);
         //TODO guarda se metterli private e capire un attimo il perchè
-        this.description = description;
         this.milliliters = milliliters;
         this.isAlcoholic = alcohol;
-        this.courseType = CourseEnum.BEVERAGES;
+        this.setCourseType(CourseEnum.BEVERAGES);
     }
 
     public double getMilliliters() {

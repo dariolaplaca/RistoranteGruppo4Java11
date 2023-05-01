@@ -34,7 +34,7 @@ public class Seconds extends Course {
         this.highProtein = highProtein;
         this.contour = contour;
         this.weight = weight;
-        this.courseType = CourseEnum.SECONDS;
+        this.setCourseType(CourseEnum.SECONDS);
 
     }
 

@@ -22,7 +22,7 @@ public class Desserts extends Course {
     public Desserts(String name, String description, double weight, double calories, double price, MenuTypeEnum mt, Set<AllergensEnum> allergens) {
         super(name, description, calories, price, mt, allergens);
         this.weight = weight;
-        this.courseType = CourseEnum.DESSERTS;
+        this.setCourseType(CourseEnum.DESSERTS);
     }
 
     public double getWeight() {

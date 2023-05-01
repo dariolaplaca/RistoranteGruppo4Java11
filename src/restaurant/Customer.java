@@ -19,7 +19,9 @@ public class Customer {
     private List<Course> orderedCourses;
     private double billToPay;
 
-    //TODO va fatto il costruttore di default
+
+    public Customer() {
+    }
 
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
         this.id = ++idCounter;
