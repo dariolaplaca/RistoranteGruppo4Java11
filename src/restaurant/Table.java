@@ -10,17 +10,16 @@ public class Table {
 
     private static int idCounter = 0;
     private int id;
-    private int numberOfSeats;
     private TableStateEnum tableState;
+    private int NumberOfOccupiedSeats;
 
     /***
      * This is the constructor for the Table class
-     * @param numberOfSeats The number of seats of the table
      */
     public Table(int numberOfSeats) {
         this.id = ++idCounter;
-        this.numberOfSeats = numberOfSeats;
         this.tableState = TableStateEnum.AVAILABLE;
+        this.NumberOfOccupiedSeats = numberOfSeats;
     }
 
     // GETTER & SETTER
@@ -32,14 +31,6 @@ public class Table {
         this.id = id;
     }
 
-    public int getNumberOfSeats() {
-        return this.numberOfSeats;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
-    }
-
     public TableStateEnum getTableState() {
         return this.tableState;
     }
@@ -48,10 +39,18 @@ public class Table {
         this.tableState = tableState;
     }
 
+    public int getNumberOfOccupiedSeats() {
+        return this.NumberOfOccupiedSeats;
+    }
+
+    public void setNumberOfOccupiedSeats(int numberOfOccupiedSeats) {
+        this.NumberOfOccupiedSeats = numberOfOccupiedSeats;
+    }
+
     /**
      * This is the printInfo method for the table that prints the number, state and number of seats of the table
      */
     public void printInfo() {
-        System.out.println(TextModifierEnum.ANSI_RED + "Table n° " + this.id + "\n" + "Table state: " + tableState.getState() + "\nNumber of seats: " + this.numberOfSeats + TextModifierEnum.ANSI_RESET);
+        System.out.println(TextModifierEnum.ANSI_RED + "Table n° " + this.id + "\n" + "Table state: " + tableState.getState() + TextModifierEnum.ANSI_RESET);
     }
 }

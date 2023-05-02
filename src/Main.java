@@ -3,7 +3,6 @@ import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
 import restaurant.Customer;
 import restaurant.Restaurant;
-import restaurant.Table;
 
 import java.util.Arrays;
 import java.util.List;
@@ -81,39 +80,26 @@ public class Main {
 
 
         // RISTORANTE
-        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano");
+        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano", 5);
         ilSolito.addAllCourseToMenu(startersList);
         ilSolito.addAllCourseToMenu(firstsList);
         ilSolito.addAllCourseToMenu(secondsList);
         ilSolito.addAllCourseToMenu(dessertsList);
         ilSolito.addAllCourseToMenu(beverageList);
 
-        Table table1 = new Table(2);
-        Table table2 = new Table(4);
-        Table table3 = new Table(6);
-        Table table4 = new Table(8);
-        Table table5 = new Table(8);
-
-        ilSolito.addTable(table1);
-        ilSolito.addTable(table2);
-        ilSolito.addTable(table3);
-        ilSolito.addTable(table4);
-        ilSolito.addTable(table5);
-
         Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
         Customer cris = new Customer("Cris", MenuTypeEnum.FISH_MENU, "criswow@gmail.com", "Abcde123");
 
-        ilSolito.bookATable(table2, dario, 2);
-//      ilSolito.bookATable(table2,dario,2);
-//      ilSolito.printAvailableTables();
-//      ilSolito.printOccupiedTables();
-//      ilSolito.chooseCourseMenuType(MenuTypeEnum.MEAT_MENU);
+        ilSolito.bookATable(dario, 2);
+
         ilSolito.addCourseToCustomer(florentine, dario);
         ilSolito.addCourseToCustomer(amatriciana, dario);
         ilSolito.addCourseToCustomer(sacherTorte, dario);
         ilSolito.addCourseToCustomer(stillWater, dario);
         System.out.println(ilSolito.getCashRegister());
         ilSolito.printTablesInfo();
-        ilSolito.freeTable(table2, 20);
+        ilSolito.freeTable(1, 20);
+        System.out.println(ilSolito.getCashRegister());
+
     }
 }

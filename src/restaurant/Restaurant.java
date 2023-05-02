@@ -20,17 +20,21 @@ public class Restaurant {
     private Menu menu;
     private HashMap<Table, Customer> tablesRestaurant;
     private double cashRegister;
+    private int maxNumberOfCustomers;
+    private int numberOfCurrentCustomers;
 
     /**
      * This is the constructor for the Restaurant class
      */
-    public Restaurant(String name, String address, String type) {
+    public Restaurant(String name, String address, String type, int maxNumberOfCustomer) {
         this.name = name;
         this.address = address;
         this.type = type;
         this.menu = new Menu("Menu");
         this.tablesRestaurant = new HashMap<>();
         this.cashRegister = 0.0;
+        this.maxNumberOfCustomers = maxNumberOfCustomer;
+        this.numberOfCurrentCustomers = 0;
     }
 
     // GETTER & SETTER
@@ -72,6 +76,14 @@ public class Restaurant {
 
     public void setTablesRestaurant(HashMap<Table, Customer> tablesRestaurant) {
         this.tablesRestaurant = tablesRestaurant;
+    }
+
+    public int getMaxNumberOfCustomers() {
+        return this.maxNumberOfCustomers;
+    }
+
+    public void setMaxNumberOfCustomers(int maxNumberOfCustomers) {
+        this.maxNumberOfCustomers = maxNumberOfCustomers;
     }
 
     public double getCashRegister() {
@@ -140,13 +152,6 @@ public class Restaurant {
     }
 
     /**
-     * Adds a table to the table map of the Restaurant
-     */
-    public void addTable(Table table) {
-        tablesRestaurant.put(table, new Customer());
-    }
-
-    /**
      * Remove a table
      *
      * @param table
@@ -163,33 +168,40 @@ public class Restaurant {
      * This method books an available table for a customer
      * takes an input method that returns the list of all available tables
      *
-     * @param table          Table the customer wants to book
      * @param customer       Customer that wants to book the table
      * @param numberOfPeople number of people in the group of the customer
      */
-    public void bookATable(Table table, Customer customer, int numberOfPeople) {
-        if (table.getTableState() == TableStateEnum.AVAILABLE) {
-            if (table.getNumberOfSeats() < numberOfPeople) {
-                System.out.println("The table n° " + table.getId() + " is not suited for the group");
-            } else {
+    public void bookATable(Customer customer, int numberOfPeople) {
+        if(numberOfCurrentCustomers + numberOfPeople <= maxNumberOfCustomers){
+            Table table = new Table(numberOfPeople);
+            if (table.getTableState() == TableStateEnum.AVAILABLE) {
                 table.setTableState(TableStateEnum.OCCUPIED);
                 tablesRestaurant.put(table, customer);
+                numberOfCurrentCustomers += numberOfPeople;
                 System.out.println(TextModifierEnum.ANSI_GREEN + "You have booked with success" + TextModifierEnum.ANSI_RESET);
             }
         } else {
-            System.out.println("This table is already booked!");
+            System.out.println("All tables are booked!");
         }
+
     }
 
     /**
      * Free a booked table
      */
-    public void freeTable(Table table, double discount) {
-        if (table.getTableState().equals(TableStateEnum.OCCUPIED)) {
-            Customer customer = tablesRestaurant.get(table);
+    public void freeTable(int id, double discount) {
+        Table tableToSetFree = new Table(0);
+        for(Table table : tablesRestaurant.keySet()){
+            if(table.getId() == id){
+                tableToSetFree = table;
+            }
+        }
+        if (tableToSetFree.getTableState().equals(TableStateEnum.OCCUPIED)) {
+            Customer customer = tablesRestaurant.get(tableToSetFree);
             tableCheck(customer, discount);
-            table.setTableState(TableStateEnum.AVAILABLE);
-            tablesRestaurant.put(table, new Customer());
+            tableToSetFree.setTableState(TableStateEnum.AVAILABLE);
+            numberOfCurrentCustomers -= tableToSetFree.getNumberOfOccupiedSeats();
+            tablesRestaurant.remove(tableToSetFree);
         }
     }
 
@@ -241,7 +253,7 @@ public class Restaurant {
         for (Map.Entry<Table, Customer> table : tablesRestaurant.entrySet()) {
             if (table.getKey().getTableState().equals(TableStateEnum.OCCUPIED)) {
                 String orderedCourses = table.getValue().OrderedCourseToString();
-                System.out.println(table.getValue().getName() + "\n" + orderedCourses);
+                System.out.println(table.getValue().getName() + " table n° " + table.getKey().getId() + "\n" + orderedCourses);
             } else {
                 table.getKey().printInfo();
                 System.out.println();
