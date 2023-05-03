@@ -20,6 +20,8 @@ public abstract class Course {
     private MenuTypeEnum menuTypeEnum;
     private CourseEnum courseType;
     private double calories;
+
+    //TODO refactoring tutti gli int devono diventare integer
     private int id;
     private static int idCounter = 0;
 
