@@ -11,8 +11,8 @@ import java.util.Set;
  * course.Beverages class is an extension of course.Course that implements drinks
  */
 public class Beverages extends Course {
-    private double milliliters;
-    private boolean isAlcoholic;
+    private Double milliliters;
+    private Boolean isAlcoholic;
 
     /**
      * This is the constructor for the course.Beverages class

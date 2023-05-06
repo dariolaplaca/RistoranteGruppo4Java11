@@ -11,7 +11,7 @@ import java.util.Set;
  * course.Desserts class is an extension of course.Course that adding desserts to menu
  */
 public class Desserts extends Course {
-    private double weight;
+    private Double weight;
 
     /**
      * @param name        name of the dessert

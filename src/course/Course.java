@@ -15,15 +15,13 @@ import java.util.Set;
 public abstract class Course {
     private String name;
     private String description;
-    private double price;
+    private Double price;
     private Set<AllergensEnum> allergens;
     private MenuTypeEnum menuTypeEnum;
     private CourseEnum courseType;
-    private double calories;
-
-    //TODO refactoring tutti gli int devono diventare integer
-    private int id;
-    private static int idCounter = 0;
+    private Double calories;
+    private Integer id;
+    private static Integer idCounter = 0;
 
     /***
      * This is the constructor for the course class

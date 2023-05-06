@@ -13,8 +13,8 @@ import java.util.Set;
 
 public class Firsts extends Course {
 
-    private double weight;
-    private boolean isAColdCourse;
+    private Double weight;
+    private Boolean isAColdCourse;
 
     /***
      * This is the constructor for the course.Firsts class

@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class Starters extends Course {
 
-    private boolean isGourmet;
+    private Boolean isGourmet;
 
     /***
      * This is the constructor for the course.Starters class

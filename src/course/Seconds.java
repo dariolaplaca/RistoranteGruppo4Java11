@@ -12,9 +12,9 @@ import java.util.Set;
  */
 public class Seconds extends Course {
 
-    private double weight;
-    private boolean highProtein;
-    private boolean contour;
+    private Double weight;
+    private Boolean highProtein;
+    private Boolean contour;
 
     /***
      * This is the constructor for the course.Seconds class

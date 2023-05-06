@@ -10,14 +10,14 @@ import java.util.List;
  * Customer class is the class that represents a customer of the restaurant.
  */
 public class Customer {
-    private static int idCounter = 0;
-    private int id;
+    private static Integer idCounter = 0;
+    private Integer id;
     private String name;
     private MenuTypeEnum menuTypeEnum;
     private String mail;
     private String password;
     private List<Course> orderedCourses;
-    private double billToPay;
+    private Double billToPay;
 
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
         this.id = ++idCounter;
@@ -26,7 +26,7 @@ public class Customer {
         this.mail = mail;
         this.password = password;
         this.orderedCourses = new ArrayList<>();
-        this.billToPay = 0;
+        this.billToPay = 0.0;
     }
 
     // GETTER & SETTER

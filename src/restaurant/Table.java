@@ -8,10 +8,10 @@ import enumProject.TextModifierEnum;
  */
 public class Table {
 
-    private static int idCounter = 0;
-    private int id;
+    private static Integer idCounter = 0;
+    private Integer id;
     private TableStateEnum tableState;
-    private int NumberOfOccupiedSeats;
+    private Integer NumberOfOccupiedSeats;
 
     /***
      * This is the constructor for the Table class

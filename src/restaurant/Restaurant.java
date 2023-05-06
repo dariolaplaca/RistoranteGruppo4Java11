@@ -19,9 +19,9 @@ public class Restaurant {
     private String type;
     private Menu menu;
     private HashMap<Table, Customer> tablesRestaurant;
-    private double cashRegister;
-    private int maxNumberOfCustomers;
-    private int numberOfCurrentCustomers;
+    private Double cashRegister;
+    private Integer maxNumberOfCustomers;
+    private Integer numberOfCurrentCustomers;
 
     /**
      * This is the constructor for the Restaurant class
