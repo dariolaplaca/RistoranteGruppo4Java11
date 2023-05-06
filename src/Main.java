@@ -1,15 +1,17 @@
 import course.*;
+import database.DBConnector;
 import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
 import restaurant.Customer;
 import restaurant.Restaurant;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         // - STARTERS
         Course ffc = new Starters("Forever Fried Chicken Calamari", "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", false, 400, 69.69, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.SHELLFISH));
@@ -80,7 +82,7 @@ public class Main {
 
 
         // RISTORANTE
-        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano", 5);
+        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano", 5, "Menu");
         ilSolito.addAllCourseToMenu(startersList);
         ilSolito.addAllCourseToMenu(firstsList);
         ilSolito.addAllCourseToMenu(secondsList);
@@ -100,6 +102,8 @@ public class Main {
         ilSolito.printTablesInfo();
         ilSolito.freeTable(1, 20);
         System.out.println(ilSolito.getCashRegister());
+
+        DBConnector.buildSchema();
 
     }
 }

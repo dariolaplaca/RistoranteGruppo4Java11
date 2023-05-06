@@ -27,13 +27,11 @@ public class Restaurant {
      * This is the constructor for the Restaurant class
      */
 
-    //TODO inserire una lista di menù e trattarla come avete fatto per portate su menù
-    public Restaurant(String name, String address, String type, int maxNumberOfCustomer) {
+    public Restaurant(String name, String address, String type, int maxNumberOfCustomer, String menuName) {
         this.name = name;
         this.address = address;
         this.type = type;
-        //TODO no solid
-        this.menu = new Menu("Menu");
+        this.menu = new Menu(menuName);
         this.tablesRestaurant = new HashMap<>();
         this.cashRegister = 0.0;
         this.maxNumberOfCustomers = maxNumberOfCustomer;

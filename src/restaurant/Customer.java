@@ -19,10 +19,6 @@ public class Customer {
     private List<Course> orderedCourses;
     private double billToPay;
 
-
-    public Customer() {
-    }
-
     public Customer(String name, MenuTypeEnum menuTypeEnum, String mail, String password) {
         this.id = ++idCounter;
         this.name = name;
