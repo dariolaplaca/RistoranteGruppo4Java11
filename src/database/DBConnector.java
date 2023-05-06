@@ -12,6 +12,8 @@ public class DBConnector {
         return DriverManager.getConnection(DatabaseCredentials.getDbUrl(), DatabaseCredentials.getUSER(), DatabaseCredentials.getPASS());
     }
 
+
+
     public static void buildSchema() throws SQLException {
         Connection connection = getConnection();
         Statement schema = connection.createStatement();
