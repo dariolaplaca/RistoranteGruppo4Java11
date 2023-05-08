@@ -29,50 +29,30 @@ public class Customer {
         this.billToPay = 0.0;
     }
 
-    // GETTER & SETTER
-    public int getId() {
-        return this.id;
+    // GETTER & SETTE
+    public int getId() {return this.id;}
+    public void setId(int id) {this.id = id;}
+
+    public String getName() {return this.name;}
+    public void setName(String name) {this.name = name;}
+
+    public MenuTypeEnum getMenuType() {return this.menuTypeEnum;}
+    public void setMenuType(MenuTypeEnum menuTypeEnum) {this.menuTypeEnum = menuTypeEnum;}
+
+    public String getMail() {return this.mail;}
+    public void setMail(String mail) {this.mail = mail;}
+
+    public String getPassword() {return this.password;}
+    public void setPassword(String password) {this.password = password;}
+
+    public List<Course> getOrderedCourses() {return this.orderedCourses;}
+
+    public void setOrderedCourses(List<Course> orderedCourses) {
+        this.orderedCourses = orderedCourses;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public MenuTypeEnum getMenuType() {
-        return this.menuTypeEnum;
-    }
-
-    public void setMenuType(MenuTypeEnum menuTypeEnum) {
-        this.menuTypeEnum = menuTypeEnum;
-    }
-
-    public String getMail() {
-        return this.mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Course> getOrderedCourses() {
-        return this.orderedCourses;
-    }
+    public Double getBillToPay() {return billToPay;}
+    public void setBillToPay(Double billToPay) {this.billToPay = billToPay;}
 
     /**
      * Adds a course to the ordered course of a customer
@@ -86,6 +66,7 @@ public class Customer {
     public void addAllOrderedCourse(List<Course> c) {
         orderedCourses.addAll(c);
     }
+
 
     public double calculateBill(List<Course> orderedCourses) {
         for (Course course : orderedCourses) {
@@ -112,7 +93,6 @@ public class Customer {
      *
      * @return all the names of the ordered courses as a String
      */
-
     public String OrderedCourseToString() {
         StringBuilder sb = new StringBuilder();
         for (Course c : orderedCourses) {
@@ -120,6 +100,7 @@ public class Customer {
         }
         return sb.substring(0, sb.toString().length() - 3);
     }
+
 
     /**
      * that method print the info of customer

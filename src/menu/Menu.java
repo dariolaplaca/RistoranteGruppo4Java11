@@ -48,8 +48,12 @@ public class Menu {
         courseList.add(s);
     }
 
-    public void addAllCourse(List<Course> courseList) {
-        this.courseList.addAll(courseList);
+    public void addAllCourse(List<Course>c){
+        courseList.addAll(c);
+    }
+
+    public void printFullMenu(){
+        courseList.forEach(c->c.printInfo());
     }
 
     /**

@@ -19,89 +19,101 @@ public class Restaurant {
     private String type;
     private Menu menu;
     private HashMap<Table, Customer> tablesRestaurant;
+
     private Double cashRegister;
     private Integer maxNumberOfCustomers;
     private Integer numberOfCurrentCustomers;
+
 
     /**
      * This is the constructor for the Restaurant class
      */
 
-    public Restaurant(String name, String address, String type, int maxNumberOfCustomer, String menuName) {
+    public Restaurant(String name, String address, String type, int maxNumberOfCustomers, String menuName) {
         this.name = name;
         this.address = address;
         this.type = type;
         this.menu = new Menu(menuName);
         this.tablesRestaurant = new HashMap<>();
         this.cashRegister = 0.0;
-        this.maxNumberOfCustomers = maxNumberOfCustomer;
+        this.maxNumberOfCustomers = maxNumberOfCustomers;
         this.numberOfCurrentCustomers = 0;
     }
 
-    // GETTER & SETTER
-    public String getName() {
-        return name;
-    }
+    // GETTER & SETTE
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Menu getMenu() {return menu;}
+    public String getAddress() {return this.address;}
 
-    public Menu getMenu() {
-        return menu;
-    }
+    public void setAddress(String address) {this.address = address;}
+    public String getType() {return this.type;}
 
-    public String getAddress() {
-        return this.address;
-    }
+    public void setType(String type) {this.type = type;}
+    public Map<Table, Customer> getTablesRestaurant() {return this.tablesRestaurant;}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setMenu(Menu menu) {this.menu = menu;}
+    public void setTablesRestaurant(HashMap<Table, Customer> tablesRestaurant) {this.tablesRestaurant = tablesRestaurant;}
 
-    public String getType() {
-        return this.type;
-    }
+    public int getMaxNumberOfCustomers() {return this.maxNumberOfCustomers;}
 
-    public void setType(String type) {
-        this.type = type;
-    }
+    public double getCashRegister() {return cashRegister;}
+    public void setCashRegister(double cashRegister) {this.cashRegister = cashRegister;}
 
-    public Map<Table, Customer> getTablesRestaurant() {
-        return this.tablesRestaurant;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public void setTablesRestaurant(HashMap<Table, Customer> tablesRestaurant) {
-        this.tablesRestaurant = tablesRestaurant;
-    }
-
-    public int getMaxNumberOfCustomers() {
-        return this.maxNumberOfCustomers;
-    }
-
-    public void setMaxNumberOfCustomers(int maxNumberOfCustomers) {
-        this.maxNumberOfCustomers = maxNumberOfCustomers;
-    }
-
-    public double getCashRegister() {
-        return cashRegister;
-    }
-
-    public void setCashRegister(double cashRegister) {
-        this.cashRegister = cashRegister;
-    }
+    public Integer getNumberOfCurrentCustomers() {return numberOfCurrentCustomers;}
+    public void setNumberOfCurrentCustomers(Integer numberOfCurrentCustomers) {this.numberOfCurrentCustomers = numberOfCurrentCustomers;}
 
     // METHODS
-    public void addCourseToMenu(Course course) {
-        menu.addCourse(course);
+    public void addCourseToMenu(Course course) {menu.addCourse(course);}
+    public void addAllCourseToMenu(List<Course> courses) {menu.addAllCourse(courses);}
+
+    /**
+     *
+     * @param customer
+     * @param numeroPersone
+     */
+    public void bookTable(Customer customer, Integer numeroPersone) {
+    Table bookedTable = null;
+    if(getNumberOfCurrentCustomers() + numeroPersone > maxNumberOfCustomers){
+        System.out.println("Ne siete troppi");
+    }else{
+        setNumberOfCurrentCustomers(getNumberOfCurrentCustomers() + numeroPersone);
+        bookedTable = new Table(numeroPersone, customer);
+        bookedTable.bookTable(customer);
+        tablesRestaurant.put(bookedTable, customer);
+    }
+}
+
+    /**
+     *
+     */
+    public void printOccupiedTables(){
+        System.out.println("\nOCCUPIED TABLES:\n");
+        for (Map.Entry<Table,Customer> table : tablesRestaurant.entrySet()) {
+            if (table.getKey().getTableState() == TableStateEnum.OCCUPIED) {
+                table.getKey().printInfo();
+//                table.getValue().getOrderedCourses().forEach(c -> c.printInfo());
+                System.out.println();
+            }
+        }
     }
 
-    public void addAllCourseToMenu(List<Course> courses) {
-        menu.addAllCourse(courses);
+    /**
+     *
+     * @param idTables
+     */
+    public void printInfoOrderTable(int idTables){
+        double calculateBillTable = 0;
+        for (Map.Entry<Table,Customer> entry:tablesRestaurant.entrySet()){
+            if(entry.getKey().getId() == idTables){
+                for (Course orderedCours : entry.getValue().getOrderedCourses()) {
+                    calculateBillTable += orderedCours.getPrice();
+                    System.out.println("-"+orderedCours.getName() + " " + orderedCours.getPrice() + "€");
+                }
+            }
+                    System.out.println("\n\tBill to pay: " + Math.floor(calculateBillTable) + "€");
+        }
     }
 
     /**
@@ -172,38 +184,25 @@ public class Restaurant {
      * @param customer       Customer that wants to book the table
      * @param numberOfPeople number of people in the group of the customer
      */
-    public void bookATable(Customer customer, int numberOfPeople) {
-        if(numberOfCurrentCustomers + numberOfPeople <= maxNumberOfCustomers){
-            Table table = new Table(numberOfPeople);
-            if (table.getTableState() == TableStateEnum.AVAILABLE) {
-                table.setTableState(TableStateEnum.OCCUPIED);
-                tablesRestaurant.put(table, customer);
-                numberOfCurrentCustomers += numberOfPeople;
-                System.out.println(TextModifierEnum.ANSI_GREEN + "You have booked with success" + TextModifierEnum.ANSI_RESET);
-            }
-        } else {
-            System.out.println("All tables are booked!");
-        }
 
-    }
 
     /**
      * Free a booked table
      */
     public void freeTable(int id, double discount) {
-        Table tableToSetFree = new Table(0);
-        for(Table table : tablesRestaurant.keySet()){
-            if(table.getId() == id){
-                tableToSetFree = table;
-            }
-        }
-        if (tableToSetFree.getTableState().equals(TableStateEnum.OCCUPIED)) {
-            Customer customer = tablesRestaurant.get(tableToSetFree);
-            tableCheck(customer, discount);
-            tableToSetFree.setTableState(TableStateEnum.AVAILABLE);
-            numberOfCurrentCustomers -= tableToSetFree.getNumberOfOccupiedSeats();
-            tablesRestaurant.remove(tableToSetFree);
-        }
+//        Table tableToSetFree = new Table(0);
+//        for(Table table : tablesRestaurant.keySet()){
+//            if(table.getId() == id){
+//                tableToSetFree = table;
+//            }
+//        }
+//        if (tableToSetFree.getTableState().equals(TableStateEnum.OCCUPIED)) {
+//            Customer customer = tablesRestaurant.get(tableToSetFree);
+//            tableCheck(customer, discount);
+//            tableToSetFree.setTableState(TableStateEnum.AVAILABLE);
+//            numberOfCurrentCustomers -= tableToSetFree.getNumberOfOccupiedSeats();
+//            tablesRestaurant.remove(tableToSetFree);
+//        }
     }
 
     /**
@@ -237,15 +236,6 @@ public class Restaurant {
     /**
      * Prints the list of all the occupied tables
      */
-    public void printOccupiedTables() {
-        System.out.println("\nOCCUPIED TABLES:\n");
-        for (Table table : tablesRestaurant.keySet()) {
-            if (table.getTableState() == TableStateEnum.OCCUPIED) {
-                table.printInfo();
-                System.out.println();
-            }
-        }
-    }
 
     /**
      * Prints the info's of all the tables

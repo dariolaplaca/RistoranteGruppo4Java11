@@ -2,8 +2,11 @@ import course.*;
 import database.DBConnector;
 import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
+import menu.Menu;
 import restaurant.Customer;
+import restaurant.Order;
 import restaurant.Restaurant;
+import menu.Menu;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -11,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
         // - STARTERS
         Course ffc = new Starters("Forever Fried Chicken Calamari", "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", false, 400, 69.69, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.SHELLFISH));
@@ -80,9 +83,11 @@ public class Main {
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert, tiramisuVegano, chocolateBrownie);
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
+        Menu menu = new Menu("Full menu");
+        menu.addAllCourse(startersList);
 
         // RISTORANTE
-        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano", 5, "Menu");
+        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano",60,"Menu");
         ilSolito.addAllCourseToMenu(startersList);
         ilSolito.addAllCourseToMenu(firstsList);
         ilSolito.addAllCourseToMenu(secondsList);
@@ -92,18 +97,16 @@ public class Main {
         Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
         Customer cris = new Customer("Cris", MenuTypeEnum.FISH_MENU, "criswow@gmail.com", "Abcde123");
 
-        ilSolito.bookATable(dario, 2);
+        // rivista la prenotazione tavolo,
+        // aggiunto il modo per stampare un ordine di un customer
+        // devo vedere ora come fare per settare quel tavolo su available quando il cliente ha pagato
+        ilSolito.bookTable(cris, 10);
+//        ilSolito.printTablesInfo();
 
-        ilSolito.addCourseToCustomer(florentine, dario);
-        ilSolito.addCourseToCustomer(amatriciana, dario);
-        ilSolito.addCourseToCustomer(sacherTorte, dario);
-        ilSolito.addCourseToCustomer(stillWater, dario);
-        System.out.println(ilSolito.getCashRegister());
-        ilSolito.printTablesInfo();
-        ilSolito.freeTable(1, 20);
-        System.out.println(ilSolito.getCashRegister());
+        Order order = new Order(cris, menu);
+        order.addListOrder(Arrays.asList(ffc,carbonara,hamburger,sacherTorte,negroni));
 
-        DBConnector.buildSchema();
-
+        ilSolito.printOccupiedTables();
+        ilSolito.printInfoOrderTable(1);
     }
 }
