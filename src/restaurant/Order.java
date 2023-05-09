@@ -3,6 +3,7 @@ package restaurant;
 import course.Course;
 import menu.Menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -31,7 +32,21 @@ public class Order {
     public Customer getCustomer() {return customer;}
     public void setCustomer(Customer customer) {this.customer = customer;}
 
+    /**
+     *
+     * @param c
+     */
     public void addListOrder(List<Course>c){
         customer.setOrderedCourses(c);
     }
+
+//    public void courseRev(Course c){
+//        List<Course> coursesList = customer.getOrderedCourses();
+//        for (Course course : coursesList) {
+//            if(course.getName().equals(c.getName())){
+//                coursesList.remove(c);
+//            }
+//                customer.setOrderedCourses(coursesList);
+//        }
+//    }
 }

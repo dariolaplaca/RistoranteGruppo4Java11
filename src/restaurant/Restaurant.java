@@ -107,13 +107,13 @@ public class Restaurant {
         double calculateBillTable = 0;
         for (Map.Entry<Table,Customer> entry:tablesRestaurant.entrySet()){
             if(entry.getKey().getId() == idTables){
-                for (Course orderedCours : entry.getValue().getOrderedCourses()) {
-                    calculateBillTable += orderedCours.getPrice();
-                    System.out.println("-"+orderedCours.getName() + " " + orderedCours.getPrice() + "€");
+                for (Course orderedCourse : entry.getValue().getOrderedCourses()) {
+                    calculateBillTable += orderedCourse.getPrice();
+                    System.out.println("-"+orderedCourse.getName() + " " + orderedCourse.getPrice() + "€");
                 }
             }
-                    System.out.println("\n\tBill to pay: " + Math.floor(calculateBillTable) + "€");
         }
+                    System.out.println("\n\tBill to pay: " + Math.floor(calculateBillTable) + "€");
     }
 
     /**

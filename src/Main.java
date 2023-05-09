@@ -10,6 +10,7 @@ import menu.Menu;
 
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.IllformedLocaleException;
 import java.util.List;
 import java.util.Set;
 
@@ -97,16 +98,21 @@ public class Main {
         Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
         Customer cris = new Customer("Cris", MenuTypeEnum.FISH_MENU, "criswow@gmail.com", "Abcde123");
 
-        // rivista la prenotazione tavolo,
-        // aggiunto il modo per stampare un ordine di un customer
-        // devo vedere ora come fare per settare quel tavolo su available quando il cliente ha pagato
+
         ilSolito.bookTable(cris, 10);
+        ilSolito.bookTable(dario, 8);
 //        ilSolito.printTablesInfo();
 
         Order order = new Order(cris, menu);
-        order.addListOrder(Arrays.asList(ffc,carbonara,hamburger,sacherTorte,negroni));
+        order.addListOrder(Arrays.asList(ffc, carbonara, hamburger, sacherTorte, negroni));
+
+        Order order2 = new Order(dario, menu);
+        order2.addListOrder(Arrays.asList(salmon, amatriciana, pineDuck,appleCake, whiskeySour));
+
 
         ilSolito.printOccupiedTables();
         ilSolito.printInfoOrderTable(1);
+
+
     }
 }
