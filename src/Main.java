@@ -84,9 +84,6 @@ public class Main {
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert, tiramisuVegano, chocolateBrownie);
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
-        Menu menu = new Menu("Full menu");
-        menu.addAllCourse(startersList);
-
         // RISTORANTE
         Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano",60,"Menu");
         ilSolito.addAllCourseToMenu(startersList);
@@ -103,10 +100,10 @@ public class Main {
         ilSolito.bookTable(dario, 8);
 //        ilSolito.printTablesInfo();
 
-        Order order = new Order(cris, menu);
+        Order order = new Order(cris);
         order.addListOrder(Arrays.asList(ffc, carbonara, hamburger, sacherTorte, negroni));
 
-        Order order2 = new Order(dario, menu);
+        Order order2 = new Order(dario);
         order2.addListOrder(Arrays.asList(salmon, amatriciana, pineDuck,appleCake, whiskeySour));
 
 

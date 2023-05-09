@@ -10,12 +10,10 @@ public class Order {
     private int id;
     private List<Course> orderList;
     private Table table;
-    private Menu menu;
     private Customer customer;
 
-    public Order(Customer customer,Menu menu){
+    public Order(Customer customer){
         this.customer = customer;
-        this.menu = menu;
     }
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
@@ -25,9 +23,6 @@ public class Order {
 
     public Table getTable() {return table;}
     public void setTable(Table table) {this.table = table;}
-
-    public Menu getMenu() {return menu;}
-    public void setMenu(Menu menu) {this.menu = menu;}
 
     public Customer getCustomer() {return customer;}
     public void setCustomer(Customer customer) {this.customer = customer;}

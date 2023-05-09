@@ -105,14 +105,16 @@ public class Restaurant {
      */
     public void printInfoOrderTable(int idTables){
         double calculateBillTable = 0;
+        System.out.println(TextModifierEnum.ANSI_YELLOW + "Ordered Courses: [" + TextModifierEnum.ANSI_RESET);
         for (Map.Entry<Table,Customer> entry:tablesRestaurant.entrySet()){
             if(entry.getKey().getId() == idTables){
                 for (Course orderedCourse : entry.getValue().getOrderedCourses()) {
                     calculateBillTable += orderedCourse.getPrice();
-                    System.out.println("-"+orderedCourse.getName() + " " + orderedCourse.getPrice() + "€");
+                    System.out.println(TextModifierEnum.ANSI_GREEN + "\t-" + orderedCourse.getName() + "= " + orderedCourse.getPrice() + "€" + TextModifierEnum.ANSI_RESET);
                 }
             }
         }
+        System.out.println(TextModifierEnum.ANSI_YELLOW + "]" + TextModifierEnum.ANSI_RESET);
                     System.out.println("\n\tBill to pay: " + Math.floor(calculateBillTable) + "€");
     }
 
