@@ -17,7 +17,8 @@ public class DBConnector {
     public static void buildSchema() throws SQLException {
         Connection connection = getConnection();
         Statement schema = connection.createStatement();
-        schema.executeUpdate("""
+
+        String sqlCreateTableCustomer = """
                 CREATE TABLE IF NOT EXISTS CUSTOMER(
                 ID INT AUTO_INCREMENT PRIMARY KEY,
                 NAME VARCHAR(255) NOT NULL,
@@ -25,9 +26,10 @@ public class DBConnector {
                 MAIL VARCHAR(255) UNIQUE NOT NULL,
                 PASSWORD VARCHAR(255) NOT NULL
                 );
-                """);
+                """;
+        schema.executeUpdate(sqlCreateTableCustomer);
 
-        schema.executeUpdate("""
+        String sqlCreateTableRestaurant = """
                 CREATE TABLE IF NOT EXISTS RESTAURANT(
                 ID INT AUTO_INCREMENT PRIMARY KEY,
                 NAME VARCHAR(255) NOT NULL,
@@ -36,15 +38,82 @@ public class DBConnector {
                 CASH_REGISTER DOUBLE,
                 MAX_NUMBER_OF_CUSTOMERS INT
                 );
-                """);
-//ATTEMPTING TO ADD TABLE: TABLE TO THE DB. SORRY SE FA SCHIFO
-        schema.executeUpdate("""
-                CREATE TABLE IF NOT EXISTS TABLE(
+                """;
+        schema.executeUpdate(sqlCreateTableRestaurant);
+
+        String sqlCreateTableStarter = """
+                CREATE TABLE IF NOT EXISTS STARTER(
                 ID INT AUTO_INCREMENT PRIMARY KEY,
-                RESTAURANT_ID INT NOT NULL,
-                FOREIGN KEY (RESTAURANT_ID) REFERENCES RESTAURANT(ID)
+                NAME VARCHAR(255) NOT NULL UNIQUE,
+                DESCRIPTION VARCHAR(255) NOT NULL,
+                CALORIES DOUBLE NOT NULL,
+                PRICE DOUBLE NOT NULL,
+                COURSE_TYPE VARCHAR(255) NOT NULL,
+                MENU_TYPE VARCHAR(255) NOT NULL,
+                IS_GORUMET BOOLEAN NOT NULL
                 );
-                """);
+                """;
+        schema.executeUpdate(sqlCreateTableStarter);
+
+        String sqlCreateTableFirst = """
+                CREATE TABLE IF NOT EXISTS FIRST(
+                ID INT AUTO_INCREMENT PRIMARY KEY,
+                NAME VARCHAR(255) NOT NULL UNIQUE,
+                DESCRIPTION VARCHAR(255) NOT NULL,
+                CALORIES DOUBLE NOT NULL,
+                PRICE DOUBLE NOT NULL,
+                COURSE_TYPE VARCHAR(255) NOT NULL,
+                MENU_TYPE VARCHAR(255) NOT NULL,
+                WEIGHT DOUBLE NOT NULL,
+                IS_COLD BOOLEAN NOT NULL
+                );
+                """;
+        schema.executeUpdate(sqlCreateTableFirst);
+
+        String sqlCreateTableSecond = """
+                CREATE TABLE IF NOT EXISTS SECOND(
+                ID INT AUTO_INCREMENT PRIMARY KEY,
+                NAME VARCHAR(255) NOT NULL UNIQUE,
+                DESCRIPTION VARCHAR(255) NOT NULL,
+                CALORIES DOUBLE NOT NULL,
+                PRICE DOUBLE NOT NULL,
+                COURSE_TYPE VARCHAR(255) NOT NULL,
+                MENU_TYPE VARCHAR(255) NOT NULL,
+                WEIGHT DOUBLE NOT NULL,
+                CONTOUR BOOLEAN NOT NULL,
+                HIGH_PROTEIN BOOLEAN NOT NULL
+                );
+                """;
+        schema.executeUpdate(sqlCreateTableSecond);
+
+        String sqlCreateTableDessert = """
+                CREATE TABLE IF NOT EXISTS DESSERT(
+                ID INT AUTO_INCREMENT PRIMARY KEY,
+                NAME VARCHAR(255) NOT NULL UNIQUE,
+                DESCRIPTION VARCHAR(255) NOT NULL,
+                CALORIES DOUBLE NOT NULL,
+                PRICE DOUBLE NOT NULL,
+                COURSE_TYPE VARCHAR(255) NOT NULL,
+                MENU_TYPE VARCHAR(255) NOT NULL,
+                WEIGHT DOUBLE NOT NULL
+                );
+                """;
+        schema.executeUpdate(sqlCreateTableDessert);
+
+        String sqlCreateTableBeverage = """
+                CREATE TABLE IF NOT EXISTS BEVERAGE(
+                ID INT AUTO_INCREMENT PRIMARY KEY,
+                NAME VARCHAR(255) NOT NULL UNIQUE,
+                DESCRIPTION VARCHAR(255) NOT NULL,
+                CALORIES DOUBLE NOT NULL,
+                PRICE DOUBLE NOT NULL,
+                COURSE_TYPE VARCHAR(255) NOT NULL,
+                MENU_TYPE VARCHAR(255) NOT NULL,
+                MILLILITERS DOUBLE NOT NULL,
+                IS_ALCOHOLIC BOOLEAN NOT NULL
+                );
+                """;
+        schema.executeUpdate(sqlCreateTableBeverage);
 
         connection.close();
     }
