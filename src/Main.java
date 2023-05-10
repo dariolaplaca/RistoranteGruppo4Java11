@@ -84,6 +84,7 @@ public class Main {
         List<Course> dessertsList = Arrays.asList(appleCake, tiramisu, saltyChocolate, sacherTorte, composeYourDessert, tiramisuVegano, chocolateBrownie);
         List<Course> beverageList = Arrays.asList(stillWater, sparklingWater, cocacola, fanta, sprite, redDraughtBeer, blondeDraughtBeer, redWine, whiteWine, Mojito, oldFashioned, whiskeySour, negroni, whiteRussian);
 
+
         // RISTORANTE
         Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano",60,"Menu");
         ilSolito.addAllCourseToMenu(startersList);

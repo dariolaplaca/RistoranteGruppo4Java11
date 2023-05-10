@@ -12,8 +12,7 @@ public enum CourseEnum {
     BEVERAGES("Beverage", 4);
 
     public final String name;
-    public final int id;
-    public final int NUMBER_OF_COURSES_TYPE = 4;
+    public final Integer id;
 
     /***
      * This is the constructor for the course type enum class
@@ -23,14 +22,11 @@ public enum CourseEnum {
 
     CourseEnum(String name, int id) {
         this.name = name;
-        if (id < 0 || id > NUMBER_OF_COURSES_TYPE) {
-            throw new IllegalArgumentException("ID can only be between 0 to 4.");
-        }
         this.id = id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public int getId() {
