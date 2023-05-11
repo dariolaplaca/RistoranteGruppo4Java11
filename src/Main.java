@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         // - STARTERS
         Course ffc = new Starters("Forever Fried Chicken Calamari", "Enjoy a classic fried chicken dish with a twist, featuring calamari in a light batter for a unique flavor combination. Perfect for sharing or as an individual meal.", false, 400, 69.69, MenuTypeEnum.FISH_MENU, Set.of(AllergensEnum.SHELLFISH));
@@ -106,6 +106,8 @@ public class Main {
 
         Order order2 = new Order(dario);
         order2.addListOrder(Arrays.asList(salmon, amatriciana, pineDuck,appleCake, whiskeySour));
+
+        DBConnector.buildSchema();
 
 
         ilSolito.printOccupiedTables();

@@ -50,7 +50,7 @@ public class DBConnector {
                 PRICE DOUBLE NOT NULL,
                 COURSE_TYPE VARCHAR(255) NOT NULL,
                 MENU_TYPE VARCHAR(255) NOT NULL,
-                IS_GORUMET BOOLEAN NOT NULL
+                IS_GOURMET BOOLEAN NOT NULL
                 );
                 """;
         schema.executeUpdate(sqlCreateTableStarter);
