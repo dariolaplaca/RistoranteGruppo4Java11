@@ -88,7 +88,7 @@ public class Main {
 
 
         // RISTORANTE
-        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano",60,"Menu");
+        Restaurant ilSolito = new Restaurant("Il Solito", "Via Libertà 58", "Ristorante Italiano",60, 0d,"Menu");
         ilSolito.addAllCourseToMenu(startersList);
         ilSolito.addAllCourseToMenu(firstsList);
         ilSolito.addAllCourseToMenu(secondsList);

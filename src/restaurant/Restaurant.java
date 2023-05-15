@@ -28,13 +28,13 @@ public class Restaurant {
      * This is the constructor for the Restaurant class
      */
 
-    public Restaurant(String name, String address, String type, int maxNumberOfCustomers, String menuName) {
+    public Restaurant(String name, String address, String type, int maxNumberOfCustomers, Double cashRegister, String menuName) {
         this.name = name;
         this.address = address;
         this.type = type;
         this.menu = new Menu(menuName);
         this.tablesRestaurant = new HashMap<>();
-        this.cashRegister = 0.0;
+        this.cashRegister = cashRegister;
         this.maxNumberOfCustomers = maxNumberOfCustomers;
         this.numberOfCurrentCustomers = 0;
     }
