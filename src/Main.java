@@ -1,4 +1,6 @@
 import course.*;
+import database.AllergensDAO;
+import database.CourseDAO;
 import database.DBConnector;
 import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
@@ -111,11 +113,20 @@ public class Main {
         ilSolito.bookTable(cris, 10, 1, order);
         ilSolito.bookTable(dario, 12, 2, order2);
 
-        DBConnector.buildSchema();
+        AllergensDAO allergens = new AllergensDAO();
+//        for (AllergensEnum allergen : AllergensEnum.values()){
+//            allergens.insertAllergen(allergen);
+//        }
+
+        System.out.println(allergens.getAllergen("gluten").name());
+//        CourseDAO course = new CourseDAO();
+//        for (Course c : startersList){
+//            course.insertCourse(c);
+//        }
 
 
-        ilSolito.printOccupiedTables();
-        ilSolito.printInfoOrderTable(1);
+//        ilSolito.printOccupiedTables();
+//        ilSolito.printInfoOrderTable(1);
 
 
     }
