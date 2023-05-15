@@ -1,6 +1,6 @@
-package database;
+package database.dao;
 
-import com.mysql.cj.protocol.Resultset;
+import database.DBConnector;
 import enumProject.AllergensEnum;
 
 import java.sql.*;

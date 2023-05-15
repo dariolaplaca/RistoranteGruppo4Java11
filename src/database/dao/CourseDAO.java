@@ -1,4 +1,4 @@
-package database.DAO;
+package database.dao;
 
 import course.*;
 import database.DBConnector;
@@ -6,7 +6,6 @@ import database.DBConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class CourseDAO {
 

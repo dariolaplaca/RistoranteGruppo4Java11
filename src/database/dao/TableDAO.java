@@ -1,4 +1,4 @@
-package database.DAO;
+package database.dao;
 
 import database.DBConnector;
 

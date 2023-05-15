@@ -1,21 +1,17 @@
 import course.*;
-import database.DAO.CustomerDAO;
-import database.DAO.RestaurantDAO;
-import database.AllergensDAO;
-import database.DAO.CourseDAO;
+import database.dao.AllergensDAO;
+import database.dao.CustomerDAO;
+import database.dao.RestaurantDAO;
 import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
-import menu.Menu;
 import restaurant.Customer;
 import restaurant.Order;
 import restaurant.Restaurant;
-import menu.Menu;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.Arrays;
-import java.util.IllformedLocaleException;
 import java.util.List;
 import java.util.Set;
 
@@ -100,7 +96,7 @@ public class Main {
 
         Customer dario = new Customer(1, "Dario", MenuTypeEnum.MEAT_MENU );
         Customer cris = new Customer(2, "Cris", MenuTypeEnum.FISH_MENU);
-        Customer ilCanadese = new Customer(3, "Marco", MenuTypeEnum.VEGAN_MENU);
+        Customer ilCanadese = new Customer(3, "Il canadese", MenuTypeEnum.VEGAN_MENU);
         Customer federico = new Customer(4, "Federico", MenuTypeEnum.MEAT_MENU);
         Customer giulio = new Customer(5,"Giulio", MenuTypeEnum.CHILDREN_MENU);
 
@@ -115,11 +111,22 @@ public class Main {
 
         ilSolito.bookTable(cris, 10, 1, order);
         ilSolito.bookTable(dario, 12, 2, order2);
+        AllergensDAO allergensDAO = new AllergensDAO();
+//        for (AllergensEnum allergensEnum : AllergensEnum.values()){
+//            allergensDAO.insertAllergen(allergensEnum);
+//        }
 
         CustomerDAO customerDAO = new CustomerDAO();
+//        customerDAO.insertCustomer(cris);
+//        customerDAO.insertCustomer(dario);
+//        customerDAO.insertCustomer(ilCanadese);
+//        customerDAO.insertCustomer(federico);
+//        customerDAO.insertCustomer(giulio);
+        customerDAO.getCustomer(3).printInfo();
+
 
         RestaurantDAO restaurantDAO = new RestaurantDAO();
-        restaurantDAO.insertRestaurant(ilSolito);
+//        restaurantDAO.insertRestaurant(ilSolito);
 
         ilSolito.printOccupiedTables();
         ilSolito.printInfoOrderTable(1);
