@@ -19,7 +19,6 @@ public class Restaurant {
     private String type;
     private Menu menu;
     private HashMap<Table, Customer> tablesRestaurant;
-
     private Double cashRegister;
     private Integer maxNumberOfCustomers;
     private Integer numberOfCurrentCustomers;
@@ -61,6 +60,10 @@ public class Restaurant {
     public double getCashRegister() {return cashRegister;}
     public void setCashRegister(double cashRegister) {this.cashRegister = cashRegister;}
 
+    public void setMaxNumberOfCustomers(Integer maxNumberOfCustomers) {
+        this.maxNumberOfCustomers = maxNumberOfCustomers;
+    }
+
     public Integer getNumberOfCurrentCustomers() {return numberOfCurrentCustomers;}
     public void setNumberOfCurrentCustomers(Integer numberOfCurrentCustomers) {this.numberOfCurrentCustomers = numberOfCurrentCustomers;}
 
@@ -72,14 +75,16 @@ public class Restaurant {
      *
      * @param customer
      * @param numeroPersone
+     * @param tableId
+     * @param order
      */
-    public void bookTable(Customer customer, Integer numeroPersone) {
+    public void bookTable(Customer customer, Integer numeroPersone, Integer tableId, Order order) {
     Table bookedTable = null;
     if(getNumberOfCurrentCustomers() + numeroPersone > maxNumberOfCustomers){
         System.out.println("Ne siete troppi");
     }else{
         setNumberOfCurrentCustomers(getNumberOfCurrentCustomers() + numeroPersone);
-        bookedTable = new Table(numeroPersone, customer);
+        bookedTable = new Table(tableId, numeroPersone, customer, order);
         bookedTable.bookTable(customer);
         tablesRestaurant.put(bookedTable, customer);
     }
@@ -108,7 +113,7 @@ public class Restaurant {
         System.out.println(TextModifierEnum.ANSI_YELLOW + "Ordered Courses: [" + TextModifierEnum.ANSI_RESET);
         for (Map.Entry<Table,Customer> entry:tablesRestaurant.entrySet()){
             if(entry.getKey().getId() == idTables){
-                for (Course orderedCourse : entry.getValue().getOrderedCourses()) {
+                for (Course orderedCourse : entry.getKey().getOrder().getOrderedCoursesList()) {
                     calculateBillTable += orderedCourse.getPrice();
                     System.out.println(TextModifierEnum.ANSI_GREEN + "\t-" + orderedCourse.getName() + "= " + orderedCourse.getPrice() + "€" + TextModifierEnum.ANSI_RESET);
                 }
@@ -158,9 +163,9 @@ public class Restaurant {
      * Adds a course to the order of the customer
      * only if the customer sit in the table, and it's a course of the menu type he chose
      */
-    public void addCourseToCustomer(Course course, Customer customer) {
+    public void addCourseToCustomer(Course course, Customer customer,Order order) {
         if (tablesRestaurant.containsValue(customer) && (course.getMenuType() == customer.getMenuType() || course.getMenuType().equals(MenuTypeEnum.BEVERAGE_MENU))) {
-            customer.addOrderedCourse(course);
+            order.addCourseToOrder(course);
         } else {
             System.out.println("Can't add course to the customer");
         }
@@ -179,44 +184,17 @@ public class Restaurant {
         }
     }
 
-    /**
-     * This method books an available table for a customer
-     * takes an input method that returns the list of all available tables
-     *
-     * @param customer       Customer that wants to book the table
-     * @param numberOfPeople number of people in the group of the customer
-     */
-
-
-    /**
-     * Free a booked table
-     */
-    public void freeTable(int id, double discount) {
-//        Table tableToSetFree = new Table(0);
-//        for(Table table : tablesRestaurant.keySet()){
-//            if(table.getId() == id){
-//                tableToSetFree = table;
-//            }
-//        }
-//        if (tableToSetFree.getTableState().equals(TableStateEnum.OCCUPIED)) {
-//            Customer customer = tablesRestaurant.get(tableToSetFree);
-//            tableCheck(customer, discount);
-//            tableToSetFree.setTableState(TableStateEnum.AVAILABLE);
-//            numberOfCurrentCustomers -= tableToSetFree.getNumberOfOccupiedSeats();
-//            tablesRestaurant.remove(tableToSetFree);
-//        }
-    }
 
     /**
      * Pays the check for the passed customer                                                                                                                                                                                                                             \
      *
-     * @param customer customer that pays the bill
+     * @param table table to check
      */
-    public void tableCheck(Customer customer, double discount) {
-        List<Course> coursesCustomer = customer.getOrderedCourses();
-        double billToPay = customer.calculateBill(coursesCustomer, discount);
+    public void tableCheck(Table table, Order order, double discount) {
+        List<Course> coursesCustomer = order.getOrderedCoursesList();
+        double billToPay = order.calculateBill(discount);
         cashRegister += billToPay;
-        System.out.println("Bill table n°" + customer.getId() + " = " + billToPay + "€");
+        System.out.println("Bill table n°" + table.getTableNumber() + " = " + billToPay + "€");
         if (discount > 0) {
             System.out.println("Applied discount " + discount + "%");
         }
@@ -245,7 +223,7 @@ public class Restaurant {
     public void printTablesInfo() {
         for (Map.Entry<Table, Customer> table : tablesRestaurant.entrySet()) {
             if (table.getKey().getTableState().equals(TableStateEnum.OCCUPIED)) {
-                String orderedCourses = table.getValue().OrderedCourseToString();
+                String orderedCourses = table.getKey().getOrder().OrderedCourseToString();
                 System.out.println(table.getValue().getName() + " table n° " + table.getKey().getId() + "\n" + orderedCourses);
             } else {
                 table.getKey().printInfo();

@@ -8,22 +8,22 @@ import enumProject.TextModifierEnum;
  */
 public class Table {
 
-    private static Integer idCounter = 0;
     private Integer id;
     private Customer customer;
     private TableStateEnum tableState;
+    private Integer tableNumber;
     private Integer NumberOfOccupiedSeats;
-
     private Order order;
 
     /**
      * This is the constructor for the Table class
      */
-    public Table(int numberOfSeats,Customer customer) {
-        this.id = ++idCounter;
+    public Table(Integer id, Integer numberOfSeats,Customer customer, Order order) {
+        this.id = id;
         this.tableState = TableStateEnum.AVAILABLE;
         this.NumberOfOccupiedSeats = numberOfSeats;
         this.customer = customer;
+        this.order = order;
     }
 
     // GETTER & SETTER
@@ -33,6 +33,22 @@ public class Table {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Order getOrder() {
+        return this.order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Integer getTableNumber() {
+        return this.tableNumber;
+    }
+
+    public void setTableNumber(Integer tableNumber) {
+        this.tableNumber = tableNumber;
     }
 
     public TableStateEnum getTableState() {

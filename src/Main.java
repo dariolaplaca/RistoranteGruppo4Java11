@@ -9,6 +9,8 @@ import restaurant.Restaurant;
 import menu.Menu;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.IllformedLocaleException;
 import java.util.List;
@@ -93,19 +95,21 @@ public class Main {
         ilSolito.addAllCourseToMenu(dessertsList);
         ilSolito.addAllCourseToMenu(beverageList);
 
-        Customer dario = new Customer("Dario", MenuTypeEnum.MEAT_MENU, "dariowow@gmail.com", "Abcde123");
-        Customer cris = new Customer("Cris", MenuTypeEnum.FISH_MENU, "criswow@gmail.com", "Abcde123");
+        Customer dario = new Customer(1, "Dario", MenuTypeEnum.MEAT_MENU );
+        Customer cris = new Customer(2, "Cris", MenuTypeEnum.FISH_MENU);
 
 
-        ilSolito.bookTable(cris, 10);
-        ilSolito.bookTable(dario, 8);
+
 //        ilSolito.printTablesInfo();
 
-        Order order = new Order(cris);
-        order.addListOrder(Arrays.asList(ffc, carbonara, hamburger, sacherTorte, negroni));
+        Order order = new Order(ilSolito, Timestamp.from(Instant.now()));
+        order.addListToOrder(Arrays.asList(ffc, carbonara, hamburger, sacherTorte, negroni));
 
-        Order order2 = new Order(dario);
-        order2.addListOrder(Arrays.asList(salmon, amatriciana, pineDuck,appleCake, whiskeySour));
+        Order order2 = new Order(ilSolito, Timestamp.from(Instant.now()));
+        order2.addListToOrder(Arrays.asList(salmon, amatriciana, pineDuck,appleCake, whiskeySour));
+
+        ilSolito.bookTable(cris, 10, 1, order);
+        ilSolito.bookTable(dario, 12, 2, order2);
 
         DBConnector.buildSchema();
 
