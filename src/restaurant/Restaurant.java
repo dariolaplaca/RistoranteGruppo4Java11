@@ -44,6 +44,8 @@ public class Restaurant {
     public void setName(String name) {this.name = name;}
 
     public Menu getMenu() {return menu;}
+    public void setMenu(Menu menu) {this.menu = menu;}
+
     public String getAddress() {return this.address;}
 
     public void setAddress(String address) {this.address = address;}
@@ -52,7 +54,6 @@ public class Restaurant {
     public void setType(String type) {this.type = type;}
     public Map<Table, Customer> getTablesRestaurant() {return this.tablesRestaurant;}
 
-    public void setMenu(Menu menu) {this.menu = menu;}
     public void setTablesRestaurant(HashMap<Table, Customer> tablesRestaurant) {this.tablesRestaurant = tablesRestaurant;}
 
     public int getMaxNumberOfCustomers() {return this.maxNumberOfCustomers;}

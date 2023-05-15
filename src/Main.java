@@ -1,7 +1,8 @@
 import course.*;
+import database.DAO.CustomerDAO;
+import database.DAO.RestaurantDAO;
 import database.AllergensDAO;
-import database.CourseDAO;
-import database.DBConnector;
+import database.DAO.CourseDAO;
 import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
 import menu.Menu;
@@ -99,7 +100,9 @@ public class Main {
 
         Customer dario = new Customer(1, "Dario", MenuTypeEnum.MEAT_MENU );
         Customer cris = new Customer(2, "Cris", MenuTypeEnum.FISH_MENU);
-
+        Customer ilCanadese = new Customer(3, "Marco", MenuTypeEnum.VEGAN_MENU);
+        Customer federico = new Customer(4, "Federico", MenuTypeEnum.MEAT_MENU);
+        Customer giulio = new Customer(5,"Giulio", MenuTypeEnum.CHILDREN_MENU);
 
 
 //        ilSolito.printTablesInfo();
@@ -113,20 +116,13 @@ public class Main {
         ilSolito.bookTable(cris, 10, 1, order);
         ilSolito.bookTable(dario, 12, 2, order2);
 
-        AllergensDAO allergens = new AllergensDAO();
-//        for (AllergensEnum allergen : AllergensEnum.values()){
-//            allergens.insertAllergen(allergen);
-//        }
+        CustomerDAO customerDAO = new CustomerDAO();
 
-        System.out.println(allergens.getAllergen("gluten").name());
-//        CourseDAO course = new CourseDAO();
-//        for (Course c : startersList){
-//            course.insertCourse(c);
-//        }
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        restaurantDAO.insertRestaurant(ilSolito);
 
-
-//        ilSolito.printOccupiedTables();
-//        ilSolito.printInfoOrderTable(1);
+        ilSolito.printOccupiedTables();
+        ilSolito.printInfoOrderTable(1);
 
 
     }

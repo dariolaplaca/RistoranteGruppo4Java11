@@ -1,6 +1,7 @@
-package database;
+package database.DAO;
 
 import course.*;
+import database.DBConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
