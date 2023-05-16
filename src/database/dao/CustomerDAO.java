@@ -1,7 +1,6 @@
 package database.dao;
 
 import database.DBConnector;
-import enumProject.AllergensEnum;
 import enumProject.MenuTypeEnum;
 import restaurant.Customer;
 
