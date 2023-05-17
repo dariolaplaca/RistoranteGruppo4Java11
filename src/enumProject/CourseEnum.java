@@ -5,8 +5,8 @@ package enumProject;
  */
 public enum CourseEnum {
 
-    STARTERS("Starter", 0),
     FIRSTS("First", 1),
+    STARTERS("Starter", 0),
     SECONDS("Second", 2),
     DESSERTS("Dessert", 3),
     BEVERAGES("Beverage", 4);

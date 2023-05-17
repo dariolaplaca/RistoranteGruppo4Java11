@@ -4,7 +4,7 @@ package enumProject;
  * that enum contains the allergens defined by the European community
  */
 public enum AllergensEnum {
-    CEREALS_CONTAINING_GLUTEN("Gluten"),
+    CEREALS_CONTAINING_GLUTEN("Gluten", 1),
     EGG("Egg"),
     SHELLFISH("Shellfish"),
     CELERY("Celery"),
@@ -34,4 +34,7 @@ public enum AllergensEnum {
     public String getName() {
         return name;
     }
+
+    //TODO metodo che recupura l'enumerato da un id in input
+    //enum.values, if enum.id.equals  idinput allora return l'enum corrispondente
 }

@@ -2,6 +2,7 @@ package database.dao;
 
 import course.*;
 import database.DBConnector;
+import enumProject.CourseEnum;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ public class CourseDAO {
 
     public void insertCourse(Course course) throws SQLException {
         Connection connection = DBConnector.getConnection();
-        if(course.getCourseType().getName().equals("Starter")){
+        if(course.getCourseType().equals(CourseEnum.STARTERS)){
             String sqlCommand = "INSERT INTO STARTER(NAME, DESCRIPTION, CALORIES, PRICE, COURSE_TYPE, MENU_TYPE, IS_GOURMET) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlCommand);
             preparedStatement.setString(1, course.getName());
