@@ -1,10 +1,12 @@
 package database.dao;
 
 import database.DBConnector;
+import enumProject.AllergensEnum;
 import restaurant.Restaurant;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RestaurantDAO {
@@ -22,5 +24,47 @@ public class RestaurantDAO {
 
         preparedStatement.executeUpdate();
         connection.close();
+    }
+
+    public Restaurant getRestaurantByName(String name) throws SQLException {
+        Connection connection = DBConnector.getConnection();
+        String sqlCommand = "SELECT NAME FROM RESTAURANT WHERE NAME = ?";
+        PreparedStatement statement = connection.prepareStatement(sqlCommand);
+        statement.setString(1, name);
+        ResultSet result =  statement.executeQuery();
+        Restaurant restaurantToReturn = null;
+        while (result.next()){
+            Integer id = result.getInt("id");
+            String address = result.getString("address");
+            String type = result.getString("type");
+            Double cashRegister = result.getDouble("cash_register");
+            Integer maxNumberOfCustomer = result.getInt("max_number_of_customers");
+            String menuName = result.getString("menu_name");
+            restaurantToReturn = new Restaurant(id, name, address, type, maxNumberOfCustomer, cashRegister, menuName);
+        }
+        result.close();
+        connection.close();
+        return restaurantToReturn;
+    }
+
+    public Restaurant getRestaurantById(Integer id) throws SQLException {
+        Connection connection = DBConnector.getConnection();
+        String sqlCommand = "SELECT NAME FROM RESTAURANT WHERE ID = ?";
+        PreparedStatement statement = connection.prepareStatement(sqlCommand);
+        statement.setInt(1, id);
+        ResultSet result =  statement.executeQuery();
+        Restaurant restaurantToReturn = null;
+        while (result.next()){
+            String name = result.getString("name");
+            String address = result.getString("address");
+            String type = result.getString("type");
+            Double cashRegister = result.getDouble("cash_register");
+            Integer maxNumberOfCustomer = result.getInt("max_number_of_customers");
+            String menuName = result.getString("menu_name");
+            restaurantToReturn = new Restaurant(id, name, address, type, maxNumberOfCustomer, cashRegister, menuName);
+        }
+        result.close();
+        connection.close();
+        return restaurantToReturn;
     }
 }

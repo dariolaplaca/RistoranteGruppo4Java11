@@ -14,6 +14,7 @@ import java.util.*;
  */
 public class Restaurant {
 
+    private Integer id;
     private String name;
     private String address;
     private String type;
@@ -28,7 +29,8 @@ public class Restaurant {
      * This is the constructor for the Restaurant class
      */
 
-    public Restaurant(String name, String address, String type, int maxNumberOfCustomers, Double cashRegister, String menuName) {
+    public Restaurant(Integer id, String name, String address, String type, int maxNumberOfCustomers, Double cashRegister, String menuName) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.type = type;
@@ -39,7 +41,16 @@ public class Restaurant {
         this.numberOfCurrentCustomers = 0;
     }
 
-    // GETTER & SETTE
+    // GETTERS & SETTERS
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 

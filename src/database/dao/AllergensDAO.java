@@ -16,7 +16,7 @@ public class AllergensDAO {
         connection.close();
     }
 
-    public AllergensEnum getAllergen(String name) throws SQLException{
+    public AllergensEnum getAllergenByName(String name) throws SQLException{
         Connection connection = DBConnector.getConnection();
         String sqlCommand = "SELECT NAME FROM ALLERGEN WHERE NAME = ?";
         PreparedStatement statement = connection.prepareStatement(sqlCommand);
@@ -24,14 +24,24 @@ public class AllergensDAO {
         ResultSet result =  statement.executeQuery();
         result.next();
         String allergenName = result.getString("name");
-        AllergensEnum allergenToReturn = null;
-        for (AllergensEnum allergensEnum : AllergensEnum.values()){
-            if (allergenName.equals(allergensEnum.getName())){
-                allergenToReturn = allergensEnum;
-            }
-        }
+        AllergensEnum allergenToReturn = AllergensEnum.getAllergenByName(allergenName);
         result.close();
         connection.close();
         return allergenToReturn;
     }
+
+    public AllergensEnum getAllergenById(Integer id) throws SQLException{
+        Connection connection = DBConnector.getConnection();
+        String sqlCommand = "SELECT NAME FROM ALLERGEN WHERE ID = ?";
+        PreparedStatement statement = connection.prepareStatement(sqlCommand);
+        statement.setInt(1, id);
+        ResultSet result =  statement.executeQuery();
+        result.next();
+        int allergenId = result.getInt("id");
+        AllergensEnum allergenToReturn = AllergensEnum.getAllergenById(allergenId);
+        result.close();
+        connection.close();
+        return allergenToReturn;
+    }
+
 }
